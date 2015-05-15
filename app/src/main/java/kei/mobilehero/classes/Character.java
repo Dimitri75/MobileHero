@@ -131,4 +131,12 @@ public class Character {
         }
         return calculatedCaracteristics;
     }
+
+    public double getEquipmentWeight(){
+        double sum = 0;
+        for (Equipment e : equipments){
+            sum += e.getWeight();
+        }
+        return sum;
+    }
 }
