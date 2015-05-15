@@ -1,4 +1,4 @@
-package kei.mobilehero.classes.Utils;
+package kei.mobilehero.classes.utils;
 
 import android.test.InstrumentationTestCase;
 
