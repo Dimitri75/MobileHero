@@ -29,7 +29,7 @@ public class Loader {
         }
     }
 
-    private ArrayList<Game> loadGames() {
+    private ArrayList<Game> loadData() {
         ArrayList<Game> listGames = new ArrayList<>();
         File currentDir = new File(DATA);
         if (currentDir.exists() && currentDir.isDirectory()) {
