@@ -6,8 +6,8 @@ import android.test.InstrumentationTestCase;
  * Created by Dimitri on 15/05/2015.
  */
 public class EffectTest extends InstrumentationTestCase{
-    private final static String EFFECT_NAME = "Effect";
-    private final static String EFFECT_DESCRIPTION = "This is an effect.";
+    private final static String EFFECT_NAME = "Impact";
+    private final static String EFFECT_DESCRIPTION = "This is an impact.";
     private final static double EFFECT_VALUE = 4.2;
 
     private final static String CARAC_NAME = "Caracteristic";

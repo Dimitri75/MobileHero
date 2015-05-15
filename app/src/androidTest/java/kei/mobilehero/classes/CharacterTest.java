@@ -3,6 +3,7 @@ package kei.mobilehero.classes;
 import android.test.InstrumentationTestCase;
 
 import kei.mobilehero.classes.attributes.Caracteristic;
+import kei.mobilehero.classes.attributes.Effect;
 import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.attributes.Skill;
 
@@ -27,14 +28,17 @@ public class CharacterTest extends InstrumentationTestCase{
 
     private final static String EQUIP_NAME = "Equipment";
     private final static String EQUIP_DESCRIPTION = "This is an equipment.";
-    private final static double EQUIP_VALUE = 4.2;
-    private final static String EQUIP_POSITION = "Head";
     private final static double EQUIP_WEIGHT = 10.5;
+    private final static String EQUIP_POSITION = "Head";
+
+    private final static String EFFECT_NAME = "Effect";
+    private final static String EFFECT_DESCRIPTION = "This is an effect.";
+    private final static double EFFECT_VALUE = 4.2;
 
     public void test() throws Exception {
         Skill skill = new Skill(SKILL_NAME, SKILL_DESCRIPTION, SKILL_VALUE);
         Caracteristic caracteristic = new Caracteristic(CARAC_NAME, CARAC_DESCRIPTION, CARAC_VALUE);
-        Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION, EQUIP_VALUE);
+        Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION);
 
         kei.mobilehero.classes.Character character = new Character(CHARAC_NAME);
         character.setGender(CHARAC_GENDER);
@@ -42,6 +46,9 @@ public class CharacterTest extends InstrumentationTestCase{
         character.setRace(CHARAC_RACE);
         character.setClassName(CHARAC_CLASSNAME);
         character.setPicture(CHARAC_PICTURE);
+        character.getSkills().add(skill);
+        character.getCaracteristics().add(caracteristic);
+        character.getEquipments().add(equipment);
 
         assertEquals(character.getName(), CHARAC_NAME);
         assertEquals(character.getGender(), CHARAC_GENDER);
@@ -52,5 +59,29 @@ public class CharacterTest extends InstrumentationTestCase{
         assertEquals(character.getSkills().get(0), skill);
         assertEquals(character.getCaracteristics().get(0), caracteristic);
         assertEquals(character.getEquipments().get(0), equipment);
+    }
+
+    public void testEquipmentWeight() throws Exception {
+        Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION);
+
+        kei.mobilehero.classes.Character character = new Character(CHARAC_NAME);
+        character.getEquipments().add(equipment);
+        character.getEquipments().add(equipment);
+
+        assertEquals(character.getEquipmentWeight(), EQUIP_WEIGHT*2);
+    }
+
+    public void testCalculatedCaracteristics() throws Exception {
+        Caracteristic caracteristic = new Caracteristic(CARAC_NAME, CARAC_DESCRIPTION, CARAC_VALUE);
+        Effect effect = new Effect(EFFECT_NAME, EFFECT_DESCRIPTION, EFFECT_VALUE, caracteristic);
+
+        Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION);
+        equipment.getEffects().add(effect);
+
+        kei.mobilehero.classes.Character character = new Character(CHARAC_NAME);
+        character.getCaracteristics().add(caracteristic);
+        character.getEquipments().add(equipment);
+
+        assertEquals(character.getCalculatedCaracteristics().get(CARAC_NAME), CARAC_VALUE+EFFECT_VALUE);
     }
 }
