@@ -8,6 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import kei.mobilehero.classes.general.Character;
+import kei.mobilehero.classes.general.Game;
+import kei.mobilehero.classes.general.Round;
 
 /**
  * Created by Dimitri on 15/05/2015.
@@ -22,78 +24,64 @@ public class Loader {
 
     private Loader() {
         File root = new File(DATA);
-        if (!root.exists()){
+        if (!root.exists()) {
             root.mkdir();
         }
     }
 
-    private ArrayList<String> loadGames() {
-        ArrayList<String> listGames = new ArrayList<>();
+    private ArrayList<Game> loadGames() {
+        ArrayList<Game> listGames = new ArrayList<>();
         File currentDir = new File(DATA);
         if (currentDir.exists() && currentDir.isDirectory()) {
-            for (File f : currentDir.listFiles()) {
-                if (f.isDirectory()) {
-                    listGames.add(f.getName());
-                }
-            }
-            return listGames;
-        }
-        return null;
-    }
+            for (File g : currentDir.listFiles()) {
+                if (g.isDirectory()) {
+                    Game game = new Game(g.getName());
 
-    private ArrayList<String> loadRounds(String gameName){
-        ArrayList<String> listRounds = new ArrayList<>();
-        File gameDir = new File(DATA+"/"+gameName);
-        if (gameDir.exists() && gameDir.isDirectory()){
-            for (File f : gameDir.listFiles()){
-                if (f.isDirectory()){
-                    listRounds.add(f.getName());
-                }
-            }
-            return listRounds;
-        }
-        return null;
-    }
+                    File gameDir = new File(DATA + "/" + game.getName());
+                    if (gameDir.exists() && gameDir.isDirectory()) {
+                        for (File r : gameDir.listFiles()) {
+                            if (r.isDirectory()) {
+                                Round round = new Round(r.getName());
 
-    private ArrayList<Character> loadCharacters(String gameName, String roundName){
-        ArrayList<Character> listCharacters;
-        Character character;
-        Pattern pattern;
-        Matcher matcher;
+                                File roundDir = new File(DATA + "/" + game.getName() + "/" + round.getName());
+                                if (roundDir.exists() && roundDir.isDirectory()) {
+                                    Matcher matcher;
+                                    Pattern pattern = Pattern.compile("([^\\s]+(\\.(?i)(hero))$)");
 
-        File roundDir = new File(DATA+"/"+gameName+"/"+roundName);
-        if (roundDir.exists() && roundDir.isDirectory()){
-            listCharacters = new ArrayList<>();
-            pattern = Pattern.compile("([^\\s]+(\\.(?i)(hero))$)");
+                                    for (File c : roundDir.listFiles()) {
+                                        matcher = pattern.matcher(c.getName());
+                                        if (c.isFile() && matcher.find()) {
+                                            FileInputStream inputStream;
+                                            ObjectInputStream objectInputStream;
 
-            for (File f : roundDir.listFiles()){
-                matcher = pattern.matcher(f.getName());
-                if (f.isFile() && matcher.find()){
-                    FileInputStream inputStream;
-                    ObjectInputStream objectInputStream;
+                                            try {
+                                                // Open the save file
+                                                inputStream = new FileInputStream(c.getAbsolutePath());
+                                                objectInputStream = new ObjectInputStream(inputStream);
 
-                    try {
-                        // Open the save file
-                        inputStream = new FileInputStream(f.getAbsolutePath());
-                        objectInputStream = new ObjectInputStream(inputStream);
+                                                // Read the object
+                                                Character character = (Character) objectInputStream.readObject();
 
-                        // Read the object
-                        character = (Character) objectInputStream.readObject();
+                                                // Add the character to the array
+                                                if (character != null) {
+                                                    round.getCharacters().add(character);
+                                                }
 
-                        // Add the character to the array
-                        if (character != null){
-                            listCharacters.add(character);
+                                                // Close the stream
+                                                objectInputStream.close();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-
-                        // Close the stream
-                        objectInputStream.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
                 }
             }
-            return listCharacters;
         }
-        return null;
+        return listGames;
     }
 }
+
