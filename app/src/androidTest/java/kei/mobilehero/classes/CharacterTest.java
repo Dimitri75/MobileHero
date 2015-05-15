@@ -6,6 +6,7 @@ import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.attributes.Effect;
 import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.attributes.Skill;
+import kei.mobilehero.classes.general.Character;
 
 /**
  * Created by Dimitri on 15/05/2015.
@@ -40,7 +41,7 @@ public class CharacterTest extends InstrumentationTestCase{
         Caracteristic caracteristic = new Caracteristic(CARAC_NAME, CARAC_DESCRIPTION, CARAC_VALUE);
         Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION);
 
-        kei.mobilehero.classes.Character character = new Character(CHARAC_NAME);
+        kei.mobilehero.classes.general.Character character = new Character(CHARAC_NAME);
         character.setGender(CHARAC_GENDER);
         character.setAlignment(CHARAC_ALIGNMENT);
         character.setRace(CHARAC_RACE);
@@ -64,7 +65,7 @@ public class CharacterTest extends InstrumentationTestCase{
     public void testEquipmentWeight() throws Exception {
         Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION);
 
-        kei.mobilehero.classes.Character character = new Character(CHARAC_NAME);
+        Character character = new Character(CHARAC_NAME);
         character.getEquipments().add(equipment);
         character.getEquipments().add(equipment);
 
@@ -78,10 +79,10 @@ public class CharacterTest extends InstrumentationTestCase{
         Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION);
         equipment.getEffects().add(effect);
 
-        kei.mobilehero.classes.Character character = new Character(CHARAC_NAME);
+        Character character = new Character(CHARAC_NAME);
         character.getCaracteristics().add(caracteristic);
         character.getEquipments().add(equipment);
 
-        assertEquals(character.getCalculatedCaracteristics().get(CARAC_NAME), CARAC_VALUE+EFFECT_VALUE);
+        assertEquals(character.getCalculatedCaracteristics().get(CARAC_NAME), CARAC_VALUE + EFFECT_VALUE);
     }
 }

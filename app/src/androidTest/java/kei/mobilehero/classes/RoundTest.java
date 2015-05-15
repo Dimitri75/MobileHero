@@ -2,7 +2,9 @@ package kei.mobilehero.classes;
 
 import android.test.InstrumentationTestCase;
 
-import kei.mobilehero.classes.Utils.Dice;
+import kei.mobilehero.classes.general.Dice;
+import kei.mobilehero.classes.general.Character;
+import kei.mobilehero.classes.general.Round;
 
 /**
  * Created by Dimitri on 15/05/2015.
@@ -16,7 +18,7 @@ public class RoundTest extends InstrumentationTestCase {
     private final static int DICE_NUMBERSIDES = 6;
 
     public void test() throws Exception {
-        Character character = new Character(CHARAC_NAME);
+        kei.mobilehero.classes.general.Character character = new Character(CHARAC_NAME);
         Dice dice = new Dice(DICE_NUMBERDICES, DICE_NUMBERSIDES);
 
         Round round = new Round(ROUND_NAME);

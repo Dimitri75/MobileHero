@@ -1,11 +1,10 @@
-package kei.mobilehero.classes;
+package kei.mobilehero.classes.general;
 
+import java.io.File;
 import java.lang.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import kei.mobilehero.classes.Utils.Dice;
 
 /**
  * Created by Dimitri on 15/05/2015.
@@ -13,7 +12,7 @@ import kei.mobilehero.classes.Utils.Dice;
 public class Round {
     private String id;
     private String name;
-    private List<Character> characters;
+    private List<kei.mobilehero.classes.general.Character> characters;
     private Dice dice;
 
     public Round(String name){
@@ -38,11 +37,11 @@ public class Round {
         this.name = name;
     }
 
-    public List<Character> getCharacters() {
+    public List<kei.mobilehero.classes.general.Character> getCharacters() {
         return characters;
     }
 
-    public void setCharacters(List<Character> characters) {
+    public void setCharacters(List<kei.mobilehero.classes.general.Character> characters) {
         this.characters = characters;
     }
 
@@ -52,5 +51,14 @@ public class Round {
 
     public void setDice(Dice dice) {
         this.dice = dice;
+    }
+
+    public boolean save(String gameName){
+        File dir = new File (gameName+"/"+name);
+        if (!dir.exists()) {
+            dir.mkdirs();
+            return true;
+        }
+        return false;
     }
 }

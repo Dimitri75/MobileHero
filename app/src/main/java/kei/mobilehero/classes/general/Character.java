@@ -1,19 +1,22 @@
-package kei.mobilehero.classes;
+package kei.mobilehero.classes.general;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 import kei.mobilehero.classes.attributes.Caracteristic;
-import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.attributes.Effect;
+import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.attributes.Skill;
 
 /**
  * Created by Dimitri on 15/05/2015.
  */
-public class Character {
+public class Character implements Serializable{
     private String id;
     private String name;
     private String gender;
@@ -138,5 +141,24 @@ public class Character {
             sum += e.getWeight();
         }
         return sum;
+    }
+
+    public void save(String gameName, String roundName){
+        FileOutputStream outputStream;
+        ObjectOutputStream objectOutputStream;
+        String filename = gameName+"/"+roundName+"/character."+name+"."+id+".hero";
+
+        try {
+            // Open the writter
+            outputStream = new FileOutputStream(filename);
+            objectOutputStream = new ObjectOutputStream(outputStream);
+
+            objectOutputStream.writeObject(this);
+
+            // Close the stream
+            objectOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

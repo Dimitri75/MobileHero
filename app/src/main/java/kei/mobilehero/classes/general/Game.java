@@ -1,5 +1,6 @@
-package kei.mobilehero.classes;
+package kei.mobilehero.classes.general;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -40,5 +41,14 @@ public class Game {
 
     public void setRounds(List<Round> rounds) {
         this.rounds = rounds;
+    }
+
+    public boolean save(){
+        File dir = new File (name);
+        if (!dir.exists()) {
+            dir.mkdirs();
+            return true;
+        }
+        return false;
     }
 }
