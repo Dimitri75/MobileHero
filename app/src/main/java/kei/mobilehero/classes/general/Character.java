@@ -1,5 +1,6 @@
 package kei.mobilehero.classes.general;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -143,13 +144,13 @@ public class Character implements Serializable{
         return sum;
     }
 
-    public void save(String gameName, String roundName){
+    public boolean save(String gameName, String roundName){
         FileOutputStream outputStream;
         ObjectOutputStream objectOutputStream;
-        String filename = gameName+"/"+roundName+"/character."+name+"."+id+".hero";
+        String filename = "DATA/" + gameName+"/"+roundName+"/character."+name+"."+id+".hero";
 
         try {
-            // Open the writter
+            // Open the writer
             outputStream = new FileOutputStream(filename);
             objectOutputStream = new ObjectOutputStream(outputStream);
 
@@ -157,8 +158,19 @@ public class Character implements Serializable{
 
             // Close the stream
             objectOutputStream.close();
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
+    }
+
+    public boolean delete(String gameName, String roundName){
+        File file = new File ("DATA/" + gameName+"/"+roundName+"/character."+name+"."+id+".hero");
+        if (file.exists()){
+            file.delete();
+            return true;
+        }
+        return false;
     }
 }

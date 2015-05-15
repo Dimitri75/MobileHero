@@ -54,9 +54,18 @@ public class Round {
     }
 
     public boolean save(String gameName){
-        File dir = new File (gameName+"/"+name);
+        File dir = new File ("DATA/" + gameName+"/"+name);
         if (!dir.exists()) {
             dir.mkdirs();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean delete(String gameName) {
+        File dir = new File("DATA/" + gameName + "/" + name);
+        if (dir.exists()) {
+            dir.delete();
             return true;
         }
         return false;

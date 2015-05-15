@@ -44,9 +44,18 @@ public class Game {
     }
 
     public boolean save(){
-        File dir = new File (name);
+        File dir = new File ("DATA/"+name);
         if (!dir.exists()) {
-            dir.mkdirs();
+            dir.mkdir();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean delete(String gameName) {
+        File dir = new File("DATA/"+name);
+        if (dir.exists()) {
+            dir.delete();
             return true;
         }
         return false;

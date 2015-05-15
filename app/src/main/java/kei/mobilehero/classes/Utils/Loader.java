@@ -16,7 +16,7 @@ import kei.mobilehero.classes.general.Round;
  */
 public class Loader {
     private static Loader ourInstance = new Loader();
-    private static String DATA = "data";
+    private static String DATA = "DATA";
 
     public static Loader getInstance() {
         return ourInstance;
