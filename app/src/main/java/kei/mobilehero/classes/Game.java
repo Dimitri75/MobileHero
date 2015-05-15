@@ -1,5 +1,6 @@
-package classes;
+package kei.mobilehero.classes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,6 +15,7 @@ public class Game {
     public Game(String name){
         this.id = UUID.randomUUID().toString();
         this.name = name;
+        rounds = new ArrayList<>();
     }
 
     public String getId() {

@@ -1,9 +1,11 @@
-package classes;
+package kei.mobilehero.classes;
 
+import java.lang.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import classes.Utils.Dice;
+import kei.mobilehero.classes.Utils.Dice;
 
 /**
  * Created by Dimitri on 15/05/2015.
@@ -17,6 +19,7 @@ public class Round {
     public Round(String name){
         this.id = UUID.randomUUID().toString();
         this.name = name;
+        characters = new ArrayList<>();
     }
 
     public String getId() {

@@ -1,12 +1,12 @@
-package classes.attributes;
+package kei.mobilehero.classes.attributes;
 
 /**
  * Created by Dimitri on 15/05/2015.
  */
-public class Impact extends AttributeBase{
+public class Effect extends AttributeBase{
     private Caracteristic caracteristic;
 
-    public Impact(String name, String description, double value, Caracteristic caracteristic) {
+    public Effect(String name, String description, double value, Caracteristic caracteristic) {
         super(name, description, value);
         this.caracteristic = caracteristic;
     }

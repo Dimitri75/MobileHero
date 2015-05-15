@@ -1,4 +1,4 @@
-package classes.Utils;
+package kei.mobilehero.classes.Utils;
 
 /**
  * Created by Dimitri on 15/05/2015.

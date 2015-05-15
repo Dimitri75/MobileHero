@@ -1,14 +1,14 @@
-package classes;
+package kei.mobilehero.classes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-import classes.attributes.Caracteristic;
-import classes.attributes.Equipment;
-import classes.attributes.Impact;
-import classes.attributes.Skill;
+import kei.mobilehero.classes.attributes.Caracteristic;
+import kei.mobilehero.classes.attributes.Equipment;
+import kei.mobilehero.classes.attributes.Effect;
+import kei.mobilehero.classes.attributes.Skill;
 
 /**
  * Created by Dimitri on 15/05/2015.
@@ -120,8 +120,8 @@ public class Character {
         }
 
         for (Equipment e : equipments){
-            if (!e.getImpacts().isEmpty()){
-                for (Impact i : e.getImpacts()){
+            if (!e.getEffects().isEmpty()){
+                for (Effect i : e.getEffects()){
                     Double value;
                     if ((value = calculatedCaracteristics.get(i.getCaracteristic().getName())) != null){
                         calculatedCaracteristics.put(i.getCaracteristic().getName(), value+i.getValue());
