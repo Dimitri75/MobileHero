@@ -1,10 +1,6 @@
-package kei.mobilehero.classes;
+package kei.mobilehero.classes.general;
 
 import android.test.InstrumentationTestCase;
-
-import kei.mobilehero.classes.general.Dice;
-import kei.mobilehero.classes.general.Character;
-import kei.mobilehero.classes.general.Round;
 
 /**
  * Created by Dimitri on 15/05/2015.

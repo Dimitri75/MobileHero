@@ -1,4 +1,4 @@
-package kei.mobilehero.classes;
+package kei.mobilehero.classes.general;
 
 import android.test.InstrumentationTestCase;
 
@@ -6,7 +6,6 @@ import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.attributes.Effect;
 import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.attributes.Skill;
-import kei.mobilehero.classes.general.Character;
 
 /**
  * Created by Dimitri on 15/05/2015.

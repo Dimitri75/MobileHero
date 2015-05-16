@@ -1,8 +1,6 @@
-package kei.mobilehero.classes.utils;
+package kei.mobilehero.classes.general;
 
 import android.test.InstrumentationTestCase;
-
-import kei.mobilehero.classes.general.Dice;
 
 /**
  * Created by Dimitri on 15/05/2015.
