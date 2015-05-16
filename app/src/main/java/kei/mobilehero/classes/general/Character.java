@@ -1,5 +1,8 @@
 package kei.mobilehero.classes.general;
 
+import android.content.Context;
+import android.util.Log;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -144,20 +147,24 @@ public class Character implements Serializable{
         return sum;
     }
 
-    public boolean save(String gameName, String roundName){
+    public boolean save(Context context, String gameName, String roundName){
+
         FileOutputStream outputStream;
         ObjectOutputStream objectOutputStream;
-        String filename = "DATA/" + gameName+"/"+roundName+"/character."+name+"."+id+".hero";
+
+        File characterFile = new File(context.getFilesDir(), gameName + "/" + roundName + "/character." + name + "." + id + ".hero");
 
         try {
             // Open the writer
-            outputStream = new FileOutputStream(filename);
+            outputStream = new FileOutputStream(characterFile);
             objectOutputStream = new ObjectOutputStream(outputStream);
 
             objectOutputStream.writeObject(this);
 
             // Close the stream
             objectOutputStream.close();
+
+            Log.v("Character save()", "Character saved in " + characterFile.getAbsolutePath());
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -165,12 +172,12 @@ public class Character implements Serializable{
         }
     }
 
-    public boolean delete(String gameName, String roundName){
-        File file = new File ("DATA/" + gameName+"/"+roundName+"/character."+name+"."+id+".hero");
+    public boolean delete(Context context, String gameName, String roundName){
+        File file = new File (context.getFilesDir() + gameName+"/"+roundName+"/character."+name+"."+id+".hero");
         if (file.exists()){
-            file.delete();
-            return true;
+            if (file.delete()) return true;
         }
+        else Log.v("Character delete():", "Directory doesn't exist.");
         return false;
     }
 }

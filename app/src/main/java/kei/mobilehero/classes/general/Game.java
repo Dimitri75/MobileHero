@@ -1,5 +1,8 @@
 package kei.mobilehero.classes.general;
 
+import android.content.Context;
+import android.util.Log;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,21 +46,29 @@ public class Game {
         this.rounds = rounds;
     }
 
-    public boolean save(){
-        File dir = new File ("DATA/"+name);
+    public boolean save(Context context){
+        File dir = new File (context.getFilesDir(), name);
         if (!dir.exists()) {
-            dir.mkdir();
-            return true;
+            if (dir.mkdir()){
+                Log.v("Game save()", "Game saved in "+ dir.getAbsolutePath());
+                return true;
+            }
         }
+        else Log.v("Game save()", "Directory already exists.");
         return false;
     }
 
-    public boolean delete(String gameName) {
-        File dir = new File("DATA/"+name);
+    public boolean delete(Context context) {
+        File dir = new File(context.getFilesDir(), name);
         if (dir.exists()) {
-            dir.delete();
-            return true;
+            if (dir.delete()) return true;
         }
+        else Log.v("Game delete()", "Directory doesn't exist.");
         return false;
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 }

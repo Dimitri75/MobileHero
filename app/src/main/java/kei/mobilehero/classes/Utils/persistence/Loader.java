@@ -1,4 +1,6 @@
-package kei.mobilehero.classes.utils;
+package kei.mobilehero.classes.utils.persistence;
+
+import android.content.Context;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,27 +25,26 @@ public class Loader {
     }
 
     private Loader() {
-        File root = new File(DATA);
-        if (!root.exists()) {
-            root.mkdir();
-        }
     }
 
-    private ArrayList<Game> loadData() {
+    public ArrayList<Game> loadData(Context context) {
+        File root = context.getFilesDir();
         ArrayList<Game> listGames = new ArrayList<>();
-        File currentDir = new File(DATA);
-        if (currentDir.exists() && currentDir.isDirectory()) {
-            for (File g : currentDir.listFiles()) {
+
+        if (root.exists() && root.isDirectory() && root.listFiles().length >= 1) {
+            for (File g : root.listFiles()) {
                 if (g.isDirectory()) {
                     Game game = new Game(g.getName());
+                    listGames.add(game);
 
-                    File gameDir = new File(DATA + "/" + game.getName());
+                    File gameDir = new File(root, game.getName());
                     if (gameDir.exists() && gameDir.isDirectory()) {
                         for (File r : gameDir.listFiles()) {
                             if (r.isDirectory()) {
                                 Round round = new Round(r.getName());
+                                listGames.get(listGames.indexOf(game)).getRounds().add(round);
 
-                                File roundDir = new File(DATA + "/" + game.getName() + "/" + round.getName());
+                                File roundDir = new File(root, game.getName() + "/" + round.getName());
                                 if (roundDir.exists() && roundDir.isDirectory()) {
                                     Matcher matcher;
                                     Pattern pattern = Pattern.compile("([^\\s]+(\\.(?i)(hero))$)");
@@ -64,7 +65,7 @@ public class Loader {
 
                                                 // Add the character to the array
                                                 if (character != null) {
-                                                    round.getCharacters().add(character);
+                                                    listGames.get(listGames.indexOf(game)).getRounds().get(listGames.get(listGames.indexOf(game)).getRounds().indexOf(round)).getCharacters().add(character);
                                                 }
 
                                                 // Close the stream

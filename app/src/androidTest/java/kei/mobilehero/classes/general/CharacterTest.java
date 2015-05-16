@@ -1,6 +1,6 @@
 package kei.mobilehero.classes.general;
 
-import android.test.InstrumentationTestCase;
+import junit.framework.TestCase;
 
 import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.attributes.Effect;
@@ -10,7 +10,7 @@ import kei.mobilehero.classes.attributes.Skill;
 /**
  * Created by Dimitri on 15/05/2015.
  */
-public class CharacterTest extends InstrumentationTestCase{
+public class CharacterTest extends TestCase{
     private final static String CHARAC_NAME = "Character";
     private final static String CHARAC_GENDER="Male";
     private final static String CHARAC_ALIGNMENT="Evil";
