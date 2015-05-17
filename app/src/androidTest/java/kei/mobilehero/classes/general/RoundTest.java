@@ -8,21 +8,19 @@ import android.test.InstrumentationTestCase;
 public class RoundTest extends InstrumentationTestCase {
     private final static String ROUND_NAME = "Round";
 
-    private final static String CHARAC_NAME = "Character";
+    private final static String GAME_NAME = "Game";
 
-    private final static int DICE_NUMBERDICES = 2;
-    private final static int DICE_NUMBERSIDES = 6;
+    private final static String CHARAC_NAME = "Character";
 
     public void test() throws Exception {
         kei.mobilehero.classes.general.Character character = new Character(CHARAC_NAME);
-        Dice dice = new Dice(DICE_NUMBERDICES, DICE_NUMBERSIDES);
+        Game game = new Game(GAME_NAME);
 
-        Round round = new Round(ROUND_NAME);
+        Round round = new Round(ROUND_NAME, game);
         round.getCharacters().add(character);
-        round.setDice(dice);
 
         assertEquals(round.getName(), ROUND_NAME);
         assertEquals(round.getCharacters().get(0), character);
-        assertEquals(round.getDice(), dice);
+        assertEquals(round.getGame(), game);
     }
 }

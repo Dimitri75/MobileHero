@@ -40,31 +40,27 @@ public class Loader {
         return listGames;
     }
 
-    public ArrayList<Round> loadRounds(Context context, Game game){
+    public Game loadRounds(Context context, Game game){
         File root = context.getFilesDir();
-
-        ArrayList<Round> rounds = new ArrayList<>();
 
         File gameDir = new File(root, game.getName());
         if (gameDir.exists() && gameDir.isDirectory() && gameDir.listFiles().length >= 1) {
             for (File r : gameDir.listFiles()) {
                 if (r.isDirectory()) {
-                    rounds.add(new Round(r.getName(), game));
+                    game.getRounds().add(new Round(r.getName(), game));
                 }
             }
         }
-        return rounds;
+        return game;
     }
 
-    public ArrayList<Character> loadCharacters(Context context, Round round){
+    public Round loadCharacters(Context context, Round round){
         File root = context.getFilesDir();
-
-        ArrayList<Character> characters = new ArrayList<>();
 
         File roundDir = new File(root, round.getGame().getName() + "/" + round.getName());
         if (roundDir.exists() && roundDir.isDirectory()) {
             Matcher matcher;
-            Pattern pattern = Pattern.compile("([^\\s]+(\\.(?i)(xml))$)");
+            Pattern pattern = Pattern.compile("([^\\s]+(\\.(?i)(json))$)");
 
             for (File c : roundDir.listFiles()) {
                 matcher = pattern.matcher(c.getName());
@@ -74,12 +70,12 @@ public class Loader {
 
                     // Add the character to the array
                     if (character != null) {
-                        characters.add(character);
+                        round.getCharacters().add(character);
                     }
                 }
             }
         }
-        return characters;
+        return round;
     }
 
     public ArrayList<Game> loadData(Context context) {

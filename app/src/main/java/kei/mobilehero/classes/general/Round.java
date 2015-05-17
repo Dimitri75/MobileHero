@@ -19,7 +19,6 @@ public class Round implements Parcelable{
     private String id;
     private String name;
     private ArrayList<kei.mobilehero.classes.general.Character> characters;
-    private Dice dice;
     private Game game;
 
     public Round(String name, Game game){
@@ -53,14 +52,6 @@ public class Round implements Parcelable{
         this.characters = characters;
     }
 
-    public Dice getDice() {
-        return dice;
-    }
-
-    public void setDice(Dice dice) {
-        this.dice = dice;
-    }
-
     public Game getGame() {
         return game;
     }
@@ -90,6 +81,11 @@ public class Round implements Parcelable{
         return false;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     // PARCELABLE
     /**
      * Instanciate a round using Parcelable
@@ -101,6 +97,9 @@ public class Round implements Parcelable{
 
         Bundle b = in.readBundle(Character.class.getClassLoader());
         characters = b.getParcelableArrayList("characters");
+
+        b = in.readBundle(Game.class.getClassLoader());
+        game = b.getParcelable("game");
     }
 
     /**
@@ -129,6 +128,7 @@ public class Round implements Parcelable{
 
         Bundle b = new Bundle();
         b.putParcelableArrayList("characters", characters);
+        b.putParcelable("game", game);
         dest.writeBundle(b);
     }
 

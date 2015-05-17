@@ -11,9 +11,8 @@ public class GameTest extends InstrumentationTestCase {
     private final static String ROUND_NAME = "Round";
 
     public void test() throws Exception {
-        Round round = new Round(ROUND_NAME);
-
         Game game = new Game(GAME_NAME);
+        Round round = new Round(ROUND_NAME, game);
         game.getRounds().add(round);
 
         assertEquals(game.getName(), GAME_NAME);

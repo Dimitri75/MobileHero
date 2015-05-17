@@ -6,17 +6,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-import java.io.ByteArrayOutputStream;
+import com.google.gson.Gson;
+
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 
 import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.attributes.Effect;
@@ -162,6 +159,11 @@ public class Character implements Parcelable{
         return false;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     // PARCELABLE
     @Override
     /**
@@ -237,56 +239,53 @@ public class Character implements Parcelable{
 
     // JAXB
     /**
-     * Instanciate a character from an xml file using JAXB
-     * @param xmlFile
+     * Instanciate a character from an xml file using GSON
+     * Json to Object
+     * @param jsonFile
      */
-    public Character(File xmlFile){
+    public Character(File jsonFile){
         try {
-            if (xmlFile.exists() && xmlFile.isFile()) {
-                JAXBContext jc = JAXBContext.newInstance(this.getClass());
-                Unmarshaller u = jc.createUnmarshaller();
-                Object object = u.unmarshal(xmlFile);
+            if (jsonFile.exists() && jsonFile.isFile()) {
+                FileReader fileReader = new FileReader(jsonFile);
 
-                if (object != null){
-                    Character c = (Character) object;
-                    this.setId(c.getId());
-                    this.setName(c.getName());
-                    this.setGender(c.getGender());
-                    this.setAlignment(c.getAlignment());
-                    this.setRace(c.getRace());
-                    this.setClassName(c.getClassName());
-                    this.setPicture(c.getPicture());
-                    this.setSkills(c.getSkills());
-                    this.setCaracteristics(c.getCaracteristics());
-                    this.setEquipments(c.getEquipments());
+                Gson gson = new Gson();
+                Character characterFromGson = gson.fromJson(fileReader, Character.class);
+
+                if (characterFromGson != null){
+                    this.setId(characterFromGson.getId());
+                    this.setName(characterFromGson.getName());
+                    this.setGender(characterFromGson.getGender());
+                    this.setAlignment(characterFromGson.getAlignment());
+                    this.setRace(characterFromGson.getRace());
+                    this.setClassName(characterFromGson.getClassName());
+                    this.setPicture(characterFromGson.getPicture());
+                    this.setSkills(characterFromGson.getSkills());
+                    this.setCaracteristics(characterFromGson.getCaracteristics());
+                    this.setEquipments(characterFromGson.getEquipments());
                 }
             }
         }
-        catch(JAXBException e){
+        catch(Exception e){
             e.printStackTrace();
         }
     }
 
     /**
-     * Save this character to an XML file using JAXB
-     * MarshallToXML
+     * Save this character to an XML file using GSON
+     * Object to Json
      * @return
-     * @throws JAXBException
+     * @throws Exception
      */
-    public boolean save(Context context, String gameName, String roundName) throws JAXBException
+    public boolean save(Context context, String gameName, String roundName) throws Exception
     {
-        //TODO Ajouter StaX jar aux libs
         try {
             File characterFile = new File(context.getFilesDir(), gameName + "/" + roundName + "/character." + name + "." + id + ".hero");
 
-            JAXBContext jaxbContext = JAXBContext.newInstance(this.getClass());
-            Marshaller marshaller = jaxbContext.createMarshaller();
-
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            marshaller.marshal(this, baos);
+            Gson gson = new Gson();
+            String jsonObject = gson.toJson(this);
 
             FileWriter fw = new FileWriter(characterFile);
-            fw.write(baos.toString());
+            fw.write(jsonObject.toString());
             fw.close();
 
             Log.v("Character save()", "Character saved in " + characterFile.getAbsolutePath());
