@@ -24,6 +24,18 @@
             android:name=".activities.DicesActivity"
             android:label="@string/title_activity_dices" >
         </activity>
+        <activity
+            android:name=".activities.RoundsActivity"
+            android:label="@string/title_activity_rounds" >
+        </activity>
+        <activity
+            android:name=".activities.NewRoundActivity"
+            android:label="@string/title_activity_new_round" >
+        </activity>
+        <activity
+            android:name=".activities.CharactersActivity"
+            android:label="@string/title_activity_characters" >
+        </activity>
     </application>
 
 </manifest>

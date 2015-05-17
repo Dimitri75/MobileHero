@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -22,9 +23,9 @@ public class GamesActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_games);
 
-        loadGames();
+        init();
     }
 
     public void buttonOnClick(View v) {
@@ -36,59 +37,65 @@ public class GamesActivity extends ActionBarActivity {
         }
     }
 
-    public void loadGames(){
-        String[] gameNames;
+    public void init() {
         ListView listView;
-        final ArrayAdapter<Game> mAdapter;
-        ArrayList<Game> data = Loader.getInstance().loadData(getApplicationContext());
+        ArrayList<Game> games = Loader.getInstance().loadGames(getApplicationContext());
 
-        if(!data.isEmpty()) {
-            gameNames = new String[data.size()];
-            for (Game g : data) {
-                gameNames[data.indexOf(g)] = g.getName();
-            }
+        // This is the array adapter, it takes the context of the activity as a
+        // first parameter, the type of list view as a second parameter and your
+        // array as a third parameter.
+        final ArrayAdapter<Game> mAdapter = new ArrayAdapter<Game>(this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                games);
 
-            // This is the array adapter, it takes the context of the activity as a
-            // first parameter, the type of list view as a second parameter and your
-            // array as a third parameter.
-            mAdapter = new ArrayAdapter<Game>(this,
-                    android.R.layout.simple_list_item_1,
-                    android.R.id.text1,
-                    data);
+        listView = (ListView) findViewById(R.id.listView_games);
+        listView.setAdapter(mAdapter);
 
-            listView = (ListView) findViewById(R.id.listView_games);
-            listView.setAdapter(mAdapter);
-
-            // Create a ListView-specific touch listener. ListViews are given special treatment because
-            // by default they handle touches for their list items... i.e. they're in charge of drawing
-            // the pressed state (the list selector), handling list item clicks, etc.
-            SwipeDismissListViewTouchListener touchListener =
-                    new SwipeDismissListViewTouchListener(
-                            listView,
-                            new SwipeDismissListViewTouchListener.DismissCallbacks() {
-                                @Override
-                                public boolean canDismiss(int position) {
-                                    return true;
+        // Create a ListView-specific touch listener. ListViews are given special treatment because
+        // by default they handle touches for their list items... i.e. they're in charge of drawing
+        // the pressed state (the list selector), handling list item clicks, etc.
+        SwipeDismissListViewTouchListener swipeTouchListener =
+                new SwipeDismissListViewTouchListener(
+                        listView,
+                        new SwipeDismissListViewTouchListener.DismissCallbacks() {
+                            @Override
+                            public boolean canDismiss(int position) {
+                                if (mAdapter.getItem(position).getRounds().isEmpty()) return true;
+                                else {
+                                    Log.v("Games init()", "Cannot delete a game which is not empty");
+                                    return false;
                                 }
+                            }
 
-                                @Override
-                                public void onDismiss(ListView listView, int[] reverseSortedPositions) {
-                                    for (int position : reverseSortedPositions) {
-                                        if(mAdapter.getItem(position).getRounds().isEmpty()) {
-                                            if (mAdapter.getItem(position).delete(getApplicationContext()))
-                                                mAdapter.remove(mAdapter.getItem(position));
-                                        }
-                                        else Log.v("Games loadGames()", "Cannot delete a game which is not empty");
+                            @Override
+                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    {
+                                        if (mAdapter.getItem(position).delete(getApplicationContext()))
+                                            mAdapter.remove(mAdapter.getItem(position));
                                     }
-                                    mAdapter.notifyDataSetChanged();
                                 }
-                            });
-            listView.setOnTouchListener(touchListener);
-            // Setting this scroll listener is required to ensure that during ListView scrolling,
-            // we don't look for swipes.
-            listView.setOnScrollListener(touchListener.makeScrollListener());
-        }
+                                mAdapter.notifyDataSetChanged();
+                            }
+                        });
+        listView.setOnTouchListener(swipeTouchListener);
+        // Setting this scroll listener is required to ensure that during ListView scrolling,
+        // we don't look for swipes.
+        listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getApplicationContext(), RoundsActivity.class);
+                i.putExtra("game", mAdapter.getItem(position));
+                startActivity(i);
+            }
+        });
     }
+
+
+
 
     @Override
     protected void onRestart() {

@@ -3,8 +3,6 @@ package kei.mobilehero.classes.utils.persistence;
 import android.content.Context;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,18 +16,74 @@ import kei.mobilehero.classes.general.Round;
  */
 public class Loader {
     private static Loader ourInstance = new Loader();
-    private static String DATA = "DATA";
+    private ArrayList<Game> listGames;
 
     public static Loader getInstance() {
         return ourInstance;
     }
 
     private Loader() {
+        listGames = new ArrayList<>();
+    }
+
+    public ArrayList<Game> loadGames(Context context){
+        File root = context.getFilesDir();
+
+        if (root.exists() && root.isDirectory() && root.listFiles().length >= 1) {
+            for (File g : root.listFiles()) {
+                if (g.isDirectory()) {
+                    Game game = new Game(g.getName());
+                    listGames.add(game);
+                }
+            }
+        }
+        return listGames;
+    }
+
+    public ArrayList<Round> loadRounds(Context context, Game game){
+        File root = context.getFilesDir();
+
+        ArrayList<Round> rounds = new ArrayList<>();
+
+        File gameDir = new File(root, game.getName());
+        if (gameDir.exists() && gameDir.isDirectory() && gameDir.listFiles().length >= 1) {
+            for (File r : gameDir.listFiles()) {
+                if (r.isDirectory()) {
+                    rounds.add(new Round(r.getName(), game));
+                }
+            }
+        }
+        return rounds;
+    }
+
+    public ArrayList<Character> loadCharacters(Context context, Round round){
+        File root = context.getFilesDir();
+
+        ArrayList<Character> characters = new ArrayList<>();
+
+        File roundDir = new File(root, round.getGame().getName() + "/" + round.getName());
+        if (roundDir.exists() && roundDir.isDirectory()) {
+            Matcher matcher;
+            Pattern pattern = Pattern.compile("([^\\s]+(\\.(?i)(xml))$)");
+
+            for (File c : roundDir.listFiles()) {
+                matcher = pattern.matcher(c.getName());
+                if (c.isFile() && matcher.find()) {
+                    // Use the unmarshaller constructor
+                    Character character = new Character(c);
+
+                    // Add the character to the array
+                    if (character != null) {
+                        characters.add(character);
+                    }
+                }
+            }
+        }
+        return characters;
     }
 
     public ArrayList<Game> loadData(Context context) {
         File root = context.getFilesDir();
-        ArrayList<Game> listGames = new ArrayList<>();
 
         if (root.exists() && root.isDirectory() && root.listFiles().length >= 1) {
             for (File g : root.listFiles()) {
@@ -38,40 +92,26 @@ public class Loader {
                     listGames.add(game);
 
                     File gameDir = new File(root, game.getName());
-                    if (gameDir.exists() && gameDir.isDirectory()) {
+                    if (gameDir.exists() && gameDir.isDirectory() && gameDir.listFiles().length >= 1) {
                         for (File r : gameDir.listFiles()) {
                             if (r.isDirectory()) {
-                                Round round = new Round(r.getName());
+                                Round round = new Round(r.getName(), game);
                                 listGames.get(listGames.indexOf(game)).getRounds().add(round);
 
                                 File roundDir = new File(root, game.getName() + "/" + round.getName());
                                 if (roundDir.exists() && roundDir.isDirectory()) {
                                     Matcher matcher;
-                                    Pattern pattern = Pattern.compile("([^\\s]+(\\.(?i)(hero))$)");
+                                    Pattern pattern = Pattern.compile("([^\\s]+(\\.(?i)(xml))$)");
 
                                     for (File c : roundDir.listFiles()) {
                                         matcher = pattern.matcher(c.getName());
                                         if (c.isFile() && matcher.find()) {
-                                            FileInputStream inputStream;
-                                            ObjectInputStream objectInputStream;
+                                            // Use the unmarshaller constructor
+                                            Character character = new Character(c);
 
-                                            try {
-                                                // Open the save file
-                                                inputStream = new FileInputStream(c.getAbsolutePath());
-                                                objectInputStream = new ObjectInputStream(inputStream);
-
-                                                // Read the object
-                                                Character character = (Character) objectInputStream.readObject();
-
-                                                // Add the character to the array
-                                                if (character != null) {
-                                                    listGames.get(listGames.indexOf(game)).getRounds().get(listGames.get(listGames.indexOf(game)).getRounds().indexOf(round)).getCharacters().add(character);
-                                                }
-
-                                                // Close the stream
-                                                objectInputStream.close();
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
+                                            // Add the character to the array
+                                            if (character != null) {
+                                                listGames.get(listGames.indexOf(game)).getRounds().get(listGames.get(listGames.indexOf(game)).getRounds().indexOf(round)).getCharacters().add(character);
                                             }
                                         }
                                     }
