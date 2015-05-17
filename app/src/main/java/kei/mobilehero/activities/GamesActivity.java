@@ -112,7 +112,8 @@ public class GamesActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent i = new Intent(getApplicationContext(), DicesActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

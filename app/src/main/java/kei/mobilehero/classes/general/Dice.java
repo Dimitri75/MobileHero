@@ -9,7 +9,7 @@ public class Dice {
 
     public Dice(int numberDices, int numberSides){
         this.numberDices = numberDices;
-        this.numberSides = numberDices;
+        this.numberSides = numberSides;
     }
 
     public int getNumberDices() {

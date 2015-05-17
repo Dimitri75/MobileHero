@@ -21,7 +21,7 @@ public class NewGameActivity extends ActionBarActivity {
     public void buttonOnClick(View v) {
         switch(v.getId()){
             case R.id.button_save_NewGame:
-                EditText view_gameName = (EditText) findViewById(R.id.textfield_gameName_NewGame);
+                EditText view_gameName = (EditText) findViewById(R.id.editText_gameName_NewGame);
                 String gameName = view_gameName.getText().toString();
 
                 Game game = new Game(gameName);

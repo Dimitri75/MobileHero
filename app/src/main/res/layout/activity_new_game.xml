@@ -20,7 +20,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textfield_gameName_NewGame"
+        android:id="@+id/editText_gameName_NewGame"
         android:hint="Entrez le nom du jeu"
         android:layout_below="@+id/label_app_name_NewGame"
         android:layout_alignParentLeft="true"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="Sauvegarder"
         android:id="@+id/button_save_NewGame"
-        android:layout_below="@+id/textfield_gameName_NewGame"
+        android:layout_below="@+id/editText_gameName_NewGame"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="25dp"
