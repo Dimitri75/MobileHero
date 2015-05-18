@@ -4,18 +4,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/mobile">
 
-    <TextView android:text="@string/app_name" android:layout_width="wrap_content"
+    <kei.mobilehero.custom.widgets.MyCustomTextView
+        android:text="@string/app_name" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/label_appName_games"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="25dp"
+        android:textSize="@dimen/app_name_size"
         android:textColor="#ffffffff" />
 
-    <Button
+    <kei.mobilehero.custom.widgets.MyCustomButton
+        android:background="@xml/custom_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nouveau jeu"
+        android:text="Nouveau Jeu"
         android:id="@+id/button_newGame_games"
         android:layout_below="@+id/label_appName_games"
         android:layout_alignParentRight="true"
@@ -23,18 +25,26 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="25dp"
-        android:onClick="buttonOnClick"/>
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:onClick="buttonOnClick"
+        android:textColor="#b9ffe0b0"
+        android:textSize="16sp"
+        android:shadowColor="#FFFFFF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="10" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView_games"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="#b4ffffff"
+        android:background="#b9fff3e2"
         android:layout_below="@+id/button_newGame_games"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignRight="@+id/button_newGame_games"
+        android:layout_alignEnd="@+id/button_newGame_games"
+        android:layout_alignLeft="@+id/button_newGame_games"
+        android:layout_alignStart="@+id/button_newGame_games" />
 
 
 

@@ -64,7 +64,7 @@ public class Loader {
             for (File c : roundDir.listFiles()) {
                 matcher = pattern.matcher(c.getName());
                 if (c.isFile() && matcher.find()) {
-                    // Use the unmarshaller constructor
+                    // Use the gson constructor
                     Character character = new Character(c);
 
                     // Add the character to the array
@@ -102,7 +102,7 @@ public class Loader {
                                     for (File c : roundDir.listFiles()) {
                                         matcher = pattern.matcher(c.getName());
                                         if (c.isFile() && matcher.find()) {
-                                            // Use the unmarshaller constructor
+                                            // Use the gson constructor
                                             Character character = new Character(c);
 
                                             // Add the character to the array
