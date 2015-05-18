@@ -54,7 +54,7 @@
         android:layout_height="125dp"
         android:text="Roll"
         android:textColor="#ffffff"
-        android:textSize="25dp"
+        android:textSize="30sp"
         android:id="@+id/button_roll_dices"
         android:layout_below="@+id/editText_nbDices_dices"
         android:layout_centerHorizontal="true"
