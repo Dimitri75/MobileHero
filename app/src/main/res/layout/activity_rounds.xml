@@ -9,7 +9,7 @@
 
     <TextView android:text="@string/app_name" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/label_app_name_Rounds"
+        android:id="@+id/label_appName_rounds"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="25dp"
@@ -19,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nouvelle partie"
-        android:id="@+id/button_new_rounds"
-        android:layout_below="@+id/label_app_name_Rounds"
+        android:id="@+id/button_newRound_rounds"
+        android:layout_below="@+id/label_appName_rounds"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
@@ -32,10 +32,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView_rounds"
-        android:layout_below="@+id/button_new_rounds"
-        android:background="#b4ffffff"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="#b4ffffff"
+        android:layout_below="@+id/button_newRound_rounds" />
 
 </RelativeLayout>

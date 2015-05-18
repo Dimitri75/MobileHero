@@ -1,5 +1,6 @@
 package kei.mobilehero.activities.game;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import kei.mobilehero.R;
+import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.classes.general.Game;
 
 public class NewGameActivity extends ActionBarActivity {
@@ -20,8 +22,8 @@ public class NewGameActivity extends ActionBarActivity {
 
     public void buttonOnClick(View v) {
         switch(v.getId()){
-            case R.id.button_save_NewGame:
-                EditText view_gameName = (EditText) findViewById(R.id.editText_gameName_NewGame);
+            case R.id.button_saveGame_new_game:
+                EditText view_gameName = (EditText) findViewById(R.id.editText_gameName_new_game);
                 String gameName = view_gameName.getText().toString();
 
                 Game game = new Game(gameName);
@@ -33,6 +35,15 @@ public class NewGameActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        finish();
+    }
+
+    /**
+     * Dispatch onPause() to fragments.
+     */
+    @Override
+    protected void onPause() {
+        super.onPause();
         finish();
     }
 
@@ -51,8 +62,9 @@ public class NewGameActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_dices) {
+            Intent i = new Intent(getApplicationContext(), DicesActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

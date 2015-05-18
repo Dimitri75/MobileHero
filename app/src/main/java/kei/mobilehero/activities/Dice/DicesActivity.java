@@ -1,5 +1,6 @@
 package kei.mobilehero.activities.dice;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -25,8 +26,8 @@ public class DicesActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.button_roll_dices:
                 final View view = v;
-                EditText view_nbDices = (EditText) findViewById(R.id.editText_dices_nbDices);
-                EditText view_nbSides = (EditText) findViewById(R.id.editText_dices_nbSides);
+                EditText view_nbDices = (EditText) findViewById(R.id.editText_nbDices_dices);
+                EditText view_nbSides = (EditText) findViewById(R.id.editText_nbSides_dices);
 
                 if(!view_nbDices.getText().toString().isEmpty() && !view_nbSides.getText().toString().isEmpty()) {
                     int nbDices = Integer.parseInt(view_nbDices.getText().toString());
@@ -34,7 +35,7 @@ public class DicesActivity extends ActionBarActivity {
 
                     final Dice dice = new Dice(nbDices, nbSides);
 
-                    Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.roll_dice_animation);
+                    Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_roll_dices);
                     if (animation == null) return;
 
                     animation.reset();
@@ -81,8 +82,9 @@ public class DicesActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_dices) {
+            Intent i = new Intent(getApplicationContext(), DicesActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

@@ -16,19 +16,18 @@ import kei.mobilehero.classes.general.Round;
  */
 public class Loader {
     private static Loader ourInstance = new Loader();
-    private ArrayList<Game> listGames;
 
     public static Loader getInstance() {
         return ourInstance;
     }
 
     private Loader() {
-        listGames = new ArrayList<>();
     }
 
     public ArrayList<Game> loadGames(Context context){
         File root = context.getFilesDir();
 
+        ArrayList<Game> listGames = new ArrayList<>();
         if (root.exists() && root.isDirectory() && root.listFiles().length >= 1) {
             for (File g : root.listFiles()) {
                 if (g.isDirectory()) {
@@ -81,6 +80,7 @@ public class Loader {
     public ArrayList<Game> loadData(Context context) {
         File root = context.getFilesDir();
 
+        ArrayList<Game> listGames = new ArrayList<>();
         if (root.exists() && root.isDirectory() && root.listFiles().length >= 1) {
             for (File g : root.listFiles()) {
                 if (g.isDirectory()) {

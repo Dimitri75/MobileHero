@@ -60,8 +60,8 @@ public class Round implements Parcelable{
         this.game = game;
     }
 
-    public boolean save(Context context, String gameName){
-        File dir = new File (context.getFilesDir(), gameName + "/" +name);
+    public boolean save(Context context){
+        File dir = new File (context.getFilesDir(), getGame().getName() + "/" +name);
         if (!dir.exists()) {
             if (dir.mkdir()){
                 Log.v("Round save()", "Round saved in "+ dir.getAbsolutePath());

@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.CharactersActivity;
+import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.persistence.Loader;
@@ -26,8 +27,12 @@ public class RoundsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rounds);
 
-        if((game = (Game) getIntent().getExtras().get("game")) != null)
-            init(game);
+        if((game = (Game) getIntent().getExtras().get("game")) == null){
+            Log.v("NewRound onCreate()","Couldn't load the game.");
+            finish();
+        }
+
+        init(game);
     }
 
     public void init(Game game){
@@ -83,7 +88,7 @@ public class RoundsActivity extends ActionBarActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent i = new Intent(getApplicationContext(), CharactersActivity.class);
-                    i.putExtra("round", mAdapter.getItem(position));
+                    //i.putExtra("round", mAdapter.getItem(position));
                     startActivity(i);
                 }
             });
@@ -92,11 +97,18 @@ public class RoundsActivity extends ActionBarActivity {
 
     public void buttonOnClick(View v) {
         switch(v.getId()){
-            case R.id.button_new_rounds:
+            case R.id.button_newRound_rounds:
                 Intent i = new Intent(getApplicationContext(), NewRoundActivity.class);
+                i.putExtra("game", game);
                 startActivity(i);
                 break;
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        init(game);
     }
 
     @Override
@@ -114,8 +126,9 @@ public class RoundsActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_dices) {
+            Intent i = new Intent(getApplicationContext(), DicesActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

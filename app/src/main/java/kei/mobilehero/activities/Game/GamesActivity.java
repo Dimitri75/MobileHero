@@ -33,7 +33,7 @@ public class GamesActivity extends ActionBarActivity {
 
     public void buttonOnClick(View v) {
         switch(v.getId()){
-            case R.id.button_new_games:
+            case R.id.button_newGame_games:
                 Intent i = new Intent(getApplicationContext(), NewGameActivity.class);
                 startActivity(i);
                 break;
@@ -97,13 +97,10 @@ public class GamesActivity extends ActionBarActivity {
         });
     }
 
-
-
-
     @Override
     protected void onRestart() {
         super.onRestart();
-        recreate();
+        init(games);
     }
 
     @Override
@@ -121,7 +118,7 @@ public class GamesActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_dices) {
             Intent i = new Intent(getApplicationContext(), DicesActivity.class);
             startActivity(i);
         }

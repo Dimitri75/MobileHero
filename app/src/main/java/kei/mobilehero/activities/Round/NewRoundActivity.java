@@ -1,30 +1,57 @@
 package kei.mobilehero.activities.round;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import kei.mobilehero.R;
+import kei.mobilehero.activities.dice.DicesActivity;
+import kei.mobilehero.classes.general.Game;
+import kei.mobilehero.classes.general.Round;
 
 public class NewRoundActivity extends ActionBarActivity {
+    Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_round);
+
+        if((game = (Game) getIntent().getExtras().get("game")) == null){
+            Log.v("NewRound onCreate()","Couldn't load the game.");
+            finish();
+        }
     }
 
     public void buttonOnClick(View v) {
         switch(v.getId()){
+            case R.id.button_saveRound_new_round:
+                EditText view_roundName = (EditText) findViewById(R.id.editText_roundName_new_round);
+                String roundName = view_roundName.getText().toString();
 
+                Round round = new Round(roundName, game);
+                if(round.save(getApplicationContext())) finish();
+                break;
         }
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        finish();
+    }
+
+    /**
+     * Dispatch onPause() to fragments.
+     */
+    @Override
+    protected void onPause() {
+        super.onPause();
         finish();
     }
 
@@ -43,8 +70,9 @@ public class NewRoundActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_dices) {
+            Intent i = new Intent(getApplicationContext(), DicesActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
