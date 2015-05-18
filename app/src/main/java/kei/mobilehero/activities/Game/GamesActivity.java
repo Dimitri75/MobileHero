@@ -28,7 +28,7 @@ public class GamesActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_games);
 
-        init(games);
+        init();
     }
 
     public void buttonOnClick(View v) {
@@ -40,20 +40,21 @@ public class GamesActivity extends ActionBarActivity {
         }
     }
 
-    public void init(ArrayList<Game> games) {
-        ListView listView;
+    public void init() {
         games = Loader.getInstance().loadGames(getApplicationContext());
+
+        if (games.isEmpty()) return;
 
         // This is the array adapter, it takes the context of the activity as a
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
-        final ArrayAdapter<Game> mAdapter = new ArrayAdapter<Game>(this,
+        final ArrayAdapter<Game> myAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
                 games);
 
-        listView = (ListView) findViewById(R.id.listView_games);
-        listView.setAdapter(mAdapter);
+        ListView listView = (ListView) findViewById(R.id.listView_games);
+        listView.setAdapter(myAdapter);
 
         // Create a ListView-specific touch listener. ListViews are given special treatment because
         // by default they handle touches for their list items... i.e. they're in charge of drawing
@@ -64,7 +65,7 @@ public class GamesActivity extends ActionBarActivity {
                         new SwipeDismissListViewTouchListener.DismissCallbacks() {
                             @Override
                             public boolean canDismiss(int position) {
-                                if (mAdapter.getItem(position).getRounds().isEmpty()) return true;
+                                if (myAdapter.getItem(position).getRounds().isEmpty()) return true;
                                 else {
                                     Log.v("Games init()", "Cannot delete a game which is not empty");
                                     return false;
@@ -75,11 +76,11 @@ public class GamesActivity extends ActionBarActivity {
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     {
-                                        if (mAdapter.getItem(position).delete(getApplicationContext()))
-                                            mAdapter.remove(mAdapter.getItem(position));
+                                        if (myAdapter.getItem(position).delete(getApplicationContext()))
+                                            myAdapter.remove(myAdapter.getItem(position));
                                     }
                                 }
-                                mAdapter.notifyDataSetChanged();
+                                myAdapter.notifyDataSetChanged();
                             }
                         });
         listView.setOnTouchListener(swipeTouchListener);
@@ -91,7 +92,7 @@ public class GamesActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(getApplicationContext(), RoundsActivity.class);
-                i.putExtra("game", mAdapter.getItem(position));
+                i.putExtra("game", myAdapter.getItem(position));
                 startActivity(i);
             }
         });
@@ -100,7 +101,7 @@ public class GamesActivity extends ActionBarActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        init(games);
+        init();
     }
 
     @Override

@@ -45,10 +45,6 @@
         android:layout_alignLeft="@+id/label_appName_new_game"
         android:layout_alignStart="@+id/label_appName_new_game"
         android:textColor="#b9ffe0b0"
-        android:textSize="16sp"
-        android:shadowColor="#FFFFFF"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="10" />
+        android:textSize="16sp" />
 
 </RelativeLayout>

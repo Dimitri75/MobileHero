@@ -23,7 +23,7 @@ public class NewRoundActivity extends ActionBarActivity {
         setContentView(R.layout.activity_new_round);
 
         if((game = (Game) getIntent().getExtras().get("game")) == null){
-            Log.v("NewRound onCreate()","Couldn't load the game.");
+            Log.v("NewRound onCreate()","Couldn't get the game.");
             finish();
         }
     }
@@ -31,7 +31,7 @@ public class NewRoundActivity extends ActionBarActivity {
     public void buttonOnClick(View v) {
         switch(v.getId()){
             case R.id.button_saveRound_new_round:
-                EditText view_roundName = (EditText) findViewById(R.id.editText_roundName_new_round);
+                EditText view_roundName = (EditText) findViewById(R.id.editText_gameName_new_game);
                 String roundName = view_roundName.getText().toString();
 
                 Round round = new Round(roundName, game);

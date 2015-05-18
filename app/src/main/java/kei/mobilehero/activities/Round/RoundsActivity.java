@@ -28,71 +28,71 @@ public class RoundsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_rounds);
 
         if((game = (Game) getIntent().getExtras().get("game")) == null){
-            Log.v("NewRound onCreate()","Couldn't load the game.");
+            Log.v("NewRound onCreate()","Couldn't get the game.");
             finish();
         }
 
         init(game);
     }
 
-    public void init(Game game){
-        ListView listView;
+    public void init(Game game) {
         game = Loader.getInstance().loadRounds(getApplicationContext(), game);
 
-        if(!game.getRounds().isEmpty()) {
-            // This is the array adapter, it takes the context of the activity as a
-            // first parameter, the type of list view as a second parameter and your
-            // array as a third parameter.
-            final ArrayAdapter<Round> mAdapter = new ArrayAdapter<Round>(this,
-                    android.R.layout.simple_list_item_1,
-                    android.R.id.text1,
-                    game.getRounds());
+        if (game.getRounds().isEmpty()) return;
 
-            listView = (ListView) findViewById(R.id.listView_rounds);
-            listView.setAdapter(mAdapter);
+        // This is the array adapter, it takes the context of the activity as a
+        // first parameter, the type of list view as a second parameter and your
+        // array as a third parameter.
+        final ArrayAdapter<Round> myAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                game.getRounds());
 
-            // Create a ListView-specific touch listener. ListViews are given special treatment because
-            // by default they handle touches for their list items... i.e. they're in charge of drawing
-            // the pressed state (the list selector), handling list item clicks, etc.
-            SwipeDismissListViewTouchListener swipeTouchListener =
-                    new SwipeDismissListViewTouchListener(
-                            listView,
-                            new SwipeDismissListViewTouchListener.DismissCallbacks() {
-                                @Override
-                                public boolean canDismiss(int position) {
-                                    if (mAdapter.getItem(position).getCharacters().isEmpty())
-                                        return true;
-                                    else {
-                                        Log.v("Rounds init()", "Cannot delete a round which is not empty");
-                                        return false;
+        ListView listView = (ListView) findViewById(R.id.listView_rounds);
+        listView.setAdapter(myAdapter);
+
+        // Create a ListView-specific touch listener. ListViews are given special treatment because
+        // by default they handle touches for their list items... i.e. they're in charge of drawing
+        // the pressed state (the list selector), handling list item clicks, etc.
+        SwipeDismissListViewTouchListener swipeTouchListener =
+                new SwipeDismissListViewTouchListener(
+                        listView,
+                        new SwipeDismissListViewTouchListener.DismissCallbacks() {
+
+                            @Override
+                            public boolean canDismiss(int position) {
+                                if (myAdapter.getItem(position).getCharacters().isEmpty())
+                                    return true;
+                                else {
+                                    Log.v("Rounds init()", "Cannot delete a round which is not empty");
+                                    return false;
+                                }
+                            }
+
+                            @Override
+                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    {
+                                        if (myAdapter.getItem(position).delete(getApplicationContext()))
+                                            myAdapter.remove(myAdapter.getItem(position));
                                     }
                                 }
+                                myAdapter.notifyDataSetChanged();
+                            }
+                        });
+        listView.setOnTouchListener(swipeTouchListener);
+        // Setting this scroll listener is required to ensure that during ListView scrolling,
+        // we don't look for swipes.
+        listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
 
-                                @Override
-                                public void onDismiss(ListView listView, int[] reverseSortedPositions) {
-                                    for (int position : reverseSortedPositions) {
-                                        {
-                                            if (mAdapter.getItem(position).delete(getApplicationContext()))
-                                                mAdapter.remove(mAdapter.getItem(position));
-                                        }
-                                    }
-                                    mAdapter.notifyDataSetChanged();
-                                }
-                            });
-            listView.setOnTouchListener(swipeTouchListener);
-            // Setting this scroll listener is required to ensure that during ListView scrolling,
-            // we don't look for swipes.
-            listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
-
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent i = new Intent(getApplicationContext(), CharactersActivity.class);
-                    //i.putExtra("round", mAdapter.getItem(position));
-                    startActivity(i);
-                }
-            });
-        }
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getApplicationContext(), CharactersActivity.class);
+                //i.putExtra("round", mAdapter.getItem(position));
+                startActivity(i);
+            }
+        });
     }
 
     public void buttonOnClick(View v) {

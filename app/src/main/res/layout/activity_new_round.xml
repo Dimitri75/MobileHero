@@ -20,7 +20,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_gameName_new_game"
+        android:id="@+id/editText_roundName_new_round"
         android:hint="Entrez le nom de la partie"
         android:textColor="#ffffffff"
         android:textColorHint="#FF9B9B9B"
@@ -45,10 +45,6 @@
         android:layout_alignLeft="@+id/label_appName_new_round"
         android:layout_alignStart="@+id/label_appName_new_round"
         android:textColor="#b9ffe0b0"
-        android:textSize="16sp"
-        android:shadowColor="#FFFFFF"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="10" />
+        android:textSize="16sp"/>
 
 </RelativeLayout>

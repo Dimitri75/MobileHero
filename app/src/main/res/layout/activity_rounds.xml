@@ -32,15 +32,11 @@
         android:layout_marginRight="25dp"
         android:onClick="buttonOnClick"
         android:textColor="#b9ffe0b0"
-        android:textSize="16sp"
-        android:shadowColor="#FFFFFF"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="10" />
+        android:textSize="16sp" />
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:id="@+id/listView_rounds"
         android:background="#b9fff3e2"
         android:layout_below="@+id/button_newRound_rounds"
