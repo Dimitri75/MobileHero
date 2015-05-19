@@ -28,14 +28,14 @@ public class RoundsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_rounds);
 
         if((game = (Game) getIntent().getExtras().get("game")) == null){
-            Log.v("NewRound onCreate()","Couldn't get the game.");
+            Log.v("NewRound onCreate()", "Couldn't get the game.");
             finish();
         }
 
-        init(game);
+        init();
     }
 
-    public void init(Game game) {
+    public void init() {
         game = Loader.getInstance().loadRounds(getApplicationContext(), game);
 
         if (game.getRounds().isEmpty()) return;
@@ -73,7 +73,7 @@ public class RoundsActivity extends ActionBarActivity {
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     {
-                                        if (myAdapter.getItem(position).delete(getApplicationContext()))
+                                        if (myAdapter.getItem(position).delete(getApplicationContext(), game))
                                             myAdapter.remove(myAdapter.getItem(position));
                                     }
                                 }
@@ -108,7 +108,7 @@ public class RoundsActivity extends ActionBarActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        init(game);
+        init();
     }
 
     @Override
@@ -130,7 +130,6 @@ public class RoundsActivity extends ActionBarActivity {
             Intent i = new Intent(getApplicationContext(), DicesActivity.class);
             startActivity(i);
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

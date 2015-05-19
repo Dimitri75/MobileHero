@@ -40,23 +40,27 @@ public class Loader {
     }
 
     public Game loadRounds(Context context, Game game){
+        game.getRounds().clear();
         File root = context.getFilesDir();
 
         File gameDir = new File(root, game.getName());
         if (gameDir.exists() && gameDir.isDirectory() && gameDir.listFiles().length >= 1) {
             for (File r : gameDir.listFiles()) {
                 if (r.isDirectory()) {
-                    game.getRounds().add(new Round(r.getName(), game));
+                    game.getRounds().add(new Round(r.getName()));
                 }
             }
         }
         return game;
     }
 
-    public Round loadCharacters(Context context, Round round){
+    public Round loadCharacters(Context context, Game game, Round round){
+        game.getRounds().clear();
+        round.getCharacters().clear();
+
         File root = context.getFilesDir();
 
-        File roundDir = new File(root, round.getGame().getName() + "/" + round.getName());
+        File roundDir = new File(root, game.getName() + "/" + round.getName());
         if (roundDir.exists() && roundDir.isDirectory()) {
             Matcher matcher;
             Pattern pattern = Pattern.compile("([^\\s]+(\\.(?i)(json))$)");
@@ -91,7 +95,7 @@ public class Loader {
                     if (gameDir.exists() && gameDir.isDirectory() && gameDir.listFiles().length >= 1) {
                         for (File r : gameDir.listFiles()) {
                             if (r.isDirectory()) {
-                                Round round = new Round(r.getName(), game);
+                                Round round = new Round(r.getName());
                                 listGames.get(listGames.indexOf(game)).getRounds().add(round);
 
                                 File roundDir = new File(root, game.getName() + "/" + round.getName());

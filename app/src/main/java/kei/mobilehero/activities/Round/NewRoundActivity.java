@@ -31,11 +31,11 @@ public class NewRoundActivity extends ActionBarActivity {
     public void buttonOnClick(View v) {
         switch(v.getId()){
             case R.id.button_saveRound_new_round:
-                EditText view_roundName = (EditText) findViewById(R.id.editText_gameName_new_game);
+                EditText view_roundName = (EditText) findViewById(R.id.editText_roundName_new_round);
                 String roundName = view_roundName.getText().toString();
 
-                Round round = new Round(roundName, game);
-                if(round.save(getApplicationContext())) finish();
+                Round round = new Round(roundName);
+                if(round.save(getApplicationContext(), game)) finish();
                 break;
         }
     }

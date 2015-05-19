@@ -33,7 +33,7 @@
         android:layout_marginBottom="35dp"/>
 
     <kei.mobilehero.custom.widgets.MyCustomButton
-        android:background="@xml/custom_button"
+        android:background="@drawable/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sauvegarder"
@@ -44,7 +44,7 @@
         android:layout_alignEnd="@+id/label_appName_new_round"
         android:layout_alignLeft="@+id/label_appName_new_round"
         android:layout_alignStart="@+id/label_appName_new_round"
-        android:textColor="#b9ffe0b0"
+        android:textColor="#e1000000"
         android:textSize="16sp"/>
 
 </RelativeLayout>

@@ -19,12 +19,10 @@ public class Round implements Parcelable{
     private String id;
     private String name;
     private ArrayList<kei.mobilehero.classes.general.Character> characters;
-    private Game game;
 
-    public Round(String name, Game game){
+    public Round(String name){
         this.id = UUID.randomUUID().toString();
         this.name = name;
-        this.game = game;
         characters = new ArrayList<>();
     }
 
@@ -52,16 +50,8 @@ public class Round implements Parcelable{
         this.characters = characters;
     }
 
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-    public boolean save(Context context){
-        File dir = new File (context.getFilesDir(), getGame().getName() + "/" +name);
+    public boolean save(Context context, Game game){
+        File dir = new File (context.getFilesDir(), game.getName() + "/" +name);
         if (!dir.exists()) {
             if (dir.mkdir()){
                 Log.v("Round save()", "Round saved in "+ dir.getAbsolutePath());
@@ -72,7 +62,7 @@ public class Round implements Parcelable{
         return false;
     }
 
-    public boolean delete(Context context) {
+    public boolean delete(Context context, Game game) {
         File dir = new File(context.getFilesDir(), game.getName() + "/" + name);
         if (dir.exists()) {
             if (dir.delete()) return true;
@@ -98,8 +88,6 @@ public class Round implements Parcelable{
         Bundle b = in.readBundle(Character.class.getClassLoader());
         characters = b.getParcelableArrayList("characters");
 
-        b = in.readBundle(Game.class.getClassLoader());
-        game = b.getParcelable("game");
     }
 
     /**
@@ -128,7 +116,6 @@ public class Round implements Parcelable{
 
         Bundle b = new Bundle();
         b.putParcelableArrayList("characters", characters);
-        b.putParcelable("game", game);
         dest.writeBundle(b);
     }
 

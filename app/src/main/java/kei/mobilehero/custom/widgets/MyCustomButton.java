@@ -11,6 +11,6 @@ import android.widget.Button;
 public class MyCustomButton extends Button{
     public MyCustomButton(Context context, AttributeSet attrs){
         super(context, attrs);
-        this.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/oblivion.ttf"));
+        this.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/belwe-bold.ttf"));
     }
 }
