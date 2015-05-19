@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="kei.mobilehero.activities.round.RoundsActivity"
-    android:background="@drawable/mobile">
+    android:background="@drawable/mobile_orc">
 
 
 
@@ -17,22 +17,20 @@
         android:textColor="#ffffffff" />
 
     <kei.mobilehero.custom.widgets.MyCustomButton
-        android:background="@drawable/button2"
+        android:background="@drawable/button_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nouvelle partie"
         android:id="@+id/button_newRound_rounds"
         android:layout_below="@+id/label_appName_rounds"
+        android:layout_marginTop="25dp"
+        android:onClick="buttonOnClick"
+        android:textColor="#e1000000"
+        android:textSize="16sp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:onClick="buttonOnClick"
-        android:textColor="#e1000000"
-        android:textSize="16sp" />
+        android:layout_alignParentStart="true" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -40,7 +38,7 @@
         android:id="@+id/listView_rounds"
         android:background="#b9fff3e2"
         android:layout_below="@+id/button_newRound_rounds"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp" />
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp" />
 
 </RelativeLayout>

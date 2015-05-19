@@ -1,11 +1,13 @@
 package kei.mobilehero.activities.character;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import kei.mobilehero.R;
+import kei.mobilehero.activities.dice.DicesActivity;
 
 public class CharactersActivity extends ActionBarActivity {
 
@@ -31,9 +33,9 @@ public class CharactersActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_dices) {
-            return true;
+            Intent i = new Intent(getApplicationContext(), DicesActivity.class);
+            startActivity(i);
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

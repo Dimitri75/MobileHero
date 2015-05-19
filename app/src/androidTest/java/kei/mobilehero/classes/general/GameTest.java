@@ -12,7 +12,7 @@ public class GameTest extends InstrumentationTestCase {
 
     public void test() throws Exception {
         Game game = new Game(GAME_NAME);
-        Round round = new Round(ROUND_NAME, game);
+        Round round = new Round(ROUND_NAME);
         game.getRounds().add(round);
 
         assertEquals(game.getName(), GAME_NAME);
