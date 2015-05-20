@@ -8,5 +8,6 @@
     <string name="title_activity_rounds">RoundsActivity</string>
     <string name="title_activity_new_round">NewRoundActivity</string>
     <string name="title_activity_characters">CharactersActivity</string>
+    <string name="title_activity_new_character">NewCharacterActivity</string>
 
 </resources>

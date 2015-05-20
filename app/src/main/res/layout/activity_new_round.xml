@@ -20,6 +20,7 @@
             android:textColor="#ffffffff"/>
 
         <EditText
+            android:outlineProvider="bounds"
             android:maxLength="50"
             android:layout_marginTop="60dp"
             android:layout_width="wrap_content"

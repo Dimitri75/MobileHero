@@ -36,6 +36,10 @@
             android:name=".activities.character.CharactersActivity"
             android:label="@string/title_activity_characters" >
         </activity>
+        <activity
+            android:name=".activities.character.NewCharacterActivity"
+            android:label="@string/title_activity_new_character" >
+        </activity>
     </application>
 
 </manifest>

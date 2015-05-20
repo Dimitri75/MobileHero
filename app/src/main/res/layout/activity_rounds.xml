@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="kei.mobilehero.activities.round.RoundsActivity"
-    android:background="@drawable/mobile_orc">
+    android:background="@drawable/mobile_gnome">
 
 
 
@@ -34,9 +34,9 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/listView_rounds"
-        android:background="#b9fff3e2"
+        android:background="@xml/custom_listview"
         android:layout_below="@+id/button_newRound_rounds"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="13dp" />

@@ -55,7 +55,6 @@ public class Loader {
     }
 
     public Round loadCharacters(Context context, Game game, Round round){
-        game.getRounds().clear();
         round.getCharacters().clear();
 
         File root = context.getFilesDir();

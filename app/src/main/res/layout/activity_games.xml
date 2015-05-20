@@ -31,14 +31,13 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/listView_games"
-        android:background="#b9fff3e2"
+        android:background="@xml/custom_listview"
         android:layout_below="@+id/button_newGame_games"
         android:layout_marginLeft="13dp"
-        android:layout_marginRight="13dp"
-        android:layout_alignParentBottom="true" />
-
+        android:layout_marginRight="13dp"/>
+    <!--android:background="#b9fff3e2"-->
 
 
 </RelativeLayout>

@@ -89,7 +89,8 @@ public class RoundsActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(getApplicationContext(), CharactersActivity.class);
-                //i.putExtra("round", mAdapter.getItem(position));
+                i.putExtra("round", myAdapter.getItem(position));
+                i.putExtra("game", game);
                 startActivity(i);
             }
         });
