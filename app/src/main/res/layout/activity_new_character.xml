@@ -23,9 +23,9 @@
             android:textColor="#ffffffff" />
 
         <kei.mobilehero.custom.widgets.MyCustomEditText
-            android:layout_marginTop="45dp"
-            android:layout_width="115dp"
-            android:layout_height="125dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="85dp"
+            android:layout_height="95dp"
             android:background="@drawable/level"
             android:maxLength="4"
             android:hint="Niveau"
@@ -37,10 +37,10 @@
             android:ems="10"
             android:id="@+id/editText_characterLevel_new_character"
             android:layout_below="@+id/label_appName_new_character"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_centerHorizontal="true" />
 
         <EditText
+            android:layout_marginTop="10dp"
             android:maxLength="50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,9 +49,9 @@
             android:textColor="#ffffffff"
             android:textColorHint="#FF9B9B9B"
             android:gravity="center_horizontal"
-            android:layout_marginBottom="35dp"
-            android:layout_alignBottom="@+id/editText_characterLevel_new_character"
-            android:layout_toRightOf="@+id/editText_characterLevel_new_character"
+            android:layout_below="@+id/editText_characterLevel_new_character"
+            android:layout_alignLeft="@+id/editText_characterGender_new_character"
+            android:layout_alignStart="@+id/editText_characterGender_new_character"
             android:layout_alignRight="@+id/editText_characterGender_new_character"
             android:layout_alignEnd="@+id/editText_characterGender_new_character" />
 
@@ -65,7 +65,7 @@
             android:textColor="#ffffffff"
             android:textColorHint="#FF9B9B9B"
             android:gravity="center_horizontal"
-            android:layout_below="@+id/editText_characterLevel_new_character"
+            android:layout_below="@+id/editText_characterName_new_character"
             android:layout_alignLeft="@+id/label_appName_new_character"
             android:layout_alignStart="@+id/label_appName_new_character"
             android:layout_alignRight="@+id/label_appName_new_character"
@@ -130,7 +130,7 @@
             android:textColor="#e1000000"
             android:textSize="16sp"
             android:layout_below="@+id/editText_characterAlignment_new_character"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="60dp"
             android:layout_alignRight="@+id/editText_characterAlignment_new_character"
             android:layout_alignEnd="@+id/editText_characterAlignment_new_character"
             android:layout_alignLeft="@+id/editText_characterAlignment_new_character"
