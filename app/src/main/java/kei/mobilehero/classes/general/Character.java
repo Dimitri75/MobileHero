@@ -166,7 +166,7 @@ public class Character implements Parcelable{
     }
 
     public boolean delete(Context context, String gameName, String roundName){
-        File file = new File (context.getFilesDir() + gameName+"/"+roundName+"/character."+id+".xml");
+        File file = new File (context.getFilesDir() + gameName+"/"+roundName+"/character."+id+".json");
         if (file.exists()){
             if (file.delete()) return true;
         }
