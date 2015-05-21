@@ -129,6 +129,7 @@ public class CharactersActivity extends ActionBarActivity {
             Intent i = new Intent(getApplicationContext(), DicesActivity.class);
             startActivity(i);
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

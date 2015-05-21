@@ -13,6 +13,7 @@ import kei.mobilehero.R;
 import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.classes.general.*;
 import kei.mobilehero.classes.general.Character;
+import kei.mobilehero.custom.widgets.MyCustomEditText;
 
 public class NewCharacterActivity extends ActionBarActivity {
     private Game game;
@@ -39,15 +40,25 @@ public class NewCharacterActivity extends ActionBarActivity {
 
         // Instanciate the views
         nameText = (EditText) findViewById(R.id.editText_characterName_new_character);
+        genderText = (EditText) findViewById(R.id.editText_characterGender_new_character);
+        alignmentText = (EditText) findViewById(R.id.editText_characterAlignment_new_character);
+        raceText = (EditText) findViewById(R.id.editText_characterRace_new_character);
+        classNameText = (EditText) findViewById(R.id.editText_characterClassName_new_character);
+        levelText = (MyCustomEditText) findViewById(R.id.editText_characterLevel_new_character);
 
         if ((character = (Character) getIntent().getExtras().get("character")) != null) init();
     }
 
     /**
-     * Charge les données du personnage
+     * Charge les donnees du personnage
      */
     public void init(){
         nameText.setText(character.getName());
+        genderText.setText(character.getGender());
+        alignmentText.setText(character.getAlignment());
+        raceText.setText(character.getRace());
+        classNameText.setText(character.getClassName());
+        levelText.setText(String.valueOf(character.getLevel()));
     }
 
     public void buttonOnClick(View v) {
@@ -60,11 +71,11 @@ public class NewCharacterActivity extends ActionBarActivity {
                     }
                     else{
                         character.setName(characterName);
-                        /*character.setGender();
-                        character.setAlignment();
-                        character.setRace();
-                        character.setClassName();
-                        character.setLevel();*/
+                        character.setGender(genderText.getText().toString());
+                        character.setAlignment(alignmentText.getText().toString());
+                        character.setRace(raceText.getText().toString());
+                        character.setClassName(classNameText.getText().toString());
+                        character.setLevel(Integer.parseInt(levelText.getText().toString()));
                     }
                     if (character.save(getApplicationContext(), game.getName(), round.getName())) finish();
                 }

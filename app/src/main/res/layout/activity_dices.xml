@@ -67,7 +67,7 @@
 
 
     <!--
-        android:background="@drawable/roll_button"
+        android:background="@drawable/oval_button"
 
         <ImageButton
             android:background="@drawable/dice"
