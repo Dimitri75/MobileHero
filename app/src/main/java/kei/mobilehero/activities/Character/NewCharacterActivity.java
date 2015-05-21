@@ -69,14 +69,14 @@ public class NewCharacterActivity extends ActionBarActivity {
                     if (character == null){
                         character = new Character(characterName);
                     }
-                    else{
-                        character.setName(characterName);
-                        character.setGender(genderText.getText().toString());
-                        character.setAlignment(alignmentText.getText().toString());
-                        character.setRace(raceText.getText().toString());
-                        character.setClassName(classNameText.getText().toString());
-                        character.setLevel(Integer.parseInt(levelText.getText().toString()));
-                    }
+                    
+                    character.setName(characterName);
+                    character.setGender(genderText.getText().toString());
+                    character.setAlignment(alignmentText.getText().toString());
+                    character.setRace(raceText.getText().toString());
+                    character.setClassName(classNameText.getText().toString());
+                    character.setLevel(Integer.parseInt(levelText.getText().toString()));
+
                     if (character.save(getApplicationContext(), game.getName(), round.getName())) finish();
                 }
                 break;
