@@ -1,7 +1,6 @@
 package kei.mobilehero.classes.general;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
@@ -31,6 +30,7 @@ public class Character implements Parcelable{
     private String race;
     private String className;
     private String picture;
+    private int level;
     private ArrayList<Skill> skills;
     private ArrayList<Caracteristic> caracteristics;
     private ArrayList<Equipment> equipments;
@@ -38,6 +38,13 @@ public class Character implements Parcelable{
     public Character(String name){
         this.id = UUID.randomUUID().toString();
         this.name = name;
+        this.gender = "";
+        this.alignment = "";
+        this.race = "";
+        this.className = "";
+        this.picture = "";
+        this.level = 0;
+
         skills = new ArrayList<>();
         caracteristics = new ArrayList<>();
         equipments = new ArrayList<>();
@@ -99,6 +106,14 @@ public class Character implements Parcelable{
         this.picture = picture;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public ArrayList<Skill> getSkills() {
         return skills;
     }
@@ -151,7 +166,7 @@ public class Character implements Parcelable{
     }
 
     public boolean delete(Context context, String gameName, String roundName){
-        File file = new File (context.getFilesDir() + gameName+"/"+roundName+"/character."+name+"."+id+".xml");
+        File file = new File (context.getFilesDir() + gameName+"/"+roundName+"/character."+id+".xml");
         if (file.exists()){
             if (file.delete()) return true;
         }
@@ -193,12 +208,13 @@ public class Character implements Parcelable{
         dest.writeString(race);
         dest.writeString(className);
         dest.writeString(picture);
+        dest.writeInt(level);
 
-        Bundle b = new Bundle();
+        /*Bundle b = new Bundle();
         b.putParcelableArrayList("skills", skills);
         b.putParcelableArrayList("caracteristics", caracteristics);
         b.putParcelableArrayList("equipments", equipments);
-        dest.writeBundle(b);
+        dest.writeBundle(b);*/
     }
 
     /**
@@ -213,15 +229,16 @@ public class Character implements Parcelable{
         this.race = in.readString();
         this.className = in.readString();
         this.picture = in.readString();
+        this.level = in.readInt();
 
-        Bundle b = in.readBundle(Skill.class.getClassLoader());
+        /*Bundle b = in.readBundle(Skill.class.getClassLoader());
         skills = b.getParcelableArrayList("skills");
 
         b = in.readBundle(Caracteristic.class.getClassLoader());
         caracteristics = b.getParcelableArrayList("caracteristics");
 
         b = in.readBundle(Equipment.class.getClassLoader());
-        equipments = b.getParcelableArrayList("equipments");
+        equipments = b.getParcelableArrayList("equipments");*/
     }
 
     public static final Parcelable.Creator<Character> CREATOR = new Parcelable.Creator<Character>() {
@@ -237,7 +254,7 @@ public class Character implements Parcelable{
     //END PARCELABLE
 
 
-    // JAXB
+    // GSON
     /**
      * Instanciate a character from an xml file using GSON
      * Json to Object
@@ -259,6 +276,7 @@ public class Character implements Parcelable{
                     this.setRace(characterFromGson.getRace());
                     this.setClassName(characterFromGson.getClassName());
                     this.setPicture(characterFromGson.getPicture());
+                    this.setLevel(characterFromGson.getLevel());
                     this.setSkills(characterFromGson.getSkills());
                     this.setCaracteristics(characterFromGson.getCaracteristics());
                     this.setEquipments(characterFromGson.getEquipments());
@@ -276,10 +294,10 @@ public class Character implements Parcelable{
      * @return
      * @throws Exception
      */
-    public boolean save(Context context, String gameName, String roundName) throws Exception
+    public boolean save(Context context, String gameName, String roundName)
     {
         try {
-            File characterFile = new File(context.getFilesDir(), gameName + "/" + roundName + "/character." + name + "." + id + ".hero");
+            File characterFile = new File(context.getFilesDir(), gameName + "/" + roundName + "/character." + id + ".json");
 
             Gson gson = new Gson();
             String jsonObject = gson.toJson(this);
@@ -297,5 +315,5 @@ public class Character implements Parcelable{
             return false;
         }
     }
-    // END JAXB
+    // END GSON
 }

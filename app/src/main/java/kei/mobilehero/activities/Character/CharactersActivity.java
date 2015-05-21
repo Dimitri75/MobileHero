@@ -29,7 +29,7 @@ public class CharactersActivity extends ActionBarActivity {
 
         if((game = (Game) getIntent().getExtras().get("game")) == null ||
                 (round = (Round) getIntent().getExtras().get("round")) == null){
-            Log.v("NewRound onCreate()", "Couldn't get the extras.");
+            Log.v("Characters onCreate()", "Couldn't get the extras.");
             finish();
         }
 
@@ -62,7 +62,7 @@ public class CharactersActivity extends ActionBarActivity {
 
                             @Override
                             public boolean canDismiss(int position) {
-                                return false;
+                                return true;
                             }
 
                             @Override
@@ -86,7 +86,8 @@ public class CharactersActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(getApplicationContext(), NewCharacterActivity.class);
                 i.putExtra("game", game);
-                i.putExtra("round", myAdapter.getItem(position));
+                i.putExtra("round", round);
+                i.putExtra("character", myAdapter.getItem(position));
                 startActivity(i);
             }
         });
