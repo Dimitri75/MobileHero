@@ -69,7 +69,7 @@ public class NewCharacterActivity extends ActionBarActivity {
                     if (character == null){
                         character = new Character(characterName);
                     }
-                    
+
                     character.setName(characterName);
                     character.setGender(genderText.getText().toString());
                     character.setAlignment(alignmentText.getText().toString());
