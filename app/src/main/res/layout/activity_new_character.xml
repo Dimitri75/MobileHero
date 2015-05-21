@@ -51,10 +51,9 @@
             android:gravity="center_horizontal"
             android:layout_marginBottom="35dp"
             android:layout_alignBottom="@+id/editText_characterLevel_new_character"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:layout_toRightOf="@+id/editText_characterLevel_new_character"
-            android:layout_toEndOf="@+id/editText_characterLevel_new_character" />
+            android:layout_alignRight="@+id/editText_characterGender_new_character"
+            android:layout_alignEnd="@+id/editText_characterGender_new_character" />
 
         <EditText
             android:layout_marginTop="45dp"
