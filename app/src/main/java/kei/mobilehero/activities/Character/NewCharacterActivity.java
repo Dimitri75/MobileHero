@@ -11,8 +11,9 @@ import android.widget.EditText;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.dice.DicesActivity;
-import kei.mobilehero.classes.general.*;
 import kei.mobilehero.classes.general.Character;
+import kei.mobilehero.classes.general.Game;
+import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.custom.widgets.MyCustomEditText;
 
 public class NewCharacterActivity extends ActionBarActivity {
