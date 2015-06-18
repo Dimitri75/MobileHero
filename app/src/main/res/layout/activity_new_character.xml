@@ -37,7 +37,8 @@
             android:ems="10"
             android:id="@+id/editText_characterLevel_new_character"
             android:layout_below="@+id/label_appName_new_character"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:imeOptions="actionNext"/>
 
         <EditText
             android:layout_marginTop="45dp"
@@ -53,7 +54,8 @@
             android:layout_alignLeft="@+id/editText_characterGender_new_character"
             android:layout_alignStart="@+id/editText_characterGender_new_character"
             android:layout_alignRight="@+id/editText_characterGender_new_character"
-            android:layout_alignEnd="@+id/editText_characterGender_new_character" />
+            android:layout_alignEnd="@+id/editText_characterGender_new_character"
+            android:imeOptions="actionNext"/>
 
         <EditText
             android:layout_marginTop="55dp"
@@ -69,7 +71,8 @@
             android:layout_alignLeft="@+id/label_appName_new_character"
             android:layout_alignStart="@+id/label_appName_new_character"
             android:layout_alignRight="@+id/label_appName_new_character"
-            android:layout_alignEnd="@+id/label_appName_new_character" />
+            android:layout_alignEnd="@+id/label_appName_new_character"
+            android:imeOptions="actionNext"/>
 
 
         <EditText
@@ -86,7 +89,8 @@
             android:layout_alignLeft="@+id/editText_characterGender_new_character"
             android:layout_alignStart="@+id/editText_characterGender_new_character"
             android:layout_alignRight="@+id/editText_characterGender_new_character"
-            android:layout_alignEnd="@+id/editText_characterGender_new_character" />
+            android:layout_alignEnd="@+id/editText_characterGender_new_character"
+            android:imeOptions="actionNext"/>
 
         <EditText
             android:layout_marginTop="55dp"
@@ -102,7 +106,8 @@
             android:layout_alignLeft="@+id/editText_characterGender_new_character"
             android:layout_alignStart="@+id/editText_characterGender_new_character"
             android:layout_alignRight="@+id/editText_characterGender_new_character"
-            android:layout_alignEnd="@+id/editText_characterGender_new_character" />
+            android:layout_alignEnd="@+id/editText_characterGender_new_character"
+            android:imeOptions="actionNext"/>
 
         <EditText
             android:layout_marginTop="55dp"
@@ -118,7 +123,8 @@
             android:layout_alignRight="@+id/editText_characterClassName_new_character"
             android:layout_alignEnd="@+id/editText_characterClassName_new_character"
             android:layout_alignLeft="@+id/editText_characterClassName_new_character"
-            android:layout_alignStart="@+id/editText_characterClassName_new_character" />
+            android:layout_alignStart="@+id/editText_characterClassName_new_character"
+            android:imeOptions="actionDone"/>
 
         <Button
             android:layout_marginTop="100dp"

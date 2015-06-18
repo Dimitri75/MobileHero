@@ -76,7 +76,7 @@ public class NewCharacterActivity extends ActionBarActivity {
                     character.setAlignment(alignmentText.getText().toString());
                     character.setRace(raceText.getText().toString());
                     character.setClassName(classNameText.getText().toString());
-                    character.setLevel(Integer.parseInt(levelText.getText().toString()));
+                    character.setLevel(levelText.getText().toString().isEmpty() ? 1 : Integer.parseInt(levelText.getText().toString()));
 
                     if (character.save(getApplicationContext(), game.getName(), round.getName())) finish();
                 }
