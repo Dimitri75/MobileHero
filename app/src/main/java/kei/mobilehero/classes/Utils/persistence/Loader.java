@@ -15,10 +15,10 @@ import kei.mobilehero.classes.general.Round;
  * Created by Dimitri on 15/05/2015.
  */
 public class Loader {
-    private static Loader ourInstance = new Loader();
+    private static Loader INSTANCE = new Loader();
 
     public static Loader getInstance() {
-        return ourInstance;
+        return INSTANCE;
     }
 
     private Loader() {

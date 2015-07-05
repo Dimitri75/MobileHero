@@ -1,15 +1,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kei.mobilehero.activities.character.fragments.CaracteristicFragment"
-    android:background="@drawable/mobile_gobelin">
+    tools:context="kei.mobilehero.activities.character.fragments.EquipmentFragment"
+    android:background="@drawable/mobile_morse">
 
     <kei.mobilehero.custom.widgets.MyCustomButton
         android:background="@drawable/button_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ajouter une caractéristique"
-        android:id="@+id/button_fragmentCaracteristic_caracteristic"
+        android:text="Ajouter un équipement"
+        android:id="@+id/button_fragmentEquipment_equipment"
         android:onClick="buttonOnClick"
         android:textColor="#e1000000"
         android:textSize="16sp"
@@ -21,9 +21,9 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView_caracteristic"
+        android:id="@+id/listView_equipment"
         android:background="@xml/custom_listview"
-        android:layout_below="@+id/button_fragmentCaracteristic_caracteristic"
+        android:layout_below="@+id/button_fragmentEquipment_equipment"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="13dp"/>
 
