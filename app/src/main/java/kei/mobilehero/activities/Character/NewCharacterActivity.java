@@ -1,5 +1,7 @@
 package kei.mobilehero.activities.character;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import kei.mobilehero.R;
@@ -50,6 +53,20 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
         levelText = (MyCustomEditText) findViewById(R.id.editText_characterLevel_new_character);
 
         if ((character = (Character) getIntent().getExtras().get("character")) != null) init();
+
+        Button button = (Button) findViewById(R.id.button_caracteristics_new_character);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                Fragment fragment = fm.findFragmentById(R.id.fragment_caracteristcs_new_character);
+
+                if(fragment.isVisible())
+                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).hide(fragment).commit();
+                else
+                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).show(fragment).commit();
+            }
+        });
     }
 
     /**
