@@ -1,16 +1,30 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kei.mobilehero.activities.character.fragments.CaracteristicFragment">
+    tools:context="kei.mobilehero.activities.character.fragments.CaracteristicFragment"
+    android:background="@drawable/mobile_gobelin">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <kei.mobilehero.custom.widgets.MyCustomButton
+        android:background="@drawable/button_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nouvelle caractéristique"
+        android:id="@+id/button_fragmentCaracteristic_caracteristics"
+        android:onClick="buttonOnClick"
+        android:textColor="#e1000000"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="280dp"
-        android:id="@+id/listView"
-        android:layout_gravity="center" />
+        android:layout_height="wrap_content"
+        android:id="@+id/listView_caracteristics"
+        android:background="@xml/custom_listview"
+        android:layout_below="@+id/button_fragmentCaracteristic_caracteristics"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"/>
 
-</FrameLayout>
+</RelativeLayout>
