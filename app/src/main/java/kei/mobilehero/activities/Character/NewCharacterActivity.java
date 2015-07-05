@@ -1,6 +1,7 @@
 package kei.mobilehero.activities.character;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -10,13 +11,14 @@ import android.view.View;
 import android.widget.EditText;
 
 import kei.mobilehero.R;
+import kei.mobilehero.activities.character.fragments.AttributeFragment.OnFragmentInteractionListener;
 import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.custom.widgets.MyCustomEditText;
 
-public class NewCharacterActivity extends ActionBarActivity {
+public class NewCharacterActivity extends ActionBarActivity implements OnFragmentInteractionListener {
     private Game game;
     private Round round;
     private Character character;
@@ -39,7 +41,7 @@ public class NewCharacterActivity extends ActionBarActivity {
             finish();
         }
 
-        // Instanciate the views
+        // Instantiate the views
         nameText = (EditText) findViewById(R.id.editText_characterName_new_character);
         genderText = (EditText) findViewById(R.id.editText_characterGender_new_character);
         alignmentText = (EditText) findViewById(R.id.editText_characterAlignment_new_character);
@@ -120,5 +122,10 @@ public class NewCharacterActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        Log.i("TEST", uri.toString());
     }
 }

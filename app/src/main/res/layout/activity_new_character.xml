@@ -22,118 +22,22 @@
             android:textSize="@dimen/app_name_size"
             android:textColor="#ffffffff" />
 
-        <kei.mobilehero.custom.widgets.MyCustomEditText
-            android:layout_marginTop="60dp"
-            android:layout_width="85dp"
-            android:layout_height="95dp"
-            android:background="@drawable/level"
-            android:maxLength="4"
-            android:hint="Niveau"
-            android:textSize="20sp"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="#ffffffff"
-            android:textColorHint="#ffffffff"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:id="@+id/editText_characterLevel_new_character"
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="kei.mobilehero.activities.character.fragments.AttributeFragment"
+            android:id="@+id/fragment_caracteristcs_new_character"
             android:layout_below="@+id/label_appName_new_character"
-            android:layout_centerHorizontal="true"
-            android:imeOptions="actionNext"/>
-
-        <EditText
-            android:layout_marginTop="45dp"
-            android:maxLength="50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText_characterName_new_character"
-            android:hint="Nom"
-            android:textColor="#ffffffff"
-            android:textColorHint="#FF9B9B9B"
-            android:gravity="center_horizontal"
-            android:layout_below="@+id/editText_characterLevel_new_character"
-            android:layout_alignLeft="@+id/editText_characterGender_new_character"
-            android:layout_alignStart="@+id/editText_characterGender_new_character"
-            android:layout_alignRight="@+id/editText_characterGender_new_character"
-            android:layout_alignEnd="@+id/editText_characterGender_new_character"
-            android:imeOptions="actionNext"/>
-
-        <EditText
-            android:layout_marginTop="55dp"
-            android:maxLength="50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText_characterGender_new_character"
-            android:hint="Sexe"
-            android:textColor="#ffffffff"
-            android:textColorHint="#FF9B9B9B"
-            android:gravity="center_horizontal"
-            android:layout_below="@+id/editText_characterName_new_character"
-            android:layout_alignLeft="@+id/label_appName_new_character"
-            android:layout_alignStart="@+id/label_appName_new_character"
-            android:layout_alignRight="@+id/label_appName_new_character"
-            android:layout_alignEnd="@+id/label_appName_new_character"
-            android:imeOptions="actionNext"/>
-
-
-        <EditText
-            android:layout_marginTop="55dp"
-            android:maxLength="50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText_characterRace_new_character"
-            android:hint="Race"
-            android:textColor="#ffffffff"
-            android:textColorHint="#FF9B9B9B"
-            android:gravity="center_horizontal"
-            android:layout_below="@+id/editText_characterGender_new_character"
-            android:layout_alignLeft="@+id/editText_characterGender_new_character"
-            android:layout_alignStart="@+id/editText_characterGender_new_character"
-            android:layout_alignRight="@+id/editText_characterGender_new_character"
-            android:layout_alignEnd="@+id/editText_characterGender_new_character"
-            android:imeOptions="actionNext"/>
-
-        <EditText
-            android:layout_marginTop="55dp"
-            android:maxLength="50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText_characterClassName_new_character"
-            android:hint="Classe"
-            android:textColor="#ffffffff"
-            android:textColorHint="#FF9B9B9B"
-            android:gravity="center_horizontal"
-            android:layout_below="@+id/editText_characterRace_new_character"
-            android:layout_alignLeft="@+id/editText_characterGender_new_character"
-            android:layout_alignStart="@+id/editText_characterGender_new_character"
-            android:layout_alignRight="@+id/editText_characterGender_new_character"
-            android:layout_alignEnd="@+id/editText_characterGender_new_character"
-            android:imeOptions="actionNext"/>
-
-        <EditText
-            android:layout_marginTop="55dp"
-            android:maxLength="50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText_characterAlignment_new_character"
-            android:hint="Alignement"
-            android:textColor="#ffffffff"
-            android:textColorHint="#FF9B9B9B"
-            android:gravity="center_horizontal"
-            android:layout_below="@+id/editText_characterClassName_new_character"
-            android:layout_alignRight="@+id/editText_characterClassName_new_character"
-            android:layout_alignEnd="@+id/editText_characterClassName_new_character"
-            android:layout_alignLeft="@+id/editText_characterClassName_new_character"
-            android:layout_alignStart="@+id/editText_characterClassName_new_character"
-            android:imeOptions="actionDone"/>
+            android:layout_centerHorizontal="true" />
 
         <Button
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="21dp"
             android:background="@drawable/caracteristics"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:id="@+id/button_caracteristics_new_character"
             android:onClick="buttonOnClick"
-            android:layout_below="@+id/editText_characterAlignment_new_character"
+            android:layout_below="@+id/fragment_caracteristcs_new_character"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -152,7 +56,7 @@
             android:layout_height="100dp"
             android:id="@+id/button_bag_new_character"
             android:onClick="buttonOnClick"
-            android:layout_alignTop="@+id/button_caracteristics_new_character"
+            android:layout_above="@+id/button_saveCharacter_new_character"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 

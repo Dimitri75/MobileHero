@@ -19,6 +19,7 @@ public class Equipment extends AttributeBase implements Parcelable{
         effects = new ArrayList<>();
     }
 
+
     public Equipment(String name, String description, double value, String equipmentPosition, ArrayList<Effect> impacts){
         super(name, description, value);
         this.equipmentPosition = equipmentPosition;

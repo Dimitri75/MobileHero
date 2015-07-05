@@ -13,12 +13,12 @@ import kei.mobilehero.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CaracteristicFragment.OnFragmentInteractionListener} interface
+ * {@link AttributeFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CaracteristicFragment#newInstance} factory method to
+ * Use the {@link AttributeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CaracteristicFragment extends Fragment {
+public class AttributeFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
@@ -28,15 +28,15 @@ public class CaracteristicFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CaracteristicFragment.
+     * @return A new instance of fragment AttributeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CaracteristicFragment newInstance(String param1, String param2) {
-        CaracteristicFragment fragment = new CaracteristicFragment();
+    public static AttributeFragment newInstance(String param1, String param2) {
+        AttributeFragment fragment = new AttributeFragment();
         return fragment;
     }
 
-    public CaracteristicFragment() {
+    public AttributeFragment() {
         // Required empty public constructor
     }
 
@@ -49,7 +49,7 @@ public class CaracteristicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_caracteristic, container, false);
+        return inflater.inflate(R.layout.fragment_attribute, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
