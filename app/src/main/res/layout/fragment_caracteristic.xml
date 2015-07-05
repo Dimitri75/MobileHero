@@ -1,5 +1,7 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="kei.mobilehero.activities.character.fragments.CaracteristicFragment"
     android:background="@drawable/mobile_gobelin">
@@ -9,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ajouter une caractéristique"
-        android:id="@+id/button_fragmentCaracteristic_caracteristic"
+        android:id="@+id/button_caracteristic_fragment_caracteristic"
         android:onClick="buttonOnClick"
         android:textColor="#e1000000"
         android:textSize="16sp"
@@ -23,7 +25,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/listView_caracteristic"
         android:background="@xml/custom_listview"
-        android:layout_below="@+id/button_fragmentCaracteristic_caracteristic"
+        android:layout_below="@+id/button_caracteristic_fragment_caracteristic"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="13dp"/>
 

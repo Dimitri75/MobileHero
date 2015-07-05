@@ -1,7 +1,5 @@
 package kei.mobilehero.activities.character;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +8,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import kei.mobilehero.R;
@@ -53,20 +50,6 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
         levelText = (MyCustomEditText) findViewById(R.id.editText_characterLevel_new_character);
 
         if ((character = (Character) getIntent().getExtras().get("character")) != null) init();
-
-        Button button = (Button) findViewById(R.id.button_caracteristics_new_character);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fm = getFragmentManager();
-                Fragment fragment = fm.findFragmentById(R.id.fragment_caracteristcs_new_character);
-
-                if(fragment.isVisible())
-                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).hide(fragment).commit();
-                else
-                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).show(fragment).commit();
-            }
-        });
     }
 
     /**
@@ -100,6 +83,33 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
                     if (character.save(getApplicationContext(), game.getName(), round.getName())) finish();
                 }
                 break;
+            /*case R.id.button_caracteristics_new_character:
+                FragmentManager fm = getFragmentManager();
+                Fragment fragment = fm.findFragmentById(R.id.fragment_caracteristic_new_character);
+
+                if(fragment.isVisible())
+                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).hide(fragment).commit();
+                else
+                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).show(fragment).commit();
+                break;
+            case R.id.button_skills_new_character:
+                fm = getFragmentManager();
+                fragment = fm.findFragmentById(R.id.fragment_skill_new_character);
+
+                if(fragment.isVisible())
+                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).hide(fragment).commit();
+                else
+                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).show(fragment).commit();
+                break;
+            case R.id.button_equipment_new_character:
+                fm = getFragmentManager();
+                fragment = fm.findFragmentById(R.id.fragment_equipment_new_character);
+
+                if(fragment.isVisible())
+                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).hide(fragment).commit();
+                else
+                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).show(fragment).commit();
+                break;*/
         }
     }
 

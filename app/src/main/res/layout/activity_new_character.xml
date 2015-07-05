@@ -22,14 +22,6 @@
             android:textSize="@dimen/app_name_size"
             android:textColor="#ffffffff" />
 
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="kei.mobilehero.activities.character.fragments.AttributeFragment"
-            android:id="@+id/fragment_caracteristcs_new_character"
-            android:layout_below="@+id/label_appName_new_character"
-            android:layout_centerHorizontal="true" />
-
         <Button
             android:layout_marginTop="21dp"
             android:background="@drawable/caracteristics"
@@ -37,7 +29,7 @@
             android:layout_height="100dp"
             android:id="@+id/button_caracteristics_new_character"
             android:onClick="buttonOnClick"
-            android:layout_below="@+id/fragment_caracteristcs_new_character"
+            android:layout_below="@+id/fragment_attribute_new_character"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -54,7 +46,7 @@
             android:background="@drawable/bag"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:id="@+id/button_bag_new_character"
+            android:id="@+id/button_equipment_new_character"
             android:onClick="buttonOnClick"
             android:layout_above="@+id/button_saveCharacter_new_character"
             android:layout_alignParentRight="true"
@@ -119,16 +111,48 @@
             android:layout_height="wrap_content"
             android:text="Equipement"
             android:id="@+id/textView_equipment_new_character"
-            android:layout_below="@+id/button_bag_new_character"
+            android:layout_below="@+id/button_equipment_new_character"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/button_bag_new_character"
-            android:layout_alignStart="@+id/button_bag_new_character"
+            android:layout_alignLeft="@+id/button_equipment_new_character"
+            android:layout_alignStart="@+id/button_equipment_new_character"
 
             android:shadowColor="#ffffce86"
             android:shadowDx="1"
             android:shadowDy="0"
             android:shadowRadius="5" />
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="kei.mobilehero.activities.character.fragments.AttributeFragment"
+            android:id="@+id/fragment_attribute_new_character"
+            android:layout_below="@+id/label_appName_new_character"
+            android:layout_centerHorizontal="true" />
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="kei.mobilehero.activities.character.fragments.CaracteristicFragment"
+            android:id="@+id/fragment_caracteristic_new_character"
+            android:layout_below="@+id/button_saveCharacter_new_character"
+            android:layout_centerHorizontal="true" />
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="kei.mobilehero.activities.character.fragments.SkillFragment"
+            android:id="@+id/fragment_skill_new_character"
+            android:layout_below="@+id/button_saveCharacter_new_character"
+            android:layout_centerHorizontal="true" />
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="kei.mobilehero.activities.character.fragments.EquipmentFragment"
+            android:id="@+id/fragment_equipment_new_character"
+            android:layout_below="@+id/button_saveCharacter_new_character"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 </ScrollView>

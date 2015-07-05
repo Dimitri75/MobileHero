@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ajouter une compétence"
-        android:id="@+id/button_fragmentSkill_skill"
+        android:id="@+id/button_skill_fragment_skill"
         android:onClick="buttonOnClick"
         android:textColor="#e1000000"
         android:textSize="16sp"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/listView_equipment"
         android:background="@xml/custom_listview"
-        android:layout_below="@+id/button_fragmentSkill_skill"
+        android:layout_below="@+id/button_skill_fragment_skill"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="13dp"/>
 

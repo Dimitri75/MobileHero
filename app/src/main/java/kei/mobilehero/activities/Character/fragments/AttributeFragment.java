@@ -22,16 +22,7 @@ public class AttributeFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AttributeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AttributeFragment newInstance(String param1, String param2) {
+    public static AttributeFragment newInstance() {
         AttributeFragment fragment = new AttributeFragment();
         return fragment;
     }

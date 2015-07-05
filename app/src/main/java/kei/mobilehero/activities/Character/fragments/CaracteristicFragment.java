@@ -22,16 +22,7 @@ public class CaracteristicFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CaracteristicFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CaracteristicFragment newInstance(String param1, String param2) {
+    public static CaracteristicFragment newInstance() {
         CaracteristicFragment fragment = new CaracteristicFragment();
         return fragment;
     }
@@ -52,7 +43,6 @@ public class CaracteristicFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_caracteristic, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
