@@ -1,33 +1,27 @@
 <resources>
-    <string name="hello_world">Hello world!</string>
     <string name="app_name">MobileHero</string>
 
     <!-- Français -->
-    <string name="title_activity_characters">Gestion personnage</string>
-    <string name="newPersonnage">Nouveau personnage</string>
-
+    <string name="title_activity_games">Gestion des jeux</string>
     <string name="newGame">Nouveau Jeu</string>
-
-    <string name="title_activity_rounds">Gestion des parties</string>
-    <string name="title_activity_new_round">Nouvelle partie</string>
-    <string name="newParty">Nouvelle partie</string>
-    <string name="roundName">Entrez le nom de la partie</string>
 
     <string name="title_activity_new_game">Nouveau jeu</string>
     <string name="gameName">Entrez le nom du jeu</string>
 
-    <string name="caracteristics">Caractéristiques</string>
+    <string name="title_activity_rounds">Gestion des parties</string>
+    <string name="newRound">Nouvelle partie</string>
 
-    <string name="title_activity_new_character">Personnage</string>
+    <string name="title_activity_new_round">Nouvelle partie</string>
+    <string name="roundName">Entrez le nom de la partie</string>
+
+    <string name="title_activity_characters">Gestion des personnages</string>
+    <string name="newPersonnage">Nouveau personnage</string>
+
+    <string name="title_activity_new_character">Nouveau personnage</string>
+    <string name="caracteristics">Caractéristiques</string>
     <string name="skill">Compétences</string>
     <string name="equipment">Equipement</string>
     <string name="save">Sauvegarder</string>
-
-    <string name="action_settings">Lancer les dés</string>
-    <string name="title_activity_dices">Lancer de dé</string>
-    <string name="nbDices">Nombre de dés</string>
-    <string name="nbSides">Nombre de faces</string>
-    <string name="roll">Roll</string>
 
     <string name="level">Niveau</string>
     <string name="name">Nom</string>
@@ -36,12 +30,18 @@
     <string name="className">Classe</string>
     <string name="alignment">Alignement</string>
 
-    <string name="addCaracteristics">Ajouter une caractéristique</string>
+    <string name="addCaracteristic">Ajouter une caractéristique</string>
     <string name="addEquipment">Ajouter un équipement</string>
     <string name="addSkill">Ajouter une compétence</string>
 
+    <string name="title_activity_dices">Lancer de dé</string>
+    <string name="nbDices">Nombre de dés</string>
+    <string name="nbSides">Nombre de faces</string>
+    <string name="roll">Roll</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_settings_dices">Lancer les dés</string>
+
+    <string name="caracteristicName">Entrez le nom de la caractéristique</string>
+    <string name="caracteristicValue">Saisir une valeur pour la caractéristique</string>
 
 </resources>

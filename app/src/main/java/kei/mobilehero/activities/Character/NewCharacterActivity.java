@@ -54,12 +54,18 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
         Fragment fragment_caracteristics = fm.findFragmentById(R.id.fragment_caracteristic_new_character);
         Fragment fragment_skills = fm.findFragmentById(R.id.fragment_skill_new_character);
         Fragment fragment_equipment = fm.findFragmentById(R.id.fragment_equipment_new_character);
+        Fragment fragment_new_caracteristic = fm.findFragmentById(R.id.fragment_new_caracteristic_new_character);
+        Fragment fragment_new_skill = fm.findFragmentById(R.id.fragment_new_skill_new_character);
+        Fragment fragment_new_equipment = fm.findFragmentById(R.id.fragment_new_equipment_new_character);
 
         dictionaryFragments = new HashMap<>();
         dictionaryFragments.put("attribute", fragment_attribute);
         dictionaryFragments.put("caracteristics", fragment_caracteristics);
         dictionaryFragments.put("skills", fragment_skills);
         dictionaryFragments.put("equipment", fragment_equipment);
+        dictionaryFragments.put("new_caracteristic", fragment_new_caracteristic);
+        dictionaryFragments.put("new_skill", fragment_new_skill);
+        dictionaryFragments.put("new_equipment", fragment_new_equipment);
 
         hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
 
@@ -116,6 +122,18 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
             case R.id.button_equipment_new_character:
                 hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
                 showFragmentWithAnimation(dictionaryFragments.get("equipment"));
+                break;
+            case R.id.button_caracteristic_fragment_caracteristic:
+                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                showFragmentWithAnimation(dictionaryFragments.get("new_caracteristic"));
+                break;
+            case R.id.button_skill_fragment_skill:
+                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                showFragmentWithAnimation(dictionaryFragments.get("new_skill"));
+                break;
+            case R.id.button_equipment_fragment_equipment:
+                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                showFragmentWithAnimation(dictionaryFragments.get("new_equipment"));
                 break;
         }
     }
