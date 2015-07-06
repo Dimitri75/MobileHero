@@ -43,7 +43,7 @@
         android:id="@+id/editText_nbSides_dices"
         android:hint="Nombre de faces"
         android:textColor="#ffffffff"
-        android:textColorHint="#ffd6d6d6"
+        android:textColorHint="#ff353535"
         android:width="150dp"
         android:layout_alignTop="@+id/editText_nbDices_dices"
         android:layout_alignParentRight="true"

@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.HashMap;
+
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.fragments.OnFragmentInteractionListener;
 import kei.mobilehero.activities.dice.DicesActivity;
@@ -32,6 +34,9 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
     private EditText classNameText;
     private EditText levelText;
 
+    FragmentManager fm;
+    HashMap<String, Fragment> dictionaryFragments;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,21 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
             Log.v("NewCharacter onCreate()", "Couldn't get the extras.");
             finish();
         }
+
+        // Fragments
+        fm = getFragmentManager();
+        Fragment fragment_attribute = fm.findFragmentById(R.id.fragment_attribute_new_character);
+        Fragment fragment_caracteristics = fm.findFragmentById(R.id.fragment_caracteristic_new_character);
+        Fragment fragment_skills = fm.findFragmentById(R.id.fragment_skill_new_character);
+        Fragment fragment_equipment = fm.findFragmentById(R.id.fragment_equipment_new_character);
+
+        dictionaryFragments = new HashMap<>();
+        dictionaryFragments.put("attribute", fragment_attribute);
+        dictionaryFragments.put("caracteristics", fragment_caracteristics);
+        dictionaryFragments.put("skills", fragment_skills);
+        dictionaryFragments.put("equipment", fragment_equipment);
+
+        hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
 
         // Instantiate the views
         nameText = (EditText) findViewById(R.id.editText_characterName_new_character);
@@ -86,33 +106,31 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
                 }
                 break;
             case R.id.button_caracteristics_new_character:
-                FragmentManager fm = getFragmentManager();
-                Fragment fragment = fm.findFragmentById(R.id.fragment_caracteristic_new_character);
-
-                if(fragment.isVisible())
-                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).hide(fragment).commit();
-                else
-                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).show(fragment).commit();
+                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                showFragmentWithAnimation(dictionaryFragments.get("caracteristics"));
                 break;
             case R.id.button_skills_new_character:
-                fm = getFragmentManager();
-                fragment = fm.findFragmentById(R.id.fragment_skill_new_character);
-
-                if(fragment.isVisible())
-                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).hide(fragment).commit();
-                else
-                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).show(fragment).commit();
+                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                showFragmentWithAnimation(dictionaryFragments.get("skills"));
                 break;
             case R.id.button_equipment_new_character:
-                fm = getFragmentManager();
-                fragment = fm.findFragmentById(R.id.fragment_equipment_new_character);
-
-                if(fragment.isVisible())
-                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).hide(fragment).commit();
-                else
-                    fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).show(fragment).commit();
+                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                showFragmentWithAnimation(dictionaryFragments.get("equipment"));
                 break;
         }
+    }
+
+    public void showFragmentWithAnimation(Fragment fragment){
+        if(fragment.isVisible())
+            fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).hide(fragment).commit();
+        else
+            fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).show(fragment).commit();
+    }
+
+    public void hideFragments(HashMap<String, Fragment> dictionaryFragments, Fragment fragmentNotToHide){
+        for (Fragment fragment : dictionaryFragments.values())
+            if(fragment != fragmentNotToHide)
+                fm.beginTransaction().hide(fragment).commit();
     }
 
     @Override
@@ -149,12 +167,9 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
             Intent i = new Intent(getApplicationContext(), DicesActivity.class);
             startActivity(i);
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-        Log.i("TEST", uri.toString());
-    }
+    public void onFragmentInteraction(Uri uri) {}
 }

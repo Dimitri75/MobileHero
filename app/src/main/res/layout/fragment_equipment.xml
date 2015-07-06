@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kei.mobilehero.activities.character.fragments.EquipmentFragment"
-    android:background="@drawable/mobile_morse">
+    tools:context="kei.mobilehero.activities.character.fragments.EquipmentFragment">
+    <!--android:background="@drawable/mobile_morse"-->
 
     <kei.mobilehero.custom.widgets.MyCustomButton
         android:background="@drawable/button_large"

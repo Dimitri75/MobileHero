@@ -61,7 +61,7 @@
             android:onClick="buttonOnClick"
             android:textColor="#e1000000"
             android:textSize="16sp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="75dp"
             android:layout_below="@+id/button_caracteristics_new_character"
             android:layout_centerHorizontal="true" />
 
@@ -123,6 +123,7 @@
             android:shadowRadius="5" />
 
         <fragment
+            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:name="kei.mobilehero.activities.character.fragments.AttributeFragment"
@@ -131,6 +132,7 @@
             android:layout_centerHorizontal="true" />
 
         <fragment
+            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:name="kei.mobilehero.activities.character.fragments.CaracteristicFragment"
@@ -139,6 +141,7 @@
             android:layout_centerHorizontal="true" />
 
         <fragment
+            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:name="kei.mobilehero.activities.character.fragments.SkillFragment"
@@ -147,6 +150,7 @@
             android:layout_centerHorizontal="true" />
 
         <fragment
+            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:name="kei.mobilehero.activities.character.fragments.EquipmentFragment"
