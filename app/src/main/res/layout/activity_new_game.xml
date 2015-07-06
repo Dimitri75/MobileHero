@@ -32,7 +32,9 @@
             android:layout_alignRight="@+id/label_appName_new_game"
             android:layout_alignEnd="@+id/label_appName_new_game"
             android:layout_alignLeft="@+id/label_appName_new_game"
-            android:layout_alignStart="@+id/label_appName_new_game" />
+            android:layout_alignStart="@+id/label_appName_new_game"
+            android:singleLine="true"
+            android:imeOptions="actionDone" />
 
         <kei.mobilehero.custom.widgets.MyCustomButton
             android:layout_marginTop="45dp"

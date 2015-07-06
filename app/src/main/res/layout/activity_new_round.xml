@@ -34,7 +34,9 @@
             android:layout_alignRight="@+id/label_appName_new_round"
             android:layout_alignEnd="@+id/label_appName_new_round"
             android:layout_alignLeft="@+id/label_appName_new_round"
-            android:layout_alignStart="@+id/label_appName_new_round" />
+            android:layout_alignStart="@+id/label_appName_new_round"
+            android:singleLine="true"
+            android:imeOptions="actionDone" />
 
         <kei.mobilehero.custom.widgets.MyCustomButton
             android:layout_marginTop="45dp"
