@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/editText_roundName_new_round"
-            android:hint="@string/partyName"
+            android:hint="@string/roundName"
             android:textColor="#ffffffff"
             android:textColorHint="#FF9B9B9B"
             android:gravity="center_horizontal"

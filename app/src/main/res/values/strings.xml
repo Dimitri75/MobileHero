@@ -11,33 +11,33 @@
     <string name="title_activity_rounds">Gestion des parties</string>
     <string name="title_activity_new_round">Nouvelle partie</string>
     <string name="newParty">Nouvelle partie</string>
-    <string name="partyName">Entrez le nom de la partie</string>
+    <string name="roundName">Entrez le nom de la partie</string>
 
     <string name="title_activity_new_game">Nouveau jeu</string>
-    <string name="nomJeu">Entrez le nom du jeu</string>
+    <string name="gameName">Entrez le nom du jeu</string>
 
-    <string name="caracteristiques">Caractéristiques</string>
+    <string name="caracteristics">Caractéristiques</string>
 
     <string name="title_activity_new_character">Personnage</string>
     <string name="skill">Compétences</string>
-    <string name="equipement">Equipement</string>
+    <string name="equipment">Equipement</string>
     <string name="save">Sauvegarder</string>
 
     <string name="action_settings">Lancer les dés</string>
     <string name="title_activity_dices">Lancer de dé</string>
-    <string name="nbDe">Nombre de dés</string>
-    <string name="nbFace">Nombre de faces</string>
+    <string name="nbDices">Nombre de dés</string>
+    <string name="nbSides">Nombre de faces</string>
     <string name="roll">Roll</string>
 
     <string name="level">Niveau</string>
     <string name="name">Nom</string>
-    <string name="sexe">Sexe</string>
+    <string name="sex">Sexe</string>
     <string name="race">Race</string>
-    <string name="classe">Classe</string>
-    <string name="alignement">Alignement</string>
+    <string name="className">Classe</string>
+    <string name="alignment">Alignement</string>
 
-    <string name="addCaracteristique">Ajouter une caractéristique</string>
-    <string name="addEquipement">Ajouter un équipement</string>
+    <string name="addCaracteristics">Ajouter une caractéristique</string>
+    <string name="addEquipment">Ajouter un équipement</string>
     <string name="addSkill">Ajouter une compétence</string>
 
 
