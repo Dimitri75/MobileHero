@@ -1,5 +1,7 @@
 package kei.mobilehero.activities.character;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,7 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import kei.mobilehero.R;
-import kei.mobilehero.activities.character.fragments.AttributeFragment.OnFragmentInteractionListener;
+import kei.mobilehero.activities.character.fragments.OnFragmentInteractionListener;
 import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
@@ -83,7 +85,7 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
                     if (character.save(getApplicationContext(), game.getName(), round.getName())) finish();
                 }
                 break;
-            /*case R.id.button_caracteristics_new_character:
+            case R.id.button_caracteristics_new_character:
                 FragmentManager fm = getFragmentManager();
                 Fragment fragment = fm.findFragmentById(R.id.fragment_caracteristic_new_character);
 
@@ -109,7 +111,7 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
                     fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).hide(fragment).commit();
                 else
                     fm.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).show(fragment).commit();
-                break;*/
+                break;
         }
     }
 
