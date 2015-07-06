@@ -34,7 +34,7 @@
     <string name="addEquipment">Ajouter un équipement</string>
     <string name="addSkill">Ajouter une compétence</string>
 
-    <string name="title_activity_dices">Lancer de dé</string>
+    <string name="title_activity_dices">Lancer de dés</string>
     <string name="nbDices">Nombre de dés</string>
     <string name="nbSides">Nombre de faces</string>
     <string name="roll">Roll</string>
