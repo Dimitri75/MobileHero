@@ -17,7 +17,7 @@
         android:background="@drawable/button_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nouveau Jeu"
+        android:text="@string/newGame"
         android:id="@+id/button_newGame_games"
         android:layout_below="@+id/label_appName_games"
         android:layout_marginTop="25dp"

@@ -8,7 +8,7 @@
         android:background="@drawable/button_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ajouter une compétence"
+        android:text="@string/addSkill"
         android:id="@+id/button_skill_fragment_skill"
         android:onClick="buttonOnClick"
         android:textColor="#e1000000"

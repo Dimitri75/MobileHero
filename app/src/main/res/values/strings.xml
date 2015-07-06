@@ -1,14 +1,45 @@
 <resources>
-    <string name="app_name">MobileHero</string>
-    <string name="action_settings">Lancer les dés</string>
-    <string name="title_activity_new_game">NewGameActivity</string>
-    <string name="title_activity_dices">DicesActivity</string>
-
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_rounds">RoundsActivity</string>
-    <string name="title_activity_new_round">NewRoundActivity</string>
-    <string name="title_activity_characters">CharactersActivity</string>
-    <string name="title_activity_new_character">NewCharacterActivity</string>
+    <string name="app_name">MobileHero</string>
+
+    <!-- Français -->
+    <string name="title_activity_characters">Gestion personnage</string>
+    <string name="newPersonnage">Nouveau personnage</string>
+
+    <string name="newGame">Nouveau Jeu</string>
+
+    <string name="title_activity_rounds">Gestion des parties</string>
+    <string name="title_activity_new_round">Nouvelle partie</string>
+    <string name="newParty">Nouvelle partie</string>
+    <string name="partyName">Entrez le nom de la partie</string>
+
+    <string name="title_activity_new_game">Nouveau jeu</string>
+    <string name="nomJeu">Entrez le nom du jeu</string>
+
+    <string name="caracteristiques">Caractéristiques</string>
+
+    <string name="title_activity_new_character">Personnage</string>
+    <string name="skill">Compétences</string>
+    <string name="equipement">Equipement</string>
+    <string name="save">Sauvegarder</string>
+
+    <string name="action_settings">Lancer les dés</string>
+    <string name="title_activity_dices">Lancer de dé</string>
+    <string name="nbDe">Nombre de dés</string>
+    <string name="nbFace">Nombre de faces</string>
+    <string name="roll">Roll</string>
+
+    <string name="level">Niveau</string>
+    <string name="name">Nom</string>
+    <string name="sexe">Sexe</string>
+    <string name="race">Race</string>
+    <string name="classe">Classe</string>
+    <string name="alignement">Alignement</string>
+
+    <string name="addCaracteristique">Ajouter une caractéristique</string>
+    <string name="addEquipement">Ajouter un équipement</string>
+    <string name="addSkill">Ajouter une compétence</string>
+
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
