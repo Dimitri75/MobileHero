@@ -151,6 +151,8 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
                 fm.beginTransaction().hide(fragment).commit();
     }
 
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
