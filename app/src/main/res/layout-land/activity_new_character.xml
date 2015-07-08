@@ -2,14 +2,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context="kei.mobilehero.activities.character.NewCharacterActivity">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="155dp"
-        android:layout_height="match_parent"
-        android:background="#ff1f1f1f">>
+        android:layout_height="fill_parent"
+        android:background="#ff1f1f1f">
 
         <kei.mobilehero.custom.widgets.MyCustomTextView
             android:text="@string/app_name"
@@ -69,7 +69,7 @@
         android:layout_height="fill_parent"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:background="@drawable/mobile_pirates_land">
+        android:background="@drawable/mobile_pirates">
 
         <RelativeLayout
             android:layout_width="fill_parent"

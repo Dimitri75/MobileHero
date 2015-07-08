@@ -41,4 +41,5 @@
             android:label="@string/title_activity_dices" >
         </activity>
     </application>
+
 </manifest>

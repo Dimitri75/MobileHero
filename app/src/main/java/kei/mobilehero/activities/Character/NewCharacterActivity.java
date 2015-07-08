@@ -169,7 +169,7 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
 
     public boolean isLandscape(){
         return (getWindowManager().getDefaultDisplay().getRotation() == Surface.ROTATION_90 ||
-                getWindowManager().getDefaultDisplay().getRotation() == Surface.ROTATION_180);
+                getWindowManager().getDefaultDisplay().getRotation() == Surface.ROTATION_270);
     }
 
     @Override
