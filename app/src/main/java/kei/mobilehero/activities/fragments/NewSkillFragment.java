@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.character.fragments;
+package kei.mobilehero.activities.fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -13,21 +13,21 @@ import kei.mobilehero.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NewCaracteristicFragment.OnFragmentInteractionListener} interface
+ * {@link NewSkillFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NewCaracteristicFragment#newInstance} factory method to
+ * Use the {@link NewSkillFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewCaracteristicFragment extends Fragment {
+public class NewSkillFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public static NewCaracteristicFragment newInstance() {
-        NewCaracteristicFragment fragment = new NewCaracteristicFragment();
+    public static NewSkillFragment newInstance() {
+        NewSkillFragment fragment = new NewSkillFragment();
         return fragment;
     }
 
-    public NewCaracteristicFragment() {
+    public NewSkillFragment() {
         // Required empty public constructor
     }
 
@@ -40,10 +40,10 @@ public class NewCaracteristicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_caracteristic, container, false);
+        return inflater.inflate(R.layout.fragment_new_skill, container, false);
     }
 
-    // TODO: Rename method update argument and hook method into UI event
+    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -66,4 +66,5 @@ public class NewCaracteristicFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 }

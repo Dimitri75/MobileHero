@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.character.fragments;
+package kei.mobilehero.activities.fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -13,34 +13,53 @@ import kei.mobilehero.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NewEquipmentFragment.OnFragmentInteractionListener} interface
+ * {@link DicesResultFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NewEquipmentFragment#newInstance} factory method to
+ * Use the {@link DicesResultFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewEquipmentFragment extends Fragment {
+public class DicesResultFragment extends Fragment {
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
 
     private OnFragmentInteractionListener mListener;
 
-    public static NewEquipmentFragment newInstance() {
-        NewEquipmentFragment fragment = new NewEquipmentFragment();
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @return A new instance of fragment DicesResultFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static DicesResultFragment newInstance(String param1) {
+        DicesResultFragment fragment = new DicesResultFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        fragment.setArguments(args);
         return fragment;
     }
 
-    public NewEquipmentFragment() {
+    public DicesResultFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_equipment, container, false);
+        return inflater.inflate(R.layout.fragment_dices_result, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

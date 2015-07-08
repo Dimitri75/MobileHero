@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.character.fragments;
+package kei.mobilehero.activities.fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -13,21 +13,21 @@ import kei.mobilehero.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NewSkillFragment.OnFragmentInteractionListener} interface
+ * {@link NewEquipmentFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NewSkillFragment#newInstance} factory method to
+ * Use the {@link NewEquipmentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewSkillFragment extends Fragment {
+public class NewEquipmentFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public static NewSkillFragment newInstance() {
-        NewSkillFragment fragment = new NewSkillFragment();
+    public static NewEquipmentFragment newInstance() {
+        NewEquipmentFragment fragment = new NewEquipmentFragment();
         return fragment;
     }
 
-    public NewSkillFragment() {
+    public NewEquipmentFragment() {
         // Required empty public constructor
     }
 
@@ -40,7 +40,7 @@ public class NewSkillFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_skill, container, false);
+        return inflater.inflate(R.layout.fragment_new_equipment, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -66,5 +66,4 @@ public class NewSkillFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 }

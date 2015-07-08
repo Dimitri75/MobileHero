@@ -3,7 +3,6 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="kei.mobilehero.activities.dice.DicesActivity"
     android:background="@drawable/mobile_naxx">
 
@@ -65,31 +64,14 @@
         android:textStyle="bold"
         android:singleLine="false" />
 
-
-    <!--
-        android:background="@drawable/oval_button"
-
-        <ImageButton
-            android:background="@drawable/dice"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:text="Roll"
-            android:textSize="20dp"
-            android:id="@+id/button_roll_dices"
-            android:layout_below="@+id/editText_nbDices_dices"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="45dp"
-            android:onClick="buttonOnClick"/>-->
-
-        <!--<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/result_dices"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:textSize="35dp"
-            android:layout_below="@+id/button_roll_dices"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="45dp" />-->
+    <!-- Add the fragment programatically to allow parameters-->
+    <!--<fragment
+        android:layout_marginTop="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="kei.mobilehero.activities.fragments.DicesResultFragment"
+        android:id="@+id/fragment_result_dices_dices"
+        android:layout_below="@+id/button_roll_dices"
+        android:layout_centerHorizontal="true" />-->
 
 </RelativeLayout>

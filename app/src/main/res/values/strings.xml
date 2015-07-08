@@ -42,6 +42,9 @@
     <string name="action_settings_dices">Lancer les dés</string>
 
     <string name="caracteristicName">Entrez le nom de la caractéristique</string>
-    <string name="caracteristicValue">Saisir une valeur pour la caractéristique</string>
+    <string name="caracteristicValue">Saisir une valeur</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

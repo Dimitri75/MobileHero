@@ -9,13 +9,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Surface;
 import android.view.View;
 import android.widget.EditText;
 
 import java.util.HashMap;
 
 import kei.mobilehero.R;
-import kei.mobilehero.activities.character.fragments.OnFragmentInteractionListener;
+import kei.mobilehero.activities.fragments.OnFragmentInteractionListener;
 import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
@@ -112,29 +113,44 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
                 }
                 break;
             case R.id.button_caracteristics_new_character:
-                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                if (isLandscape()) hideFragments(dictionaryFragments, null);
+                else hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+
                 showFragmentWithAnimation(dictionaryFragments.get("caracteristics"));
                 break;
             case R.id.button_skills_new_character:
-                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                if (isLandscape()) hideFragments(dictionaryFragments, null);
+                else hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+
                 showFragmentWithAnimation(dictionaryFragments.get("skills"));
                 break;
             case R.id.button_equipment_new_character:
-                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                if (isLandscape()) hideFragments(dictionaryFragments, null);
+                else hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+
                 showFragmentWithAnimation(dictionaryFragments.get("equipment"));
                 break;
             case R.id.button_caracteristic_fragment_caracteristic:
-                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                if (isLandscape()) hideFragments(dictionaryFragments, null);
+                else hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+
                 showFragmentWithAnimation(dictionaryFragments.get("new_caracteristic"));
                 break;
             case R.id.button_skill_fragment_skill:
-                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                if (isLandscape()) hideFragments(dictionaryFragments, null);
+                else hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+
                 showFragmentWithAnimation(dictionaryFragments.get("new_skill"));
                 break;
             case R.id.button_equipment_fragment_equipment:
-                hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+                if (isLandscape()) hideFragments(dictionaryFragments, null);
+                else hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
+
                 showFragmentWithAnimation(dictionaryFragments.get("new_equipment"));
                 break;
+            case R.id.button_attributes_new_character:
+                hideFragments(dictionaryFragments, null);
+                showFragmentWithAnimation(dictionaryFragments.get("attribute"));
         }
     }
 
@@ -151,7 +167,10 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
                 fm.beginTransaction().hide(fragment).commit();
     }
 
-
+    public boolean isLandscape(){
+        return (getWindowManager().getDefaultDisplay().getRotation() == Surface.ROTATION_90 ||
+                getWindowManager().getDefaultDisplay().getRotation() == Surface.ROTATION_180);
+    }
 
     @Override
     public void onBackPressed() {

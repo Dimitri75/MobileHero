@@ -1,15 +1,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="kei.mobilehero.activities.character.fragments.NewCaracteristicFragment">
+    tools:context="kei.mobilehero.activities.fragments.NewCaracteristicFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@xml/radius"
+        android:id="@+id/relativeLayout2_fragment_new_caracteristic">
 
     <EditText
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:maxLength="50"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText_caracteristicName_new_caracteristic"
@@ -20,10 +24,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:singleLine="true"
+        android:imeOptions="actionNext"/>
 
     <EditText
-        android:layout_marginTop="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="60dp"
         android:maxLength="4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,10 +48,13 @@
         android:layout_alignParentStart="true"
         android:gravity="center"
         android:layout_alignRight="@+id/editText_caracteristicName_new_caracteristic"
-        android:layout_alignEnd="@+id/editText_caracteristicName_new_caracteristic" />
+        android:layout_alignEnd="@+id/editText_caracteristicName_new_caracteristic"
+        android:singleLine="true"
+        android:imeOptions="actionDone"/>
+
+    </RelativeLayout>
 
     <kei.mobilehero.custom.widgets.MyCustomButton
-        android:layout_marginTop="60dp"
         android:background="@drawable/button_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,10 +63,11 @@
         android:onClick="buttonOnClick"
         android:textColor="#e1000000"
         android:textSize="16sp"
-        android:layout_below="@+id/editText_caracteristicValue_new_caracteristic"
-        android:layout_alignLeft="@+id/editText_caracteristicValue_new_caracteristic"
-        android:layout_alignStart="@+id/editText_caracteristicValue_new_caracteristic"
-        android:layout_alignRight="@+id/editText_caracteristicValue_new_caracteristic"
-        android:layout_alignEnd="@+id/editText_caracteristicValue_new_caracteristic" />
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/relativeLayout2_fragment_new_caracteristic"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

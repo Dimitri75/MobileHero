@@ -1,14 +1,12 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kei.mobilehero.activities.fragments.NewEquipmentFragment"
-    android:background="#ff6799ff">
+    tools:context="kei.mobilehero.activities.fragments.DicesResultFragment">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="EQUIPMENT"
-        android:id="@+id/textView"
-        android:layout_gravity="center" />
+        android:id="@+id/listView_dices_result"
+        android:background="@xml/custom_listview"/>
+
 </FrameLayout>

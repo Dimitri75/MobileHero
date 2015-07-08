@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.character.fragments;
+package kei.mobilehero.activities.fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -13,21 +13,23 @@ import kei.mobilehero.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CaracteristicFragment.OnFragmentInteractionListener} interface
+ * {@link SkillFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CaracteristicFragment#newInstance} factory method to
+ * Use the {@link SkillFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CaracteristicFragment extends Fragment {
+public class SkillFragment extends Fragment {
+
 
     private OnFragmentInteractionListener mListener;
 
-    public static CaracteristicFragment newInstance() {
-        CaracteristicFragment fragment = new CaracteristicFragment();
+
+    public static SkillFragment newInstance() {
+        SkillFragment fragment = new SkillFragment();
         return fragment;
     }
 
-    public CaracteristicFragment() {
+    public SkillFragment() {
         // Required empty public constructor
     }
 
@@ -40,7 +42,7 @@ public class CaracteristicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_caracteristic, container, false);
+        return inflater.inflate(R.layout.fragment_skill, container, false);
     }
 
     public void onButtonPressed(Uri uri) {

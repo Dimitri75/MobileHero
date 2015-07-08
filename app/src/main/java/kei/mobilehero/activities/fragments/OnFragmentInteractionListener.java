@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.character.fragments;
+package kei.mobilehero.activities.fragments;
 
 import android.net.Uri;
 
