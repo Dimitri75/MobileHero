@@ -72,10 +72,6 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
         dictionaryFragments.put("new_skill", fragment_new_skill);
         dictionaryFragments.put("new_equipment", fragment_new_equipment);
 
-        for(ContentProviderListener listener : contentProviderListeners) {
-            listener.onAvailableData();
-        }
-
         hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
 
         // Instantiate the views
@@ -86,7 +82,15 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
         classNameText = (EditText) findViewById(R.id.editText_characterClassName_new_character);
         levelText = (MyCustomEditText) findViewById(R.id.editText_characterLevel_new_character);
 
-        if ((character = (Character) getIntent().getExtras().get("character")) != null) init();
+        if ((character = (Character) getIntent().getExtras().get("character")) != null)
+            init();
+        else
+            character = new Character("");
+
+        // Signal that data is available
+        for(ContentProviderListener listener : contentProviderListeners) {
+            listener.onAvailableData();
+        }
     }
 
     /**
@@ -106,10 +110,6 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
             case R.id.button_saveCharacter_new_character:
                 String characterName;
                 if (!(characterName = nameText.getText().toString()).isEmpty()){
-                    if (character == null){
-                        character = new Character(characterName);
-                    }
-
                     character.setName(characterName);
                     character.setGender(genderText.getText().toString());
                     character.setAlignment(alignmentText.getText().toString());

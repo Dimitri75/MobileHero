@@ -10,30 +10,10 @@ import android.view.ViewGroup;
 
 import kei.mobilehero.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link EquipmentFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link EquipmentFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class EquipmentFragment extends Fragment {
-
-    private OnFragmentInteractionListener mListener;
-
-    public static EquipmentFragment newInstance() {
-        EquipmentFragment fragment = new EquipmentFragment();
-        return fragment;
-    }
+public class EquipmentFragment extends FragmentBase {
 
     public EquipmentFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -43,27 +23,8 @@ public class EquipmentFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_equipment, container, false);
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+    public void onAvailableData() {
+        // TODO
     }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
 }
