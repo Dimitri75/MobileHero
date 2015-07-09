@@ -141,7 +141,6 @@
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:id="@+id/button_saveCharacter_new_character"
-        android:onClick="buttonOnClick"
         android:textColor="#e1000000"
         android:textSize="16sp"
         android:layout_marginTop="75dp"

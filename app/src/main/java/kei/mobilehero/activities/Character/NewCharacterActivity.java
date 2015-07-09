@@ -11,11 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Surface;
 import android.view.View;
-import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.fragments.ContentProvider;
@@ -24,19 +22,11 @@ import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
-import kei.mobilehero.custom.widgets.MyCustomEditText;
 
 public class NewCharacterActivity extends ActionBarActivity implements OnFragmentInteractionListener, ContentProvider {
     private Game game;
     private Round round;
     private Character character;
-
-    private EditText nameText;
-    private EditText genderText;
-    private EditText alignmentText;
-    private EditText raceText;
-    private EditText classNameText;
-    private EditText levelText;
 
     FragmentManager fm;
     HashMap<String, Fragment> dictionaryFragments;
@@ -74,17 +64,7 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
 
         hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
 
-        // Instantiate the views
-        nameText = (EditText) findViewById(R.id.editText_characterName_new_character);
-        genderText = (EditText) findViewById(R.id.editText_characterGender_new_character);
-        alignmentText = (EditText) findViewById(R.id.editText_characterAlignment_new_character);
-        raceText = (EditText) findViewById(R.id.editText_characterRace_new_character);
-        classNameText = (EditText) findViewById(R.id.editText_characterClassName_new_character);
-        levelText = (MyCustomEditText) findViewById(R.id.editText_characterLevel_new_character);
-
-        if ((character = (Character) getIntent().getExtras().get("character")) != null)
-            init();
-        else
+        if (!((character = (Character) getIntent().getExtras().get("character")) != null))
             character = new Character("");
 
         // Signal that data is available
@@ -93,33 +73,8 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
         }
     }
 
-    /**
-     * Charge les donnees du personnage
-     */
-    public void init(){
-        nameText.setText(character.getName());
-        genderText.setText(character.getGender());
-        alignmentText.setText(character.getAlignment());
-        raceText.setText(character.getRace());
-        classNameText.setText(character.getClassName());
-        levelText.setText(String.valueOf(character.getLevel()));
-    }
-
     public void buttonOnClick(View v) {
         switch(v.getId()){
-            case R.id.button_saveCharacter_new_character:
-                String characterName;
-                if (!(characterName = nameText.getText().toString()).isEmpty()){
-                    character.setName(characterName);
-                    character.setGender(genderText.getText().toString());
-                    character.setAlignment(alignmentText.getText().toString());
-                    character.setRace(raceText.getText().toString());
-                    character.setClassName(classNameText.getText().toString());
-                    character.setLevel(levelText.getText().toString().isEmpty() ? 1 : Integer.parseInt(levelText.getText().toString()));
-
-                    if (character.save(getApplicationContext(), game.getName(), round.getName())) finish();
-                }
-                break;
             case R.id.button_caracteristics_new_character:
                 if (isLandscape()) hideFragments(dictionaryFragments, null);
                 else hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
