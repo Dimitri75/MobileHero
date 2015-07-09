@@ -1,17 +1,21 @@
 package kei.mobilehero.activities.fragments;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import kei.mobilehero.R;
+import kei.mobilehero.classes.general.Game;
+import kei.mobilehero.classes.general.Round;
 
-public class CaracteristicFragment extends FragmentBase {
+public class CaracteristicFragment extends FragmentBase implements OnClickListener{
+    View v;
+    private Game game;
+    private Round round;
+    private kei.mobilehero.classes.general.Character character;
 
     public CaracteristicFragment() {
         // Required empty public constructor
@@ -21,14 +25,43 @@ public class CaracteristicFragment extends FragmentBase {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_caracteristic, container, false);
+        v = inflater.inflate(R.layout.fragment_caracteristic, container, false);
+
+        // Instantiate the views
+        Button newCaracteristic = (Button) v.findViewById(R.id.button_caracteristic_fragment_caracteristic);
+
+        newCaracteristic.setOnClickListener(this);
+
+        return v;
     }
 
     @Override
     public void onAvailableData() {
-        // TODO : init view
-        Log.i("TEST", contentProvider.getGame().getName());
-        Log.i("TEST", contentProvider.getRound().getName());
-        Log.i("TEST", contentProvider.getCharacter().getName());
+        game = contentProvider.getGame();
+        round = contentProvider.getRound();
+        character = contentProvider.getCharacter();
+
+        init();
+    }
+
+    public void init(){
+        /*if (character.getCaracteristics().isEmpty()) return;
+
+        ArrayAdapter<Caracteristic> myAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                character.getCaracteristics().values());
+
+        ListView listView = (ListView) v.findViewById(R.id.listView_caracteristic);
+        listView.setAdapter(myAdapter);*/
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_caracteristic_fragment_caracteristic:
+
+                break;
+        }
     }
 }

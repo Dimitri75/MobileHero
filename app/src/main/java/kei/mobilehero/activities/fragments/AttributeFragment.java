@@ -3,6 +3,7 @@ package kei.mobilehero.activities.fragments;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +13,7 @@ import kei.mobilehero.classes.general.*;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.custom.widgets.MyCustomEditText;
 
-public class AttributeFragment extends FragmentBase implements View.OnClickListener {
+public class AttributeFragment extends FragmentBase implements OnClickListener {
 
     private Game game;
     private Round round;
@@ -36,13 +37,13 @@ public class AttributeFragment extends FragmentBase implements View.OnClickListe
         View v = inflater.inflate(R.layout.fragment_attribute, container, false);
 
         // Instantiate the views
-        nameText = (EditText) v.findViewById(R.id.editText_characterName_new_character);
-        genderText = (EditText) v.findViewById(R.id.editText_characterGender_new_character);
-        alignmentText = (EditText) v.findViewById(R.id.editText_characterAlignment_new_character);
-        raceText = (EditText) v.findViewById(R.id.editText_characterRace_new_character);
-        classNameText = (EditText) v.findViewById(R.id.editText_characterClassName_new_character);
-        levelText = (MyCustomEditText) v.findViewById(R.id.editText_characterLevel_new_character);
-        Button saveButton = (Button) v.findViewById(R.id.button_saveCharacter_new_character);
+        nameText = (EditText) v.findViewById(R.id.editText_characterName_fragment_attribute);
+        genderText = (EditText) v.findViewById(R.id.editText_characterGender_fragment_attribute);
+        alignmentText = (EditText) v.findViewById(R.id.editText_characterAlignment_fragment_attribute);
+        raceText = (EditText) v.findViewById(R.id.editText_characterRace_fragment_attribute);
+        classNameText = (EditText) v.findViewById(R.id.editText_characterClassName_fragment_attribute);
+        levelText = (MyCustomEditText) v.findViewById(R.id.editText_characterLevel_fragment_attribute);
+        Button saveButton = (Button) v.findViewById(R.id.button_saveCharacter_fragment_attribute);
 
         saveButton.setOnClickListener(this);
 
@@ -71,7 +72,7 @@ public class AttributeFragment extends FragmentBase implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_saveCharacter_new_character:
+            case R.id.button_saveCharacter_fragment_attribute:
                 String characterName;
                 if (!(characterName = nameText.getText().toString()).isEmpty()) {
                     character.setName(characterName);
@@ -79,7 +80,7 @@ public class AttributeFragment extends FragmentBase implements View.OnClickListe
                     character.setAlignment(alignmentText.getText().toString());
                     character.setRace(raceText.getText().toString());
                     character.setClassName(classNameText.getText().toString());
-                    character.setLevel(levelText.getText().toString().isEmpty() ? 1 : Integer.parseInt(levelText.getText().toString()));
+                    character.setLevel(levelText.getText().toString().isEmpty() ? 0 : Integer.parseInt(levelText.getText().toString()));
 
                     // And save
                     if(character.save(getActivity().getApplicationContext(), game.getName(), round.getName()))

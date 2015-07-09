@@ -1,16 +1,20 @@
 package kei.mobilehero.activities.fragments;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import kei.mobilehero.R;
+import kei.mobilehero.classes.general.Game;
+import kei.mobilehero.classes.general.Round;
 
-public class NewSkillFragment extends Fragment implements ContentProvider.ContentProviderListener {
+public class NewSkillFragment extends FragmentBase implements OnClickListener{
+    View v;
+    private Game game;
+    private Round round;
+    private kei.mobilehero.classes.general.Character character;
 
     public NewSkillFragment() {
         // Required empty public constructor
@@ -20,11 +24,33 @@ public class NewSkillFragment extends Fragment implements ContentProvider.Conten
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_skill, container, false);
+        v = inflater.inflate(R.layout.fragment_new_skill, container, false);
+
+        /*// Instantiate the views
+        Button newCaracteristic = (Button) v.findViewById(R.id.button_saveSkill_fragment_new_skill);
+
+        newCaracteristic.setOnClickListener(this);*/
+
+        return v;
     }
 
     @Override
     public void onAvailableData() {
-        // TODO
+        game = contentProvider.getGame();
+        round = contentProvider.getRound();
+        character = contentProvider.getCharacter();
+
+        init();
+    }
+
+    public void init(){}
+
+    @Override
+    public void onClick(View v) {
+        /*switch (v.getId()) {
+            case R.id.button_saveSkill_fragment_new_skill:
+                // TODO
+                break;
+        }*/
     }
 }

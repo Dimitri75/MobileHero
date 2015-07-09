@@ -39,7 +39,7 @@
             android:layout_height="100dp"
             android:id="@+id/button_skills_new_character"
             android:onClick="buttonOnClick"
-            android:layout_above="@+id/button_saveCharacter_new_character"
+            android:layout_above="@+id/button_saveCharacter_fragment_attribute"
             android:layout_centerHorizontal="true" />
 
         <Button
@@ -48,7 +48,7 @@
             android:layout_height="100dp"
             android:id="@+id/button_equipment_new_character"
             android:onClick="buttonOnClick"
-            android:layout_above="@+id/button_saveCharacter_new_character"
+            android:layout_above="@+id/button_saveCharacter_fragment_attribute"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save"
-            android:id="@+id/button_saveCharacter_new_character"
+            android:id="@+id/button_saveCharacter_fragment_attribute"
             android:onClick="buttonOnClick"
             android:textColor="#e1000000"
             android:textSize="16sp"
@@ -93,8 +93,8 @@
             android:text="@string/skill"
             android:id="@+id/textView_skills_new_character"
             android:layout_below="@+id/button_skills_new_character"
-            android:layout_alignRight="@+id/editText_characterLevel_new_character"
-            android:layout_alignEnd="@+id/editText_characterLevel_new_character"
+            android:layout_alignRight="@+id/editText_characterLevel_fragment_attribute"
+            android:layout_alignEnd="@+id/editText_characterLevel_fragment_attribute"
             android:layout_alignLeft="@+id/button_skills_new_character"
             android:layout_alignStart="@+id/button_skills_new_character"
 
@@ -138,7 +138,7 @@
             android:layout_height="match_parent"
             android:name="kei.mobilehero.activities.fragments.CaracteristicFragment"
             android:id="@+id/fragment_caracteristic_new_character"
-            android:layout_below="@+id/button_saveCharacter_new_character"
+            android:layout_below="@+id/button_saveCharacter_fragment_attribute"
             android:layout_centerHorizontal="true" />
 
         <fragment
@@ -147,7 +147,7 @@
             android:layout_height="match_parent"
             android:name="kei.mobilehero.activities.fragments.SkillFragment"
             android:id="@+id/fragment_skill_new_character"
-            android:layout_below="@+id/button_saveCharacter_new_character"
+            android:layout_below="@+id/button_saveCharacter_fragment_attribute"
             android:layout_centerHorizontal="true" />
 
         <fragment
@@ -156,7 +156,7 @@
             android:layout_height="match_parent"
             android:name="kei.mobilehero.activities.fragments.EquipmentFragment"
             android:id="@+id/fragment_equipment_new_character"
-            android:layout_below="@+id/button_saveCharacter_new_character"
+            android:layout_below="@+id/button_saveCharacter_fragment_attribute"
             android:layout_centerHorizontal="true" />
 
         <!-- NEW ATTRIBUTES -->
@@ -166,7 +166,7 @@
             android:layout_height="match_parent"
             android:name="kei.mobilehero.activities.fragments.NewCaracteristicFragment"
             android:id="@+id/fragment_new_caracteristic_new_character"
-            android:layout_below="@+id/button_saveCharacter_new_character"
+            android:layout_below="@+id/button_saveCharacter_fragment_attribute"
             android:layout_centerHorizontal="true" />
 
         <fragment
@@ -175,7 +175,7 @@
             android:layout_height="match_parent"
             android:name="kei.mobilehero.activities.fragments.NewSkillFragment"
             android:id="@+id/fragment_new_skill_new_character"
-            android:layout_below="@+id/button_saveCharacter_new_character"
+            android:layout_below="@+id/button_saveCharacter_fragment_attribute"
             android:layout_centerHorizontal="true" />
 
         <fragment
@@ -184,7 +184,7 @@
             android:layout_height="match_parent"
             android:name="kei.mobilehero.activities.fragments.NewEquipmentFragment"
             android:id="@+id/fragment_new_equipment_new_character"
-            android:layout_below="@+id/button_saveCharacter_new_character"
+            android:layout_below="@+id/button_saveCharacter_fragment_attribute"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>

@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -31,9 +30,9 @@ public class Character implements Parcelable{
     private String className;
     private String picture;
     private int level;
-    private ArrayList<Skill> skills;
-    private ArrayList<Caracteristic> caracteristics;
-    private ArrayList<Equipment> equipments;
+    private HashMap<String, Skill> skills;
+    private HashMap<String, Caracteristic> caracteristics;
+    private HashMap<String, Equipment> equipments;
 
     public Character(String name){
         this.id = UUID.randomUUID().toString();
@@ -45,9 +44,9 @@ public class Character implements Parcelable{
         this.picture = "";
         this.level = 0;
 
-        skills = new ArrayList<>();
-        caracteristics = new ArrayList<>();
-        equipments = new ArrayList<>();
+        skills = new HashMap<>();
+        caracteristics = new HashMap<>();
+        equipments = new HashMap<>();
     }
 
     public String getId() {
@@ -114,37 +113,37 @@ public class Character implements Parcelable{
         this.level = level;
     }
 
-    public ArrayList<Skill> getSkills() {
+    public HashMap<String, Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(ArrayList<Skill> skills) {
+    public void setSkills(HashMap<String, Skill> skills) {
         this.skills = skills;
     }
 
-    public ArrayList<Caracteristic> getCaracteristics() {
+    public HashMap<String, Caracteristic> getCaracteristics() {
         return caracteristics;
     }
 
-    public void setCaracteristics(ArrayList<Caracteristic> caracteristics) {
+    public void setCaracteristics(HashMap<String, Caracteristic> caracteristics) {
         this.caracteristics = caracteristics;
     }
 
-    public ArrayList<Equipment> getEquipments() {
+    public HashMap<String, Equipment> getEquipments() {
         return equipments;
     }
 
-    public void setEquipments(ArrayList<Equipment> equipments) {
+    public void setEquipments(HashMap<String, Equipment> equipments) {
         this.equipments = equipments;
     }
 
     public HashMap<String, Double> getCalculatedCaracteristics(){
         HashMap<String, Double> calculatedCaracteristics = new HashMap<>();
-        for (Caracteristic c : caracteristics){
+        for (Caracteristic c : caracteristics.values()){
             calculatedCaracteristics.put(c.getName(), c.getValue());
         }
 
-        for (Equipment e : equipments){
+        for (Equipment e : equipments.values()){
             if (!e.getEffects().isEmpty()){
                 for (Effect i : e.getEffects()){
                     Double value;
@@ -159,7 +158,7 @@ public class Character implements Parcelable{
 
     public double getEquipmentWeight(){
         double sum = 0;
-        for (Equipment e : equipments){
+        for (Equipment e : equipments.values()){
             sum += e.getWeight();
         }
         return sum;
