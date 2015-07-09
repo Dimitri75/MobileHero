@@ -13,9 +13,12 @@ import android.view.Surface;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import kei.mobilehero.R;
+import kei.mobilehero.activities.fragments.ContentProvider;
 import kei.mobilehero.activities.fragments.OnFragmentInteractionListener;
 import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.classes.general.Character;
@@ -23,7 +26,7 @@ import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.custom.widgets.MyCustomEditText;
 
-public class NewCharacterActivity extends ActionBarActivity implements OnFragmentInteractionListener {
+public class NewCharacterActivity extends ActionBarActivity implements OnFragmentInteractionListener, ContentProvider {
     private Game game;
     private Round round;
     private Character character;
@@ -37,6 +40,7 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
 
     FragmentManager fm;
     HashMap<String, Fragment> dictionaryFragments;
+    ArrayList<ContentProviderListener> contentProviderListeners = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +71,10 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
         dictionaryFragments.put("new_caracteristic", fragment_new_caracteristic);
         dictionaryFragments.put("new_skill", fragment_new_skill);
         dictionaryFragments.put("new_equipment", fragment_new_equipment);
+
+        for(ContentProviderListener listener : contentProviderListeners) {
+            listener.onAvailableData();
+        }
 
         hideFragments(dictionaryFragments, dictionaryFragments.get("attribute"));
 
@@ -202,4 +210,24 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
 
     @Override
     public void onFragmentInteraction(Uri uri) {}
+
+    @Override
+    public Game getGame() {
+        return game;
+    }
+
+    @Override
+    public Round getRound() {
+        return round;
+    }
+
+    @Override
+    public Character getCharacter() {
+        return character;
+    }
+
+    @Override
+    public void addContentListener(ContentProviderListener listener) {
+        contentProviderListeners.add(listener);
+    }
 }

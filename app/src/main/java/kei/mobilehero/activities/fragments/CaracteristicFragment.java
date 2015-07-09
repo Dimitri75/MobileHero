@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +19,10 @@ import kei.mobilehero.R;
  * Use the {@link CaracteristicFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CaracteristicFragment extends Fragment {
+public class CaracteristicFragment extends Fragment implements ContentProvider.ContentProviderListener {
 
     private OnFragmentInteractionListener mListener;
+    private ContentProvider contentProvider;
 
     public static CaracteristicFragment newInstance() {
         CaracteristicFragment fragment = new CaracteristicFragment();
@@ -54,10 +56,13 @@ public class CaracteristicFragment extends Fragment {
         super.onAttach(activity);
         try {
             mListener = (OnFragmentInteractionListener) activity;
+            contentProvider = (ContentProvider) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnFragmentInteractionListener and ContentProvider");
         }
+
+        contentProvider.addContentListener(this);
     }
 
     @Override
@@ -66,4 +71,11 @@ public class CaracteristicFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onAvailableData() {
+        // TODO : init view
+        Log.i("TEST", contentProvider.getGame().getName());
+        Log.i("TEST", contentProvider.getRound().getName());
+        //Log.i("TEST", contentProvider.getCharacter().getName());
+    }
 }
