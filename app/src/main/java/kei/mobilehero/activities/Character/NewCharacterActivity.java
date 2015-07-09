@@ -230,4 +230,9 @@ public class NewCharacterActivity extends ActionBarActivity implements OnFragmen
     public void addContentListener(ContentProviderListener listener) {
         contentProviderListeners.add(listener);
     }
+
+    @Override
+    public void removeContentListener(ContentProviderListener listener) {
+        contentProviderListeners.remove(listener);
+    }
 }
