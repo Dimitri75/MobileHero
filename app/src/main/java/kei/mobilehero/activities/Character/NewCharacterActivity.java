@@ -150,6 +150,8 @@ public class NewCharacterActivity extends ActivityBase implements OnFragmentInte
     @Override
     protected void onRestart() {
         super.onRestart();
+
+        // Reload fragments with the new data
         for (Fragment frag : dictionaryFragments.values())
             ((FragmentBase) frag).onAvailableData();
 
