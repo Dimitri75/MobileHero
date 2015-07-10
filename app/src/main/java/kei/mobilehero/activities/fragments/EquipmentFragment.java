@@ -5,9 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import kei.mobilehero.R;
+import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 
@@ -45,15 +50,16 @@ public class EquipmentFragment extends FragmentBase implements OnClickListener {
     }
 
     public void init(){
-        /*if (character.getCaracteristics().isEmpty()) return;
+        if (character.getCaracteristics().isEmpty()) return;
 
-        ArrayAdapter<Equipment> myAdapter = new ArrayAdapter<>(this,
+        ArrayAdapter<Equipment> myAdapter = new ArrayAdapter<>(
+                getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
-                character.getEquipment().values());
+                new ArrayList<>(character.getEquipments().values()));
 
         ListView listView = (ListView) v.findViewById(R.id.listView_equipment);
-        listView.setAdapter(myAdapter);*/
+        listView.setAdapter(myAdapter);
     }
 
     @Override

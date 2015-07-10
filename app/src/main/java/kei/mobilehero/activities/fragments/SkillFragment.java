@@ -5,9 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import kei.mobilehero.R;
+import kei.mobilehero.classes.attributes.Skill;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 
@@ -46,15 +51,16 @@ public class SkillFragment extends FragmentBase implements OnClickListener {
     }
 
     public void init(){
-        /*if (character.getSkills().isEmpty()) return;
+        if (character.getSkills().isEmpty()) return;
 
-        ArrayAdapter<Skill> myAdapter = new ArrayAdapter<>(this,
+        ArrayAdapter<Skill> myAdapter = new ArrayAdapter<>(
+                getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
-                character.getSkills().values());
+                new ArrayList<>(character.getSkills().values()));
 
         ListView listView = (ListView) v.findViewById(R.id.listView_skill);
-        listView.setAdapter(myAdapter);*/
+        listView.setAdapter(myAdapter);
     }
 
     @Override
