@@ -12,6 +12,7 @@
         android:background="#ff1f1f1f">
 
         <kei.mobilehero.custom.widgets.MyCustomTextView
+            android:layout_marginTop="10dp"
             android:text="@string/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,9 +23,10 @@
             android:textColor="#ffffffff" />
 
         <Button
+            android:padding="5dp"
             android:layout_marginTop="30dp"
             android:text="Attributs"
-            android:textSize="8sp"
+            android:textSize="11sp"
             android:layout_width="125dp"
             android:layout_height="30dp"
             android:id="@+id/button_attributes_new_character"
@@ -33,8 +35,10 @@
             android:layout_centerHorizontal="true" />
 
         <Button
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
             android:text="Caractéristiques"
-            android:textSize="8sp"
+            android:textSize="11sp"
             android:layout_width="125dp"
             android:layout_height="30dp"
             android:id="@+id/button_caracteristics_new_character"
@@ -43,8 +47,10 @@
             android:layout_centerHorizontal="true" />
 
         <Button
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
             android:text="Compétences"
-            android:textSize="8sp"
+            android:textSize="11sp"
             android:layout_width="125dp"
             android:layout_height="30dp"
             android:id="@+id/button_skills_new_character"
@@ -54,8 +60,10 @@
             android:layout_alignStart="@+id/button_caracteristics_new_character" />
 
         <Button
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
             android:text="Equipement"
-            android:textSize="8sp"
+            android:textSize="11sp"
             android:layout_width="125dp"
             android:layout_height="30dp"
             android:id="@+id/button_equipment_new_character"
