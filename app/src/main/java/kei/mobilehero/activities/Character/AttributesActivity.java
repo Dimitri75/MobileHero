@@ -47,12 +47,12 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
     }
 
     public void initFragments(){
-        Fragment fragment_caracteristics = fm.findFragmentById(R.id.fragment_caracteristic_new_character);
-        Fragment fragment_skills = fm.findFragmentById(R.id.fragment_skill_new_character);
-        Fragment fragment_equipment = fm.findFragmentById(R.id.fragment_equipment_new_character);
-        Fragment fragment_new_caracteristic = fm.findFragmentById(R.id.fragment_new_caracteristic_new_character);
-        Fragment fragment_new_skill = fm.findFragmentById(R.id.fragment_new_skill_new_character);
-        Fragment fragment_new_equipment = fm.findFragmentById(R.id.fragment_new_equipment_new_character);
+        Fragment fragment_caracteristics = fm.findFragmentById(R.id.fragment_caracteristic_attribute);
+        Fragment fragment_skills = fm.findFragmentById(R.id.fragment_skill_attribute);
+        Fragment fragment_equipment = fm.findFragmentById(R.id.fragment_equipment_attribute);
+        Fragment fragment_new_caracteristic = fm.findFragmentById(R.id.fragment_new_caracteristic_attribute);
+        Fragment fragment_new_skill = fm.findFragmentById(R.id.fragment_new_skill_attribute);
+        Fragment fragment_new_equipment = fm.findFragmentById(R.id.fragment_new_equipment_attribute);
 
         dictionaryFragments = new HashMap<>();
         dictionaryFragments.put(EnumFragment.CARACTERISTICS, fragment_caracteristics);
@@ -86,18 +86,6 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
 
     public void buttonOnClick(View v) {
         switch(v.getId()){
-            case R.id.button_caracteristics_new_character:
-                hideFragments(dictionaryFragments, null);
-                showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.CARACTERISTICS));
-                break;
-            case R.id.button_skills_new_character:
-                hideFragments(dictionaryFragments, null);
-                showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILLS));
-                break;
-            case R.id.button_equipment_new_character:
-                hideFragments(dictionaryFragments, null);
-                showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.EQUIPMENT));
-                break;
             case R.id.button_caracteristic_fragment_caracteristic:
                 hideFragments(dictionaryFragments, null);
                 showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.NEW_CARACTERISTIC));

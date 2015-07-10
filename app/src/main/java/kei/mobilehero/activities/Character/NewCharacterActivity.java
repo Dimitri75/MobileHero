@@ -152,6 +152,10 @@ public class NewCharacterActivity extends ActivityBase implements OnFragmentInte
         super.onRestart();
         for (Fragment frag : dictionaryFragments.values())
             ((FragmentBase) frag).onAvailableData();
+
+        /*for(ContentProviderListener listener : contentProviderListeners) {
+            listener.onAvailableData();
+        }*/
     }
 
     @Override
