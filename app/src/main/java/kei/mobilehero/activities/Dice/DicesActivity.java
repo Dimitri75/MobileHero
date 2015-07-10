@@ -7,11 +7,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import kei.mobilehero.R;
-import kei.mobilehero.classes.general.Dice;
+import kei.mobilehero.classes.general.*;
 
 public class DicesActivity extends ActionBarActivity {
 
@@ -19,6 +23,7 @@ public class DicesActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dices);
+        findViewById(R.id.listView_dices_result).setVisibility(View.INVISIBLE);
     }
 
     public void buttonOnClick(View v) {
@@ -48,10 +53,24 @@ public class DicesActivity extends ActionBarActivity {
                             }
                             public void onAnimationRepeat(Animation a){}
                             public void onAnimationEnd(Animation a){
-                                String result = String.valueOf(dice.roll());
-                                ((Button)view).setText(result);
-                            }
+                                ArrayList<Integer> listResult = dice.roll();
 
+                                // Set sum result on the dice
+                                String result = String.valueOf(dice.getSumOfRolls(listResult));
+                                ((Button)view).setText(result);
+
+                                ArrayList<String> listString = dice.listResultToListString(listResult);
+
+                                // Fil the listView with all the results
+                                ArrayAdapter<String> myAdapter = new ArrayAdapter<>(getApplicationContext(),
+                                        android.R.layout.simple_list_item_1,
+                                        android.R.id.text1,
+                                        listString);
+
+                                ListView listView = (ListView) findViewById(R.id.listView_dices_result);
+                                listView.setAdapter(myAdapter);
+                                listView.setVisibility(View.VISIBLE);
+                            }
                         });
 
                     }
