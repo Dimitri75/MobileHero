@@ -15,6 +15,7 @@ import kei.mobilehero.R;
 import kei.mobilehero.activities.ActivityBase;
 import kei.mobilehero.activities.fragments.ContentProvider;
 import kei.mobilehero.activities.fragments.EnumFragment;
+import kei.mobilehero.activities.fragments.FragmentBase;
 import kei.mobilehero.activities.fragments.OnFragmentInteractionListener;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
@@ -23,7 +24,7 @@ import kei.mobilehero.classes.general.Round;
 public class NewCharacterActivity extends ActivityBase implements OnFragmentInteractionListener, ContentProvider {
     private Game game;
     private Round round;
-    private Character character;
+    private kei.mobilehero.classes.general.Character character;
 
     HashMap<EnumFragment, Fragment> dictionaryFragments;
     ArrayList<ContentProviderListener> contentProviderListeners = new ArrayList<>();
@@ -42,7 +43,7 @@ public class NewCharacterActivity extends ActivityBase implements OnFragmentInte
         // Fragments
         initFragments();
 
-        if (!((character = (Character) getIntent().getExtras().get("character")) != null))
+        if (!((character = (kei.mobilehero.classes.general.Character) getIntent().getExtras().get("character")) != null))
             character = new Character("");
 
         // Signal that data is available
@@ -79,13 +80,13 @@ public class NewCharacterActivity extends ActivityBase implements OnFragmentInte
                     hideFragments(dictionaryFragments, null);
                     showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.CARACTERISTICS));
                 }
-                else {
-                    Intent i = new Intent(getApplicationContext(), AttributesActivity.class);
-                    i.putExtra("game", game);
-                    i.putExtra("round", round);
-                    i.putExtra("character", character);
-                    i.putExtra("argumentKey", EnumFragment.CARACTERISTICS);
-                    startActivity(i);
+                else if (character.save(getApplicationContext(), game.getName(), round.getName())) {
+                        Intent i = new Intent(getApplicationContext(), AttributesActivity.class);
+                        i.putExtra("game", game);
+                        i.putExtra("round", round);
+                        i.putExtra("character", character);
+                        i.putExtra("argumentKey", EnumFragment.CARACTERISTICS);
+                        startActivity(i);
                 }
                 break;
             case R.id.button_skills_new_character:
@@ -93,13 +94,13 @@ public class NewCharacterActivity extends ActivityBase implements OnFragmentInte
                     hideFragments(dictionaryFragments, null);
                     showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILLS));
                 }
-                else{
-                    Intent i = new Intent(getApplicationContext(), AttributesActivity.class);
-                    i.putExtra("game", game);
-                    i.putExtra("round", round);
-                    i.putExtra("character", character);
-                    i.putExtra("argumentKey", EnumFragment.SKILLS);
-                    startActivity(i);
+                else if (character.save(getApplicationContext(), game.getName(), round.getName())) {
+                        Intent i = new Intent(getApplicationContext(), AttributesActivity.class);
+                        i.putExtra("game", game);
+                        i.putExtra("round", round);
+                        i.putExtra("character", character);
+                        i.putExtra("argumentKey", EnumFragment.SKILLS);
+                        startActivity(i);
                 }
                 break;
             case R.id.button_equipment_new_character:
@@ -107,13 +108,13 @@ public class NewCharacterActivity extends ActivityBase implements OnFragmentInte
                     hideFragments(dictionaryFragments, null);
                     showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.EQUIPMENT));
                 }
-                else{
-                    Intent i = new Intent(getApplicationContext(), AttributesActivity.class);
-                    i.putExtra("game", game);
-                    i.putExtra("round", round);
-                    i.putExtra("character", character);
-                    i.putExtra("argumentKey", EnumFragment.EQUIPMENT);
-                    startActivity(i);
+                else if (character.save(getApplicationContext(), game.getName(), round.getName())) {
+                        Intent i = new Intent(getApplicationContext(), AttributesActivity.class);
+                        i.putExtra("game", game);
+                        i.putExtra("round", round);
+                        i.putExtra("character", character);
+                        i.putExtra("argumentKey", EnumFragment.EQUIPMENT);
+                        startActivity(i);
                 }
                 break;
             case R.id.button_caracteristic_fragment_caracteristic:
@@ -144,6 +145,13 @@ public class NewCharacterActivity extends ActivityBase implements OnFragmentInte
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        for (Fragment frag : dictionaryFragments.values())
+            ((FragmentBase) frag).onAvailableData();
     }
 
     @Override

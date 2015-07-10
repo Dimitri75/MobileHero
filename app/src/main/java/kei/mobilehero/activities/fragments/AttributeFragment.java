@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import kei.mobilehero.R;
 import kei.mobilehero.classes.general.*;
@@ -86,6 +87,8 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
                     if(character.save(getActivity().getApplicationContext(), game.getName(), round.getName()))
                         getActivity().finish();
                 }
+                else
+                    Toast.makeText(getActivity().getApplicationContext(), "Veuillez saisir un nom pour votre personnage.", Toast.LENGTH_SHORT);
                 break;
         }
     }

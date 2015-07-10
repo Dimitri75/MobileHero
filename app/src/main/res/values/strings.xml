@@ -44,7 +44,7 @@
     <string name="caracteristicName">Entrez le nom de la caractéristique</string>
     <string name="caracteristicValue">Saisir une valeur</string>
 
-    <string name="equipmentName">Entrez le nom de l'équipment</string>
+    <string name="equipmentName">Entrez le nom de l\'équipement</string>
     <string name="equipmentValue">Saisir une valeur</string>
 
     <string name="skillName">Entrez le nom de la compétence</string>
