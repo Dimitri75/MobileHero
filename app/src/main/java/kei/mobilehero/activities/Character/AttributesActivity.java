@@ -46,7 +46,6 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
         if (!dictionaryFragments.keySet().contains(argumentKey))
             finish();
 
-        showFragmentWithAnimation(dictionaryFragments.get(argumentKey));
     }
 
     public void initFragments(){
@@ -65,7 +64,7 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
         dictionaryFragments.put(EnumFragment.NEW_SKILL, fragment_new_skill);
         dictionaryFragments.put(EnumFragment.NEW_EQUIPMENT, fragment_new_equipment);
 
-        hideFragments(dictionaryFragments, null);
+        hideFragments(dictionaryFragments, dictionaryFragments.get(argumentKey));
     }
 
     public void buttonOnClick(View v) {
