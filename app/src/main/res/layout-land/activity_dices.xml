@@ -52,24 +52,23 @@
 
     <kei.mobilehero.custom.widgets.MyCustomButton
         android:background="@drawable/dice"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:text="@string/roll"
         android:textColor="#ffffffff"
-        android:textSize="30sp"
+        android:textSize="15sp"
         android:id="@+id/button_roll_dices"
-        android:layout_below="@+id/editText_nbDices_dices"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
         android:onClick="buttonOnClick"
         android:textStyle="bold"
-        android:singleLine="false" />
+        android:singleLine="false"
+        android:layout_below="@+id/editText_nbDices_dices"
+        android:layout_centerHorizontal="true" />
 
     <ListView
         android:paddingBottom="5dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView_dices_result"

@@ -1,7 +1,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     tools:context="kei.mobilehero.activities.fragments.AttributeFragment">
 
@@ -19,7 +19,7 @@
         android:background="@drawable/level"
         android:maxLength="4"
         android:hint="@string/level"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:gravity="center_vertical|center_horizontal"
         android:textColor="#ffffffff"
         android:textColorHint="#ffffffff"
@@ -143,7 +143,7 @@
         android:id="@+id/button_saveCharacter_fragment_attribute"
         android:textColor="#e1000000"
         android:textSize="16sp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/relativeLayout2_fragment_attribute"
         android:layout_centerHorizontal="true" />
     </RelativeLayout>
