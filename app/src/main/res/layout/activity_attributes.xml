@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="kei.mobilehero.activities.character.AttributesActivity"
+    android:background="@drawable/mobile_morse">
+
+    <kei.mobilehero.custom.widgets.MyCustomTextView
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_appName_attribute"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/app_name_size"
+        android:textColor="#ffffffff" />
+
+    <!-- ATTRIBUTES -->
+    <fragment
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="kei.mobilehero.activities.fragments.CaracteristicFragment"
+        android:id="@+id/fragment_caracteristic_new_character"
+        android:layout_below="@+id/label_appName_attribute"
+        android:layout_centerHorizontal="true" />
+
+    <fragment
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="kei.mobilehero.activities.fragments.SkillFragment"
+        android:id="@+id/fragment_skill_new_character"
+        android:layout_below="@+id/label_appName_attribute"
+        android:layout_centerHorizontal="true" />
+
+    <fragment
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="kei.mobilehero.activities.fragments.EquipmentFragment"
+        android:id="@+id/fragment_equipment_new_character"
+        android:layout_below="@+id/label_appName_attribute"
+        android:layout_centerHorizontal="true" />
+
+    <!-- NEW ATTRIBUTES -->
+    <fragment
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="kei.mobilehero.activities.fragments.NewCaracteristicFragment"
+        android:id="@+id/fragment_new_caracteristic_new_character"
+        android:layout_below="@+id/label_appName_attribute"
+        android:layout_centerHorizontal="true" />
+
+    <fragment
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="kei.mobilehero.activities.fragments.NewSkillFragment"
+        android:id="@+id/fragment_new_skill_new_character"
+        android:layout_below="@+id/label_appName_attribute"
+        android:layout_centerHorizontal="true" />
+
+    <fragment
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="kei.mobilehero.activities.fragments.NewEquipmentFragment"
+        android:id="@+id/fragment_new_equipment_new_character"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/label_appName_attribute"/>
+
+</RelativeLayout>

@@ -50,7 +50,7 @@ public class EquipmentFragment extends FragmentBase implements OnClickListener {
     }
 
     public void init(){
-        if (character.getCaracteristics().isEmpty()) return;
+        if (character.getEquipments() == null || character.getCaracteristics().isEmpty()) return;
 
         ArrayAdapter<Equipment> myAdapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),

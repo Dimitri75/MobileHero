@@ -7,7 +7,6 @@ import android.app.Fragment;
  * Created by Vuzi on 09/07/2015.
  */
 public abstract class FragmentBase extends Fragment implements ContentProvider.ContentProviderListener {
-
     protected OnFragmentInteractionListener mListener;
     protected ContentProvider contentProvider;
 
@@ -32,4 +31,5 @@ public abstract class FragmentBase extends Fragment implements ContentProvider.C
         mListener = null;
         contentProvider.removeContentListener(this);
     }
+
 }

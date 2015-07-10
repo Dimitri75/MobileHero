@@ -40,6 +40,10 @@
             android:name=".activities.dice.DicesActivity"
             android:label="@string/title_activity_dices" >
         </activity>
+        <activity
+            android:name=".activities.character.AttributesActivity"
+            android:label="@string/title_activity_attributes" >
+        </activity>
     </application>
 
 </manifest>

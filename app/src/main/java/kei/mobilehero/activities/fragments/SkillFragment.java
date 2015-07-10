@@ -51,7 +51,7 @@ public class SkillFragment extends FragmentBase implements OnClickListener {
     }
 
     public void init(){
-        if (character.getSkills().isEmpty()) return;
+        if (character.getSkills() == null || character.getSkills().isEmpty()) return;
 
         ArrayAdapter<Skill> myAdapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),

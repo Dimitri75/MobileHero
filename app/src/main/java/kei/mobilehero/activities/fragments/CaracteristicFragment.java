@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import kei.mobilehero.R;
 import kei.mobilehero.classes.attributes.Caracteristic;
@@ -51,7 +50,7 @@ public class CaracteristicFragment extends FragmentBase implements OnClickListen
     }
 
     public void init(){
-        if (character.getCaracteristics().isEmpty()) return;
+        if (character.getCaracteristics() == null || character.getCaracteristics().isEmpty()) return;
 
         ArrayAdapter<Caracteristic> myAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
