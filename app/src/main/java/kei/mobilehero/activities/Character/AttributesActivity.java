@@ -79,6 +79,8 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
             case SKILLS:
                 findViewById(R.id.layout_attribute_activity).setBackgroundResource(R.drawable.mobile_gobelin);
                 break;
+            default:
+                finish();
         }
     }
 
