@@ -12,7 +12,7 @@
         android:id="@+id/button_skill_fragment_skill"
         android:onClick="buttonOnClick"
         android:textColor="#e1000000"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"

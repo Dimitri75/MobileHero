@@ -42,10 +42,8 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
             finish();
         }
 
+        initBackground();
         initFragments();
-        if (!dictionaryFragments.keySet().contains(argumentKey))
-            finish();
-
     }
 
     public void initFragments(){
@@ -64,7 +62,24 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
         dictionaryFragments.put(EnumFragment.NEW_SKILL, fragment_new_skill);
         dictionaryFragments.put(EnumFragment.NEW_EQUIPMENT, fragment_new_equipment);
 
+        if (!dictionaryFragments.keySet().contains(argumentKey))
+            finish();
+
         hideFragments(dictionaryFragments, dictionaryFragments.get(argumentKey));
+    }
+
+    public void initBackground(){
+        switch (argumentKey){
+            case CARACTERISTICS:
+                findViewById(R.id.layout_attribute_activity).setBackgroundResource(R.drawable.mobile_morse);
+                break;
+            case EQUIPMENT:
+                findViewById(R.id.layout_attribute_activity).setBackgroundResource(R.drawable.mobile_ogre);
+                break;
+            case SKILLS:
+                findViewById(R.id.layout_attribute_activity).setBackgroundResource(R.drawable.mobile_gobelin);
+                break;
+        }
     }
 
     public void buttonOnClick(View v) {
