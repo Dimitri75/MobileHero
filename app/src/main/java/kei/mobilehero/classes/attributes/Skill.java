@@ -1,14 +1,33 @@
 package kei.mobilehero.classes.attributes;
 
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.util.ArrayList;
 
 /**
  * Created by Dimitri on 15/05/2015.
  */
 public class Skill extends AttributeBase implements Parcelable{
+    private ArrayList<Effect> effects;
+
     public Skill(String name, String description, double value){
         super(name, description, value);
+        effects = new ArrayList<>();
+    }
+
+    public Skill(String name, String description, double value, ArrayList<Effect> impacts){
+        super(name, description, value);
+        effects = impacts;
+    }
+
+    public ArrayList<Effect> getEffects() {
+        return effects;
+    }
+
+    public void setEffects(ArrayList<Effect> effects) {
+        this.effects = effects;
     }
 
     //PARCELABLE
@@ -37,6 +56,10 @@ public class Skill extends AttributeBase implements Parcelable{
         dest.writeString(getDescription());
         dest.writeDouble(getValue());
         dest.writeString(getId());
+
+        Bundle b = new Bundle();
+        b.putParcelableArrayList("effects", effects);
+        dest.writeBundle(b);
     }
 
     /**
@@ -46,6 +69,9 @@ public class Skill extends AttributeBase implements Parcelable{
     public Skill(Parcel in) {
         super(in.readString(), in.readString(), in.readDouble());
         this.setId(in.readString());
+
+        Bundle b = in.readBundle(Caracteristic.class.getClassLoader());
+        effects = b.getParcelableArrayList("effects");
     }
 
     public static final Parcelable.Creator<Skill> CREATOR = new Parcelable.Creator<Skill>() {
