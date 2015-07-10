@@ -13,15 +13,15 @@ import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.ActivityBase;
-import kei.mobilehero.activities.fragments.ContentProvider;
-import kei.mobilehero.activities.fragments.EnumFragment;
-import kei.mobilehero.activities.fragments.FragmentBase;
-import kei.mobilehero.activities.fragments.OnFragmentInteractionListener;
+import kei.mobilehero.activities.fragments.generic.ContentProvider;
+import kei.mobilehero.activities.fragments.generic.EnumFragment;
+import kei.mobilehero.activities.fragments.generic.FragmentBase;
+import kei.mobilehero.activities.fragments.generic.OnFragmentInteractionListener;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 
-public class NewCharacterActivity extends ActivityBase implements OnFragmentInteractionListener, ContentProvider {
+public class CharacterFormActivity extends ActivityBase implements OnFragmentInteractionListener, ContentProvider {
     private Game game;
     private Round round;
     private kei.mobilehero.classes.general.Character character;

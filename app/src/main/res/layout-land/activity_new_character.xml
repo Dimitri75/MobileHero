@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kei.mobilehero.activities.character.NewCharacterActivity">
+    tools:context="kei.mobilehero.activities.character.CharacterFormActivity">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="155dp"
@@ -126,7 +126,7 @@
                 android:layout_marginBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:name="kei.mobilehero.activities.fragments.NewCaracteristicFragment"
+                android:name="kei.mobilehero.activities.fragments.CaracteristicFormFragment"
                 android:id="@+id/fragment_new_caracteristic_new_character"
                 android:layout_centerHorizontal="true" />
 
@@ -135,7 +135,7 @@
                 android:layout_marginBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:name="kei.mobilehero.activities.fragments.NewSkillFragment"
+                android:name="kei.mobilehero.activities.fragments.SkillFormFragment"
                 android:id="@+id/fragment_new_skill_new_character"
                 android:layout_centerHorizontal="true" />
 
@@ -144,7 +144,7 @@
                 android:layout_marginBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:name="kei.mobilehero.activities.fragments.NewEquipmentFragment"
+                android:name="kei.mobilehero.activities.fragments.EquipmentFormFragment"
                 android:id="@+id/fragment_new_equipment_new_character"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true" />

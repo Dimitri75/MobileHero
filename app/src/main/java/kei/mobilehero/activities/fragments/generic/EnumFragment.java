@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.fragments;
+package kei.mobilehero.activities.fragments.generic;
 
 /**
  * Created by Dimitri on 10/07/2015.

@@ -3,20 +3,19 @@ package kei.mobilehero.activities.fragments;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import kei.mobilehero.R;
+import kei.mobilehero.activities.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 
-public class EquipmentFragment extends FragmentBase implements OnClickListener {
+public class EquipmentFragment extends FragmentBase {
     View v;
     private Game game;
     private Round round;
@@ -31,11 +30,6 @@ public class EquipmentFragment extends FragmentBase implements OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_equipment, container, false);
-
-        // Instantiate the views
-        Button newCaracteristic = (Button) v.findViewById(R.id.button_equipment_fragment_equipment);
-
-        newCaracteristic.setOnClickListener(this);
 
         return v;
     }
@@ -60,13 +54,5 @@ public class EquipmentFragment extends FragmentBase implements OnClickListener {
 
         ListView listView = (ListView) v.findViewById(R.id.listView_equipment);
         listView.setAdapter(myAdapter);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.button_caracteristic_fragment_caracteristic:
-                break;
-        }
     }
 }

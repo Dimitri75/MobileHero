@@ -84,7 +84,7 @@ public class CharactersActivity extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(getApplicationContext(), NewCharacterActivity.class);
+                Intent i = new Intent(getApplicationContext(), CharacterFormActivity.class);
                 i.putExtra("game", game);
                 i.putExtra("round", round);
                 i.putExtra("character", myAdapter.getItem(position));
@@ -96,7 +96,7 @@ public class CharactersActivity extends ActionBarActivity {
     public void buttonOnClick(View v) {
         switch(v.getId()){
             case R.id.button_newCharacter_characters:
-                Intent i = new Intent(getApplicationContext(), NewCharacterActivity.class);
+                Intent i = new Intent(getApplicationContext(), CharacterFormActivity.class);
                 i.putExtra("game", game);
                 i.putExtra("round", round);
                 startActivity(i);

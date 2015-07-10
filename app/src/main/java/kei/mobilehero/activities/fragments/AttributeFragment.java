@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import kei.mobilehero.R;
+import kei.mobilehero.activities.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.general.*;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.custom.widgets.MyCustomEditText;

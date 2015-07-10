@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.dice.DicesActivity;
-import kei.mobilehero.activities.fragments.EnumFragment;
+import kei.mobilehero.activities.fragments.generic.EnumFragment;
 
 /**
  * Created by Dimitri on 10/07/2015.

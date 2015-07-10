@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.fragments;
+package kei.mobilehero.activities.fragments.generic;
 
 import kei.mobilehero.classes.general.*;
 import kei.mobilehero.classes.general.Character;

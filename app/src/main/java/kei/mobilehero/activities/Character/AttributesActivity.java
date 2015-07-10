@@ -12,9 +12,9 @@ import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.ActivityBase;
-import kei.mobilehero.activities.fragments.ContentProvider;
-import kei.mobilehero.activities.fragments.EnumFragment;
-import kei.mobilehero.activities.fragments.OnFragmentInteractionListener;
+import kei.mobilehero.activities.fragments.generic.ContentProvider;
+import kei.mobilehero.activities.fragments.generic.EnumFragment;
+import kei.mobilehero.activities.fragments.generic.OnFragmentInteractionListener;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 

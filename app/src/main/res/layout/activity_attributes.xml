@@ -54,7 +54,7 @@
         android:layout_marginBottom="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="kei.mobilehero.activities.fragments.NewCaracteristicFragment"
+        android:name="kei.mobilehero.activities.fragments.CaracteristicFormFragment"
         android:id="@+id/fragment_new_caracteristic_attribute"
         android:layout_below="@+id/label_appName_attribute"
         android:layout_centerHorizontal="true" />
@@ -64,7 +64,7 @@
         android:layout_marginBottom="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="kei.mobilehero.activities.fragments.NewSkillFragment"
+        android:name="kei.mobilehero.activities.fragments.SkillFormFragment"
         android:id="@+id/fragment_new_skill_attribute"
         android:layout_below="@+id/label_appName_attribute"
         android:layout_centerHorizontal="true" />
@@ -74,7 +74,7 @@
         android:layout_marginBottom="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="kei.mobilehero.activities.fragments.NewEquipmentFragment"
+        android:name="kei.mobilehero.activities.fragments.EquipmentFormFragment"
         android:id="@+id/fragment_new_equipment_attribute"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/label_appName_attribute"/>

@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kei.mobilehero.activities.fragments.NewCaracteristicFragment">
+    tools:context="kei.mobilehero.activities.fragments.CaracteristicFormFragment">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -60,7 +60,6 @@
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:id="@+id/button_saveCaracteristic_new_caracteristic"
-        android:onClick="buttonOnClick"
         android:textColor="#e1000000"
         android:textSize="16sp"
         android:layout_marginTop="28dp"

@@ -5,18 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import kei.mobilehero.R;
+import kei.mobilehero.activities.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 
-public class NewSkillFragment extends FragmentBase implements OnClickListener{
+public class SkillFormFragment extends FragmentBase implements OnClickListener{
     View v;
     private Game game;
     private Round round;
     private kei.mobilehero.classes.general.Character character;
 
-    public NewSkillFragment() {
+    public SkillFormFragment() {
         // Required empty public constructor
     }
 
@@ -26,10 +28,10 @@ public class NewSkillFragment extends FragmentBase implements OnClickListener{
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_new_skill, container, false);
 
-        /*// Instantiate the views
-        Button newCaracteristic = (Button) v.findViewById(R.id.button_saveSkill_fragment_new_skill);
+        // Instantiate the views
+        Button newCaracteristic = (Button) v.findViewById(R.id.button_saveCaracteristic_new_skill);
 
-        newCaracteristic.setOnClickListener(this);*/
+        newCaracteristic.setOnClickListener(this);
 
         return v;
     }

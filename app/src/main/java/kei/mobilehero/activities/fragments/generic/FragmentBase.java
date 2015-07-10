@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.fragments;
+package kei.mobilehero.activities.fragments.generic;
 
 import android.app.Activity;
 import android.app.Fragment;
