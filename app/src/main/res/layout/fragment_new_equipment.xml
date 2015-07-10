@@ -1,14 +1,73 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kei.mobilehero.activities.fragments.NewEquipmentFragment"
-    android:background="#ff6799ff">
+    tools:context="kei.mobilehero.activities.fragments.NewEquipmentFragment">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="EQUIPMENT"
-        android:id="@+id/textView"
-        android:layout_gravity="center" />
-</FrameLayout>
+        android:background="@xml/radius"
+        android:id="@+id/relativeLayout2_fragment_new_equipment">
+
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:maxLength="50"
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_caracteristicName_new_equipment"
+            android:hint="@string/equipmentName"
+            android:textColor="#ffffffff"
+            android:textColorHint="#FF9B9B9B"
+            android:gravity="center_horizontal"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:singleLine="true"
+            android:imeOptions="actionNext"/>
+
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="60dp"
+            android:maxLength="4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/editText_caracteristicValue_new_equipment"
+            android:hint="@string/equipmentValue"
+            android:textColor="#ffffffff"
+            android:textColorHint="#FF9B9B9B"
+            android:width="150dp"
+            android:layout_below="@+id/editText_caracteristicName_new_equipment"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:layout_alignRight="@+id/editText_caracteristicName_new_equipment"
+            android:layout_alignEnd="@+id/editText_caracteristicName_new_equipment"
+            android:singleLine="true"
+            android:imeOptions="actionDone"/>
+
+    </RelativeLayout>
+
+
+    <kei.mobilehero.custom.widgets.MyCustomButton
+        android:background="@drawable/button_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:id="@+id/button_saveCaracteristic_new_equipment"
+        android:onClick="buttonOnClick"
+        android:textColor="#e1000000"
+        android:textSize="16sp"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/relativeLayout2_fragment_new_equipment"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

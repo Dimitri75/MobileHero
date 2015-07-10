@@ -44,8 +44,12 @@
     <string name="caracteristicName">Entrez le nom de la caractéristique</string>
     <string name="caracteristicValue">Saisir une valeur</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="equipmentName">Entrez le nom de l'équipment</string>
+    <string name="equipmentValue">Saisir une valeur</string>
+
+    <string name="skillName">Entrez le nom de la compétence</string>
+    <string name="skillValue">Saisir une valeur</string>
+
     <string name="title_activity_attributes">Attributs de personnage</string>
 
 </resources>
