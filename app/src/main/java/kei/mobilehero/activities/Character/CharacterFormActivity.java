@@ -19,6 +19,7 @@ import kei.mobilehero.activities.fragments.generic.OnFragmentInteractionListener
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
+import kei.mobilehero.classes.utils.persistence.Loader;
 
 public class CharacterFormActivity extends ActivityBase implements OnFragmentInteractionListener, ContentProvider {
     private Game game;
@@ -150,9 +151,8 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
     protected void onRestart() {
         super.onRestart();
 
-        // Reload fragments with the new data
-        /*for (Fragment frag : dictionaryFragments.values())
-            ((FragmentBase) frag).onAvailableData();*/
+        // Reload the character from the database
+        character = Loader.getInstance().loadCharacterById(getApplicationContext(), character.getId(), game, round);
 
         for(ContentProviderListener listener : contentProviderListeners) {
             listener.onAvailableData();

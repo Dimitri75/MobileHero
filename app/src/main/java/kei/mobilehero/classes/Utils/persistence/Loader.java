@@ -24,6 +24,11 @@ public class Loader {
     private Loader() {
     }
 
+    /**
+     * Load all the saved games
+     * @param context
+     * @return
+     */
     public ArrayList<Game> loadGames(Context context){
         File root = context.getFilesDir();
 
@@ -39,6 +44,12 @@ public class Loader {
         return listGames;
     }
 
+    /**
+     * Load all the rounds attached to the specified game
+     * @param context
+     * @param game
+     * @return
+     */
     public Game loadRounds(Context context, Game game){
         game.getRounds().clear();
         File root = context.getFilesDir();
@@ -54,6 +65,13 @@ public class Loader {
         return game;
     }
 
+    /**
+     * Load all the characters attached to the specified round
+     * @param context
+     * @param game
+     * @param round
+     * @return
+     */
     public Round loadCharacters(Context context, Game game, Round round){
         round.getCharacters().clear();
 
@@ -80,6 +98,35 @@ public class Loader {
         return round;
     }
 
+    /**
+     * Load a character by its id, game and round
+     * @param context
+     * @param id
+     * @param game
+     * @param round
+     * @return
+     */
+    public Character loadCharacterById(Context context, String id, Game game, Round round){
+        File root = context.getFilesDir();
+
+        File roundDir = new File(root, game.getName() + "/" + round.getName());
+        if (roundDir.exists() && roundDir.isDirectory()) {
+
+            File charFile = new File(roundDir, "character." + id + ".json");
+
+            if (charFile.exists()) {
+                Character character = new Character(charFile);
+                return character;
+            }
+        }
+        return new Character("");
+    }
+
+    /**
+     * Load all the date
+     * @param context
+     * @return
+     */
     public ArrayList<Game> loadData(Context context) {
         File root = context.getFilesDir();
 
