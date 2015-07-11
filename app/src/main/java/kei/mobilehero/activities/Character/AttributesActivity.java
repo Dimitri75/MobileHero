@@ -146,22 +146,30 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
         switch(v.getId()){
             case R.id.button_caracteristic_fragment_caracteristic:
                 currentFragment = CARACTERISTIC_FORM;
+                data.set(3, null);
 
                 hideFragments(dictionaryFragments, null);
                 showFragmentWithAnimation(dictionaryFragments.get(CARACTERISTIC_FORM));
                 break;
             case R.id.button_skill_fragment_skill:
                 currentFragment = EnumFragment.SKILL_FORM;
+                data.set(4, null);
 
                 hideFragments(dictionaryFragments, null);
                 showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILL_FORM));
                 break;
             case R.id.button_equipment_fragment_equipment:
                 currentFragment = EQUIPMENT_FORM;
+                data.set(5, null);
 
                 hideFragments(dictionaryFragments, null);
                 showFragmentWithAnimation(dictionaryFragments.get(EQUIPMENT_FORM));
                 break;
+        }
+
+        // Signal that data is available
+        for(ContentProviderListener listener : contentProviderListeners) {
+            listener.onAvailableData();
         }
     }
 
