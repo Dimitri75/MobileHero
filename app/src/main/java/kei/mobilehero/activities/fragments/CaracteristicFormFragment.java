@@ -7,12 +7,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.fragments.generic.FragmentBase;
+import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
-import kei.mobilehero.custom.widgets.MyCustomEditText;
 
 public class CaracteristicFormFragment extends FragmentBase implements OnClickListener {
     View v;
@@ -21,6 +22,7 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
     private kei.mobilehero.classes.general.Character character;
 
     private EditText caracteristicNameText;
+    private EditText caracteristicDescriptionText;
     private EditText caracteristicValueText;
 
     public CaracteristicFormFragment() {
@@ -34,8 +36,9 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
         v = inflater.inflate(R.layout.fragment_new_caracteristic, container, false);
 
         // Instantiate the views
-        caracteristicNameText = (EditText) v.findViewById(R.id.editText_characterName_fragment_attribute);
-        caracteristicValueText = (MyCustomEditText) v.findViewById(R.id.editText_characterLevel_fragment_attribute);
+        caracteristicNameText = (EditText) v.findViewById(R.id.editText_caracteristicName_new_caracteristic);
+        caracteristicDescriptionText = (EditText) v.findViewById(R.id.editText_caracteristicDescription_new_caracteristic);
+        caracteristicValueText = (EditText) v.findViewById(R.id.editText_caracteristicValue_new_caracteristic);
         Button saveButton = (Button) v.findViewById(R.id.button_saveCaracteristic_new_caracteristic);
 
         saveButton.setOnClickListener(this);
@@ -53,14 +56,36 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
     }
 
     public void init(){
-
+        // TODO set text to the editText
+        /*caracteristicNameText.setText(caracteristic.getName());
+        caracteristicDescriptionText.setText(caracteristic.getDescription();
+        if(caracteristic.getValue() != 0)
+            caracteristicValueText.setText(String.valueOf(caracteristic.getValue()));*/
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_saveCaracteristic_new_caracteristic:
-                // TODO
+                if (!caracteristicNameText.getText().toString().isEmpty() &&
+                !character.getCaracteristics().keySet().contains(caracteristicNameText.getText().toString())) {
+
+                    Double value = caracteristicValueText.getText().toString().isEmpty() ? 0 : Double.valueOf(caracteristicValueText.getText().toString());
+
+                    Caracteristic c = new Caracteristic(
+                            caracteristicNameText.getText().toString(),
+                            caracteristicDescriptionText.getText().toString(),
+                            value
+                    );
+
+                    character.getCaracteristics().put(c.getName(), c);
+
+                    // And save
+                    if(character.save(getActivity().getApplicationContext(), game.getName(), round.getName()))
+                        getActivity().finish();
+                }
+                else
+                    Toast.makeText(getActivity().getApplicationContext(), "La caractéristique existe déjà ou les champs ne sont pas bien remplis.", Toast.LENGTH_SHORT);
                 break;
         }
     }

@@ -41,6 +41,7 @@
 
     <string name="action_settings_dices">Lancer les dés</string>
 
+    <string name="attributeDescription">Saisir une description</string>
     <string name="caracteristicName">Entrez le nom de la caractéristique</string>
     <string name="caracteristicValue">Saisir une valeur</string>
 

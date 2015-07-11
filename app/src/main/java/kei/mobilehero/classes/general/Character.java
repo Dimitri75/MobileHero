@@ -30,9 +30,9 @@ public class Character implements Parcelable{
     private String className;
     private String picture;
     private int level;
-    private HashMap<String, Skill> skills;
-    private HashMap<String, Caracteristic> caracteristics;
-    private HashMap<String, Equipment> equipments;
+    private HashMap<String, Skill> skills = new HashMap<>();
+    private HashMap<String, Caracteristic> caracteristics = new HashMap<>();
+    private HashMap<String, Equipment> equipments = new HashMap<>();
 
     public Character(String name){
         this.id = UUID.randomUUID().toString();
@@ -114,27 +114,38 @@ public class Character implements Parcelable{
     }
 
     public HashMap<String, Skill> getSkills() {
+        if (skills == null)
+            return (skills = new HashMap<>());
         return skills;
     }
 
     public void setSkills(HashMap<String, Skill> skills) {
-        this.skills = skills;
+        if (skills != null)
+            this.skills = skills;
     }
 
     public HashMap<String, Caracteristic> getCaracteristics() {
+        if (caracteristics == null)
+            return (caracteristics = new HashMap<>());
+
         return caracteristics;
     }
 
     public void setCaracteristics(HashMap<String, Caracteristic> caracteristics) {
-        this.caracteristics = caracteristics;
+        if (caracteristics != null)
+            this.caracteristics = caracteristics;
     }
 
     public HashMap<String, Equipment> getEquipments() {
+        if (equipments == null)
+            return (equipments = new HashMap<>());
+
         return equipments;
     }
 
     public void setEquipments(HashMap<String, Equipment> equipments) {
-        this.equipments = equipments;
+        if (equipments != null)
+            this.equipments = equipments;
     }
 
     public HashMap<String, Double> getCalculatedCaracteristics(){
@@ -219,12 +230,10 @@ public class Character implements Parcelable{
         dest.writeString(className);
         dest.writeString(picture);
         dest.writeInt(level);
+        dest.writeMap(caracteristics);
+        dest.writeMap(skills);
+        dest.writeMap(equipments);
 
-        /*Bundle b = new Bundle();
-        b.putParcelableArrayList("skills", skills);
-        b.putParcelableArrayList("caracteristics", caracteristics);
-        b.putParcelableArrayList("equipments", equipments);
-        dest.writeBundle(b);*/
     }
 
     /**
@@ -240,15 +249,9 @@ public class Character implements Parcelable{
         this.className = in.readString();
         this.picture = in.readString();
         this.level = in.readInt();
-
-        /*Bundle b = in.readBundle(Skill.class.getClassLoader());
-        skills = b.getParcelableArrayList("skills");
-
-        b = in.readBundle(Caracteristic.class.getClassLoader());
-        caracteristics = b.getParcelableArrayList("caracteristics");
-
-        b = in.readBundle(Equipment.class.getClassLoader());
-        equipments = b.getParcelableArrayList("equipments");*/
+        this.caracteristics = in.readHashMap(caracteristics.getClass().getClassLoader());
+        this.skills = in.readHashMap(skills.getClass().getClassLoader());
+        this.equipments = in.readHashMap(equipments.getClass().getClassLoader());
     }
 
     public static final Parcelable.Creator<Character> CREATOR = new Parcelable.Creator<Character>() {

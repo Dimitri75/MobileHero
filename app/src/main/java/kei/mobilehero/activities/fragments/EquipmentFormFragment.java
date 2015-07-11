@@ -29,7 +29,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
         v = inflater.inflate(R.layout.fragment_new_equipment, container, false);
 
         // Instantiate the views
-        Button newCaracteristic = (Button) v.findViewById(R.id.button_saveCaracteristic_new_equipment);
+        Button newCaracteristic = (Button) v.findViewById(R.id.button_saveEquipment_new_equipment);
 
         newCaracteristic.setOnClickListener(this);
 

@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
-        android:id="@+id/button_saveCaracteristic_new_skill"
+        android:id="@+id/button_saveSkill_new_skill"
         android:textColor="#e1000000"
         android:textSize="16sp"
         android:layout_marginTop="28dp"
