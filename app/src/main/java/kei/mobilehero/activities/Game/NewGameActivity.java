@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.dice.DicesActivity;
@@ -26,8 +27,13 @@ public class NewGameActivity extends ActionBarActivity {
                 EditText view_gameName = (EditText) findViewById(R.id.editText_gameName_new_game);
                 String gameName = view_gameName.getText().toString();
 
-                Game game = new Game(gameName);
-                if(game.save(getApplicationContext())) finish();
+                if (gameName.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Le formulaire n'est pas correctement rempli.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Game game = new Game(gameName);
+                    if (game.save(getApplicationContext())) finish();
+                }
                 break;
         }
     }

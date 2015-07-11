@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.dice.DicesActivity;
@@ -34,8 +35,13 @@ public class NewRoundActivity extends ActionBarActivity {
                 EditText view_roundName = (EditText) findViewById(R.id.editText_roundName_new_round);
                 String roundName = view_roundName.getText().toString();
 
-                Round round = new Round(roundName);
-                if(round.save(getApplicationContext(), game)) finish();
+                if (roundName.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Le formulaire n'est pas correctement rempli.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Round round = new Round(roundName);
+                    if(round.save(getApplicationContext(), game)) finish();
+                }
                 break;
         }
     }
