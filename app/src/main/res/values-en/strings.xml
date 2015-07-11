@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MobileHero</string>
+
+    <!-- Français -->
+    <string name="title_activity_games">Game manager</string>
+    <string name="newGame">New Game</string>
+
+    <string name="title_activity_new_game">New game</string>
+    <string name="gameName">Type the game\'s name</string>
+
+    <string name="title_activity_rounds">Round manager</string>
+    <string name="newRound">New Round</string>
+
+    <string name="title_activity_new_round">New round</string>
+    <string name="roundName">Type the round\'s name</string>
+
+    <string name="title_activity_characters">Character manager</string>
+    <string name="newPersonnage">New Character</string>
+
+    <string name="title_activity_new_character">New character</string>
+    <string name="caracteristics">Caracteristics</string>
+    <string name="skill">Skills</string>
+    <string name="equipment">Equipment</string>
+    <string name="save">Save</string>
+
+    <string name="level">Level</string>
+    <string name="name">Type a name</string>
+    <string name="sex">Type a sex</string>
+    <string name="race">Type a race</string>
+    <string name="className">Type a class</string>
+    <string name="alignment">Type an alignment</string>
+
+    <string name="nameLabel">Name</string>
+    <string name="sexLabel">Sex</string>
+    <string name="raceLabel">Race</string>
+    <string name="classNameLabel">Class</string>
+    <string name="alignmentLabel">Karma</string>
+
+    <string name="addCaracteristic">Add a caracteristic</string>
+    <string name="addEquipment">Add an equipment</string>
+    <string name="addSkill">Add a skill</string>
+
+    <string name="title_activity_dices">Roll dices</string>
+    <string name="nbDices">Dices number</string>
+    <string name="nbSides">Sides number</string>
+    <string name="roll">Roll</string>
+
+    <string name="action_settings_dices">Roll dices</string>
+
+    <string name="attributeDescription">Type a description</string>
+    <string name="caracteristicName">Type the caracteristic\'s name</string>
+    <string name="caracteristicValue">Type a value</string>
+
+    <string name="equipmentName">Type the equipment\'s name</string>
+    <string name="equipmentValue">Type a weight</string>
+    <string name="equipmentPosition">Type a position</string>
+
+    <string name="skillName">Type the skill\'s name</string>
+    <string name="skillValue">Type a value</string>
+
+    <string name="title_activity_attributes">Character\'s attributes</string>
+
+</resources>
