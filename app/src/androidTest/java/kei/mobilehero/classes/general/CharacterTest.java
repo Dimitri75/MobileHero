@@ -46,9 +46,9 @@ public class CharacterTest extends TestCase{
         character.setRace(CHARAC_RACE);
         character.setClassName(CHARAC_CLASSNAME);
         character.setPicture(CHARAC_PICTURE);
-        character.getSkills().add(skill);
-        character.getCaracteristics().add(caracteristic);
-        character.getEquipments().add(equipment);
+        character.getSkills().put(skill.getName(), skill);
+        character.getCaracteristics().put(caracteristic.getName(), caracteristic);
+        character.getEquipments().put(equipment.getName(), equipment);
 
         assertEquals(character.getName(), CHARAC_NAME);
         assertEquals(character.getGender(), CHARAC_GENDER);
@@ -65,8 +65,8 @@ public class CharacterTest extends TestCase{
         Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION);
 
         Character character = new Character(CHARAC_NAME);
-        character.getEquipments().add(equipment);
-        character.getEquipments().add(equipment);
+        character.getEquipments().put(equipment.getName(), equipment);
+        character.getEquipments().put(equipment.getName()+"2", equipment);
 
         assertEquals(character.getEquipmentWeight(), EQUIP_WEIGHT*2);
     }
@@ -79,8 +79,8 @@ public class CharacterTest extends TestCase{
         equipment.getEffects().add(effect);
 
         Character character = new Character(CHARAC_NAME);
-        character.getCaracteristics().add(caracteristic);
-        character.getEquipments().add(equipment);
+        character.getCaracteristics().put(caracteristic.getName(), caracteristic);
+        character.getEquipments().put(equipment.getName(), equipment);
 
         assertEquals(character.getCalculatedCaracteristics().get(CARAC_NAME), CARAC_VALUE + EFFECT_VALUE);
     }

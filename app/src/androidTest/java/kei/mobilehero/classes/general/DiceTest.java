@@ -22,9 +22,9 @@ public class DiceTest extends InstrumentationTestCase{
         Dice dice = new Dice(DICE_NUMBERDICES, DICE_NUMBERSIDES);
 
         for (int i = 0; i < nbTests; i++) {
-            int result = dice.roll();
+            int result = dice.getSumOfRolls(dice.roll());
 
-            if (result > 0 && result <= 12) {
+            if (result > 0 && result <= DICE_NUMBERDICES*DICE_NUMBERSIDES) {
                 assertTrue(true);
             } else {
                 assertFalse(false);
