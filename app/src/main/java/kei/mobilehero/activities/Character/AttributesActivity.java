@@ -44,6 +44,11 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
 
         initBackground();
         initFragments();
+
+        // Signal that data is available
+        for(ContentProviderListener listener : contentProviderListeners) {
+            listener.onAvailableData();
+        }
     }
 
     public void initFragments(){
