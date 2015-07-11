@@ -39,8 +39,8 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
         caracteristicNameText = (EditText) v.findViewById(R.id.editText_caracteristicName_new_caracteristic);
         caracteristicDescriptionText = (EditText) v.findViewById(R.id.editText_caracteristicDescription_new_caracteristic);
         caracteristicValueText = (EditText) v.findViewById(R.id.editText_caracteristicValue_new_caracteristic);
-        Button saveButton = (Button) v.findViewById(R.id.button_saveCaracteristic_new_caracteristic);
 
+        Button saveButton = (Button) v.findViewById(R.id.button_saveCaracteristic_new_caracteristic);
         saveButton.setOnClickListener(this);
 
         return v;
@@ -85,7 +85,7 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
                         getActivity().finish();
                 }
                 else
-                    Toast.makeText(getActivity().getApplicationContext(), "La caract�ristique existe d�j� ou les champs ne sont pas bien remplis.", Toast.LENGTH_SHORT);
+                    Toast.makeText(getActivity().getApplicationContext(), "La caractéristique existe déjà ou les champs ne sont pas bien remplis.", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
