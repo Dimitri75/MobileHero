@@ -1,15 +1,19 @@
 package kei.mobilehero.activities.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import kei.mobilehero.R;
+import kei.mobilehero.activities.character.SelectionListener;
 import kei.mobilehero.activities.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.attributes.Skill;
 import kei.mobilehero.classes.general.Game;
@@ -20,6 +24,7 @@ public class SkillFragment extends FragmentBase {
     private Game game;
     private Round round;
     private kei.mobilehero.classes.general.Character character;
+    private SelectionListener selectionListener;
 
     public SkillFragment() {
         // Required empty public constructor
@@ -37,17 +42,29 @@ public class SkillFragment extends FragmentBase {
 
     @Override
     public void onAvailableData() {
-        game = contentProvider.getGame();
-        round = contentProvider.getRound();
-        character = contentProvider.getCharacter();
+        List data = (List) contentProvider.getData();
+
+        game = (Game) data.get(0);
+        round = (Round) data.get(1);
+        character = (kei.mobilehero.classes.general.Character) data.get(2);
 
         init();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            selectionListener = (SelectionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement SelectionListener");
+        }
     }
 
     public void init(){
         if (character.getSkills() == null || character.getSkills().isEmpty()) return;
 
-        ArrayAdapter<Skill> myAdapter = new ArrayAdapter<>(
+        final ArrayAdapter<Skill> myAdapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
@@ -55,6 +72,12 @@ public class SkillFragment extends FragmentBase {
 
         ListView listView = (ListView) v.findViewById(R.id.listView_skill);
         listView.setAdapter(myAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectionListener.onSelected(myAdapter.getItem(position));
+            }
+        });
     }
 }
 

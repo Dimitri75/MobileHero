@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 import kei.mobilehero.R;
 import kei.mobilehero.activities.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.general.*;
@@ -54,9 +56,11 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
 
     @Override
     public void onAvailableData() {
-        game = contentProvider.getGame();
-        round = contentProvider.getRound();
-        character = contentProvider.getCharacter();
+        List data = (List) contentProvider.getData();
+
+        game = (Game) data.get(0);
+        round = (Round) data.get(1);
+        character = (Character) data.get(2);
 
         init();
     }

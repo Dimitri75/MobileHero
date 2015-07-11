@@ -8,9 +8,9 @@ public enum EnumFragment {
     CARACTERISTICS ("caracteristics"),
     SKILLS ("skills"),
     EQUIPMENT ("equipment"),
-    NEW_CARACTERISTIC ("new_caracteristic"),
-    NEW_SKILL ("new_skill"),
-    NEW_EQUIPMENT ("new_equipment");
+    CARACTERISTIC_FORM("caracteristic_form"),
+    SKILL_FORM("skill_form"),
+    EQUIPMENT_FORM("equipment_form");
 
     private String name;
 

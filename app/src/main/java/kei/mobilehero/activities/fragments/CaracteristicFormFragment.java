@@ -9,17 +9,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 import kei.mobilehero.R;
 import kei.mobilehero.activities.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.attributes.Caracteristic;
-import kei.mobilehero.classes.general.Game;
-import kei.mobilehero.classes.general.Round;
+import kei.mobilehero.classes.general.*;
 
 public class CaracteristicFormFragment extends FragmentBase implements OnClickListener {
     View v;
     private Game game;
     private Round round;
     private kei.mobilehero.classes.general.Character character;
+    private Caracteristic actualCaracteristic;
 
     private EditText caracteristicNameText;
     private EditText caracteristicDescriptionText;
@@ -48,19 +50,30 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
 
     @Override
     public void onAvailableData() {
-        game = contentProvider.getGame();
-        round = contentProvider.getRound();
-        character = contentProvider.getCharacter();
+        List data = (List) contentProvider.getData();
+
+        game = (Game) data.get(0);
+        round = (Round) data.get(1);
+        character = (kei.mobilehero.classes.general.Character) data.get(2);
+
+        actualCaracteristic = (Caracteristic) data.get(3);
 
         init();
     }
 
     public void init(){
-        // TODO set text to the editText
-        /*caracteristicNameText.setText(caracteristic.getName());
-        caracteristicDescriptionText.setText(caracteristic.getDescription();
-        if(caracteristic.getValue() != 0)
-            caracteristicValueText.setText(String.valueOf(caracteristic.getValue()));*/
+        if(actualCaracteristic != null) {
+            caracteristicNameText.setText(actualCaracteristic.getName());
+            caracteristicDescriptionText.setText(actualCaracteristic.getDescription());
+            if(actualCaracteristic.getValue() != 0)
+                caracteristicValueText.setText(String.valueOf(actualCaracteristic.getValue()));
+            else
+                caracteristicValueText.setText("");
+        } else {
+            caracteristicNameText.setText("");
+            caracteristicDescriptionText.setText("");
+            caracteristicValueText.setText("");
+        }
     }
 
     @Override
@@ -68,7 +81,7 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
         switch (v.getId()) {
             case R.id.button_saveCaracteristic_new_caracteristic:
                 if (!caracteristicNameText.getText().toString().isEmpty() &&
-                !character.getCaracteristics().keySet().contains(caracteristicNameText.getText().toString())) {
+                    (actualCaracteristic != null || !character.getCaracteristics().keySet().contains(caracteristicNameText.getText().toString()))) {
 
                     Double value = caracteristicValueText.getText().toString().isEmpty() ? 0 : Double.valueOf(caracteristicValueText.getText().toString());
 
@@ -78,11 +91,14 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
                             value
                     );
 
+                    if(actualCaracteristic != null && !character.getCaracteristics().containsKey(c.getName()))
+                        character.getCaracteristics().remove(actualCaracteristic.getName());
+
                     character.getCaracteristics().put(c.getName(), c);
 
                     // And save
                     if(character.save(getActivity().getApplicationContext(), game.getName(), round.getName()))
-                        getActivity().finish();
+                        getActivity().onBackPressed();
                 }
                 else
                     Toast.makeText(getActivity().getApplicationContext(), "La caractéristique existe déjà ou les champs ne sont pas bien remplis.", Toast.LENGTH_SHORT).show();

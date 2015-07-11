@@ -9,11 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 import kei.mobilehero.R;
 import kei.mobilehero.activities.fragments.generic.FragmentBase;
+import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.attributes.Equipment;
-import kei.mobilehero.classes.general.Game;
-import kei.mobilehero.classes.general.Round;
+import kei.mobilehero.classes.general.*;
 
 public class EquipmentFormFragment extends FragmentBase implements OnClickListener {
     View v;
@@ -25,6 +27,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
     private EditText equipmentDescriptionText;
     private EditText equipmentWeightText;
     private EditText equipmentPositionText;
+    private Equipment actualEquipment;
 
     public EquipmentFormFragment() {
         // Required empty public constructor
@@ -50,20 +53,32 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
 
     @Override
     public void onAvailableData() {
-        game = contentProvider.getGame();
-        round = contentProvider.getRound();
-        character = contentProvider.getCharacter();
+        List data = (List) contentProvider.getData();
+
+        game = (Game) data.get(0);
+        round = (Round) data.get(1);
+        character = (kei.mobilehero.classes.general.Character) data.get(2);
+
+        actualEquipment = (Equipment) data.get(5);
 
         init();
     }
 
     public void init() {
-        // TODO set text to the editText
-        /*equipmentNameText.setText(equipment.getName());
-        equipmentDescriptionText.setText(equipment.getDescription();
-        equipmentPositionText.setText(equipment.getPosition();
-        if(equipment.getValue() != 0)
-            equipmentWeightText.setText(String.valueOf(equipment.getValue()));*/
+        if(actualEquipment != null) {
+            equipmentNameText.setText(actualEquipment.getName());
+            equipmentDescriptionText.setText(actualEquipment.getDescription());
+            equipmentPositionText.setText(actualEquipment.getEquipmentPosition());
+            if (actualEquipment.getValue() != 0)
+                equipmentWeightText.setText(String.valueOf(actualEquipment.getValue()));
+            else
+                equipmentWeightText.setText("");
+        } else {
+            equipmentNameText.setText("");
+            equipmentDescriptionText.setText("");
+            equipmentPositionText.setText("");
+            equipmentWeightText.setText("");
+        }
     }
 
     @Override
@@ -81,11 +96,14 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                             equipmentPositionText.getText().toString()
                     );
 
-                    character.getEquipments().put(e.getName(), e);
+                    if(actualEquipment != null)
+                        character.getEquipments().remove(actualEquipment.getId());
+
+                    character.getEquipments().put(e.getId(), e);
 
                     // And save
                     if (character.save(getActivity().getApplicationContext(), game.getName(), round.getName()))
-                        getActivity().finish();
+                        getActivity().onBackPressed();
                 } else
                     Toast.makeText(getActivity().getApplicationContext(), "Les champs du formulaire ne sont pas bien remplis.", Toast.LENGTH_SHORT).show();
                 break;

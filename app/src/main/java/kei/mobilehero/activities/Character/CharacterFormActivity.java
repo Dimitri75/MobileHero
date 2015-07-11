@@ -10,6 +10,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.ActivityBase;
@@ -21,7 +22,7 @@ import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.persistence.Loader;
 
-public class CharacterFormActivity extends ActivityBase implements OnFragmentInteractionListener, ContentProvider {
+public class CharacterFormActivity extends ActivityBase implements OnFragmentInteractionListener, ContentProvider, SelectionListener {
     private Game game;
     private Round round;
     private kei.mobilehero.classes.general.Character character;
@@ -66,9 +67,9 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
         dictionaryFragments.put(EnumFragment.CARACTERISTICS, fragment_caracteristics);
         dictionaryFragments.put(EnumFragment.SKILLS, fragment_skills);
         dictionaryFragments.put(EnumFragment.EQUIPMENT, fragment_equipment);
-        dictionaryFragments.put(EnumFragment.NEW_CARACTERISTIC, fragment_new_caracteristic);
-        dictionaryFragments.put(EnumFragment.NEW_SKILL, fragment_new_skill);
-        dictionaryFragments.put(EnumFragment.NEW_EQUIPMENT, fragment_new_equipment);
+        dictionaryFragments.put(EnumFragment.CARACTERISTIC_FORM, fragment_new_caracteristic);
+        dictionaryFragments.put(EnumFragment.SKILL_FORM, fragment_new_skill);
+        dictionaryFragments.put(EnumFragment.EQUIPMENT_FORM, fragment_new_equipment);
 
         hideFragments(dictionaryFragments, dictionaryFragments.get(EnumFragment.ATTRIBUTE));
     }
@@ -120,19 +121,19 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
             case R.id.button_caracteristic_fragment_caracteristic:
                 if (isLandscape()) {
                     hideFragments(dictionaryFragments, null);
-                    showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.NEW_CARACTERISTIC));
+                    showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.CARACTERISTIC_FORM));
                 }
                 break;
             case R.id.button_skill_fragment_skill:
                 if (isLandscape()) {
                     hideFragments(dictionaryFragments, null);
-                    showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.NEW_SKILL));
+                    showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILL_FORM));
                 }
                 break;
             case R.id.button_equipment_fragment_equipment:
                 if (isLandscape()) {
                     hideFragments(dictionaryFragments, null);
-                    showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.NEW_EQUIPMENT));
+                    showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.EQUIPMENT_FORM));
                 }
                 break;
             case R.id.button_attributes_new_character:
@@ -170,18 +171,17 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
     public void onFragmentInteraction(Uri uri) {}
 
     @Override
-    public Game getGame() {
-        return game;
-    }
+    public Object getData() {
+        List l =  new ArrayList<>();
 
-    @Override
-    public Round getRound() {
-        return round;
-    }
+        l.add(game);
+        l.add(round);
+        l.add(character);
+        l.add(null);
+        l.add(null);
+        l.add(null);
 
-    @Override
-    public Character getCharacter() {
-        return character;
+        return l;
     }
 
     @Override
@@ -192,5 +192,10 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
     @Override
     public void removeContentListener(ContentProviderListener listener) {
         contentProviderListeners.remove(listener);
+    }
+
+    @Override
+    public void onSelected(Object o) {
+
     }
 }

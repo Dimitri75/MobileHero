@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 import kei.mobilehero.R;
 import kei.mobilehero.activities.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.attributes.Skill;
-import kei.mobilehero.classes.general.Game;
-import kei.mobilehero.classes.general.Round;
+import kei.mobilehero.classes.general.*;
 
 public class SkillFormFragment extends FragmentBase implements OnClickListener {
     View v;
@@ -23,6 +24,7 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
 
     private EditText skillNameText;
     private EditText skillDescriptionText;
+    private Skill actualSkill;
 
     public SkillFormFragment() {
         // Required empty public constructor
@@ -46,17 +48,25 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
 
     @Override
     public void onAvailableData() {
-        game = contentProvider.getGame();
-        round = contentProvider.getRound();
-        character = contentProvider.getCharacter();
+        List data = (List) contentProvider.getData();
+
+        game = (Game) data.get(0);
+        round = (Round) data.get(1);
+        character = (kei.mobilehero.classes.general.Character) data.get(2);
+
+        actualSkill = (Skill) data.get(4);
 
         init();
     }
 
     public void init() {
-        // TODO set text to the editText
-        /*skillNameText.setText(skill.getName());
-        skillDescriptionText.setText(skill.getDescription();*/
+        if(actualSkill != null) {
+            skillNameText.setText(actualSkill.getName());
+            skillDescriptionText.setText(actualSkill.getDescription());
+        } else {
+            skillNameText.setText("");
+            skillDescriptionText.setText("");
+        }
     }
 
     @Override
@@ -64,7 +74,7 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
         switch (v.getId()) {
             case R.id.button_saveSkill_new_skill:
                 if (!skillNameText.getText().toString().isEmpty() &&
-                        !character.getSkills().keySet().contains(skillNameText.getText().toString())) {
+                        (actualSkill != null || !character.getSkills().keySet().contains(skillNameText.getText().toString()))) {
 
                     Skill s = new Skill(
                             skillNameText.getText().toString(),
@@ -72,14 +82,17 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
                             0
                     );
 
+                    if(actualSkill != null && !character.getCaracteristics().containsKey(s.getName()))
+                        character.getSkills().remove(actualSkill.getName());
+
                     character.getSkills().put(s.getName(), s);
 
                     // And save
                     if (character.save(getActivity().getApplicationContext(), game.getName(), round.getName()))
-                        getActivity().finish();
+                        getActivity().onBackPressed();
                 } else
                     Toast.makeText(getActivity().getApplicationContext(), "La compétence existe déjà ou les champs ne sont pas bien remplis.", Toast.LENGTH_SHORT).show();
-                break;
+                    break;
         }
     }
 }

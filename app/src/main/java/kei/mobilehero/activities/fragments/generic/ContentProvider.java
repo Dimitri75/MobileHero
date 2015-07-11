@@ -6,16 +6,13 @@ import kei.mobilehero.classes.general.Character;
 /**
  * Created by Vuzi on 09/07/2015.
  */
-public interface ContentProvider {
+public interface ContentProvider<T> {
+
     interface ContentProviderListener {
         void onAvailableData();
     }
 
-    Game getGame();
-
-    Round getRound();
-
-    Character getCharacter();
+    T getData();
 
     void addContentListener(ContentProviderListener listener);
 
