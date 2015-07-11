@@ -72,20 +72,15 @@
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:background="@drawable/mobile_pirates">
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/mobile_pirates">
 
             <fragment
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:name="kei.mobilehero.activities.fragments.AttributeFragment"
@@ -95,7 +90,6 @@
             <!-- ATTRIBUTES -->
             <fragment
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:name="kei.mobilehero.activities.fragments.CaracteristicFragment"
@@ -104,7 +98,6 @@
 
             <fragment
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:name="kei.mobilehero.activities.fragments.SkillFragment"
@@ -113,7 +106,6 @@
 
             <fragment
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:name="kei.mobilehero.activities.fragments.EquipmentFragment"
@@ -123,7 +115,6 @@
             <!-- NEW ATTRIBUTES -->
             <fragment
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:name="kei.mobilehero.activities.fragments.CaracteristicFormFragment"
@@ -132,7 +123,6 @@
 
             <fragment
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:name="kei.mobilehero.activities.fragments.SkillFormFragment"
@@ -141,14 +131,13 @@
 
             <fragment
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:name="kei.mobilehero.activities.fragments.EquipmentFormFragment"
                 android:id="@+id/fragment_new_equipment_new_character"
                 android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true" />
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true" />
 
         </RelativeLayout>
-    </ScrollView>
 </LinearLayout>

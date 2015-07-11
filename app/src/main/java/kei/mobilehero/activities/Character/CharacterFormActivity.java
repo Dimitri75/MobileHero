@@ -8,11 +8,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import kei.mobilehero.R;
-import kei.mobilehero.activities.ActivityBase;
+import kei.mobilehero.activities.character.generic.ActivityAttributesBase;
+import kei.mobilehero.activities.character.generic.EnumAttribute;
 import kei.mobilehero.activities.fragments.generic.EnumFragment;
 import kei.mobilehero.activities.fragments.generic.OnFragmentInteractionListener;
 import kei.mobilehero.classes.general.Character;
@@ -20,7 +20,7 @@ import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.persistence.Loader;
 
-public class CharacterFormActivity extends ActivityBase implements OnFragmentInteractionListener {
+public class CharacterFormActivity extends ActivityAttributesBase implements OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +78,7 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
                         i.putExtra("character", character);
                         i.putExtra("argumentKey", EnumFragment.CARACTERISTICS);
                         startActivity(i);
+                        currentFragment = EnumFragment.CARACTERISTICS;
                     }
                 }
                 break;
@@ -94,6 +95,7 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
                         i.putExtra("character", character);
                         i.putExtra("argumentKey", EnumFragment.SKILLS);
                         startActivity(i);
+                        currentFragment = EnumFragment.SKILLS;
                     }
                 }
                 break;
@@ -110,6 +112,7 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
                         i.putExtra("character", character);
                         i.putExtra("argumentKey", EnumFragment.EQUIPMENT);
                         startActivity(i);
+                        currentFragment = EnumFragment.EQUIPMENT;
                     }
                 }
                 break;
@@ -118,7 +121,7 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
                     hideFragments(dictionaryFragments, null);
                     showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.CARACTERISTIC_FORM));
                     currentFragment = EnumFragment.CARACTERISTIC_FORM;
-                    data.set(3, null);
+                    data.put(EnumAttribute.CARACTERISTIC, null);
                 }
                 break;
             case R.id.button_skill_fragment_skill:
@@ -126,7 +129,7 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
                     hideFragments(dictionaryFragments, null);
                     showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILL_FORM));
                     currentFragment = EnumFragment.SKILL_FORM;
-                    data.set(4, null);
+                    data.put(EnumAttribute.SKILL, null);
                 }
                 break;
             case R.id.button_equipment_fragment_equipment:
@@ -134,11 +137,11 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
                     hideFragments(dictionaryFragments, null);
                     showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.EQUIPMENT_FORM));
                     currentFragment = EnumFragment.EQUIPMENT_FORM;
-                    data.set(5, null);
+                    data.put(EnumAttribute.EQUIPMENT, null);
                 }
                 break;
             case R.id.button_attributes_new_character:
-                if (currentFragment ==  EnumFragment.ATTRIBUTE) {
+                if (currentFragment !=  EnumFragment.ATTRIBUTE) {
                     hideFragments(dictionaryFragments, null);
                     showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.ATTRIBUTE));
                     currentFragment = EnumFragment.ATTRIBUTE;

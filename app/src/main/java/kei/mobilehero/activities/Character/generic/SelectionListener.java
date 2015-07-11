@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.character;
+package kei.mobilehero.activities.character.generic;
 
 /**
  * Created by Vuzi on 11/07/2015.

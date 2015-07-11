@@ -10,7 +10,8 @@ import android.view.View;
 import java.util.HashMap;
 
 import kei.mobilehero.R;
-import kei.mobilehero.activities.ActivityBase;
+import kei.mobilehero.activities.character.generic.ActivityAttributesBase;
+import kei.mobilehero.activities.character.generic.EnumAttribute;
 import kei.mobilehero.activities.fragments.generic.EnumFragment;
 import kei.mobilehero.activities.fragments.generic.OnFragmentInteractionListener;
 import kei.mobilehero.classes.general.Game;
@@ -19,7 +20,7 @@ import kei.mobilehero.classes.general.Round;
 import static kei.mobilehero.activities.fragments.generic.EnumFragment.CARACTERISTIC_FORM;
 import static kei.mobilehero.activities.fragments.generic.EnumFragment.EQUIPMENT_FORM;
 
-public class AttributesActivity extends ActivityBase implements OnFragmentInteractionListener {
+public class AttributesActivity extends ActivityAttributesBase implements OnFragmentInteractionListener {
 
     private EnumFragment argumentKey;
 
@@ -87,21 +88,21 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
         switch(v.getId()){
             case R.id.button_caracteristic_fragment_caracteristic:
                 currentFragment = CARACTERISTIC_FORM;
-                data.set(3, null);
+                data.put(EnumAttribute.CARACTERISTIC, null);
 
                 hideFragments(dictionaryFragments, null);
                 showFragmentWithAnimation(dictionaryFragments.get(CARACTERISTIC_FORM));
                 break;
             case R.id.button_skill_fragment_skill:
                 currentFragment = EnumFragment.SKILL_FORM;
-                data.set(4, null);
+                data.put(EnumAttribute.SKILL, null);
 
                 hideFragments(dictionaryFragments, null);
                 showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILL_FORM));
                 break;
             case R.id.button_equipment_fragment_equipment:
                 currentFragment = EQUIPMENT_FORM;
-                data.set(5, null);
+                data.put(EnumAttribute.EQUIPMENT, null);
 
                 hideFragments(dictionaryFragments, null);
                 showFragmentWithAnimation(dictionaryFragments.get(EQUIPMENT_FORM));

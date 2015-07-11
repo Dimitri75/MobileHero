@@ -9,12 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.List;
+import java.util.HashMap;
 
 import kei.mobilehero.R;
+import kei.mobilehero.activities.character.generic.EnumAttribute;
 import kei.mobilehero.activities.fragments.generic.FragmentBase;
-import kei.mobilehero.classes.general.*;
 import kei.mobilehero.classes.general.Character;
+import kei.mobilehero.classes.general.Game;
+import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.custom.widgets.MyCustomEditText;
 
 public class AttributeFragment extends FragmentBase implements OnClickListener {
@@ -56,11 +58,11 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
 
     @Override
     public void onAvailableData() {
-        List data = (List) contentProvider.getData();
+        HashMap<EnumAttribute, Object> data = (HashMap) contentProvider.getData();
 
-        game = (Game) data.get(0);
-        round = (Round) data.get(1);
-        character = (Character) data.get(2);
+        game = (Game) data.get(EnumAttribute.GAME);
+        round = (Round) data.get(EnumAttribute.ROUND);
+        character = (Character) data.get(EnumAttribute.CHARACTER);
 
         init();
     }

@@ -1,4 +1,4 @@
-package kei.mobilehero.activities;
+package kei.mobilehero.activities.character.generic;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -9,10 +9,8 @@ import android.view.Surface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import kei.mobilehero.R;
-import kei.mobilehero.activities.character.SelectionListener;
 import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.activities.fragments.generic.ContentProvider;
 import kei.mobilehero.activities.fragments.generic.EnumFragment;
@@ -28,14 +26,14 @@ import static kei.mobilehero.activities.fragments.generic.EnumFragment.EQUIPMENT
 /**
  * Created by Dimitri on 10/07/2015.
  */
-public abstract class ActivityBase extends ActionBarActivity implements ContentProvider, SelectionListener {
+public abstract class ActivityAttributesBase extends ActionBarActivity implements ContentProvider, SelectionListener {
 
     protected FragmentManager fm = getFragmentManager();
 
     protected HashMap<EnumFragment, Fragment> dictionaryFragments;
     protected ArrayList<ContentProviderListener> contentProviderListeners = new ArrayList<>();
 
-    protected List<Object> data;
+    protected HashMap<EnumAttribute, Object> data;
     protected Game game;
     protected Round round;
     protected kei.mobilehero.classes.general.Character character;
@@ -89,23 +87,23 @@ public abstract class ActivityBase extends ActionBarActivity implements ContentP
     public void onSelected(Object o) {
         // Generic event based on selected characteristic
         if(o instanceof Caracteristic) {
-            data.set(3, o);
-            data.set(4, null);
-            data.set(5, null);
+            data.put(EnumAttribute.CARACTERISTIC, o);
+            data.put(EnumAttribute.SKILL, null);
+            data.put(EnumAttribute.EQUIPMENT, null);
             hideFragments(dictionaryFragments, null);
             currentFragment = CARACTERISTIC_FORM;
             showFragmentWithAnimation(dictionaryFragments.get(CARACTERISTIC_FORM));
         } else if (o instanceof Skill) {
-            data.set(3, null);
-            data.set(4, o);
-            data.set(5, null);
+            data.put(EnumAttribute.CARACTERISTIC, null);
+            data.put(EnumAttribute.SKILL, o);
+            data.put(EnumAttribute.EQUIPMENT, null);
             hideFragments(dictionaryFragments, null);
             currentFragment = EnumFragment.SKILL_FORM;
             showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILL_FORM));
         } else if (o instanceof Equipment) {
-            data.set(3, null);
-            data.set(4, null);
-            data.set(5, o);
+            data.put(EnumAttribute.CARACTERISTIC, null);
+            data.put(EnumAttribute.SKILL, null);
+            data.put(EnumAttribute.EQUIPMENT, o);
             hideFragments(dictionaryFragments, null);
             currentFragment = EQUIPMENT_FORM;
             showFragmentWithAnimation(dictionaryFragments.get(EQUIPMENT_FORM));
@@ -141,13 +139,13 @@ public abstract class ActivityBase extends ActionBarActivity implements ContentP
     }
 
     protected void initData() {
-        data =  new ArrayList<>();
-        data.add(game);
-        data.add(round);
-        data.add(character);
-        data.add(null);
-        data.add(null);
-        data.add(null);
+        data =  new HashMap<>();
+        data.put(EnumAttribute.GAME, game);
+        data.put(EnumAttribute.ROUND, round);
+        data.put(EnumAttribute.CHARACTER, character);
+        data.put(EnumAttribute.CARACTERISTIC, null);
+        data.put(EnumAttribute.SKILL, null);
+        data.put(EnumAttribute.EQUIPMENT, null);
     }
 
     @Override

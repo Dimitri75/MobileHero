@@ -10,13 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 import kei.mobilehero.R;
-import kei.mobilehero.activities.character.SelectionListener;
+import kei.mobilehero.activities.character.generic.EnumAttribute;
+import kei.mobilehero.activities.character.generic.SelectionListener;
 import kei.mobilehero.activities.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.attributes.Caracteristic;
-import kei.mobilehero.classes.general.*;
+import kei.mobilehero.classes.general.Character;
+import kei.mobilehero.classes.general.Game;
+import kei.mobilehero.classes.general.Round;
 
 public class CaracteristicFragment extends FragmentBase {
     View v;
@@ -50,11 +53,11 @@ public class CaracteristicFragment extends FragmentBase {
 
     @Override
     public void onAvailableData() {
-        List data = (List) contentProvider.getData();
+        HashMap<EnumAttribute, Object> data = (HashMap) contentProvider.getData();
 
-        game = (Game) data.get(0);
-        round = (Round) data.get(1);
-        character = (kei.mobilehero.classes.general.Character) data.get(2);
+        game = (Game) data.get(EnumAttribute.GAME);
+        round = (Round) data.get(EnumAttribute.ROUND);
+        character = (Character) data.get(EnumAttribute.CHARACTER);
 
         init();
     }
