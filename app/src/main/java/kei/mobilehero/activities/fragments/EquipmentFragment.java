@@ -44,7 +44,7 @@ public class EquipmentFragment extends FragmentBase {
     }
 
     public void init(){
-        if (character.getEquipments() == null || character.getCaracteristics().isEmpty()) return;
+        if (character.getEquipments() == null || character.getEquipments().isEmpty()) return;
 
         ArrayAdapter<Equipment> myAdapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),

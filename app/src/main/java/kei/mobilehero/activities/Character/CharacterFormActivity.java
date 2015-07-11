@@ -15,7 +15,6 @@ import kei.mobilehero.R;
 import kei.mobilehero.activities.ActivityBase;
 import kei.mobilehero.activities.fragments.generic.ContentProvider;
 import kei.mobilehero.activities.fragments.generic.EnumFragment;
-import kei.mobilehero.activities.fragments.generic.FragmentBase;
 import kei.mobilehero.activities.fragments.generic.OnFragmentInteractionListener;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
@@ -152,12 +151,12 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
         super.onRestart();
 
         // Reload fragments with the new data
-        for (Fragment frag : dictionaryFragments.values())
-            ((FragmentBase) frag).onAvailableData();
+        /*for (Fragment frag : dictionaryFragments.values())
+            ((FragmentBase) frag).onAvailableData();*/
 
-        /*for(ContentProviderListener listener : contentProviderListeners) {
+        for(ContentProviderListener listener : contentProviderListeners) {
             listener.onAvailableData();
-        }*/
+        }
     }
 
     @Override
