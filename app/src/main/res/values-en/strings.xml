@@ -7,13 +7,13 @@
     <string name="newGame">New Game</string>
 
     <string name="title_activity_new_game">New game</string>
-    <string name="gameName">Type the game's name</string>
+    <string name="gameName">Type the game\'s name</string>
 
     <string name="title_activity_rounds">Round manager</string>
     <string name="newRound">New Round</string>
 
     <string name="title_activity_new_round">New round</string>
-    <string name="roundName">Type the round's name</string>
+    <string name="roundName">Type the round\'s name</string>
 
     <string name="title_activity_characters">Character manager</string>
     <string name="newPersonnage">New Character</string>
@@ -49,16 +49,16 @@
     <string name="action_settings_dices">Roll dices</string>
 
     <string name="attributeDescription">Type a description</string>
-    <string name="caracteristicName">Type the caracteristic's name</string>
+    <string name="caracteristicName">Type the caracteristic\'s name</string>
     <string name="caracteristicValue">Type a value</string>
 
     <string name="equipmentName">Type the equipment\'s name</string>
     <string name="equipmentValue">Type a weight</string>
     <string name="equipmentPosition">Type a position</string>
 
-    <string name="skillName">Type the skill's name</string>
+    <string name="skillName">Type the skill\'s name</string>
     <string name="skillValue">Type a value</string>
 
-    <string name="title_activity_attributes">Character's attributes</string>
+    <string name="title_activity_attributes">Character\'s attributes</string>
 
 </resources>
