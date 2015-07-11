@@ -233,7 +233,6 @@ public class Character implements Parcelable{
         dest.writeMap(caracteristics);
         dest.writeMap(skills);
         dest.writeMap(equipments);
-
     }
 
     /**
@@ -249,9 +248,9 @@ public class Character implements Parcelable{
         this.className = in.readString();
         this.picture = in.readString();
         this.level = in.readInt();
-        this.caracteristics = in.readHashMap(caracteristics.getClass().getClassLoader());
-        this.skills = in.readHashMap(skills.getClass().getClassLoader());
-        this.equipments = in.readHashMap(equipments.getClass().getClassLoader());
+        this.caracteristics = in.readHashMap(Caracteristic.class.getClassLoader());
+        this.skills = in.readHashMap(Skill.class.getClassLoader());
+        this.equipments = in.readHashMap(Equipment.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<Character> CREATOR = new Parcelable.Creator<Character>() {

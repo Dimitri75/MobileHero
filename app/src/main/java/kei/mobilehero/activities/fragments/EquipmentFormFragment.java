@@ -26,7 +26,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_new_equipment, container, false);
+        v = inflater.inflate(R.layout.fragment_equipment_form, container, false);
 
         // Instantiate the views
         Button newCaracteristic = (Button) v.findViewById(R.id.button_saveEquipment_new_equipment);

@@ -26,7 +26,7 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_new_skill, container, false);
+        v = inflater.inflate(R.layout.fragment_skill_form, container, false);
 
         // Instantiate the views
         Button newCaracteristic = (Button) v.findViewById(R.id.button_saveSkill_new_skill);

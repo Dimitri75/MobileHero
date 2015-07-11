@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView_equipment"
-        android:background="@xml/custom_listview"
+        android:background="@xml/custom_listview_2"
         android:layout_below="@+id/button_equipment_fragment_equipment"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="13dp"/>

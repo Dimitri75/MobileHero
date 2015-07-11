@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/listView_dices_result"
         android:layout_centerHorizontal="true"
-        android:background="@xml/custom_listview2"
+        android:background="@xml/custom_listview_dices"
         android:layout_below="@+id/button_roll_dices"
         android:textAlignment="gravity"
         android:textFilterEnabled="false"

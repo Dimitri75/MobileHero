@@ -33,7 +33,7 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_new_caracteristic, container, false);
+        v = inflater.inflate(R.layout.fragment_caracteristic_form, container, false);
 
         // Instantiate the views
         caracteristicNameText = (EditText) v.findViewById(R.id.editText_caracteristicName_new_caracteristic);
@@ -85,7 +85,7 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
                         getActivity().finish();
                 }
                 else
-                    Toast.makeText(getActivity().getApplicationContext(), "La caractéristique existe déjà ou les champs ne sont pas bien remplis.", Toast.LENGTH_SHORT);
+                    Toast.makeText(getActivity().getApplicationContext(), "La caractï¿½ristique existe dï¿½jï¿½ ou les champs ne sont pas bien remplis.", Toast.LENGTH_SHORT);
                 break;
         }
     }

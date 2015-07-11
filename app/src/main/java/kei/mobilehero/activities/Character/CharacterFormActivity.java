@@ -32,7 +32,7 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_character);
+        setContentView(R.layout.activity_character_form);
 
         if((game = (Game) getIntent().getExtras().get("game")) == null ||
                 (round = (Round) getIntent().getExtras().get("round")) == null){

@@ -20,7 +20,7 @@ public class NewRoundActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_round);
+        setContentView(R.layout.activity_round_form);
 
         if((game = (Game) getIntent().getExtras().get("game")) == null){
             Log.v("NewRound onCreate()","Couldn't get the game.");
