@@ -49,11 +49,10 @@
         android:imeOptions="actionNext"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toEndOf="@+id/textView4"
+        android:layout_toRightOf="@+id/textView4" />
 
     <EditText
-        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="50dp"
         android:maxLength="50"
@@ -69,12 +68,11 @@
         android:imeOptions="actionNext"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignLeft="@+id/editText_characterName_fragment_attribute"
+        android:layout_alignStart="@+id/editText_characterName_fragment_attribute" />
 
 
     <EditText
-        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="50dp"
         android:maxLength="50"
@@ -90,11 +88,10 @@
         android:imeOptions="actionNext"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignLeft="@+id/editText_characterGender_fragment_attribute"
+        android:layout_alignStart="@+id/editText_characterGender_fragment_attribute" />
 
     <EditText
-        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="50dp"
         android:maxLength="50"
@@ -110,13 +107,11 @@
         android:imeOptions="actionNext"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignLeft="@+id/editText_characterRace_fragment_attribute"
+        android:layout_alignStart="@+id/editText_characterRace_fragment_attribute" />
 
     <EditText
         android:layout_marginBottom="45dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="50dp"
         android:maxLength="50"
         android:layout_width="wrap_content"
@@ -133,6 +128,73 @@
         android:layout_alignStart="@+id/editText_characterClassName_fragment_attribute"
         android:singleLine="true"
         android:imeOptions="actionDone"/>
+
+        <kei.mobilehero.custom.widgets.MyCustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/nameLabel"
+            android:id="@+id/textView"
+            android:layout_alignTop="@+id/editText_characterName_fragment_attribute"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="45dp"
+            android:textColor="#c8ffffff"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"/>
+
+        <kei.mobilehero.custom.widgets.MyCustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/sexLabel"
+            android:id="@+id/textView2"
+            android:layout_alignTop="@+id/editText_characterGender_fragment_attribute"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:textColor="#c8ffffff"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"/>
+
+        <kei.mobilehero.custom.widgets.MyCustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/raceLabel"
+            android:id="@+id/textView3"
+            android:layout_alignTop="@+id/editText_characterRace_fragment_attribute"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:textColor="#c8ffffff"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp" />
+
+        <kei.mobilehero.custom.widgets.MyCustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/classNameLabel"
+            android:id="@+id/textView4"
+            android:layout_alignTop="@+id/editText_characterClassName_fragment_attribute"
+            android:layout_alignLeft="@+id/textView3"
+            android:layout_alignStart="@+id/textView3"
+            android:textColor="#c8ffffff"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp" />
+
+        <kei.mobilehero.custom.widgets.MyCustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/alignmentLabel"
+            android:id="@+id/textView5"
+            android:layout_alignTop="@+id/editText_characterAlignment_fragment_attribute"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_alignStart="@+id/textView4"
+            android:textColor="#c8ffffff"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"/>
     </RelativeLayout>
 
     <kei.mobilehero.custom.widgets.MyCustomButton

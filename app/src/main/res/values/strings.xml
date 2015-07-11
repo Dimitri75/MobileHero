@@ -24,11 +24,17 @@
     <string name="save">Sauvegarder</string>
 
     <string name="level">Niveau</string>
-    <string name="name">Nom</string>
-    <string name="sex">Sexe</string>
-    <string name="race">Race</string>
-    <string name="className">Classe</string>
-    <string name="alignment">Alignement</string>
+    <string name="name">Saisir un nom</string>
+    <string name="sex">Saisir un sexe</string>
+    <string name="race">Saisir une race</string>
+    <string name="className">Saisir une classe</string>
+    <string name="alignment">Saisir un alignement</string>
+
+    <string name="nameLabel">Nom</string>
+    <string name="sexLabel">Sexe</string>
+    <string name="raceLabel">Race</string>
+    <string name="classNameLabel">Classe</string>
+    <string name="alignmentLabel">Karma</string>
 
     <string name="addCaracteristic">Ajouter une caractéristique</string>
     <string name="addEquipment">Ajouter un équipement</string>
