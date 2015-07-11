@@ -1,28 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="kei.mobilehero.activities.round.NewRoundActivity"
+    android:background="@drawable/mobile_gnome">
 
+    <kei.mobilehero.custom.widgets.MyCustomTextView
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_appName_new_round"
+        android:textSize="@dimen/app_name_size"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff"/>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context="kei.mobilehero.activities.round.NewRoundActivity"
-        android:background="@drawable/mobile_gnome">
-
-        <kei.mobilehero.custom.widgets.MyCustomTextView
-            android:text="@string/app_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/label_appName_new_round"
-            android:textSize="@dimen/app_name_size"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:textColor="#ffffffff"/>
+    <RelativeLayout
+        android:layout_marginTop="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@xml/radius"
+        android:id="@+id/relativeLayout2_round_form"
+        android:layout_below="@+id/label_appName_new_round"
+        android:layout_alignRight="@+id/button_saveRound_new_round"
+        android:layout_alignEnd="@+id/button_saveRound_new_round"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:maxLength="50"
             android:layout_marginTop="60dp"
+            android:layout_marginBottom="60dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/editText_roundName_new_round"
@@ -30,28 +43,28 @@
             android:textColor="#ffffffff"
             android:textColorHint="#FF9B9B9B"
             android:gravity="center_horizontal"
-            android:layout_below="@+id/label_appName_new_round"
-            android:layout_alignRight="@+id/label_appName_new_round"
-            android:layout_alignEnd="@+id/label_appName_new_round"
-            android:layout_alignLeft="@+id/label_appName_new_round"
-            android:layout_alignStart="@+id/label_appName_new_round"
             android:singleLine="true"
-            android:imeOptions="actionDone" />
-
-        <kei.mobilehero.custom.widgets.MyCustomButton
-            android:layout_marginTop="45dp"
-            android:background="@drawable/button_large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/save"
-            android:id="@+id/button_saveRound_new_round"
-            android:onClick="buttonOnClick"
-            android:textColor="#e1000000"
-            android:textSize="16sp"
-            android:layout_below="@+id/editText_roundName_new_round"
-            android:layout_alignLeft="@+id/editText_roundName_new_round"
-            android:layout_alignStart="@+id/editText_roundName_new_round"
-            android:layout_alignRight="@+id/editText_roundName_new_round"
-            android:layout_alignEnd="@+id/editText_roundName_new_round" />
-
+            android:imeOptions="actionDone"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
+
+    <kei.mobilehero.custom.widgets.MyCustomButton
+        android:layout_marginTop="45dp"
+        android:background="@drawable/button_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:id="@+id/button_saveRound_new_round"
+        android:onClick="buttonOnClick"
+        android:textColor="#e1000000"
+        android:textSize="16sp"
+        android:layout_below="@+id/relativeLayout2_round_form"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

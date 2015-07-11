@@ -18,9 +18,24 @@
             android:layout_centerHorizontal="true"
             android:textColor="#ffffffff"/>
 
+        <RelativeLayout
+            android:layout_marginTop="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@xml/radius"
+            android:id="@+id/relativeLayout2_game_form"
+            android:layout_below="@+id/label_appName_new_game"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
         <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:maxLength="50"
             android:layout_marginTop="60dp"
+            android:layout_marginBottom="60dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/editText_gameName_new_game"
@@ -28,13 +43,14 @@
             android:textColor="#ffffffff"
             android:textColorHint="#FF9B9B9B"
             android:gravity="center_horizontal"
-            android:layout_below="@+id/label_appName_new_game"
-            android:layout_alignRight="@+id/label_appName_new_game"
-            android:layout_alignEnd="@+id/label_appName_new_game"
-            android:layout_alignLeft="@+id/label_appName_new_game"
-            android:layout_alignStart="@+id/label_appName_new_game"
             android:singleLine="true"
-            android:imeOptions="actionDone" />
+            android:imeOptions="actionDone"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
 
         <kei.mobilehero.custom.widgets.MyCustomButton
             android:layout_marginTop="45dp"
@@ -46,10 +62,10 @@
             android:onClick="buttonOnClick"
             android:textColor="#e1000000"
             android:textSize="16sp"
-            android:layout_below="@+id/editText_gameName_new_game"
-            android:layout_alignLeft="@+id/editText_gameName_new_game"
-            android:layout_alignStart="@+id/editText_gameName_new_game"
-            android:layout_alignRight="@+id/editText_gameName_new_game"
-            android:layout_alignEnd="@+id/editText_gameName_new_game" />
+            android:layout_below="@+id/relativeLayout2_game_form"
+            android:layout_alignLeft="@+id/relativeLayout2_game_form"
+            android:layout_alignStart="@+id/relativeLayout2_game_form"
+            android:layout_alignRight="@+id/relativeLayout2_game_form"
+            android:layout_alignEnd="@+id/relativeLayout2_game_form" />
 
     </RelativeLayout>
