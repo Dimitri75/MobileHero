@@ -27,7 +27,7 @@
         android:ems="10"
         android:id="@+id/editText_characterLevel_fragment_attribute"
         android:singleLine="true"
-        android:imeOptions="actionNext"
+        android:imeOptions="actionDone"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
