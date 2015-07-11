@@ -62,16 +62,15 @@ public class CharactersActivity extends ActionBarActivity {
 
                             @Override
                             public boolean canDismiss(int position) {
-                                return true;
+                                return false;
                             }
 
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    {
-                                        if (myAdapter.getItem(position).delete(getApplicationContext(), game.getName(), round.getName()))
-                                            myAdapter.remove(myAdapter.getItem(position));
-                                    }
+                                    if (myAdapter.getItem(position).delete(getApplicationContext(), game.getName(), round.getName()))
+                                        myAdapter.remove(myAdapter.getItem(position));
+
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }

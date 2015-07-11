@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -67,6 +68,7 @@ public class GamesActivity extends ActionBarActivity {
                             public boolean canDismiss(int position) {
                                 if (myAdapter.getItem(position).getRounds().isEmpty()) return true;
                                 else {
+                                    Toast.makeText(getApplicationContext(), "Vous ne pouvez pas supprimer un jeu qui contient des parties.", Toast.LENGTH_SHORT).show();
                                     Log.v("Games init()", "Cannot delete a game which is not empty");
                                     return false;
                                 }
@@ -75,10 +77,9 @@ public class GamesActivity extends ActionBarActivity {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    {
-                                        if (myAdapter.getItem(position).delete(getApplicationContext()))
-                                            myAdapter.remove(myAdapter.getItem(position));
-                                    }
+                                    if (myAdapter.getItem(position).delete(getApplicationContext()))
+                                        myAdapter.remove(myAdapter.getItem(position));
+
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }

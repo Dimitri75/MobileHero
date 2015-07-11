@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.CharactersActivity;
@@ -64,6 +65,7 @@ public class RoundsActivity extends ActionBarActivity {
                                 if (myAdapter.getItem(position).getCharacters().isEmpty())
                                     return true;
                                 else {
+                                    Toast.makeText(getApplicationContext(), "Vous ne pouvez pas supprimer une partie qui contient des personnages.", Toast.LENGTH_SHORT).show();
                                     Log.v("Rounds init()", "Cannot delete a round which is not empty");
                                     return false;
                                 }
@@ -72,11 +74,9 @@ public class RoundsActivity extends ActionBarActivity {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    {
-                                        if (myAdapter.getItem(position).delete(getApplicationContext(), game))
+                                    if (myAdapter.getItem(position).delete(getApplicationContext(), game))
                                             myAdapter.remove(myAdapter.getItem(position));
                                     }
-                                }
                                 myAdapter.notifyDataSetChanged();
                             }
                         });
