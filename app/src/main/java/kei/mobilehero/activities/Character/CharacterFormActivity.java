@@ -10,11 +10,9 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.ActivityBase;
-import kei.mobilehero.activities.fragments.generic.ContentProvider;
 import kei.mobilehero.activities.fragments.generic.EnumFragment;
 import kei.mobilehero.activities.fragments.generic.OnFragmentInteractionListener;
 import kei.mobilehero.classes.general.Character;
@@ -22,13 +20,7 @@ import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.persistence.Loader;
 
-public class CharacterFormActivity extends ActivityBase implements OnFragmentInteractionListener, ContentProvider, SelectionListener {
-    private Game game;
-    private Round round;
-    private kei.mobilehero.classes.general.Character character;
-
-    HashMap<EnumFragment, Fragment> dictionaryFragments;
-    ArrayList<ContentProviderListener> contentProviderListeners = new ArrayList<>();
+public class CharacterFormActivity extends ActivityBase implements OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +33,13 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
             finish();
         }
 
-        // Fragments
-        initFragments();
-
         if (!((character = (kei.mobilehero.classes.general.Character) getIntent().getExtras().get("character")) != null))
             character = new Character("");
 
-        // Signal that data is available
-        for(ContentProviderListener listener : contentProviderListeners) {
-            listener.onAvailableData();
-        }
+        initFragments();
+        initData();
+
+        signalAvailableData();
     }
 
     public void initFragments(){
@@ -77,75 +66,92 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
     public void buttonOnClick(View v) {
         switch(v.getId()){
             case R.id.button_caracteristics_new_character:
-                if (isLandscape()) {
-                    hideFragments(dictionaryFragments, null);
-                    showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.CARACTERISTICS));
-                }
-                else if (character.save(getApplicationContext(), game.getName(), round.getName())) {
+                if(currentFragment != EnumFragment.CARACTERISTICS) {
+                    if (isLandscape()) {
+                        hideFragments(dictionaryFragments, null);
+                        showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.CARACTERISTICS));
+                        currentFragment = EnumFragment.CARACTERISTICS;
+                    } else if (character.save(getApplicationContext(), game.getName(), round.getName())) {
                         Intent i = new Intent(getApplicationContext(), AttributesActivity.class);
                         i.putExtra("game", game);
                         i.putExtra("round", round);
                         i.putExtra("character", character);
                         i.putExtra("argumentKey", EnumFragment.CARACTERISTICS);
                         startActivity(i);
+                    }
                 }
                 break;
             case R.id.button_skills_new_character:
-                if (isLandscape()) {
-                    hideFragments(dictionaryFragments, null);
-                    showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILLS));
-                }
-                else if (character.save(getApplicationContext(), game.getName(), round.getName())) {
+                if(currentFragment != EnumFragment.SKILLS) {
+                    if (isLandscape()) {
+                        hideFragments(dictionaryFragments, null);
+                        showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILLS));
+                        currentFragment = EnumFragment.SKILLS;
+                    } else if (character.save(getApplicationContext(), game.getName(), round.getName())) {
                         Intent i = new Intent(getApplicationContext(), AttributesActivity.class);
                         i.putExtra("game", game);
                         i.putExtra("round", round);
                         i.putExtra("character", character);
                         i.putExtra("argumentKey", EnumFragment.SKILLS);
                         startActivity(i);
+                    }
                 }
                 break;
             case R.id.button_equipment_new_character:
-                if (isLandscape()) {
-                    hideFragments(dictionaryFragments, null);
-                    showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.EQUIPMENT));
-                }
-                else if (character.save(getApplicationContext(), game.getName(), round.getName())) {
+                if(currentFragment != EnumFragment.EQUIPMENT) {
+                    if (isLandscape()) {
+                        hideFragments(dictionaryFragments, null);
+                        showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.EQUIPMENT));
+                        currentFragment = EnumFragment.EQUIPMENT;
+                    } else if (character.save(getApplicationContext(), game.getName(), round.getName())) {
                         Intent i = new Intent(getApplicationContext(), AttributesActivity.class);
                         i.putExtra("game", game);
                         i.putExtra("round", round);
                         i.putExtra("character", character);
                         i.putExtra("argumentKey", EnumFragment.EQUIPMENT);
                         startActivity(i);
+                    }
                 }
                 break;
             case R.id.button_caracteristic_fragment_caracteristic:
-                if (isLandscape()) {
+                if (isLandscape() && currentFragment != EnumFragment.CARACTERISTIC_FORM) {
                     hideFragments(dictionaryFragments, null);
                     showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.CARACTERISTIC_FORM));
+                    currentFragment = EnumFragment.CARACTERISTIC_FORM;
+                    data.set(3, null);
                 }
                 break;
             case R.id.button_skill_fragment_skill:
                 if (isLandscape()) {
                     hideFragments(dictionaryFragments, null);
                     showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILL_FORM));
+                    currentFragment = EnumFragment.SKILL_FORM;
+                    data.set(4, null);
                 }
                 break;
             case R.id.button_equipment_fragment_equipment:
                 if (isLandscape()) {
                     hideFragments(dictionaryFragments, null);
                     showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.EQUIPMENT_FORM));
+                    currentFragment = EnumFragment.EQUIPMENT_FORM;
+                    data.set(5, null);
                 }
                 break;
             case R.id.button_attributes_new_character:
-                hideFragments(dictionaryFragments, null);
-                showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.ATTRIBUTE));
+                if (currentFragment ==  EnumFragment.ATTRIBUTE) {
+                    hideFragments(dictionaryFragments, null);
+                    showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.ATTRIBUTE));
+                    currentFragment = EnumFragment.ATTRIBUTE;
+                }
         }
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+        if(isLandscape())
+            super.onBackPressed();
+        else
+            finish();
     }
 
     @Override
@@ -169,33 +175,4 @@ public class CharacterFormActivity extends ActivityBase implements OnFragmentInt
 
     @Override
     public void onFragmentInteraction(Uri uri) {}
-
-    @Override
-    public Object getData() {
-        List l =  new ArrayList<>();
-
-        l.add(game);
-        l.add(round);
-        l.add(character);
-        l.add(null);
-        l.add(null);
-        l.add(null);
-
-        return l;
-    }
-
-    @Override
-    public void addContentListener(ContentProviderListener listener) {
-        contentProviderListeners.add(listener);
-    }
-
-    @Override
-    public void removeContentListener(ContentProviderListener listener) {
-        contentProviderListeners.remove(listener);
-    }
-
-    @Override
-    public void onSelected(Object o) {
-
-    }
 }

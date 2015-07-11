@@ -7,68 +7,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.ActivityBase;
-import kei.mobilehero.activities.fragments.generic.ContentProvider;
 import kei.mobilehero.activities.fragments.generic.EnumFragment;
 import kei.mobilehero.activities.fragments.generic.OnFragmentInteractionListener;
-import kei.mobilehero.classes.attributes.Caracteristic;
-import kei.mobilehero.classes.attributes.Equipment;
-import kei.mobilehero.classes.attributes.Skill;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 
 import static kei.mobilehero.activities.fragments.generic.EnumFragment.CARACTERISTIC_FORM;
 import static kei.mobilehero.activities.fragments.generic.EnumFragment.EQUIPMENT_FORM;
 
-public class AttributesActivity extends ActivityBase implements OnFragmentInteractionListener, ContentProvider, SelectionListener {
+public class AttributesActivity extends ActivityBase implements OnFragmentInteractionListener {
 
-    @Override
-    public void onSelected(Object o) {
-        if(o instanceof Caracteristic) {
-            data.set(3, o);
-            data.set(4, null);
-            data.set(5, null);
-            hideFragments(dictionaryFragments, null);
-            currentFragment = CARACTERISTIC_FORM;
-            showFragmentWithAnimation(dictionaryFragments.get(CARACTERISTIC_FORM));
-        } else if (o instanceof Skill) {
-            data.set(3, null);
-            data.set(4, o);
-            data.set(5, null);
-            hideFragments(dictionaryFragments, null);
-            currentFragment = EnumFragment.SKILL_FORM;
-            showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILL_FORM));
-        } else if (o instanceof Equipment) {
-            data.set(3, null);
-            data.set(4, null);
-            data.set(5, o);
-            hideFragments(dictionaryFragments, null);
-            currentFragment = EQUIPMENT_FORM;
-            showFragmentWithAnimation(dictionaryFragments.get(EQUIPMENT_FORM));
-        }
-
-        // Signal that data is available
-        for(ContentProviderListener listener : contentProviderListeners) {
-            listener.onAvailableData();
-        }
-    }
-
-    private List<Object> data;
-    private Game game;
-    private Round round;
-    private kei.mobilehero.classes.general.Character character;
-
-    private EnumFragment currentFragment;
     private EnumFragment argumentKey;
-
-    HashMap<EnumFragment, Fragment> dictionaryFragments;
-    ArrayList<ContentProviderListener> contentProviderListeners = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,21 +38,9 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
 
         initBackground();
         initFragments();
+        initData();
 
-        data =  new ArrayList<Object>();
-        data.add(game);
-        data.add(round);
-        data.add(character);
-        data.add(null);
-        data.add(null);
-        data.add(null);
-
-        Log.i("TEST", "" + data.size());
-
-        // Signal that data is available
-        for(ContentProviderListener listener : contentProviderListeners) {
-            listener.onAvailableData();
-        }
+        signalAvailableData();
     }
 
     public void initFragments(){
@@ -167,48 +108,13 @@ public class AttributesActivity extends ActivityBase implements OnFragmentIntera
                 break;
         }
 
-        // Signal that data is available
-        for(ContentProviderListener listener : contentProviderListeners) {
-            listener.onAvailableData();
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        switch(currentFragment){
-            case CARACTERISTIC_FORM:
-                currentFragment = EnumFragment.CARACTERISTICS;
-
-                hideFragments(dictionaryFragments, null);
-                showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.CARACTERISTICS));
-                break;
-            case SKILL_FORM:
-                currentFragment = EnumFragment.SKILLS;
-
-                hideFragments(dictionaryFragments, null);
-                showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILLS));
-                break;
-            case EQUIPMENT_FORM:
-                currentFragment = EnumFragment.EQUIPMENT;
-
-                hideFragments(dictionaryFragments, null);
-                showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.EQUIPMENT));
-                break;
-            default:
-                finish();
-        }
+        signalAvailableData();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_attributes, menu);
         return true;
-    }
-
-    @Override
-    public Object getData() {
-        return data;
     }
 
     @Override
