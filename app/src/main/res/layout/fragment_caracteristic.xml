@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kei.mobilehero.activities.fragments.CaracteristicFragment">
+    tools:context="kei.mobilehero.activities.fragments.CaracteristicFragment"
+    android:paddingTop="@dimen/activity_vertical_margin">
     <!--android:background="@drawable/mobile_gobelin"-->
 
     <kei.mobilehero.custom.widgets.MyCustomButton

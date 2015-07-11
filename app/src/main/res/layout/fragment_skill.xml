@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context="kei.mobilehero.activities.fragments.SkillFragment">
+    tools:context="kei.mobilehero.activities.fragments.SkillFragment"
+    android:paddingTop="@dimen/activity_vertical_margin">
     <!--android:background="@drawable/mobile_ogre"-->
 
     <kei.mobilehero.custom.widgets.MyCustomButton

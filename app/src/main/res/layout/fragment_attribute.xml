@@ -8,6 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         tools:context="kei.mobilehero.activities.fragments.AttributeFragment"
+        android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin">
 
 
@@ -54,8 +55,8 @@
             android:imeOptions="actionNext"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/textView4"
-            android:layout_toRightOf="@+id/textView4" />
+            android:layout_toEndOf="@+id/textView_alignment_attribute"
+            android:layout_toRightOf="@+id/textView_alignment_attribute" />
 
         <EditText
             android:layout_marginRight="10dp"
@@ -139,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/nameLabel"
-                android:id="@+id/textView"
+                android:id="@+id/textView_name_attribute"
                 android:layout_alignTop="@+id/editText_characterName_fragment_attribute"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -154,10 +155,10 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/sexLabel"
-                android:id="@+id/textView2"
+                android:id="@+id/textView_gender_attribute"
                 android:layout_alignTop="@+id/editText_characterGender_fragment_attribute"
-                android:layout_alignLeft="@+id/textView"
-                android:layout_alignStart="@+id/textView"
+                android:layout_alignLeft="@+id/textView_name_attribute"
+                android:layout_alignStart="@+id/textView_name_attribute"
                 android:textColor="#c8ffffff"
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"/>
@@ -167,10 +168,10 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/raceLabel"
-                android:id="@+id/textView3"
+                android:id="@+id/textView_race_attribute"
                 android:layout_alignTop="@+id/editText_characterRace_fragment_attribute"
-                android:layout_alignLeft="@+id/textView2"
-                android:layout_alignStart="@+id/textView2"
+                android:layout_alignLeft="@+id/textView_gender_attribute"
+                android:layout_alignStart="@+id/textView_gender_attribute"
                 android:textColor="#c8ffffff"
                 android:textSize="25sp"
                 android:layout_marginTop="10dp" />
@@ -180,10 +181,10 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/classNameLabel"
-                android:id="@+id/textView4"
+                android:id="@+id/textView_class_attribute"
                 android:layout_alignTop="@+id/editText_characterClassName_fragment_attribute"
-                android:layout_alignLeft="@+id/textView3"
-                android:layout_alignStart="@+id/textView3"
+                android:layout_alignLeft="@+id/textView_race_attribute"
+                android:layout_alignStart="@+id/textView_race_attribute"
                 android:textColor="#c8ffffff"
                 android:textSize="25sp"
                 android:layout_marginTop="10dp" />
@@ -193,10 +194,10 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/alignmentLabel"
-                android:id="@+id/textView5"
+                android:id="@+id/textView_alignment_attribute"
                 android:layout_alignTop="@+id/editText_characterAlignment_fragment_attribute"
-                android:layout_alignLeft="@+id/textView4"
-                android:layout_alignStart="@+id/textView4"
+                android:layout_alignLeft="@+id/textView_class_attribute"
+                android:layout_alignStart="@+id/textView_class_attribute"
                 android:textColor="#c8ffffff"
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"/>

@@ -32,6 +32,10 @@
     <string name="alignment">Type an alignment</string>
 
     <string name="nameLabel">Name</string>
+    <string name="descriptionLabel">Desc.</string>
+    <string name="valueLabel">Value</string>
+    <string name="weightLabel">Weight</string>
+    <string name="positionLabel">Loc.</string>
     <string name="sexLabel">Sex</string>
     <string name="raceLabel">Race</string>
     <string name="classNameLabel">Class</string>
@@ -54,7 +58,7 @@
 
     <string name="equipmentName">Type the equipment\'s name</string>
     <string name="equipmentValue">Type a weight</string>
-    <string name="equipmentPosition">Type a position</string>
+    <string name="equipmentLocation">Type a position</string>
 
     <string name="skillName">Type the skill\'s name</string>
     <string name="skillValue">Type a value</string>

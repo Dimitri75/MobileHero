@@ -31,6 +31,11 @@
     <string name="alignment">Saisir un alignement</string>
 
     <string name="nameLabel">Nom</string>
+    <string name="descriptionLabel">Desc.</string>
+    <string name="valueLabel">Valeur</string>
+    <string name="weightLabel">Poids</string>
+    <string name="positionLabel">Pos.</string>
+
     <string name="sexLabel">Sexe</string>
     <string name="raceLabel">Race</string>
     <string name="classNameLabel">Classe</string>
@@ -48,14 +53,14 @@
     <string name="action_settings_dices">Lancer les dés</string>
 
     <string name="attributeDescription">Saisir une description</string>
-    <string name="caracteristicName">Entrez le nom de la caractéristique</string>
+    <string name="caracteristicName">Entrer un nom</string>
     <string name="caracteristicValue">Saisir une valeur</string>
 
-    <string name="equipmentName">Entrez le nom de l\'équipement</string>
+    <string name="equipmentName">Entrer le nom de l\'équipement</string>
     <string name="equipmentValue">Saisir un poids</string>
-    <string name="equipmentPosition">Saisir une position</string>
+    <string name="equipmentLocation">Saisir une position</string>
 
-    <string name="skillName">Entrez le nom de la compétence</string>
+    <string name="skillName">Entrer le nom de la compétence</string>
     <string name="skillValue">Saisir une valeur</string>
 
     <string name="title_activity_attributes">Attributs de personnage</string>
