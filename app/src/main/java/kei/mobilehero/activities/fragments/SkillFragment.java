@@ -11,14 +11,15 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
 import kei.mobilehero.activities.character.generic.SelectionListener;
 import kei.mobilehero.activities.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.attributes.Skill;
-import kei.mobilehero.classes.general.*;
+import kei.mobilehero.classes.general.Game;
+import kei.mobilehero.classes.general.Round;
+import kei.mobilehero.classes.utils.swipe.SwipeDismissListViewTouchListener;
 
 public class SkillFragment extends FragmentBase {
     View v;
@@ -79,6 +80,30 @@ public class SkillFragment extends FragmentBase {
                 selectionListener.onSelected(myAdapter.getItem(position));
             }
         });
+
+        SwipeDismissListViewTouchListener swipeTouchListener =
+                new SwipeDismissListViewTouchListener(
+                        listView,
+                        new SwipeDismissListViewTouchListener.DismissCallbacks() {
+                            @Override
+                            public boolean canDismiss(int position) {
+                                return true;
+                            }
+
+                            @Override
+                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    character.getSkills().remove(myAdapter.getItem(position).getName());
+                                    character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
+                                    onAvailableData();
+                                }
+                                myAdapter.notifyDataSetChanged();
+                            }
+                        });
+        listView.setOnTouchListener(swipeTouchListener);
+        // Setting this scroll listener is required to ensure that during ListView scrolling,
+        // we don't look for swipes.
+        listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
     }
 }
 

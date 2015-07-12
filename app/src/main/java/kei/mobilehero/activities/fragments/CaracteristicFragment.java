@@ -20,6 +20,7 @@ import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
+import kei.mobilehero.classes.utils.swipe.SwipeDismissListViewTouchListener;
 
 public class CaracteristicFragment extends FragmentBase {
     View v;
@@ -78,5 +79,29 @@ public class CaracteristicFragment extends FragmentBase {
                 selectionListener.onSelected(myAdapter.getItem(position));
             }
         });
+
+        SwipeDismissListViewTouchListener swipeTouchListener =
+                new SwipeDismissListViewTouchListener(
+                        listView,
+                        new SwipeDismissListViewTouchListener.DismissCallbacks() {
+                            @Override
+                            public boolean canDismiss(int position) {
+                                return true;
+                            }
+
+                            @Override
+                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    character.getCaracteristics().remove(myAdapter.getItem(position).getName());
+                                    character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
+                                    onAvailableData();
+                                }
+                                myAdapter.notifyDataSetChanged();
+                            }
+                        });
+        listView.setOnTouchListener(swipeTouchListener);
+        // Setting this scroll listener is required to ensure that during ListView scrolling,
+        // we don't look for swipes.
+        listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
     }
 }
