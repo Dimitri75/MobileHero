@@ -109,7 +109,6 @@
             android:layout_height="wrap_content"
             android:text="@string/effects"
             android:id="@+id/button_effects_new_skill"
-            android:onClick="buttonOnClick"
             android:textColor="#e1000000"
             android:textSize="14sp"
             android:layout_below="@+id/button_saveSkill_new_skill"

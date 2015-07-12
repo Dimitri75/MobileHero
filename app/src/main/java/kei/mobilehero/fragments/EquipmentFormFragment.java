@@ -50,8 +50,10 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
         equipmentWeightText = (EditText) v.findViewById(R.id.editText_equipmentValue_new_equipment);
         equipmentPositionText = (EditText) v.findViewById(R.id.editText_equipmentPosition_new_equipment);
 
+        Button newEffect = (Button) v.findViewById(R.id.button_effects_new_equipment);
         Button saveButton = (Button) v.findViewById(R.id.button_saveEquipment_new_equipment);
         saveButton.setOnClickListener(this);
+        newEffect.setOnClickListener(this);
 
         return v;
     }

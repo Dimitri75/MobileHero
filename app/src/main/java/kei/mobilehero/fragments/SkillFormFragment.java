@@ -47,7 +47,9 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
         skillDescriptionText = (EditText) v.findViewById(R.id.editText_skillDescription_new_skill);
 
         Button saveButton = (Button) v.findViewById(R.id.button_saveSkill_new_skill);
+        Button newEffect = (Button) v.findViewById(R.id.button_effects_new_skill);
         saveButton.setOnClickListener(this);
+        newEffect.setOnClickListener(this);
 
         return v;
     }

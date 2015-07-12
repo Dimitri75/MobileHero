@@ -172,7 +172,6 @@
             android:layout_height="wrap_content"
             android:text="@string/effects"
             android:id="@+id/button_effects_new_equipment"
-            android:onClick="buttonOnClick"
             android:textColor="#e1000000"
             android:textSize="14sp"
             android:layout_below="@+id/button_saveEquipment_new_equipment"
