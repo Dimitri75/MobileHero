@@ -78,7 +78,7 @@ public class CharacterFormActivity extends ActivityAttributesBase implements OnF
                         i.putExtra("character", character);
                         i.putExtra("argumentKey", EnumFragment.CARACTERISTICS);
                         startActivity(i);
-                        currentFragment = EnumFragment.CARACTERISTICS;
+                        currentFragment = null;
                     }
                 }
                 break;
@@ -95,7 +95,7 @@ public class CharacterFormActivity extends ActivityAttributesBase implements OnF
                         i.putExtra("character", character);
                         i.putExtra("argumentKey", EnumFragment.SKILLS);
                         startActivity(i);
-                        currentFragment = EnumFragment.SKILLS;
+                        currentFragment = null;
                     }
                 }
                 break;
@@ -112,7 +112,7 @@ public class CharacterFormActivity extends ActivityAttributesBase implements OnF
                         i.putExtra("character", character);
                         i.putExtra("argumentKey", EnumFragment.EQUIPMENT);
                         startActivity(i);
-                        currentFragment = EnumFragment.EQUIPMENT;
+                        currentFragment = null;
                     }
                 }
                 break;

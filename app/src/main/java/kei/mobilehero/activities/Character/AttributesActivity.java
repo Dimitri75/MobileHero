@@ -113,12 +113,6 @@ public class AttributesActivity extends ActivityAttributesBase implements OnFrag
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_attributes, menu);
-        return true;
-    }
-
-    @Override
     public void addContentListener(ContentProviderListener listener) {
         contentProviderListeners.add(listener);
     }
@@ -131,5 +125,12 @@ public class AttributesActivity extends ActivityAttributesBase implements OnFrag
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_attributes, menu);
+        return true;
     }
 }
