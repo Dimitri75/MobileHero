@@ -72,7 +72,7 @@ public class AttributesActivity extends ActivityAttributesBase implements OnFrag
         switch (argumentKey){
             case CARACTERISTICS:
                 findViewById(R.id.layout_attribute_activity).setBackgroundResource(R.drawable.mobile_morse);
-                setTitle(getString(R.string.caracteristics));
+                setTitle(getString(R.string.characteristics));
                 break;
             case EQUIPMENT:
                 findViewById(R.id.layout_attribute_activity).setBackgroundResource(R.drawable.mobile_ogre);

@@ -11,7 +11,7 @@
         android:background="@drawable/button_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/addCaracteristic"
+        android:text="@string/addCharacteristic"
         android:id="@+id/button_caracteristic_fragment_caracteristic"
         android:onClick="buttonOnClick"
         android:textColor="#e1000000"
