@@ -22,7 +22,7 @@
             android:label="@string/title_activity_games" >
         </activity>
         <activity
-            android:name=".activities.game.NewGameActivity"
+            android:name=".activities.game.GameFormActivity"
             android:label="@string/title_activity_new_game" >
         </activity>
         <activity
@@ -30,7 +30,7 @@
             android:label="@string/title_activity_rounds" >
         </activity>
         <activity
-            android:name=".activities.round.NewRoundActivity"
+            android:name=".activities.round.RoundFormActivity"
             android:label="@string/title_activity_new_round" >
         </activity>
         <activity

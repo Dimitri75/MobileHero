@@ -99,7 +99,7 @@ public class RoundsActivity extends ActionBarActivity {
     public void buttonOnClick(View v) {
         switch(v.getId()){
             case R.id.button_newRound_rounds:
-                Intent i = new Intent(getApplicationContext(), NewRoundActivity.class);
+                Intent i = new Intent(getApplicationContext(), RoundFormActivity.class);
                 i.putExtra("game", game);
                 startActivity(i);
                 break;

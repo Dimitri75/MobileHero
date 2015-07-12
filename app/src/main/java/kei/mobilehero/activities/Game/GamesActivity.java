@@ -35,7 +35,7 @@ public class GamesActivity extends ActionBarActivity {
     public void buttonOnClick(View v) {
         switch(v.getId()){
             case R.id.button_newGame_games:
-                Intent i = new Intent(getApplicationContext(), NewGameActivity.class);
+                Intent i = new Intent(getApplicationContext(), GameFormActivity.class);
                 startActivity(i);
                 break;
         }

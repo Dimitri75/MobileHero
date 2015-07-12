@@ -1,38 +1,49 @@
-package kei.mobilehero.activities.game;
+package kei.mobilehero.activities.round;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.classes.general.Game;
+import kei.mobilehero.classes.general.Round;
 
-public class NewGameActivity extends ActionBarActivity {
+public class RoundFormActivity extends ActionBarActivity {
+    Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_form);
+        setContentView(R.layout.activity_round_form);
+
+        if((game = (Game) getIntent().getExtras().get("game")) == null){
+            Log.v("NewRound onCreate()","Couldn't get the game.");
+            finish();
+        }
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     public void buttonOnClick(View v) {
         switch(v.getId()){
-            case R.id.button_saveGame_new_game:
-                EditText view_gameName = (EditText) findViewById(R.id.editText_gameName_new_game);
-                String gameName = view_gameName.getText().toString();
+            case R.id.button_saveRound_new_round:
+                EditText view_roundName = (EditText) findViewById(R.id.editText_roundName_new_round);
+                String roundName = view_roundName.getText().toString();
 
-                if (gameName.isEmpty()){
+                if (roundName.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Le formulaire n'est pas correctement rempli.", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Game game = new Game(gameName);
-                    if (game.save(getApplicationContext())) finish();
+                    Round round = new Round(roundName);
+                    if(round.save(getApplicationContext(), game)) finish();
                 }
                 break;
         }
@@ -56,7 +67,7 @@ public class NewGameActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_new_game, menu);
+        getMenuInflater().inflate(R.menu.menu_new_round, menu);
         return true;
     }
 
