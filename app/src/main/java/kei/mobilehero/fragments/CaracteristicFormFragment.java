@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.fragments;
+package kei.mobilehero.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
-import kei.mobilehero.activities.fragments.generic.FragmentBase;
+import kei.mobilehero.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;

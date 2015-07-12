@@ -1,7 +1,4 @@
-package kei.mobilehero.activities.fragments.generic;
-
-import kei.mobilehero.classes.general.*;
-import kei.mobilehero.classes.general.Character;
+package kei.mobilehero.fragments.generic;
 
 /**
  * Created by Vuzi on 09/07/2015.

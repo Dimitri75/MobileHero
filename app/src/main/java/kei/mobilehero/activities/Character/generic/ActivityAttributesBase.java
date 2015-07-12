@@ -12,16 +12,16 @@ import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.dice.DicesActivity;
-import kei.mobilehero.activities.fragments.generic.ContentProvider;
-import kei.mobilehero.activities.fragments.generic.EnumFragment;
+import kei.mobilehero.fragments.generic.ContentProvider;
+import kei.mobilehero.fragments.generic.EnumFragment;
 import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.attributes.Skill;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 
-import static kei.mobilehero.activities.fragments.generic.EnumFragment.CARACTERISTIC_FORM;
-import static kei.mobilehero.activities.fragments.generic.EnumFragment.EQUIPMENT_FORM;
+import static kei.mobilehero.fragments.generic.EnumFragment.CARACTERISTIC_FORM;
+import static kei.mobilehero.fragments.generic.EnumFragment.EQUIPMENT_FORM;
 
 /**
  * Created by Dimitri on 10/07/2015.

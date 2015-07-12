@@ -1,4 +1,4 @@
-package kei.mobilehero.activities.fragments;
+package kei.mobilehero.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -15,41 +15,31 @@ import java.util.HashMap;
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
 import kei.mobilehero.activities.character.generic.SelectionListener;
-import kei.mobilehero.activities.fragments.generic.FragmentBase;
-import kei.mobilehero.classes.attributes.Caracteristic;
-import kei.mobilehero.classes.general.Character;
+import kei.mobilehero.fragments.generic.FragmentBase;
+import kei.mobilehero.classes.attributes.Skill;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.swipe.SwipeDismissListViewTouchListener;
 
-public class CaracteristicFragment extends FragmentBase {
+public class SkillFragment extends FragmentBase {
     View v;
     private Game game;
     private Round round;
     private kei.mobilehero.classes.general.Character character;
     private SelectionListener selectionListener;
 
-    public CaracteristicFragment() {
+    public SkillFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_caracteristic, container, false);
+        v = inflater.inflate(R.layout.fragment_skill, container, false);
+
         return v;
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-        try {
-            selectionListener = (SelectionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString() + " must implement SelectionListener");
-        }
     }
 
     @Override
@@ -58,20 +48,31 @@ public class CaracteristicFragment extends FragmentBase {
 
         game = (Game) data.get(EnumAttribute.GAME);
         round = (Round) data.get(EnumAttribute.ROUND);
-        character = (Character) data.get(EnumAttribute.CHARACTER);
+        character = (kei.mobilehero.classes.general.Character) data.get(EnumAttribute.CHARACTER);
 
         init();
     }
 
-    public void init(){
-        if (character.getCaracteristics() == null || character.getCaracteristics().isEmpty()) return;
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            selectionListener = (SelectionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement SelectionListener");
+        }
+    }
 
-        final ArrayAdapter<Caracteristic> myAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
+    public void init(){
+        if (character.getSkills() == null || character.getSkills().isEmpty()) return;
+
+        final ArrayAdapter<Skill> myAdapter = new ArrayAdapter<>(
+                getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
-                new ArrayList<>(character.getCaracteristics().values()));
+                new ArrayList<>(character.getSkills().values()));
 
-        ListView listView = (ListView) v.findViewById(R.id.listView_caracteristic);
+        ListView listView = (ListView) v.findViewById(R.id.listView_skill);
         listView.setAdapter(myAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -92,12 +93,12 @@ public class CaracteristicFragment extends FragmentBase {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    Caracteristic c = myAdapter.getItem(position);
-                                    character.getCaracteristics().remove(c.getName());
+                                    Skill s = myAdapter.getItem(position);
+                                    character.getSkills().remove(s.getName());
                                     character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
                                     onAvailableData();
 
-                                    myAdapter.remove(c);
+                                    myAdapter.remove(s);
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }
@@ -108,3 +109,4 @@ public class CaracteristicFragment extends FragmentBase {
         listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
     }
 }
+

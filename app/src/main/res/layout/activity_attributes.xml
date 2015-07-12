@@ -22,7 +22,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="kei.mobilehero.activities.fragments.CaracteristicFragment"
+        android:name="kei.mobilehero.fragments.CaracteristicFragment"
         android:id="@+id/fragment_caracteristic_attribute"
         android:layout_below="@+id/label_appName_attribute"
         android:layout_centerHorizontal="true" />
@@ -31,7 +31,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="kei.mobilehero.activities.fragments.SkillFragment"
+        android:name="kei.mobilehero.fragments.SkillFragment"
         android:id="@+id/fragment_skill_attribute"
         android:layout_below="@+id/label_appName_attribute"
         android:layout_centerHorizontal="true" />
@@ -40,7 +40,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="kei.mobilehero.activities.fragments.EquipmentFragment"
+        android:name="kei.mobilehero.fragments.EquipmentFragment"
         android:id="@+id/fragment_equipment_attribute"
         android:layout_below="@+id/label_appName_attribute"
         android:layout_centerHorizontal="true" />
@@ -50,7 +50,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="kei.mobilehero.activities.fragments.CaracteristicFormFragment"
+        android:name="kei.mobilehero.fragments.CaracteristicFormFragment"
         android:id="@+id/fragment_new_caracteristic_attribute"
         android:layout_below="@+id/label_appName_attribute"
         android:layout_centerHorizontal="true" />
@@ -59,7 +59,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="kei.mobilehero.activities.fragments.SkillFormFragment"
+        android:name="kei.mobilehero.fragments.SkillFormFragment"
         android:id="@+id/fragment_new_skill_attribute"
         android:layout_below="@+id/label_appName_attribute"
         android:layout_centerHorizontal="true" />
@@ -68,7 +68,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="kei.mobilehero.activities.fragments.EquipmentFormFragment"
+        android:name="kei.mobilehero.fragments.EquipmentFormFragment"
         android:id="@+id/fragment_new_equipment_attribute"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/label_appName_attribute"

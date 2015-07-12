@@ -12,13 +12,13 @@ import java.util.HashMap;
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.ActivityAttributesBase;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
-import kei.mobilehero.activities.fragments.generic.EnumFragment;
-import kei.mobilehero.activities.fragments.generic.OnFragmentInteractionListener;
+import kei.mobilehero.fragments.generic.EnumFragment;
+import kei.mobilehero.fragments.generic.OnFragmentInteractionListener;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 
-import static kei.mobilehero.activities.fragments.generic.EnumFragment.CARACTERISTIC_FORM;
-import static kei.mobilehero.activities.fragments.generic.EnumFragment.EQUIPMENT_FORM;
+import static kei.mobilehero.fragments.generic.EnumFragment.CARACTERISTIC_FORM;
+import static kei.mobilehero.fragments.generic.EnumFragment.EQUIPMENT_FORM;
 
 public class AttributesActivity extends ActivityAttributesBase implements OnFragmentInteractionListener {
 

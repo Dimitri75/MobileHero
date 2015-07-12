@@ -7,7 +7,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        tools:context="kei.mobilehero.activities.fragments.AttributeFragment"
+        tools:context="kei.mobilehero.fragments.AttributeFragment"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin">
 
