@@ -10,6 +10,7 @@ import kei.mobilehero.R;
 import kei.mobilehero.activities.game.GamesActivity;
 
 public class MainActivity extends ActionBarActivity {
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +25,14 @@ public class MainActivity extends ActionBarActivity {
             case R.id.main_activity:
                 Intent i = new Intent(getApplicationContext(), GamesActivity.class);
                 startActivity(i);
+                mp.stop();
                 finish();
                 break;
         }
     }
 
     public void playThemeSong(){
-        MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.theme);
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.theme);
         mp.setLooping(true);
         mp.start();
     }
