@@ -151,7 +151,7 @@
 
 
         <kei.mobilehero.custom.widgets.MyCustomButton
-            android:background="@drawable/button_large"
+            android:background="@drawable/button_large_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save"
@@ -170,7 +170,7 @@
             android:background="@drawable/button_large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/effects"
+            android:text="@string/addEffect"
             android:id="@+id/button_effects_new_equipment"
             android:textColor="#e1000000"
             android:textSize="14sp"
