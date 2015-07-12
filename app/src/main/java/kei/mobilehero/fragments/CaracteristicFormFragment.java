@@ -1,18 +1,27 @@
 package kei.mobilehero.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
+import kei.mobilehero.fragments.generic.CaracteristicListAdapter;
+import kei.mobilehero.fragments.generic.CharacteristicSelector;
 import kei.mobilehero.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.general.Character;
@@ -83,6 +92,15 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_saveCaracteristic_new_caracteristic:
+
+                CharacteristicSelector.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new CharacteristicSelector.CharacteristicListener() {
+                    @Override
+                    public void onCharacteristicSelected(Caracteristic c) {
+                        Toast.makeText(getActivity().getApplicationContext(), c.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                /*
                 if (!caracteristicNameText.getText().toString().isEmpty() &&
                     (actualCaracteristic != null || !character.getCaracteristics().keySet().contains(caracteristicNameText.getText().toString()))) {
 
@@ -105,7 +123,7 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
                 }
                 else
                     Toast.makeText(getActivity().getApplicationContext(), "La caractéristique existe déjà ou les champs ne sont pas bien remplis.", Toast.LENGTH_SHORT).show();
-                break;
+                break;*/
         }
     }
 }
