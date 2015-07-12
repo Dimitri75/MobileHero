@@ -36,5 +36,4 @@ public class MainActivity extends ActionBarActivity {
         mp.setLooping(true);
         mp.start();
     }
-
 }

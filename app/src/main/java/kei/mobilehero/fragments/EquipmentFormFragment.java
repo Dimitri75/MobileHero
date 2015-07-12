@@ -9,10 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
+import kei.mobilehero.classes.attributes.Caracteristic;
+import kei.mobilehero.fragments.generic.CharacteristicSelector;
 import kei.mobilehero.fragments.generic.FragmentBase;
 import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.general.Character;
@@ -86,6 +89,14 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.button_effects_new_equipment:
+                CharacteristicSelector.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new CharacteristicSelector.CharacteristicListener() {
+                    @Override
+                    public void onCharacteristicSelected(Caracteristic c) {
+                        Toast.makeText(getActivity().getApplicationContext(), c.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                break;
             case R.id.button_saveEquipment_new_equipment:
                 if (!equipmentNameText.getText().toString().isEmpty()) {
 

@@ -9,15 +9,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
-import kei.mobilehero.fragments.generic.FragmentBase;
+import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.attributes.Skill;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
+import kei.mobilehero.fragments.generic.CharacteristicSelector;
+import kei.mobilehero.fragments.generic.FragmentBase;
 
 public class SkillFormFragment extends FragmentBase implements OnClickListener {
     View v;
@@ -75,6 +78,14 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.button_effects_new_skill:
+                CharacteristicSelector.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new CharacteristicSelector.CharacteristicListener() {
+                    @Override
+                    public void onCharacteristicSelected(Caracteristic c) {
+                        Toast.makeText(getActivity().getApplicationContext(), c.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                break;
             case R.id.button_saveSkill_new_skill:
                 if (!skillNameText.getText().toString().isEmpty() &&
                         (actualSkill != null || !character.getSkills().keySet().contains(skillNameText.getText().toString()))) {
