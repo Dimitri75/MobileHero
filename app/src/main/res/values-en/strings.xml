@@ -63,6 +63,8 @@
     <string name="skillName">Type the skill\'s name</string>
     <string name="skillValue">Type a value</string>
 
+    <string name="attributes">Attributes</string>
+
     <string name="title_activity_attributes">Character\'s attributes</string>
 
 </resources>

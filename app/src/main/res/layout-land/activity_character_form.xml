@@ -22,11 +22,11 @@
             android:textSize="35sp"
             android:textColor="#ffffffff" />
 
-        <Button
+        <kei.mobilehero.custom.widgets.MyCustomButton
             android:background="@drawable/button_small"
             android:padding="5dp"
             android:layout_marginTop="30dp"
-            android:text="Attributs"
+            android:text="@string/attributes"
             android:textSize="11sp"
             android:layout_width="125dp"
             android:layout_height="30dp"
@@ -35,11 +35,11 @@
             android:layout_below="@+id/label_appName_new_character"
             android:layout_centerHorizontal="true" />
 
-        <Button
+        <kei.mobilehero.custom.widgets.MyCustomButton
             android:background="@drawable/button_small"
             android:layout_marginTop="15dp"
             android:padding="5dp"
-            android:text="Caractéristiques"
+            android:text="@string/characteristics"
             android:textSize="11sp"
             android:layout_width="125dp"
             android:layout_height="30dp"
@@ -48,11 +48,11 @@
             android:layout_below="@+id/button_attributes_new_character"
             android:layout_centerHorizontal="true" />
 
-        <Button
+        <kei.mobilehero.custom.widgets.MyCustomButton
             android:background="@drawable/button_small"
             android:layout_marginTop="15dp"
             android:padding="5dp"
-            android:text="Compétences"
+            android:text="@string/skill"
             android:textSize="11sp"
             android:layout_width="125dp"
             android:layout_height="30dp"
@@ -62,11 +62,11 @@
             android:layout_alignLeft="@+id/button_caracteristics_new_character"
             android:layout_alignStart="@+id/button_caracteristics_new_character" />
 
-        <Button
+        <kei.mobilehero.custom.widgets.MyCustomButton
             android:background="@drawable/button_small"
             android:layout_marginTop="15dp"
             android:padding="5dp"
-            android:text="Equipement"
+            android:text="@string/equipment"
             android:textSize="11sp"
             android:layout_width="125dp"
             android:layout_height="30dp"
@@ -86,7 +86,7 @@
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="kei.mobilehero.activities.fragments.AttributeFragment"
+                android:name="kei.mobilehero.fragments.AttributeFragment"
                 android:id="@+id/fragment_attribute_new_character"
                 android:layout_centerHorizontal="true" />
 
@@ -94,21 +94,21 @@
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="kei.mobilehero.activities.fragments.CaracteristicFragment"
+                android:name="kei.mobilehero.fragments.CaracteristicFragment"
                 android:id="@+id/fragment_caracteristic_new_character"
                 android:layout_centerHorizontal="true" />
 
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="kei.mobilehero.activities.fragments.SkillFragment"
+                android:name="kei.mobilehero.fragments.SkillFragment"
                 android:id="@+id/fragment_skill_new_character"
                 android:layout_centerHorizontal="true" />
 
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="kei.mobilehero.activities.fragments.EquipmentFragment"
+                android:name="kei.mobilehero.fragments.EquipmentFragment"
                 android:id="@+id/fragment_equipment_new_character"
                 android:layout_centerHorizontal="true" />
 
@@ -116,21 +116,21 @@
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="kei.mobilehero.activities.fragments.CaracteristicFormFragment"
+                android:name="kei.mobilehero.fragments.CaracteristicFormFragment"
                 android:id="@+id/fragment_new_caracteristic_new_character"
                 android:layout_centerHorizontal="true" />
 
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="kei.mobilehero.activities.fragments.SkillFormFragment"
+                android:name="kei.mobilehero.fragments.SkillFormFragment"
                 android:id="@+id/fragment_new_skill_new_character"
                 android:layout_centerHorizontal="true" />
 
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="kei.mobilehero.activities.fragments.EquipmentFormFragment"
+                android:name="kei.mobilehero.fragments.EquipmentFormFragment"
                 android:id="@+id/fragment_new_equipment_new_character"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"

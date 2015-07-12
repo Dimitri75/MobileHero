@@ -63,6 +63,8 @@
     <string name="skillName">Entrer le nom de la compétence</string>
     <string name="skillValue">Saisir une valeur</string>
 
+    <string name="attributes">Attributs</string>
+
     <string name="title_activity_attributes">Attributs de personnage</string>
 
 </resources>
