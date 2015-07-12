@@ -93,9 +93,12 @@ public class SkillFragment extends FragmentBase {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    character.getSkills().remove(myAdapter.getItem(position).getName());
+                                    Skill s = myAdapter.getItem(position);
+                                    character.getSkills().remove(s.getName());
                                     character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
                                     onAvailableData();
+
+                                    myAdapter.remove(s);
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }

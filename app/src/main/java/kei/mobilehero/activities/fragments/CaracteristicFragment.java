@@ -92,9 +92,12 @@ public class CaracteristicFragment extends FragmentBase {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    character.getCaracteristics().remove(myAdapter.getItem(position).getName());
+                                    Caracteristic c = myAdapter.getItem(position);
+                                    character.getCaracteristics().remove(c.getName());
                                     character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
                                     onAvailableData();
+
+                                    myAdapter.remove(c);
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }

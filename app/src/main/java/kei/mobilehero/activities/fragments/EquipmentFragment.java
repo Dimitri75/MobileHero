@@ -93,9 +93,12 @@ public class EquipmentFragment extends FragmentBase {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    character.getEquipments().remove(myAdapter.getItem(position).getName());
+                                    Equipment e = myAdapter.getItem(position);
+                                    character.getEquipments().remove(e.getName());
                                     character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
                                     onAvailableData();
+
+                                    myAdapter.remove(e);
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }
