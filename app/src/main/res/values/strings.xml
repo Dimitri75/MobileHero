@@ -64,7 +64,7 @@
     <string name="skillValue">Saisir une valeur</string>
 
     <string name="attributes">Attributs</string>
-
+    <string name="click">Cliquer pour continuer</string>
     <string name="title_activity_attributes">Attributs de personnage</string>
 
 </resources>
