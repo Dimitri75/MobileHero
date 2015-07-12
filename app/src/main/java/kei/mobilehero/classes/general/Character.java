@@ -156,7 +156,7 @@ public class Character implements Parcelable{
 
         for (Equipment e : equipments.values()){
             if (!e.getEffects().isEmpty()){
-                for (Effect i : e.getEffects()){
+                for (Effect i : e.getEffects().values()){
                     Double value;
                     if ((value = calculatedCaracteristics.get(i.getCaracteristic().getName())) != null){
                         calculatedCaracteristics.put(i.getCaracteristic().getName(), value+i.getValue());
@@ -167,7 +167,7 @@ public class Character implements Parcelable{
 
         for (Skill s : skills.values()){
             if (!s.getEffects().isEmpty()){
-                for (Effect e : s.getEffects()){
+                for (Effect e : s.getEffects().values()){
                     Double value;
                     if ((value = calculatedCaracteristics.get(e.getCaracteristic().getName())) != null){
                         calculatedCaracteristics.put(e.getCaracteristic().getName(), value+e.getValue());

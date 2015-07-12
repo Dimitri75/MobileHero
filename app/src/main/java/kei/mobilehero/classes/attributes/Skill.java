@@ -1,32 +1,31 @@
 package kei.mobilehero.classes.attributes;
 
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Dimitri on 15/05/2015.
  */
 public class Skill extends AttributeBase implements Parcelable{
-    private ArrayList<Effect> effects;
+    private HashMap<String, Effect> effects;
 
     public Skill(String name, String description, double value){
         super(name, description, value);
-        effects = new ArrayList<>();
+        effects = new HashMap<>();
     }
 
-    public Skill(String name, String description, double value, ArrayList<Effect> impacts){
+    public Skill(String name, String description, double value, HashMap<String, Effect> impacts){
         super(name, description, value);
         effects = impacts;
     }
 
-    public ArrayList<Effect> getEffects() {
+    public HashMap<String, Effect> getEffects() {
         return effects;
     }
 
-    public void setEffects(ArrayList<Effect> effects) {
+    public void setEffects(HashMap<String, Effect> effects) {
         this.effects = effects;
     }
 
@@ -56,10 +55,7 @@ public class Skill extends AttributeBase implements Parcelable{
         dest.writeString(getDescription());
         dest.writeDouble(getValue());
         dest.writeString(getId());
-
-        Bundle b = new Bundle();
-        b.putParcelableArrayList("effects", effects);
-        dest.writeBundle(b);
+        dest.writeMap(effects);
     }
 
     /**
@@ -69,9 +65,7 @@ public class Skill extends AttributeBase implements Parcelable{
     public Skill(Parcel in) {
         super(in.readString(), in.readString(), in.readDouble());
         this.setId(in.readString());
-
-        Bundle b = in.readBundle(Caracteristic.class.getClassLoader());
-        effects = b.getParcelableArrayList("effects");
+        this.effects = in.readHashMap(Effect.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<Skill> CREATOR = new Parcelable.Creator<Skill>() {

@@ -1,26 +1,25 @@
 package kei.mobilehero.classes.attributes;
 
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Dimitri on 15/05/2015.
  */
 public class Equipment extends AttributeBase implements Parcelable{
     private String equipmentPosition;
-    private ArrayList<Effect> effects;
+    private HashMap<String, Effect> effects;
 
     public Equipment(String name, String description, double weight, String equipmentPosition){
         super(name, description, weight);
         this.equipmentPosition = equipmentPosition;
-        effects = new ArrayList<>();
+        effects = new HashMap<>();
     }
 
 
-    public Equipment(String name, String description, double value, String equipmentPosition, ArrayList<Effect> impacts){
+    public Equipment(String name, String description, double value, String equipmentPosition, HashMap<String, Effect> impacts){
         super(name, description, value);
         this.equipmentPosition = equipmentPosition;
         this.effects = impacts;
@@ -42,11 +41,11 @@ public class Equipment extends AttributeBase implements Parcelable{
         this.equipmentPosition = equipmentPosition;
     }
 
-    public ArrayList<Effect> getEffects() {
+    public HashMap<String, Effect> getEffects() {
         return effects;
     }
 
-    public void setEffects(ArrayList<Effect> effects) {
+    public void setEffects(HashMap<String, Effect> effects) {
         this.effects = effects;
     }
 
@@ -76,10 +75,7 @@ public class Equipment extends AttributeBase implements Parcelable{
         dest.writeString(getDescription());
         dest.writeDouble(getValue());
         dest.writeString(getId());
-
-        Bundle b = new Bundle();
-        b.putParcelableArrayList("effects", effects);
-        dest.writeBundle(b);
+        dest.writeMap(effects);
     }
 
     /**
@@ -89,9 +85,7 @@ public class Equipment extends AttributeBase implements Parcelable{
     public Equipment(Parcel in) {
         super(in.readString(), in.readString(), in.readDouble());
         this.setId(in.readString());
-
-        Bundle b = in.readBundle(Caracteristic.class.getClassLoader());
-        effects = b.getParcelableArrayList("effects");
+        this.effects = in.readHashMap(Effect.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<Equipment> CREATOR = new Parcelable.Creator<Equipment>() {

@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,10 +17,12 @@ import java.util.HashMap;
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
 import kei.mobilehero.classes.attributes.Caracteristic;
+import kei.mobilehero.classes.attributes.Effect;
 import kei.mobilehero.classes.attributes.Skill;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
+import kei.mobilehero.classes.utils.swipe.SwipeDismissListViewTouchListener;
 import kei.mobilehero.fragments.generic.CharacteristicSelector;
 import kei.mobilehero.fragments.generic.FragmentBase;
 
@@ -74,7 +78,44 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
         } else {
             skillNameText.setText("");
             skillDescriptionText.setText("");
+            return;
         }
+
+
+        // Fill listView effects
+        if (!actualSkill.getEffects().isEmpty()) return;
+
+        final ArrayAdapter<Effect> myAdapter = new ArrayAdapter<>(
+                getActivity().getApplicationContext(),
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                new ArrayList<>(actualSkill.getEffects().values()));
+
+        ListView listView = (ListView) v.findViewById(R.id.listView_effects_skill);
+        listView.setAdapter(myAdapter);
+
+        SwipeDismissListViewTouchListener swipeTouchListener =
+                new SwipeDismissListViewTouchListener(
+                        listView,
+                        new SwipeDismissListViewTouchListener.DismissCallbacks() {
+                            @Override
+                            public boolean canDismiss(int position) {
+                                return false;
+                            }
+
+                            @Override
+                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    actualSkill.getEffects().remove(myAdapter.getItem(position).getName());
+                                    character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
+                                }
+                                myAdapter.notifyDataSetChanged();
+                            }
+                        });
+        listView.setOnTouchListener(swipeTouchListener);
+        // Setting this scroll listener is required to ensure that during ListView scrolling,
+        // we don't look for swipes.
+        listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
     }
 
     @Override
