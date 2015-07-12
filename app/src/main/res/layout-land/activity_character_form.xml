@@ -19,10 +19,11 @@
             android:id="@+id/label_appName_new_character"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:textSize="25dp"
+            android:textSize="35sp"
             android:textColor="#ffffffff" />
 
         <Button
+            android:background="@drawable/button_small"
             android:padding="5dp"
             android:layout_marginTop="30dp"
             android:text="Attributs"
@@ -35,7 +36,8 @@
             android:layout_centerHorizontal="true" />
 
         <Button
-            android:layout_marginTop="10dp"
+            android:background="@drawable/button_small"
+            android:layout_marginTop="15dp"
             android:padding="5dp"
             android:text="Caractéristiques"
             android:textSize="11sp"
@@ -47,7 +49,8 @@
             android:layout_centerHorizontal="true" />
 
         <Button
-            android:layout_marginTop="10dp"
+            android:background="@drawable/button_small"
+            android:layout_marginTop="15dp"
             android:padding="5dp"
             android:text="Compétences"
             android:textSize="11sp"
@@ -60,7 +63,8 @@
             android:layout_alignStart="@+id/button_caracteristics_new_character" />
 
         <Button
-            android:layout_marginTop="10dp"
+            android:background="@drawable/button_small"
+            android:layout_marginTop="15dp"
             android:padding="5dp"
             android:text="Equipement"
             android:textSize="11sp"

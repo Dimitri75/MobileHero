@@ -19,7 +19,7 @@
     <string name="newPersonnage">New Character</string>
 
     <string name="title_activity_new_character">New character</string>
-    <string name="caracteristics">Caracteristics</string>
+    <string name="characteristics">Characteristics</string>
     <string name="skill">Skills</string>
     <string name="equipment">Equipment</string>
     <string name="save">Save</string>
@@ -41,7 +41,7 @@
     <string name="classNameLabel">Class</string>
     <string name="alignmentLabel">Karma</string>
 
-    <string name="addCaracteristic">Add a caracteristic</string>
+    <string name="addCharacteristic">Add a characteristic</string>
     <string name="addEquipment">Add an equipment</string>
     <string name="addSkill">Add a skill</string>
 
@@ -53,8 +53,8 @@
     <string name="action_settings_dices">Roll dices</string>
 
     <string name="attributeDescription">Type a description</string>
-    <string name="caracteristicName">Type the caracteristic\'s name</string>
-    <string name="caracteristicValue">Type a value</string>
+    <string name="characteristicName">Type the characteristic\'s name</string>
+    <string name="characteristicValue">Type a value</string>
 
     <string name="equipmentName">Type the equipment\'s name</string>
     <string name="equipmentValue">Type a weight</string>
