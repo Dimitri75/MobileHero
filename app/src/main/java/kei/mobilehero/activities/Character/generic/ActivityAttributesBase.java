@@ -117,19 +117,19 @@ public abstract class ActivityAttributesBase extends ActionBarActivity implement
         switch(currentFragment){
             case CARACTERISTIC_FORM:
                 currentFragment = EnumFragment.CARACTERISTICS;
-
+                signalAvailableData();
                 hideFragments(dictionaryFragments, null);
                 showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.CARACTERISTICS));
                 break;
             case SKILL_FORM:
                 currentFragment = EnumFragment.SKILLS;
-
+                signalAvailableData();
                 hideFragments(dictionaryFragments, null);
                 showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.SKILLS));
                 break;
             case EQUIPMENT_FORM:
                 currentFragment = EnumFragment.EQUIPMENT;
-
+                signalAvailableData();
                 hideFragments(dictionaryFragments, null);
                 showFragmentWithAnimation(dictionaryFragments.get(EnumFragment.EQUIPMENT));
                 break;
