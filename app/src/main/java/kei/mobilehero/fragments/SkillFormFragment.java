@@ -16,7 +16,6 @@ import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
-import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.attributes.Effect;
 import kei.mobilehero.classes.attributes.Skill;
 import kei.mobilehero.classes.general.Character;
@@ -35,6 +34,7 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
     private EditText skillNameText;
     private EditText skillDescriptionText;
     private Skill actualSkill;
+    private Skill skill;
 
     public SkillFormFragment() {
         // Required empty public constructor
@@ -54,6 +54,8 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
         Button newEffect = (Button) v.findViewById(R.id.button_effects_new_skill);
         saveButton.setOnClickListener(this);
         newEffect.setOnClickListener(this);
+
+        skill = new Skill();
 
         return v;
     }
@@ -75,21 +77,22 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
         if(actualSkill != null) {
             skillNameText.setText(actualSkill.getName());
             skillDescriptionText.setText(actualSkill.getDescription());
+            skill.setEffects(actualSkill.getEffects());
         } else {
+            skill = new Skill();
             skillNameText.setText("");
             skillDescriptionText.setText("");
-            return;
         }
 
 
         // Fill listView effects
-        if (!actualSkill.getEffects().isEmpty()) return;
+        if (!skill.getEffects().isEmpty()) return;
 
         final ArrayAdapter<Effect> myAdapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
-                new ArrayList<>(actualSkill.getEffects().values()));
+                new ArrayList<>(skill.getEffects().values()));
 
         ListView listView = (ListView) v.findViewById(R.id.listView_effects_skill);
         listView.setAdapter(myAdapter);
@@ -106,8 +109,7 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    actualSkill.getEffects().remove(myAdapter.getItem(position).getName());
-                                    character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
+                                    skill.getEffects().remove(myAdapter.getItem(position).getName());
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }
@@ -125,7 +127,7 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
                 EffectCreator.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new EffectCreator.EffectCreationListener() {
                     @Override
                     public void onEffectCreated(Effect e) {
-                        Toast.makeText(getActivity().getApplicationContext(), e.getName(), Toast.LENGTH_SHORT).show();
+                            skill.getEffects().put(e.getName(), e);
                     }
                 });
                 break;
@@ -133,16 +135,14 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
                 if (!skillNameText.getText().toString().isEmpty() &&
                         (actualSkill != null || !character.getSkills().keySet().contains(skillNameText.getText().toString()))) {
 
-                    Skill s = new Skill(
-                            skillNameText.getText().toString(),
-                            skillDescriptionText.getText().toString(),
-                            0
-                    );
+                    skill.setName(skillNameText.getText().toString());
+                    skill.setDescription(skillDescriptionText.getText().toString());
+                    skill.setValue(0);
 
-                    if(actualSkill != null && !character.getCaracteristics().containsKey(s.getName()))
+                    if(actualSkill != null)
                         character.getSkills().remove(actualSkill.getName());
 
-                    character.getSkills().put(s.getName(), s);
+                    character.getSkills().put(skill.getName(), skill);
 
                     // And save
                     if (character.save(getActivity().getApplicationContext(), game.getName(), round.getName()))

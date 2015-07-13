@@ -36,6 +36,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
     private EditText equipmentWeightText;
     private EditText equipmentPositionText;
     private Equipment actualEquipment;
+    private HashMap<String, Effect> effectsList;
 
     public EquipmentFormFragment() {
         // Required empty public constructor
@@ -58,6 +59,8 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
         saveButton.setOnClickListener(this);
         newEffect.setOnClickListener(this);
 
+        effectsList = new HashMap<>();
+
         return v;
     }
 
@@ -79,6 +82,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
             equipmentNameText.setText(actualEquipment.getName());
             equipmentDescriptionText.setText(actualEquipment.getDescription());
             equipmentPositionText.setText(actualEquipment.getEquipmentPosition());
+            effectsList = actualEquipment.getEffects();
             if (actualEquipment.getValue() != 0)
                 equipmentWeightText.setText(String.valueOf(actualEquipment.getValue()));
             else
@@ -88,17 +92,16 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
             equipmentDescriptionText.setText("");
             equipmentPositionText.setText("");
             equipmentWeightText.setText("");
-            return;
         }
 
         // Fill listView effects
-        if (!actualEquipment.getEffects().isEmpty()) return;
+        if (!effectsList.isEmpty()) return;
 
         final ArrayAdapter<Effect> myAdapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
-                new ArrayList<>(actualEquipment.getEffects().values()));
+                new ArrayList<>(effectsList.values()));
 
         ListView listView = (ListView) v.findViewById(R.id.listView_effects_equipment);
         listView.setAdapter(myAdapter);
@@ -115,7 +118,8 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    actualEquipment.getEffects().remove(myAdapter.getItem(position).getName());
+                                    effectsList.remove(myAdapter.getItem(position).getName());
+                                    character.getEquipments().get(actualEquipment.getId()).setEffects(effectsList);
                                     character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
                                 }
                                 myAdapter.notifyDataSetChanged();
@@ -135,7 +139,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                 EffectCreator.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new EffectCreator.EffectCreationListener() {
                     @Override
                     public void onEffectCreated(Effect e) {
-                        Toast.makeText(getActivity().getApplicationContext(), e.getName(), Toast.LENGTH_SHORT).show();
+                        effectsList.put(e.getName(), e);
                     }
                 });
                 break;
@@ -144,21 +148,23 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
 
                     Double value = equipmentWeightText.getText().toString().isEmpty() ? 0 : Double.valueOf(equipmentWeightText.getText().toString());
 
-                    Equipment e = new Equipment(
-                            equipmentNameText.getText().toString(),
-                            equipmentDescriptionText.getText().toString(),
-                            value,
-                            equipmentPositionText.getText().toString()
-                    );
+                    Equipment equipment = new Equipment();
+                    equipment.setName(equipmentNameText.getText().toString());
+                    equipment.setDescription(equipmentDescriptionText.getText().toString());
+                    equipment.setValue(value);
+                    equipment.setEquipmentPosition(equipmentPositionText.getText().toString());
+                    equipment.setEffects(effectsList);
 
                     if(actualEquipment != null)
                         character.getEquipments().remove(actualEquipment.getId());
 
-                    character.getEquipments().put(e.getId(), e);
+                    character.getEquipments().put(equipment.getId(), equipment);
 
                     // And save
-                    if (character.save(getActivity().getApplicationContext(), game.getName(), round.getName()))
+                    if (character.save(getActivity().getApplicationContext(), game.getName(), round.getName())){
+                        effectsList = new HashMap<>();
                         getActivity().onBackPressed();
+                    }
                 } else
                     Toast.makeText(getActivity().getApplicationContext(), "Les champs du formulaire ne sont pas bien remplis.", Toast.LENGTH_SHORT).show();
                 break;
