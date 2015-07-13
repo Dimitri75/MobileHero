@@ -43,6 +43,9 @@
     <string name="characLabel">Charac.</string>
     <string name="value">Type a value</string>
 
+    <string name="lifeLabel">Life</string>
+    <string name="manaLabel">Mana</string>
+
     <string name="addCharacteristic">Add a characteristic</string>
     <string name="addEquipment">Add an equipment</string>
     <string name="addSkill">Add a skill</string>

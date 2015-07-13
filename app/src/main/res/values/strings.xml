@@ -42,6 +42,8 @@
     <string name="raceLabel">Race</string>
     <string name="classNameLabel">Classe</string>
     <string name="alignmentLabel">Karma</string>
+    <string name="lifeLabel">Vie</string>
+    <string name="manaLabel">Mana</string>
 
     <string name="addCharacteristic">Ajouter une caractéristique</string>
     <string name="addEquipment">Ajouter un équipement</string>

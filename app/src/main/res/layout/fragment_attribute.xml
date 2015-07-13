@@ -58,6 +58,31 @@
             android:layout_toEndOf="@+id/textView_alignment_attribute"
             android:layout_toRightOf="@+id/textView_alignment_attribute" />
 
+            <SeekBar
+                android:color="#ff6dff6c"
+                android:max="1000000"
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBar_life_frament_attribute"
+                android:layout_below="@+id/editText_characterName_fragment_attribute"
+                android:layout_alignRight="@+id/editText_characterName_fragment_attribute"
+                android:layout_alignEnd="@+id/editText_characterName_fragment_attribute"
+                android:layout_alignLeft="@+id/seekBar_mana_frament_attribute"
+                android:layout_alignStart="@+id/seekBar_mana_frament_attribute" />
+
+            <SeekBar
+                android:max="1000000"
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBar_mana_frament_attribute"
+                android:layout_below="@+id/seekBar_life_frament_attribute"
+                android:layout_alignRight="@+id/editText_characterName_fragment_attribute"
+                android:layout_alignEnd="@+id/editText_characterName_fragment_attribute"
+                android:layout_alignLeft="@+id/editText_characterGender_fragment_attribute"
+                android:layout_alignStart="@+id/editText_characterGender_fragment_attribute" />
+
         <EditText
             android:layout_marginRight="10dp"
             android:layout_marginTop="50dp"
@@ -69,7 +94,7 @@
             android:textColor="#ffffffff"
             android:textColorHint="#FF9B9B9B"
             android:gravity="center_horizontal"
-            android:layout_below="@+id/editText_characterName_fragment_attribute"
+            android:layout_below="@+id/seekBar_mana_frament_attribute"
             android:singleLine="true"
             android:imeOptions="actionNext"
             android:layout_alignParentRight="true"
@@ -149,6 +174,30 @@
                 android:textColor="#c8ffffff"
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"/>
+
+            <kei.mobilehero.custom.widgets.MyCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/lifeLabel"
+                android:id="@+id/textView_life_attribute"
+                android:textColor="#c8ffffff"
+                android:textSize="25sp"
+                android:layout_alignTop="@+id/seekBar_life_frament_attribute"
+                android:layout_alignLeft="@+id/textView_name_attribute"
+                android:layout_alignStart="@+id/textView_name_attribute" />
+
+            <kei.mobilehero.custom.widgets.MyCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/manaLabel"
+                android:id="@+id/textView_mana_attribute"
+                android:textColor="#c8ffffff"
+                android:textSize="25sp"
+                android:layout_alignTop="@+id/seekBar_mana_frament_attribute"
+                android:layout_alignLeft="@+id/textView_gender_attribute"
+                android:layout_alignStart="@+id/textView_gender_attribute" />
 
             <kei.mobilehero.custom.widgets.MyCustomTextView
                 android:layout_width="wrap_content"

@@ -24,6 +24,8 @@ import kei.mobilehero.classes.attributes.Skill;
 public class Character implements Parcelable{
     private String id;
     private String name;
+    private int mana;
+    private int life;
     private String gender;
     private String alignment;
     private String race;
@@ -37,6 +39,8 @@ public class Character implements Parcelable{
     public Character(String name){
         this.id = UUID.randomUUID().toString();
         this.name = name;
+        this.mana = 0;
+        this.life = 0;
         this.gender = "";
         this.alignment = "";
         this.race = "";
@@ -63,6 +67,22 @@ public class Character implements Parcelable{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
     }
 
     public String getGender() {
@@ -224,6 +244,8 @@ public class Character implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
         dest.writeString(name);
+        dest.writeInt(mana);
+        dest.writeInt(life);
         dest.writeString(gender);
         dest.writeString(alignment);
         dest.writeString(race);
@@ -242,6 +264,8 @@ public class Character implements Parcelable{
     public Character(Parcel in) {
         this.id = in.readString();
         this.name = in.readString();
+        this.mana = in.readInt();
+        this.life = in.readInt();
         this.gender = in.readString();
         this.alignment = in.readString();
         this.race = in.readString();
@@ -283,6 +307,8 @@ public class Character implements Parcelable{
                 if (characterFromGson != null){
                     this.setId(characterFromGson.getId());
                     this.setName(characterFromGson.getName());
+                    this.setMana(characterFromGson.getMana());
+                    this.setLife(characterFromGson.getLife());
                     this.setGender(characterFromGson.getGender());
                     this.setAlignment(characterFromGson.getAlignment());
                     this.setRace(characterFromGson.getRace());
