@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/effectList"
+            android:text="@string/newEffect"
             android:id="@+id/textView_alert_effect_title"/>
 
         <TextView
@@ -102,7 +102,8 @@
             android:layout_alignParentEnd="true"
             android:layout_toRightOf="@+id/textView_alert_effect_characteristic"
             android:layout_toEndOf="@+id/textView_alert_effect_characteristic"
-            android:spinnerMode="dialog" />
+            android:spinnerMode="dialog"
+            android:layout_alignBottom="@+id/textView_alert_effect_characteristic" />
 
         <Button
             android:layout_below="@+id/spinner_alert_effect_characteristics"

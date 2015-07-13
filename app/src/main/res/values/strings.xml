@@ -68,7 +68,7 @@
     <string name="attributes">Attributs</string>
     <string name="click">Cliquer pour continuer</string>
     <string name="title_activity_attributes">Attributs de personnage</string>
-    <string name="addEffect">Ajout un effet</string>
-    <string name="effectList">Liste des effets</string>
+    <string name="addEffect">Ajouter un effet</string>
+    <string name="newEffect">Nouvel effet</string>
 
 </resources>
