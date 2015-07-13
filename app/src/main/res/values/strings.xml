@@ -35,6 +35,8 @@
     <string name="valueLabel">Valeur</string>
     <string name="weightLabel">Poids</string>
     <string name="positionLabel">Pos.</string>
+    <string name="characLabel">Carac.</string>
+    <string name="value">Saisir une valeur</string>
 
     <string name="sexLabel">Sexe</string>
     <string name="raceLabel">Race</string>

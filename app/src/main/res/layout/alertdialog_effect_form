@@ -1,0 +1,106 @@
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+
+        <TextView
+            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/nameLabel"
+            android:id="@+id/textView_alert_effect_name"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="15dp"
+            android:layout_alignRight="@+id/textView_alert_effect_value"
+            android:layout_alignEnd="@+id/textView_alert_effect_value" />
+
+        <TextView
+            android:paddingTop="15dp"
+            android:layout_marginTop="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/valueLabel"
+            android:id="@+id/textView_alert_effect_value"
+            android:layout_below="@+id/textView_alert_effect_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:paddingTop="15dp"
+            android:layout_marginTop="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/characLabel"
+            android:id="@+id/textView_alert_effect_characteristic"
+            android:layout_below="@+id/textView_alert_effect_value"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:gravity="center_horizontal"
+            android:hint="@string/name"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_alert_effect_name"
+            android:layout_alignTop="@+id/textView_alert_effect_name"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/editText_alert_effect_value"
+            android:layout_alignStart="@+id/editText_alert_effect_value" />
+
+        <EditText
+            android:layout_below="@+id/editText_alert_effect_name"
+            android:gravity="center_horizontal"
+            android:hint="@string/value"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_alert_effect_value"
+            android:layout_alignTop="@+id/textView_alert_effect_value"
+            android:layout_alignRight="@+id/spinner_alert_effect_characteristics"
+            android:layout_alignEnd="@+id/spinner_alert_effect_characteristics"
+            android:layout_alignLeft="@+id/spinner_alert_effect_characteristics"
+            android:layout_alignStart="@+id/spinner_alert_effect_characteristics" />
+
+        <Spinner
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_alert_effect_characteristics"
+            android:layout_alignTop="@+id/textView_alert_effect_characteristic"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/textView_alert_effect_characteristic"
+            android:layout_toEndOf="@+id/textView_alert_effect_characteristic"
+            android:spinnerMode="dialog" />
+
+        <Button
+            android:layout_below="@+id/spinner_alert_effect_characteristics"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:id="@+id/button_alert_effect_save"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</ScrollView>

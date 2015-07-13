@@ -40,6 +40,8 @@
     <string name="raceLabel">Race</string>
     <string name="classNameLabel">Class</string>
     <string name="alignmentLabel">Karma</string>
+    <string name="characLabel">Charac.</string>
+    <string name="value">Type a value</string>
 
     <string name="addCharacteristic">Add a characteristic</string>
     <string name="addEquipment">Add an equipment</string>
