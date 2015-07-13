@@ -1,11 +1,12 @@
 package kei.mobilehero.fragments.generic;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Dialog;
+import android.widget.Spinner;
 
 import java.util.List;
 
+import kei.mobilehero.R;
 import kei.mobilehero.classes.attributes.Caracteristic;
 
 /**
@@ -21,6 +22,23 @@ public class CharacteristicSelector {
 
         final CaracteristicListAdapter myAdapter = new CaracteristicListAdapter(characteristics, activity.getLayoutInflater());
 
+        // custom dialog
+        final Dialog dialog = new Dialog(activity, R.style.DialogTheme);
+        dialog.setContentView(R.layout.alertdialog_effect_form);
+        dialog.setTitle(R.string.addEffect);
+
+        Spinner sp = (Spinner) dialog.findViewById(R.id.spinner_alert_effect_characteristics);
+
+        sp.setAdapter(myAdapter);
+
+        dialog.show();
+
+        /*
+
+       // AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+       // builder.set
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setAdapter(myAdapter, new DialogInterface.OnClickListener() {
             @Override
@@ -34,7 +52,7 @@ public class CharacteristicSelector {
             public void onClick(DialogInterface dialog, int which) {}
         });
 
-        builder.show();
+        builder.show();*/
 
     }
 }
