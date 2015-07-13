@@ -60,7 +60,7 @@
 
             <SeekBar
                 android:color="#ff6dff6c"
-                android:max="1000000"
+                android:max="1000"
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 android:layout_alignStart="@+id/seekBar_mana_frament_attribute" />
 
             <SeekBar
-                android:max="1000000"
+                android:max="1000"
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -250,6 +250,28 @@
                 android:textColor="#c8ffffff"
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:textColor="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=""
+                android:id="@+id/textView_mana"
+                android:layout_below="@+id/textView_mana_attribute"
+                android:layout_alignRight="@+id/seekBar_mana_frament_attribute"
+                android:layout_alignEnd="@+id/seekBar_mana_frament_attribute" />
+
+            <TextView
+                android:textColor="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=""
+                android:id="@+id/textView_life"
+                android:layout_below="@+id/textView_life_attribute"
+                android:layout_alignRight="@+id/seekBar_life_frament_attribute"
+                android:layout_alignEnd="@+id/seekBar_life_frament_attribute" />
         </RelativeLayout>
 
         <kei.mobilehero.custom.widgets.MyCustomButton
