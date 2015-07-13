@@ -14,12 +14,12 @@ import kei.mobilehero.classes.attributes.Caracteristic;
 /**
  * Created by Vuzi on 13/07/2015.
  */
-public class CaracteristicListAdapter extends BaseAdapter {
+public class CharacteristicListAdapter extends BaseAdapter {
 
     private final List<Caracteristic> characteristics;
     private final LayoutInflater inflater;
 
-    public CaracteristicListAdapter(List<Caracteristic> characteristics, LayoutInflater inflater) {
+    public CharacteristicListAdapter(List<Caracteristic> characteristics, LayoutInflater inflater) {
         this.characteristics = characteristics;
         this.inflater = inflater;
     }

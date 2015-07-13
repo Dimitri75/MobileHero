@@ -16,14 +16,13 @@ import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
-import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.attributes.Effect;
 import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.swipe.SwipeDismissListViewTouchListener;
-import kei.mobilehero.fragments.generic.CharacteristicSelector;
+import kei.mobilehero.fragments.generic.EffectCreator;
 import kei.mobilehero.fragments.generic.FragmentBase;
 
 public class EquipmentFormFragment extends FragmentBase implements OnClickListener {
@@ -133,10 +132,10 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_effects_new_equipment:
-                CharacteristicSelector.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new CharacteristicSelector.CharacteristicListener() {
+                EffectCreator.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new EffectCreator.EffectCreationListener() {
                     @Override
-                    public void onCharacteristicSelected(Caracteristic c) {
-                        Toast.makeText(getActivity().getApplicationContext(), c.getName(), Toast.LENGTH_SHORT).show();
+                    public void onEffectCreated(Effect e) {
+                        Toast.makeText(getActivity().getApplicationContext(), e.getName(), Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;

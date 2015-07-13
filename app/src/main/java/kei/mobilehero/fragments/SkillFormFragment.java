@@ -23,7 +23,7 @@ import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.swipe.SwipeDismissListViewTouchListener;
-import kei.mobilehero.fragments.generic.CharacteristicSelector;
+import kei.mobilehero.fragments.generic.EffectCreator;
 import kei.mobilehero.fragments.generic.FragmentBase;
 
 public class SkillFormFragment extends FragmentBase implements OnClickListener {
@@ -122,10 +122,10 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_effects_new_skill:
-                CharacteristicSelector.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new CharacteristicSelector.CharacteristicListener() {
+                EffectCreator.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new EffectCreator.EffectCreationListener() {
                     @Override
-                    public void onCharacteristicSelected(Caracteristic c) {
-                        Toast.makeText(getActivity().getApplicationContext(), c.getName(), Toast.LENGTH_SHORT).show();
+                    public void onEffectCreated(Effect e) {
+                        Toast.makeText(getActivity().getApplicationContext(), e.getName(), Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
