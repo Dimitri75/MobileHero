@@ -102,9 +102,8 @@
             android:layout_alignParentEnd="true"
             android:layout_toRightOf="@+id/textView_alert_effect_characteristic"
             android:layout_toEndOf="@+id/textView_alert_effect_characteristic"
-            android:spinnerMode="dialog"
-            android:layout_alignBottom="@+id/textView_alert_effect_characteristic" />
-
+            android:spinnerMode="dialog" />
+        
         <Button
             android:layout_below="@+id/spinner_alert_effect_characteristics"
             android:layout_marginTop="15dp"
