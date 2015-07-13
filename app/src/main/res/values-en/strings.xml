@@ -69,4 +69,5 @@
     <string name="click">Click to continue</string>
     <string name="title_activity_attributes">Character\'s attributes</string>
     <string name="addEffect">Add an effect</string>
+    <string name="effectList">Effects list</string>
 </resources>

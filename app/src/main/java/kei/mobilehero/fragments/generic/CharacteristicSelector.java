@@ -3,10 +3,7 @@ package kei.mobilehero.fragments.generic;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.view.LayoutInflater;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import kei.mobilehero.classes.attributes.Caracteristic;
