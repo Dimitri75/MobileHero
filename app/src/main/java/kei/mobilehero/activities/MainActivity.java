@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
         TextView myText = (TextView) findViewById(R.id.textView_main );
 
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
-        anim.setDuration(650);
+        anim.setDuration(1000);
         anim.setStartOffset(20);
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(Animation.INFINITE);
