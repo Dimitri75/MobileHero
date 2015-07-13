@@ -95,7 +95,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
         }
 
         // Fill listView effects
-        if (!effectsList.isEmpty()) return;
+        if (effectsList.isEmpty()) return;
 
         final ArrayAdapter<Effect> myAdapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),
@@ -140,6 +140,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                     @Override
                     public void onEffectCreated(Effect e) {
                         effectsList.put(e.getName(), e);
+                        init();
                     }
                 });
                 break;

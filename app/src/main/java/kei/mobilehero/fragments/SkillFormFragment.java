@@ -86,7 +86,7 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
 
 
         // Fill listView effects
-        if (!skill.getEffects().isEmpty()) return;
+        if (skill.getEffects().isEmpty()) return;
 
         final ArrayAdapter<Effect> myAdapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),
