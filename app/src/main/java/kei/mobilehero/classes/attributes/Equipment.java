@@ -12,6 +12,11 @@ public class Equipment extends AttributeBase implements Parcelable{
     private String equipmentPosition;
     private HashMap<String, Effect> effects;
 
+    public Equipment(){
+        super("", "", 0);
+        effects = new HashMap<>();
+    }
+
     public Equipment(String name, String description, double weight, String equipmentPosition){
         super(name, description, weight);
         this.equipmentPosition = equipmentPosition;
