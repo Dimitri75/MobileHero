@@ -11,6 +11,11 @@ import java.util.HashMap;
 public class Skill extends AttributeBase implements Parcelable{
     private HashMap<String, Effect> effects;
 
+    public Skill(){
+        super("", "", 0);
+        effects = new HashMap<>();
+    }
+
     public Skill(String name, String description, double value){
         super(name, description, value);
         effects = new HashMap<>();
