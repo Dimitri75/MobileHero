@@ -81,6 +81,8 @@
             android:layout_below="@+id/editText_alert_effect_name"
             android:gravity="center_horizontal"
             android:hint="@string/value"
+            android:maxLength="6"
+            android:inputType="numberDecimal"
             android:singleLine="true"
             android:imeOptions="actionDone"
             android:layout_width="wrap_content"
