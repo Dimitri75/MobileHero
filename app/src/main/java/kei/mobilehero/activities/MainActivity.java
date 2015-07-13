@@ -5,19 +5,32 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.TextView;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.game.GamesActivity;
 
 public class MainActivity extends ActionBarActivity {
-    private MediaPlayer mp;
+    private static MediaPlayer mp = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        playThemeSong();
+        if (mp == null)
+            playThemeSong();
+
+        TextView myText = (TextView) findViewById(R.id.textView_main );
+
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(650);
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+        myText.startAnimation(anim);
     }
 
     public void buttonOnClick(View v) {

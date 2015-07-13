@@ -47,7 +47,7 @@ public class EffectCreator {
                 Double v = Double.valueOf(value.getText().toString());
 
                 if(n == null || n.isEmpty() || v == null) {
-                    Toast.makeText(activity, "Aucune valeur selectionnée", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Aucune valeur selectionnÃ©e", Toast.LENGTH_SHORT).show();
                 } else {
                     selectorListener.onEffectCreated(new Effect(n, "", Double.valueOf(v), c));
                     dialog.hide();

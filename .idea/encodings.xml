@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/kei/mobilehero/classes/general/Dice.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/kei/mobilehero/fragments/EquipmentFormFragment.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/kei/mobilehero/fragments/SkillFormFragment.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/kei/mobilehero/fragments/generic/EffectCreator.java" charset="UTF-8" />
   </component>
 </project>
