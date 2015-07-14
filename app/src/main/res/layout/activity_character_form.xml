@@ -53,6 +53,7 @@
             android:layout_alignParentEnd="true" />
 
         <kei.mobilehero.custom.widgets.MyCustomTextView
+            android:layout_marginBottom="50dp"
             android:textColor="#ff2a2a2a"
             android:textSize="19sp"
             android:gravity="center_horizontal"

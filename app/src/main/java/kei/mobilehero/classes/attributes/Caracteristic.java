@@ -7,9 +7,21 @@ import android.os.Parcelable;
  * Created by Dimitri on 15/05/2015.
  */
 public class Caracteristic extends AttributeBase implements Parcelable{
+    public double bonus;
 
     public Caracteristic(String name, String description, double value){
         super(name, description, value);
+    }
+
+    @Override
+    public String toString() {
+        String s_bonus = "";
+        if (bonus > 0)
+            s_bonus = "        + " + bonus;
+        else if (bonus < 0)
+            s_bonus = "        - " + bonus;
+
+        return super.getName() + "  ( "+super.getValue()+" )  " + s_bonus;
     }
 
     //PARCELABLE

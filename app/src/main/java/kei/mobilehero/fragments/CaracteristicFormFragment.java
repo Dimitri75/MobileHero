@@ -85,7 +85,7 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
             case R.id.button_saveCaracteristic_new_caracteristic:
                 
                 if (!caracteristicNameText.getText().toString().isEmpty() &&
-                    (actualCaracteristic != null || !character.getCaracteristics().keySet().contains(caracteristicNameText.getText().toString()))) {
+                    (actualCaracteristic != null || !character.getCharacteristics().keySet().contains(caracteristicNameText.getText().toString()))) {
 
                     Double value = caracteristicValueText.getText().toString().isEmpty() ? 0 : Double.valueOf(caracteristicValueText.getText().toString());
 
@@ -95,10 +95,10 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
                             value
                     );
 
-                    if(actualCaracteristic != null && !character.getCaracteristics().containsKey(c.getName()))
-                        character.getCaracteristics().remove(actualCaracteristic.getName());
+                    if(actualCaracteristic != null && !character.getCharacteristics().containsKey(c.getName()))
+                        character.getCharacteristics().remove(actualCaracteristic.getName());
 
-                    character.getCaracteristics().put(c.getName(), c);
+                    character.getCharacteristics().put(c.getName(), c);
 
                     // And save
                     if(character.save(getActivity().getApplicationContext(), game.getName(), round.getName()))

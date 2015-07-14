@@ -139,7 +139,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_effects_new_equipment:
-                EffectCreator.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new EffectCreator.EffectCreationListener() {
+                EffectCreator.show(new ArrayList<>(character.getCharacteristics().values()), getActivity(), new EffectCreator.EffectCreationListener() {
                     @Override
                     public void onEffectCreated(Effect e) {
                         effectsList.put(e.getName(), e);

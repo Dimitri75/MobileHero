@@ -47,7 +47,7 @@ public class CharacterTest extends TestCase{
         character.setClassName(CHARAC_CLASSNAME);
         character.setPicture(CHARAC_PICTURE);
         character.getSkills().put(skill.getName(), skill);
-        character.getCaracteristics().put(caracteristic.getName(), caracteristic);
+        character.getCharacteristics().put(caracteristic.getName(), caracteristic);
         character.getEquipments().put(equipment.getName(), equipment);
 
         assertEquals(character.getName(), CHARAC_NAME);
@@ -57,7 +57,7 @@ public class CharacterTest extends TestCase{
         assertEquals(character.getClassName(), CHARAC_CLASSNAME);
         assertEquals(character.getPicture(), CHARAC_PICTURE);
         assertEquals(character.getSkills().get(0), skill);
-        assertEquals(character.getCaracteristics().get(0), caracteristic);
+        assertEquals(character.getCharacteristics().get(0), caracteristic);
         assertEquals(character.getEquipments().get(0), equipment);
     }
 
@@ -79,7 +79,7 @@ public class CharacterTest extends TestCase{
         equipment.getEffects().add(effect);
 
         Character character = new Character(CHARAC_NAME);
-        character.getCaracteristics().put(caracteristic.getName(), caracteristic);
+        character.getCharacteristics().put(caracteristic.getName(), caracteristic);
         character.getEquipments().put(equipment.getName(), equipment);
 
         assertEquals(character.getCalculatedCaracteristics().get(CARAC_NAME), CARAC_VALUE + EFFECT_VALUE);

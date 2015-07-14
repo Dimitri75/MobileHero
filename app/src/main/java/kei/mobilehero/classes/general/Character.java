@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import kei.mobilehero.classes.attributes.Caracteristic;
@@ -144,7 +145,7 @@ public class Character implements Parcelable{
             this.skills = skills;
     }
 
-    public HashMap<String, Caracteristic> getCaracteristics() {
+    public HashMap<String, Caracteristic> getCharacteristics() {
         if (caracteristics == null)
             return (caracteristics = new HashMap<>());
 
@@ -172,6 +173,44 @@ public class Character implements Parcelable{
         HashMap<String, Double> calculatedCaracteristics = new HashMap<>();
         for (Caracteristic c : caracteristics.values()){
             calculatedCaracteristics.put(c.getName(), c.getValue());
+        }
+
+        for (Equipment e : equipments.values()){
+            if (!e.getEffects().isEmpty()){
+                for (Effect i : e.getEffects().values()){
+                    Double value;
+                    if ((value = calculatedCaracteristics.get(i.getCaracteristic().getName())) != null){
+                        calculatedCaracteristics.put(i.getCaracteristic().getName(), value+i.getValue());
+                    }
+                }
+            }
+        }
+
+        for (Skill s : skills.values()){
+            if (!s.getEffects().isEmpty()){
+                for (Effect e : s.getEffects().values()){
+                    Double value;
+                    if ((value = calculatedCaracteristics.get(e.getCaracteristic().getName())) != null){
+                        calculatedCaracteristics.put(e.getCaracteristic().getName(), value+e.getValue());
+                    }
+                }
+            }
+        }
+        return calculatedCaracteristics;
+    }
+
+    public void setCaracteristicsBonus(){
+        HashMap<String, Double> mapBonus = getCalculatedCharacteristicsBonus();
+
+        for (Map.Entry<String, Caracteristic> map : caracteristics.entrySet()){
+            map.getValue().bonus = mapBonus.get(map.getKey());
+        }
+    }
+
+    public HashMap<String, Double> getCalculatedCharacteristicsBonus(){
+        HashMap<String, Double> calculatedCaracteristics = new HashMap<>();
+        for (Caracteristic c : caracteristics.values()){
+            calculatedCaracteristics.put(c.getName(), 0.);
         }
 
         for (Equipment e : equipments.values()){
@@ -318,7 +357,7 @@ public class Character implements Parcelable{
                     this.setPicture(characterFromGson.getPicture());
                     this.setLevel(characterFromGson.getLevel());
                     this.setSkills(characterFromGson.getSkills());
-                    this.setCaracteristics(characterFromGson.getCaracteristics());
+                    this.setCaracteristics(characterFromGson.getCharacteristics());
                     this.setEquipments(characterFromGson.getEquipments());
                 }
             }

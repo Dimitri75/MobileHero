@@ -64,12 +64,13 @@ public class CaracteristicFragment extends FragmentBase {
     }
 
     public void init(){
-        if (character.getCaracteristics() == null || character.getCaracteristics().isEmpty()) return;
+        if (character.getCharacteristics() == null || character.getCharacteristics().isEmpty()) return;
+        character.setCaracteristicsBonus();
 
         final ArrayAdapter<Caracteristic> myAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
-                new ArrayList<>(character.getCaracteristics().values()));
+                new ArrayList<>(character.getCharacteristics().values()));
 
         ListView listView = (ListView) v.findViewById(R.id.listView_caracteristic);
         listView.setAdapter(myAdapter);
@@ -93,7 +94,7 @@ public class CaracteristicFragment extends FragmentBase {
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     Caracteristic c = myAdapter.getItem(position);
-                                    character.getCaracteristics().remove(c.getName());
+                                    character.getCharacteristics().remove(c.getName());
                                     character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
                                     onAvailableData();
 
