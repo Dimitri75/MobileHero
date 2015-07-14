@@ -163,10 +163,9 @@ public class CharacterFormActivity extends ActivityAttributesBase implements OnF
 
         // Reload the character from the database
         character = Loader.getInstance().loadCharacterById(getApplicationContext(), character.getId(), game, round);
+        initData();
 
-        for(ContentProviderListener listener : contentProviderListeners) {
-            listener.onAvailableData();
-        }
+        signalAvailableData();
     }
 
     @Override
