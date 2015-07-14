@@ -200,8 +200,10 @@ public class Character implements Parcelable{
 
     public double getEquipmentWeight(){
         double sum = 0;
+        if (equipments.values().isEmpty()) return sum;
+
         for (Equipment e : equipments.values()){
-            sum += e.getWeight();
+            sum += e.getValue();
         }
         return sum;
     }

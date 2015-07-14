@@ -38,6 +38,7 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
     private EditText levelText;
     private TextView manaText;
     private TextView lifeText;
+    private TextView equipmentWeight;
 
     public AttributeFragment() {
         // Required empty public constructor
@@ -60,6 +61,7 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
         levelText = (MyCustomEditText) v.findViewById(R.id.editText_characterLevel_fragment_attribute);
         manaText = (TextView) v.findViewById(R.id.textView_mana);
         lifeText = (TextView) v.findViewById(R.id.textView_life);
+        equipmentWeight = (TextView) v.findViewById(R.id.textView1_characterEquipmentWeight_fragment_attribute);
         Button saveButton = (Button) v.findViewById(R.id.button_saveCharacter_fragment_attribute);
 
         saveButton.setOnClickListener(this);
@@ -123,6 +125,7 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
         alignmentText.setText(character.getAlignment());
         raceText.setText(character.getRace());
         classNameText.setText(character.getClassName());
+        equipmentWeight.setText(String.valueOf(character.getEquipmentWeight()));
         if(character.getLevel() != 0)
             levelText.setText(String.valueOf(character.getLevel()));
     }

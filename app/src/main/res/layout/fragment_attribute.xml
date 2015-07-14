@@ -142,7 +142,6 @@
             android:layout_alignStart="@+id/editText_characterRace_fragment_attribute" />
 
         <EditText
-            android:layout_marginBottom="45dp"
             android:layout_marginTop="50dp"
             android:maxLength="50"
             android:layout_width="wrap_content"
@@ -250,6 +249,36 @@
                 android:textColor="#c8ffffff"
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:textSize="18sp"
+                android:layout_marginBottom="45dp"
+                android:layout_marginTop="50dp"
+                android:maxLength="50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView1_characterEquipmentWeight_fragment_attribute"
+                android:hint=""
+                android:textColor="#ffffffff"
+                android:textColorHint="#FF9B9B9B"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/editText_characterAlignment_fragment_attribute"
+                android:layout_alignRight="@+id/editText_characterClassName_fragment_attribute"
+                android:layout_alignEnd="@+id/editText_characterClassName_fragment_attribute"
+                android:layout_alignLeft="@+id/editText_characterClassName_fragment_attribute"
+                android:layout_alignStart="@+id/editText_characterClassName_fragment_attribute"/>
+
+            <kei.mobilehero.custom.widgets.MyCustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/weightLabel"
+                android:id="@+id/textView2_characterEquipmentWeight_fragment_attribute"
+                android:textColor="#c8ffffff"
+                android:textSize="25sp"
+                android:layout_alignBottom="@+id/textView1_characterEquipmentWeight_fragment_attribute"
+                android:layout_alignRight="@+id/textView_mana_attribute"
+                android:layout_alignEnd="@+id/textView_mana_attribute" />
 
             <TextView
                 android:textColor="#ffffff"
