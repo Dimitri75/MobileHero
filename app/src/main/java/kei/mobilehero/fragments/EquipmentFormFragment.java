@@ -36,7 +36,9 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
     private EditText equipmentWeightText;
     private EditText equipmentPositionText;
     private Equipment actualEquipment;
+
     private HashMap<String, Effect> effectsList;
+    private ArrayAdapter<Effect> myAdapter;
 
     public EquipmentFormFragment() {
         // Required empty public constructor
@@ -58,8 +60,6 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
         Button saveButton = (Button) v.findViewById(R.id.button_saveEquipment_new_equipment);
         saveButton.setOnClickListener(this);
         newEffect.setOnClickListener(this);
-
-        effectsList = new HashMap<>();
 
         return v;
     }
@@ -92,12 +92,12 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
             equipmentDescriptionText.setText("");
             equipmentPositionText.setText("");
             equipmentWeightText.setText("");
+            effectsList = new HashMap<>();
         }
 
         // Fill listView effects
-        if (effectsList.isEmpty()) return;
-
-        final ArrayAdapter<Effect> myAdapter = new ArrayAdapter<>(
+        //if (effectsList.isEmpty()) return;
+        myAdapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
@@ -112,24 +112,27 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                         new SwipeDismissListViewTouchListener.DismissCallbacks() {
                             @Override
                             public boolean canDismiss(int position) {
-                                return false;
+                                return true;
                             }
 
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     effectsList.remove(myAdapter.getItem(position).getName());
-                                    character.getEquipments().get(actualEquipment.getId()).setEffects(effectsList);
-                                    character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
                                 }
-                                myAdapter.notifyDataSetChanged();
+                                updateEffetView();
                             }
                         });
         listView.setOnTouchListener(swipeTouchListener);
         // Setting this scroll listener is required to ensure that during ListView scrolling,
         // we don't look for swipes.
         listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
+    }
 
+    private void updateEffetView() {
+        myAdapter.clear();
+        myAdapter.addAll(effectsList.values());
+        myAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -140,7 +143,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                     @Override
                     public void onEffectCreated(Effect e) {
                         effectsList.put(e.getName(), e);
-                        init();
+                        updateEffetView();
                     }
                 });
                 break;

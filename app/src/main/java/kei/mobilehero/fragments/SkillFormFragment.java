@@ -34,7 +34,9 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
     private EditText skillNameText;
     private EditText skillDescriptionText;
     private Skill actualSkill;
-    private Skill skill;
+
+    private HashMap<String, Effect> effectsList;
+    private ArrayAdapter<Effect> myAdapter;
 
     public SkillFormFragment() {
         // Required empty public constructor
@@ -54,8 +56,6 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
         Button newEffect = (Button) v.findViewById(R.id.button_effects_new_skill);
         saveButton.setOnClickListener(this);
         newEffect.setOnClickListener(this);
-
-        skill = new Skill();
 
         return v;
     }
@@ -77,22 +77,22 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
         if(actualSkill != null) {
             skillNameText.setText(actualSkill.getName());
             skillDescriptionText.setText(actualSkill.getDescription());
-            skill.setEffects(actualSkill.getEffects());
+            effectsList = actualSkill.getEffects();
         } else {
-            skill = new Skill();
             skillNameText.setText("");
             skillDescriptionText.setText("");
+            effectsList = new HashMap<>();
         }
 
 
         // Fill listView effects
-        if (skill.getEffects().isEmpty()) return;
+        //if (effectsList.isEmpty()) return;
 
-        final ArrayAdapter<Effect> myAdapter = new ArrayAdapter<>(
+        myAdapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
-                new ArrayList<>(skill.getEffects().values()));
+                new ArrayList<>(effectsList.values()));
 
         ListView listView = (ListView) v.findViewById(R.id.listView_effects_skill);
         listView.setAdapter(myAdapter);
@@ -103,21 +103,27 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
                         new SwipeDismissListViewTouchListener.DismissCallbacks() {
                             @Override
                             public boolean canDismiss(int position) {
-                                return false;
+                                return true;
                             }
 
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    skill.getEffects().remove(myAdapter.getItem(position).getName());
+                                    effectsList.remove(myAdapter.getItem(position).getName());
                                 }
-                                myAdapter.notifyDataSetChanged();
+                                updateEffetView();
                             }
                         });
         listView.setOnTouchListener(swipeTouchListener);
         // Setting this scroll listener is required to ensure that during ListView scrolling,
         // we don't look for swipes.
         listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
+    }
+
+    private void updateEffetView() {
+        myAdapter.clear();
+        myAdapter.addAll(effectsList.values());
+        myAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -127,7 +133,8 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
                 EffectCreator.show(new ArrayList<>(character.getCaracteristics().values()), getActivity(), new EffectCreator.EffectCreationListener() {
                     @Override
                     public void onEffectCreated(Effect e) {
-                            skill.getEffects().put(e.getName(), e);
+                    effectsList.put(e.getName(), e);
+                    updateEffetView();
                     }
                 });
                 break;
@@ -135,8 +142,10 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
                 if (!skillNameText.getText().toString().isEmpty() &&
                         (actualSkill != null || !character.getSkills().keySet().contains(skillNameText.getText().toString()))) {
 
+                    Skill skill = new Skill();
                     skill.setName(skillNameText.getText().toString());
                     skill.setDescription(skillDescriptionText.getText().toString());
+                    skill.setEffects(effectsList);
                     skill.setValue(0);
 
                     if(actualSkill != null)
