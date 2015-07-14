@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -123,52 +124,34 @@ public class Loader {
     }
 
     /**
-     * Load all the date
+     * Load all the characters defined as model
      * @param context
      * @return
      */
-    public ArrayList<Game> loadData(Context context) {
+    public List<Character> loadCharacterModels(Context context){
+        ArrayList<Character> listModel = new ArrayList<>();
+
         File root = context.getFilesDir();
+        File modelsDir = new File(root, ".model");
+        if (modelsDir.exists() && modelsDir.isDirectory()) {
+            Matcher matcher;
+            // regex : "^character\\.[0-9a-z\\-]+.json$"
+            Pattern pattern = Pattern.compile("([^\\s]+(\\.(?i)(json))$)");
 
-        ArrayList<Game> listGames = new ArrayList<>();
-        if (root.exists() && root.isDirectory() && root.listFiles().length >= 1) {
-            for (File g : root.listFiles()) {
-                if (g.isDirectory()) {
-                    Game game = new Game(g.getName());
-                    listGames.add(game);
+            for (File modelFile : modelsDir.listFiles()) {
+                matcher = pattern.matcher(modelFile.getName());
+                if (modelFile.isFile() && matcher.find()) {
+                    // Use the gson constructor
+                    Character character = new Character(modelFile);
 
-                    File gameDir = new File(root, game.getName());
-                    if (gameDir.exists() && gameDir.isDirectory() && gameDir.listFiles().length >= 1) {
-                        for (File r : gameDir.listFiles()) {
-                            if (r.isDirectory()) {
-                                Round round = new Round(r.getName());
-                                listGames.get(listGames.indexOf(game)).getRounds().add(round);
-
-                                File roundDir = new File(root, game.getName() + "/" + round.getName());
-                                if (roundDir.exists() && roundDir.isDirectory()) {
-                                    Matcher matcher;
-                                    Pattern pattern = Pattern.compile("([^\\s]+(\\.(?i)(xml))$)");
-
-                                    for (File c : roundDir.listFiles()) {
-                                        matcher = pattern.matcher(c.getName());
-                                        if (c.isFile() && matcher.find()) {
-                                            // Use the gson constructor
-                                            Character character = new Character(c);
-
-                                            // Add the character to the array
-                                            if (character != null) {
-                                                listGames.get(listGames.indexOf(game)).getRounds().get(listGames.get(listGames.indexOf(game)).getRounds().indexOf(round)).getCharacters().add(character);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                    // Add the character to the array
+                    if (character != null) {
+                        listModel.add(character);
                     }
                 }
             }
         }
-        return listGames;
+        return listModel;
     }
 }
 

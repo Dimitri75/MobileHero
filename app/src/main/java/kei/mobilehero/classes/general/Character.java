@@ -394,5 +394,34 @@ public class Character implements Parcelable{
             return false;
         }
     }
+
+    /**
+     * Save a character as a model
+     * @param context
+     * @return
+     */
+    public boolean saveAsModel(Context context){
+        try {
+            File root = context.getFilesDir();
+            File modelDir = new File(root, ".model");
+            modelDir.mkdir();
+            File characterModelFile = new File(modelDir, "character." + id + ".json");
+
+            Gson gson = new Gson();
+            String jsonObject = gson.toJson(this);
+
+            FileWriter fw = new FileWriter(characterModelFile);
+            fw.write(jsonObject.toString());
+            fw.close();
+
+            Log.v("Character saveAsModel()", "Character saved in " + characterModelFile.getAbsolutePath());
+
+            return true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
     // END GSON
 }
