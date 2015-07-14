@@ -17,7 +17,7 @@ public class Effect extends AttributeBase implements Parcelable {
 
     @Override
     public String toString() {
-        String val = super.getValue() > 0 ? "+ " + super.getValue() : "- " + super.getValue();
+        String val = super.getValue() > 0 ? "+ " + super.getValue() : "- " + -super.getValue();
         return super.getName() + "  ( " + val + " : " + caracteristic.getName() + " )  ";
 
     }

@@ -19,7 +19,7 @@ public class Caracteristic extends AttributeBase implements Parcelable{
         if (bonus > 0)
             s_bonus = "        + " + bonus;
         else if (bonus < 0)
-            s_bonus = "        - " + bonus;
+            s_bonus = "        - " + -bonus;
 
         return super.getName() + "  ( "+super.getValue()+" )  " + s_bonus;
     }

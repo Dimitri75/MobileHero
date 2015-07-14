@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -94,11 +95,16 @@ public class CaracteristicFragment extends FragmentBase {
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     Caracteristic c = myAdapter.getItem(position);
-                                    character.getCharacteristics().remove(c.getName());
-                                    character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
-                                    onAvailableData();
+                                    if (c.bonus != 0) {
+                                        character.getCharacteristics().remove(c.getName());
+                                        character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
+                                        onAvailableData();
 
-                                    myAdapter.remove(c);
+                                        myAdapter.remove(c);
+                                    }
+                                    else{
+                                        Toast.makeText(getActivity().getApplicationContext(), "Supprimez d'abord les effets qui utilisent la caractéristique.", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }
