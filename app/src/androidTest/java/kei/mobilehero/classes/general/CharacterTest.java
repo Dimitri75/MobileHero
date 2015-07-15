@@ -76,7 +76,7 @@ public class CharacterTest extends TestCase{
         Effect effect = new Effect(EFFECT_NAME, EFFECT_DESCRIPTION, EFFECT_VALUE, caracteristic);
 
         Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION);
-        equipment.getEffects().add(effect);
+        equipment.getEffects().put(effect.getId(), effect);
 
         Character character = new Character(CHARAC_NAME);
         character.getCharacteristics().put(caracteristic.getName(), caracteristic);

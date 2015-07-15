@@ -23,7 +23,7 @@ public class EquipmentTest extends InstrumentationTestCase{
         Effect effect = new Effect(EFFECT_NAME, EFFECT_DESCRIPTION, EFFECT_VALUE, new Caracteristic(CARAC_NAME, CARAC_DESCRIPTION, CARAC_VALUE));
 
         Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION );
-        equipment.getEffects().add(effect);
+        equipment.getEffects().put(effect.getId(), effect);
         assertEquals(equipment.getName(), EQUIP_NAME);
         assertEquals(equipment.getDescription(), EQUIP_DESCRIPTION);
         assertEquals(equipment.getValue(), EQUIP_WEIGHT);

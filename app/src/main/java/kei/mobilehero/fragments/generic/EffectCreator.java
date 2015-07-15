@@ -43,40 +43,23 @@ public class EffectCreator {
             @Override
             public void onClick(View view) {
                 Caracteristic c = (Caracteristic) sp.getSelectedItem();
-                String n = name.getText().toString();
-                Double v = Double.valueOf(value.getText().toString());
 
-                if(n == null || n.isEmpty() || v == null) {
-                    Toast.makeText(activity, "Aucune valeur selectionnée", Toast.LENGTH_SHORT).show();
-                } else {
-                    selectorListener.onEffectCreated(new Effect(n, "", Double.valueOf(v), c));
-                    dialog.hide();
+                if (c == null)
+                    Toast.makeText(activity, "Aucune caractéristique séléctionnée.", Toast.LENGTH_SHORT).show();
+                else {
+                    String n = name.getText().toString();
+                    Double v = Double.valueOf(value.getText().toString());
+
+                    if (n == null || n.isEmpty() || v == null) {
+                        Toast.makeText(activity, "Aucune valeur selectionnée", Toast.LENGTH_SHORT).show();
+                    } else {
+                        selectorListener.onEffectCreated(new Effect(n, "", Double.valueOf(v), c));
+                        dialog.hide();
+                    }
                 }
             }
         });
 
         dialog.show();
-
-        /*
-
-       // AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-       // builder.set
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setAdapter(myAdapter, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                selectorListener.onCharacteristicSelected((Caracteristic) myAdapter.getItem(which));
-            }
-        });
-
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {}
-        });
-
-        builder.show();*/
-
     }
 }

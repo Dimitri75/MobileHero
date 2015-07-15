@@ -66,6 +66,7 @@ public class CaracteristicFragment extends FragmentBase {
 
     public void init(){
         if (character.getCharacteristics() == null || character.getCharacteristics().isEmpty()) return;
+
         character.setCaracteristicsBonus();
 
         final ArrayAdapter<Caracteristic> myAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
@@ -95,7 +96,7 @@ public class CaracteristicFragment extends FragmentBase {
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     Caracteristic c = myAdapter.getItem(position);
-                                    if (c.bonus != 0) {
+                                    if (c.bonus == 0.) {
                                         character.getCharacteristics().remove(c.getName());
                                         character.save(getActivity().getApplicationContext(), game.getName(), round.getName());
                                         onAvailableData();
@@ -103,7 +104,7 @@ public class CaracteristicFragment extends FragmentBase {
                                         myAdapter.remove(c);
                                     }
                                     else{
-                                        Toast.makeText(getActivity().getApplicationContext(), "Supprimez d'abord les effets qui utilisent la caractéristique.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getActivity().getApplicationContext(), "Supprimez d'abord les effets qui utilisent la caractÃ©ristique.", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                                 myAdapter.notifyDataSetChanged();

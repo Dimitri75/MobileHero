@@ -111,7 +111,7 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
                                 for (int position : reverseSortedPositions) {
                                     effectsList.remove(myAdapter.getItem(position).getName());
                                 }
-                                updateEffetView();
+                                updateEffectView();
                             }
                         });
         listView.setOnTouchListener(swipeTouchListener);
@@ -120,7 +120,7 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
         listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
     }
 
-    private void updateEffetView() {
+    private void updateEffectView() {
         myAdapter.clear();
         myAdapter.addAll(effectsList.values());
         myAdapter.notifyDataSetChanged();
@@ -134,7 +134,7 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
                     @Override
                     public void onEffectCreated(Effect e) {
                     effectsList.put(e.getName(), e);
-                    updateEffetView();
+                    updateEffectView();
                     }
                 });
                 break;
