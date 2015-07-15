@@ -62,21 +62,17 @@ public class RoundsActivity extends ActionBarActivity {
 
                             @Override
                             public boolean canDismiss(int position) {
-                                if (myAdapter.getItem(position).getCharacters().isEmpty())
-                                    return true;
-                                else {
-                                    Toast.makeText(getApplicationContext(), "Vous ne pouvez pas supprimer une partie qui contient des personnages.", Toast.LENGTH_SHORT).show();
-                                    Log.v("Rounds init()", "Cannot delete a round which is not empty");
-                                    return false;
-                                }
+                                return true;
                             }
 
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     if (myAdapter.getItem(position).delete(getApplicationContext(), game))
-                                            myAdapter.remove(myAdapter.getItem(position));
-                                    }
+                                        myAdapter.remove(myAdapter.getItem(position));
+                                    else
+                                        Toast.makeText(getApplicationContext(), "Vous ne pouvez pas supprimer une partie qui contient des personnages.", Toast.LENGTH_SHORT).show();
+                                }
                                 myAdapter.notifyDataSetChanged();
                             }
                         });

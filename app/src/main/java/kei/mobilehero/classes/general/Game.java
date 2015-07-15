@@ -63,7 +63,8 @@ public class Game implements Parcelable {
     public boolean delete(Context context) {
         File dir = new File(context.getFilesDir(), name);
         if (dir.exists()) {
-            if (dir.delete()) return true;
+            if (dir.list().length == 0)
+                return dir.delete();
         } else Log.v("Game delete()", "Directory doesn't exist.");
         return false;
     }

@@ -65,9 +65,10 @@ public class Round implements Parcelable{
     public boolean delete(Context context, Game game) {
         File dir = new File(context.getFilesDir(), game.getName() + "/" + name);
         if (dir.exists()) {
-            if (dir.delete()) return true;
+            if (dir.list().length == 0)
+                return dir.delete();
         }
-        else Log.v("Round delete()", "Directory doesn't exist.");
+        else Log.i("Round delete()", "Directory doesn't exist.");
         return false;
     }
 

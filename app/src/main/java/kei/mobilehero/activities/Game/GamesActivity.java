@@ -3,7 +3,6 @@ package kei.mobilehero.activities.game;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,20 +65,18 @@ public class GamesActivity extends ActionBarActivity {
                         new SwipeDismissListViewTouchListener.DismissCallbacks() {
                             @Override
                             public boolean canDismiss(int position) {
-                                if (myAdapter.getItem(position).getRounds().isEmpty()) return true;
-                                else {
-                                    Toast.makeText(getApplicationContext(), "Vous ne pouvez pas supprimer un jeu qui contient des parties.", Toast.LENGTH_SHORT).show();
-                                    Log.v("Games init()", "Cannot delete a game which is not empty");
-                                    return false;
-                                }
+                                return true;
                             }
 
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    if (myAdapter.getItem(position).delete(getApplicationContext()))
-                                        myAdapter.remove(myAdapter.getItem(position));
-
+                                    if (myAdapter.getItem(position).getRounds().isEmpty()){
+                                        if (myAdapter.getItem(position).delete(getApplicationContext()))
+                                            myAdapter.remove(myAdapter.getItem(position));
+                                        else
+                                            Toast.makeText(getApplicationContext(), "Vous ne pouvez pas supprimer un jeu qui contient des parties.", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }

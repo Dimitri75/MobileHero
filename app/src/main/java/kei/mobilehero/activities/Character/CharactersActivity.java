@@ -70,7 +70,6 @@ public class CharactersActivity extends ActionBarActivity {
                                 for (int position : reverseSortedPositions) {
                                     if (myAdapter.getItem(position).delete(getApplicationContext(), game.getName(), round.getName()))
                                         myAdapter.remove(myAdapter.getItem(position));
-
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }
