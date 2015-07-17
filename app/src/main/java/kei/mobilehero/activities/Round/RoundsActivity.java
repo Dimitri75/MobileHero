@@ -71,7 +71,7 @@ public class RoundsActivity extends ActionBarActivity {
                                     if (myAdapter.getItem(position).delete(getApplicationContext(), game))
                                         myAdapter.remove(myAdapter.getItem(position));
                                     else
-                                        Toast.makeText(getApplicationContext(), "Vous ne pouvez pas supprimer une partie qui contient des personnages.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), getString(R.string.toastCannotDeleteRound), Toast.LENGTH_SHORT).show();
                                 }
                                 myAdapter.notifyDataSetChanged();
                             }

@@ -75,7 +75,7 @@ public class GamesActivity extends ActionBarActivity {
                                         if (myAdapter.getItem(position).delete(getApplicationContext()))
                                             myAdapter.remove(myAdapter.getItem(position));
                                         else
-                                            Toast.makeText(getApplicationContext(), "Vous ne pouvez pas supprimer un jeu qui contient des parties.", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), getString(R.string.toastCannotDeleteGame), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                                 myAdapter.notifyDataSetChanged();

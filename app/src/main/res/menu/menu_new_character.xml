@@ -4,4 +4,8 @@
     tools:context="kei.mobilehero.activities.character.CharacterFormActivity">
     <item android:id="@+id/action_dices" android:title="@string/action_settings_dices"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_saveAsModel" android:title="@string/action_settings_saveasmodel"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_loadModel" android:title="@string/action_settings_loadmodel"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

@@ -170,7 +170,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                         getActivity().onBackPressed();
                     }
                 } else
-                    Toast.makeText(getActivity().getApplicationContext(), "Les champs du formulaire ne sont pas bien remplis.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), getString(R.string.toastNonFiledForm), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

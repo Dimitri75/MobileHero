@@ -150,7 +150,7 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
                         getActivity().finish();
                 }
                 else
-                    Toast.makeText(getActivity().getApplicationContext(), "Veuillez saisir un nom pour votre personnage.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), getString(R.string.toastTypeACharacterName), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

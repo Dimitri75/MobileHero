@@ -45,13 +45,13 @@ public class EffectCreator {
                 Caracteristic c = (Caracteristic) sp.getSelectedItem();
 
                 if (c == null)
-                    Toast.makeText(activity, "Aucune caractéristique séléctionnée.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, activity.getString(R.string.toastNoSelectedCharacteristic), Toast.LENGTH_SHORT).show();
                 else {
                     String n = name.getText().toString();
                     Double v = Double.valueOf(value.getText().toString());
 
                     if (n == null || n.isEmpty() || v == null) {
-                        Toast.makeText(activity, "Aucune valeur selectionnée", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, activity.getString(R.string.toastNoSelectedValue), Toast.LENGTH_SHORT).show();
                     } else {
                         selectorListener.onEffectCreated(new Effect(n, "", Double.valueOf(v), c));
                         dialog.hide();

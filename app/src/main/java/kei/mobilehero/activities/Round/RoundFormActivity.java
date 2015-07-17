@@ -39,7 +39,7 @@ public class RoundFormActivity extends ActionBarActivity {
                 String roundName = view_roundName.getText().toString();
 
                 if (roundName.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Le formulaire n'est pas correctement rempli.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.toastNonFiledForm), Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Round round = new Round(roundName);

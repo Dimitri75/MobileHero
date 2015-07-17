@@ -105,7 +105,7 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
                         getActivity().onBackPressed();
                 }
                 else
-                    Toast.makeText(getActivity().getApplicationContext(), "La caractéristique existe déjà ou les champs ne sont pas bien remplis.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), getString(R.string.toastCharacteristicAlreadyExists), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

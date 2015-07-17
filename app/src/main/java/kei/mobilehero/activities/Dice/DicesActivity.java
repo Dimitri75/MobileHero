@@ -77,7 +77,7 @@ public class DicesActivity extends ActionBarActivity {
                     }
                 }
                 else
-                    Toast.makeText(getApplicationContext(), "Le formulaire n'est pas correctement rempli.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.toastNonFiledForm), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

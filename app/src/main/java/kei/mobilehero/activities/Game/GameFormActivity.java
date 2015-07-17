@@ -31,7 +31,7 @@ public class GameFormActivity extends ActionBarActivity {
                 String gameName = view_gameName.getText().toString();
 
                 if (gameName.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Le formulaire n'est pas correctement rempli.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.toastNonFiledForm), Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Game game = new Game(gameName);

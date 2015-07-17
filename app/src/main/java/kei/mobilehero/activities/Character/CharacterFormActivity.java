@@ -6,19 +6,21 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.ActivityAttributesBase;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
-import kei.mobilehero.fragments.generic.EnumFragment;
-import kei.mobilehero.fragments.generic.OnFragmentInteractionListener;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.persistence.Loader;
+import kei.mobilehero.fragments.generic.EnumFragment;
+import kei.mobilehero.fragments.generic.OnFragmentInteractionListener;
 
 public class CharacterFormActivity extends ActivityAttributesBase implements OnFragmentInteractionListener {
 
@@ -173,6 +175,25 @@ public class CharacterFormActivity extends ActivityAttributesBase implements OnF
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_new_character, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_saveAsModel) {
+            if (character != null && !character.getName().isEmpty()){
+                character.saveAsModel(getApplicationContext());
+                Toast.makeText(getApplicationContext(), getString(R.string.toastCharSavedAsModel), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if (id == R.id.action_loadModel) {
+            // Open a new dialog window
+            // Loader.getInstance().loadCharacterModels(getApplicationContext());
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -73,4 +73,17 @@
     <string name="title_activity_attributes">Character\'s attributes</string>
     <string name="addEffect">Add an effect</string>
     <string name="newEffect">New effect</string>
+
+    <string name="action_settings_loadmodel">Load a model</string>
+    <string name="action_settings_saveasmodel">Save as a model</string>
+    <string name="toastCharSavedAsModel">Character saved as a model.</string>
+    <string name="toastNonFiledForm">The form was not completely filled out.</string>
+    <string name="toastCannotDeleteGame">"You cannot delete a game which has some registered rounds."</string>
+    <string name="toastCannotDeleteRound">"Vou cannot delete a round which has some registered characters."</string>
+    <string name="toastNoSelectedCharacteristic">No selected characteristic.</string>
+    <string name="toastNoSelectedValue">No selected value.</string>
+    <string name="toastTypeACharacterName">Please type a character name.</string>
+    <string name="toastCharacteristicAlreadyExists">The characteristic already exists or the fields were not correctly filled out.</string>
+    <string name="toastDeleteEffectsFirst">Please delete the effects which use the characteristic first.</string>
+    <string name="toastSkillAlreadyExists">The skill already exists or the fields were not correctly filled out.</string>
 </resources>

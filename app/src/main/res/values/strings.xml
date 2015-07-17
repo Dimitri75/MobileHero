@@ -73,4 +73,17 @@
     <string name="addEffect">Ajouter un effet</string>
     <string name="newEffect">Nouvel effet</string>
 
+    <string name="action_settings_loadmodel">Charger un modèle</string>
+    <string name="action_settings_saveasmodel">Sauvegarder en tant que modèle</string>
+    <string name="toastCharSavedAsModel">Personnage sauvegardé en tant que modèle.</string>
+    <string name="toastNonFiledForm">Le formulaire n\'est pas correctement rempli.</string>
+    <string name="toastCannotDeleteGame">"Vous ne pouvez pas supprimer un jeu qui contient des parties."</string>
+    <string name="toastCannotDeleteRound">"Vous ne pouvez pas supprimer une partie qui contient des personnages."</string>
+    <string name="toastNoSelectedCharacteristic">Aucune caractéristique séléctionnée.</string>
+    <string name="toastNoSelectedValue">Aucune valeur séléctionnée.</string>
+    <string name="toastTypeACharacterName">Veuillez saisir un nom pour votre personnage.</string>
+    <string name="toastCharacteristicAlreadyExists">La caractéristique existe déjà ou les champs ne sont pas bien remplis.</string>
+    <string name="toastDeleteEffectsFirst">Supprimez d\'abord les effets qui utilisent la caractéristique.</string>
+    <string name="toastSkillAlreadyExists">La compétence existe déjà ou les champs ne sont pas bien remplis.</string>
+
 </resources>

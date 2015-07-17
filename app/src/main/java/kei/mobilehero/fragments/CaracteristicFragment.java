@@ -104,7 +104,8 @@ public class CaracteristicFragment extends FragmentBase {
                                         myAdapter.remove(c);
                                     }
                                     else{
-                                        Toast.makeText(getActivity().getApplicationContext(), "Supprimez d'abord les effets qui utilisent la caractéristique.", Toast.LENGTH_SHORT).show();
+
+                                        Toast.makeText(getActivity().getApplicationContext(), getString(R.string.toastDeleteEffectsFirst), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                                 myAdapter.notifyDataSetChanged();

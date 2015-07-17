@@ -157,7 +157,8 @@ public class SkillFormFragment extends FragmentBase implements OnClickListener {
                     if (character.save(getActivity().getApplicationContext(), game.getName(), round.getName()))
                         getActivity().onBackPressed();
                 } else
-                    Toast.makeText(getActivity().getApplicationContext(), "La compétence existe déjà ou les champs ne sont pas bien remplis.", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(getActivity().getApplicationContext(), getString(R.string.toastSkillAlreadyExists), Toast.LENGTH_SHORT).show();
                     break;
         }
     }
