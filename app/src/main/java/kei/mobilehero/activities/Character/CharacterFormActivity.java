@@ -19,6 +19,7 @@ import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.persistence.Loader;
+import kei.mobilehero.fragments.generic.CharacterSelector;
 import kei.mobilehero.fragments.generic.EnumFragment;
 import kei.mobilehero.fragments.generic.OnFragmentInteractionListener;
 
@@ -192,6 +193,7 @@ public class CharacterFormActivity extends ActivityAttributesBase implements OnF
         else if (id == R.id.action_loadModel) {
             // Open a new dialog window
             // Loader.getInstance().loadCharacterModels(getApplicationContext());
+            CharacterSelector.show(this.character, this, null);
         }
         return super.onOptionsItemSelected(item);
     }
