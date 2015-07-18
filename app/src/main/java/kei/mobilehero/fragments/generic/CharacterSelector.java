@@ -20,7 +20,7 @@ import kei.mobilehero.classes.utils.persistence.Loader;
 public class CharacterSelector {
 
     public interface CharacterSelectorListener {
-        void onCharacterSelected(Effect e);
+        void onCharacterSelected(Character c);
     }
 
     static public void show(Character character,  final Activity activity, final CharacterSelectorListener selectorListener) {
@@ -44,22 +44,9 @@ public class CharacterSelector {
             public void onClick(View view) {
                 Character c = (Character) sp.getSelectedItem();
 
-                Toast.makeText(activity.getApplicationContext(), c.getName(), Toast.LENGTH_SHORT).show();
+                selectorListener.onCharacterSelected(c);
 
-                /*
-                if (c == null)
-                    Toast.makeText(activity, activity.getString(R.string.toastNoSelectedCharacteristic), Toast.LENGTH_SHORT).show();
-                else {
-                    String n = name.getText().toString();
-                    Double v = Double.valueOf(value.getText().toString());
-
-                    if (n == null || n.isEmpty() || v == null) {
-                        Toast.makeText(activity, activity.getString(R.string.toastNoSelectedValue), Toast.LENGTH_SHORT).show();
-                    } else {
-                        selectorListener.onCharacterSelected(new Effect(n, "", Double.valueOf(v), c));
-                        dialog.hide();
-                    }
-                }*/
+                dialog.dismiss();
             }
         });
 

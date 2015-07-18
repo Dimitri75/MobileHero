@@ -193,7 +193,21 @@ public class CharacterFormActivity extends ActivityAttributesBase implements OnF
         else if (id == R.id.action_loadModel) {
             // Open a new dialog window
             // Loader.getInstance().loadCharacterModels(getApplicationContext());
-            CharacterSelector.show(this.character, this, null);
+            CharacterSelector.show(this.character, this, new CharacterSelector.CharacterSelectorListener() {
+                @Override
+                public void onCharacterSelected(Character modelCharacter) {
+                    character.setAlignment(modelCharacter.getAlignment());
+                    character.setCaracteristics(modelCharacter.getCharacteristics());
+                    character.setClassName(modelCharacter.getClassName());
+                    character.setEquipments(modelCharacter.getEquipments());
+                    character.setGender(modelCharacter.getGender());
+                    character.setRace(modelCharacter.getRace());
+                    character.setSkills(modelCharacter.getSkills());
+
+                    initData();
+                    signalAvailableData();
+                }
+            });
         }
         return super.onOptionsItemSelected(item);
     }
