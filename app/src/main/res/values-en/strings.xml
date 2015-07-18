@@ -86,5 +86,5 @@
     <string name="toastCharacteristicAlreadyExists">The characteristic already exists or the fields were not correctly filled out.</string>
     <string name="toastDeleteEffectsFirst">Please delete the effects which use the characteristic first.</string>
     <string name="toastSkillAlreadyExists">The skill already exists or the fields were not correctly filled out.</string>
-    <string name="characterModelSelection">Séléction d\'un modèle de perso.</string>
+    <string name="characterModelSelection">Select a model to load</string>
 </resources>
