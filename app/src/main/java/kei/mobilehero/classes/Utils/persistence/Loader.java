@@ -36,7 +36,7 @@ public class Loader {
         ArrayList<Game> listGames = new ArrayList<>();
         if (root.exists() && root.isDirectory() && root.listFiles().length >= 1) {
             for (File g : root.listFiles()) {
-                if (g.isDirectory()) {
+                if (g.isDirectory() && !g.getName().startsWith(".")) {
                     Game game = new Game(g.getName());
                     listGames.add(game);
                 }
@@ -58,7 +58,7 @@ public class Loader {
         File gameDir = new File(root, game.getName());
         if (gameDir.exists() && gameDir.isDirectory() && gameDir.listFiles().length >= 1) {
             for (File r : gameDir.listFiles()) {
-                if (r.isDirectory()) {
+                if (r.isDirectory() && !r.getName().startsWith(".")) {
                     game.getRounds().add(new Round(r.getName()));
                 }
             }
