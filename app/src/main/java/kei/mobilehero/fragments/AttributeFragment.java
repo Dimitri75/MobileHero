@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +45,7 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
     private TextView manaText;
     private TextView lifeText;
     private TextView equipmentWeight;
-    private ImageButton imageAvatar;
+    private ImageView imageAvatar;
 
     public AttributeFragment() {
         // Required empty public constructor
@@ -70,7 +70,9 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
         lifeText = (TextView) v.findViewById(R.id.textView_life);
         equipmentWeight = (TextView) v.findViewById(R.id.textView1_characterEquipmentWeight_fragment_attribute);
         Button saveButton = (Button) v.findViewById(R.id.button_saveCharacter_fragment_attribute);
-        imageAvatar = (ImageButton) v.findViewById(R.id.imageButton_profile);
+        imageAvatar = (ImageView) v.findViewById(R.id.imageButton_profile);
+        imageAvatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        imageAvatar.setImageDrawable(getResources().getDrawable(R.drawable.mystery));
 
         saveButton.setOnClickListener(this);
         imageAvatar.setOnClickListener(this);

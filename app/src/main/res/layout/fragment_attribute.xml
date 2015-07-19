@@ -19,18 +19,19 @@
         android:id="@+id/relativeLayout2_fragment_attribute">
 
         <FrameLayout
-            android:background="@xml/radius_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"
+            android:padding="3dp"
+            android:background="#bcf6f6f6"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
             android:layout_alignBottom="@+id/editText_characterLevel_fragment_attribute"
             android:layout_toLeftOf="@+id/editText_characterLevel_fragment_attribute"
             android:layout_alignTop="@+id/editText_characterLevel_fragment_attribute"
             android:layout_alignLeft="@+id/textView_name_attribute"
             android:layout_alignStart="@+id/textView_name_attribute">
 
-            <ImageButton
-                android:layout_margin="3dp"
-                android:background="@drawable/mystery"
+            <ImageView
+                android:clickable="true"
+                android:background="#ff090909"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/imageButton_profile"/>
