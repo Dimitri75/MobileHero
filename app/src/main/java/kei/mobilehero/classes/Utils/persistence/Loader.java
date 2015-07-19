@@ -1,12 +1,21 @@
 package kei.mobilehero.classes.utils.persistence;
 
 import android.content.Context;
+import android.util.Log;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
@@ -153,5 +162,25 @@ public class Loader {
         }
         return listModel;
     }
+
+    public File exportCharacterToZip(Context context, String id, Game game, Round round){
+        File root = context.getFilesDir();
+
+        // TODO
+        /*
+        File roundDir = new File(root, game.getName() + "/" + round.getName());
+        if (roundDir.exists() && roundDir.isDirectory()) {
+
+            File charFile = new File(roundDir, "character." + id + ".json");
+
+            if (charFile.exists()) {
+                Character character = new Character(charFile);
+                return character;
+            }
+        }*/
+
+        return null;
+    }
+
 }
 
