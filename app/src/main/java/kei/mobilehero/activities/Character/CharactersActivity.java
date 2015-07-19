@@ -62,7 +62,7 @@ public class CharactersActivity extends ActionBarActivity {
 
                             @Override
                             public boolean canDismiss(int position) {
-                                return false;
+                                return true;
                             }
 
                             @Override
