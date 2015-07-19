@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.view.MotionEvent;
+import android.view.View.OnTouchListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,12 +106,14 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                 new ArrayList<>(effectsList.values()));
 
         ListView listView = (ListView) v.findViewById(R.id.listView_effects_equipment);
+
         listView.setAdapter(myAdapter);
 
         SwipeDismissListViewTouchListener swipeTouchListener =
                 new SwipeDismissListViewTouchListener(
                         listView,
                         new SwipeDismissListViewTouchListener.DismissCallbacks() {
+
                             @Override
                             public boolean canDismiss(int position) {
                                 return true;
@@ -124,6 +128,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                             }
                         });
         listView.setOnTouchListener(swipeTouchListener);
+
         // Setting this scroll listener is required to ensure that during ListView scrolling,
         // we don't look for swipes.
         listView.setOnScrollListener(swipeTouchListener.makeScrollListener());

@@ -1,4 +1,4 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<kei.mobilehero.custom.widgets.VerticalScrollview xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -96,7 +96,7 @@
             android:textColor="#e1000000"
             android:textSize="16sp"
             android:layout_marginTop="28dp"
-            android:layout_below="@+id/relativeLayout2_fragment_new_skill"
+            android:layout_below="@+id/listView_effects_skill"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
@@ -111,7 +111,7 @@
             android:id="@+id/button_effects_new_skill"
             android:textColor="#e1000000"
             android:textSize="14sp"
-            android:layout_below="@+id/button_saveSkill_new_skill"
+            android:layout_below="@+id/relativeLayout2_fragment_new_skill"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
@@ -119,7 +119,8 @@
 
         <ListView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
+            android:scrollbars="vertical"
             android:id="@+id/listView_effects_skill"
             android:background="@xml/custom_listview_2"
             android:layout_below="@+id/button_effects_new_skill"
@@ -129,4 +130,4 @@
 
 
 
-</ScrollView>
+</kei.mobilehero.custom.widgets.VerticalScrollview>
