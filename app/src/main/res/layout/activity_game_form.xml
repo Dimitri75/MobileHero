@@ -25,7 +25,7 @@
             android:layout_marginTop="45dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@xml/radius"
+            android:background="@xml/radius_black"
             android:id="@+id/relativeLayout2_game_form"
             android:layout_below="@+id/label_appName_new_game"
             android:layout_alignParentLeft="true"

@@ -15,10 +15,30 @@
         <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@xml/radius"
+        android:background="@xml/radius_black"
         android:id="@+id/relativeLayout2_fragment_attribute">
 
+        <FrameLayout
+            android:background="@xml/radius_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_alignBottom="@+id/editText_characterLevel_fragment_attribute"
+            android:layout_toLeftOf="@+id/editText_characterLevel_fragment_attribute"
+            android:layout_alignTop="@+id/editText_characterLevel_fragment_attribute"
+            android:layout_alignLeft="@+id/textView_name_attribute"
+            android:layout_alignStart="@+id/textView_name_attribute">
+
+            <ImageButton
+                android:layout_margin="3dp"
+                android:background="@drawable/mystery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton_profile"/>
+
+        </FrameLayout>
+
         <kei.mobilehero.custom.widgets.MyCustomEditText
+            android:layout_marginLeft="75dp"
             android:layout_marginTop="20dp"
             android:layout_width="85dp"
             android:layout_height="95dp"
@@ -35,7 +55,8 @@
             android:singleLine="true"
             android:imeOptions="actionDone"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignRight="@+id/editText_characterName_fragment_attribute"
+            android:layout_alignEnd="@+id/editText_characterName_fragment_attribute" />
 
 
         <EditText
@@ -301,6 +322,8 @@
                 android:layout_below="@+id/textView_life_attribute"
                 android:layout_alignRight="@+id/seekBar_life_frament_attribute"
                 android:layout_alignEnd="@+id/seekBar_life_frament_attribute" />
+
+
         </RelativeLayout>
 
         <kei.mobilehero.custom.widgets.MyCustomButton

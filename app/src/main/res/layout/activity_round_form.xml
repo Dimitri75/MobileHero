@@ -25,7 +25,7 @@
             android:layout_marginTop="45dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@xml/radius"
+            android:background="@xml/radius_black"
             android:id="@+id/relativeLayout2_round_form"
             android:layout_below="@+id/label_appName_new_round"
             android:layout_alignRight="@+id/button_saveRound_new_round"
