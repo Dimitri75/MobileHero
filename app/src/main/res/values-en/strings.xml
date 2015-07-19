@@ -89,4 +89,6 @@
     <string name="toastSkillAlreadyExists">The skill already exists or the fields were not correctly filled out.</string>
     <string name="action_settings_exportpdf">Export as PDF</string>
     <string name="characterModelSelection">Select a model to load</string>
+    <string name="enter_link">Link to the image</string>
+    <string name="character_image">Avatar selection</string>
 </resources>
