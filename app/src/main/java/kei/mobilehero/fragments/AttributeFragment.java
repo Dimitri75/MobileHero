@@ -139,8 +139,15 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
         equipmentWeight.setText(String.valueOf(character.getEquipmentWeight()));
         if(character.getLevel() != 0)
             levelText.setText(String.valueOf(character.getLevel()));
-        if(character.getAvatar() != null)
-            imageAvatar.setImageBitmap(character.getAvatar());
+        if(character.getAvatar() != null) {
+            new DownloadImageTask() {
+                @Override
+                public void onImageReady(Bitmap result) {
+                    imageAvatar.setImageBitmap(result);
+                }
+
+            }.execute(character.getAvatar());
+        }
     }
 
     @Override
@@ -169,7 +176,7 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 
                 final EditText edittext= new EditText(getActivity().getApplicationContext());
-                edittext.setTextColor(Color.BLACK);
+                edittext.setTextColor(Color.GRAY);
                 alert.setMessage(getActivity().getApplicationContext().getString(R.string.enter_link));
                 alert.setTitle(getActivity().getApplicationContext().getString(R.string.character_image));
 
@@ -178,12 +185,12 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
                 alert.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         //What ever you want to do with the value
-                        String YouEditTextValue = edittext.getText().toString();
+                        final String edittextValue = edittext.getText().toString();
 
                         new DownloadImageTask() {
                             @Override
                             public void onImageReady(Bitmap result) {
-                                character.setAvatar(result);
+                                character.setAvatar(edittextValue);
                                 imageAvatar.setImageBitmap(result);
                             }
 
