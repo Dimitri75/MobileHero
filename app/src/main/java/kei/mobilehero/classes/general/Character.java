@@ -1,6 +1,7 @@
 package kei.mobilehero.classes.general;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
@@ -18,6 +19,7 @@ import kei.mobilehero.classes.attributes.Characteristic;
 import kei.mobilehero.classes.attributes.Effect;
 import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.attributes.Skill;
+import kei.mobilehero.classes.utils.DownloadImageTask;
 
 /**
  * Created by Dimitri on 15/05/2015.
@@ -36,6 +38,7 @@ public class Character implements Parcelable{
     private HashMap<String, Skill> skills = new HashMap<>();
     private HashMap<String, Characteristic> caracteristics = new HashMap<>();
     private HashMap<String, Equipment> equipments = new HashMap<>();
+    private Bitmap avatar;
 
     public Character(String name){
         this.id = UUID.randomUUID().toString();
@@ -427,5 +430,25 @@ public class Character implements Parcelable{
             return false;
         }
     }
+
+    public void setAvatar(Bitmap avatar) {
+        this.avatar = avatar;
+        if(avatar != null)
+            this.picture = DownloadImageTask.bitmapToBase64(avatar);
+        else
+            this.picture = "";
+    }
+
+    public Bitmap getAvatar() {
+        if(this.picture == null || this.picture.length() <= 0)
+            return null;
+        else {
+            if(this.avatar == null) {
+                this.avatar = DownloadImageTask.base64ToBitmap(this.picture);
+            }
+            return this.avatar;
+        }
+    }
+
     // END GSON
 }

@@ -88,5 +88,7 @@
     <string name="toastSkillAlreadyExists">La compétence existe déjà ou les champs ne sont pas bien remplis.</string>
     <string name="characterModelSelection">Séléction d\'un modèle de perso.</string>
     <string name="action_settings_exportpdf">Exporter en PDF</string>
+    <string name="enter_link">Entrez le lien vers l\'avatar</string>
+    <string name="character_image">Selection avatar</string>
 
 </resources>

@@ -1,5 +1,9 @@
 package kei.mobilehero.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +24,7 @@ import kei.mobilehero.activities.character.generic.EnumAttribute;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
+import kei.mobilehero.classes.utils.DownloadImageTask;
 import kei.mobilehero.custom.widgets.MyCustomEditText;
 import kei.mobilehero.fragments.generic.FragmentBase;
 
@@ -39,6 +45,7 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
     private TextView manaText;
     private TextView lifeText;
     private TextView equipmentWeight;
+    private ImageButton imageAvatar;
 
     public AttributeFragment() {
         // Required empty public constructor
@@ -63,8 +70,10 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
         lifeText = (TextView) v.findViewById(R.id.textView_life);
         equipmentWeight = (TextView) v.findViewById(R.id.textView1_characterEquipmentWeight_fragment_attribute);
         Button saveButton = (Button) v.findViewById(R.id.button_saveCharacter_fragment_attribute);
+        imageAvatar = (ImageButton) v.findViewById(R.id.imageButton_profile);
 
         saveButton.setOnClickListener(this);
+        imageAvatar.setOnClickListener(this);
 
         initSeekBars();
 
@@ -128,6 +137,8 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
         equipmentWeight.setText(String.valueOf(character.getEquipmentWeight()));
         if(character.getLevel() != 0)
             levelText.setText(String.valueOf(character.getLevel()));
+        if(character.getAvatar() != null)
+            imageAvatar.setImageBitmap(character.getAvatar());
     }
 
     @Override
@@ -151,6 +162,36 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
                 }
                 else
                     Toast.makeText(getActivity().getApplicationContext(), getString(R.string.toastTypeACharacterName), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.imageButton_profile:
+                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+
+                final EditText edittext= new EditText(getActivity().getApplicationContext());
+                edittext.setTextColor(Color.BLACK);
+                alert.setMessage(getActivity().getApplicationContext().getString(R.string.enter_link));
+                alert.setTitle(getActivity().getApplicationContext().getString(R.string.character_image));
+
+                alert.setView(edittext);
+
+                alert.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        //What ever you want to do with the value
+                        String YouEditTextValue = edittext.getText().toString();
+
+                        new DownloadImageTask() {
+                            @Override
+                            public void onImageReady(Bitmap result) {
+                                character.setAvatar(result);
+                                imageAvatar.setImageBitmap(result);
+                            }
+
+                        }.execute(edittext.getText().toString());
+                    }
+                });
+                alert.setNegativeButton(android.R.string.cancel, null);
+
+                alert.show();
+
                 break;
         }
     }

@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.itextpdf.text.DocumentException;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -25,8 +27,6 @@ import kei.mobilehero.classes.utils.persistence.PDFExporter;
 import kei.mobilehero.fragments.generic.CharacterSelector;
 import kei.mobilehero.fragments.generic.EnumFragment;
 import kei.mobilehero.fragments.generic.OnFragmentInteractionListener;
-
-import com.itextpdf.text.DocumentException;
 
 public class CharacterFormActivity extends ActivityAttributesBase implements OnFragmentInteractionListener {
 
