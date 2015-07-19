@@ -217,8 +217,10 @@ public class Character implements Parcelable{
             if (!e.getEffects().isEmpty()){
                 for (Effect i : e.getEffects().values()){
                     Double value;
-                    if ((value = calculatedCaracteristics.get(i.getCharacteristic().getName())) != null){
-                        calculatedCaracteristics.put(i.getCharacteristic().getName(), value+i.getValue());
+                    if(i.getCharacteristic() != null) {
+                        if ((value = calculatedCaracteristics.get(i.getCharacteristic().getName())) != null) {
+                            calculatedCaracteristics.put(i.getCharacteristic().getName(), value + i.getValue());
+                        }
                     }
                 }
             }
@@ -228,8 +230,10 @@ public class Character implements Parcelable{
             if (!s.getEffects().isEmpty()){
                 for (Effect e : s.getEffects().values()){
                     Double value;
-                    if ((value = calculatedCaracteristics.get(e.getCharacteristic().getName())) != null){
-                        calculatedCaracteristics.put(e.getCharacteristic().getName(), value+e.getValue());
+                    if(e.getCharacteristic() != null) {
+                        if ((value = calculatedCaracteristics.get(e.getCharacteristic().getName())) != null) {
+                            calculatedCaracteristics.put(e.getCharacteristic().getName(), value + e.getValue());
+                        }
                     }
                 }
             }
