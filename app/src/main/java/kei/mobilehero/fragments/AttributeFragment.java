@@ -139,11 +139,15 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
         equipmentWeight.setText(String.valueOf(character.getEquipmentWeight()));
         if(character.getLevel() != 0)
             levelText.setText(String.valueOf(character.getLevel()));
-        if(character.getAvatar() != null) {
+        if(character.getAvatar() != null && character.getAvatar().length() > 0) {
             new DownloadImageTask() {
                 @Override
                 public void onImageReady(Bitmap result) {
-                    imageAvatar.setImageBitmap(result);
+                    if (result != null) {
+                        imageAvatar.setImageBitmap(result);
+                    } else {
+                        Toast.makeText(getActivity().getApplicationContext(), getActivity().getApplicationContext().getString(R.string.character_image_error), Toast.LENGTH_LONG).show();
+                    }
                 }
 
             }.execute(character.getAvatar());
@@ -190,8 +194,12 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
                         new DownloadImageTask() {
                             @Override
                             public void onImageReady(Bitmap result) {
-                                character.setAvatar(edittextValue);
-                                imageAvatar.setImageBitmap(result);
+                                if (result != null) {
+                                    character.setAvatar(edittextValue);
+                                    imageAvatar.setImageBitmap(result);
+                                } else {
+                                    Toast.makeText(getActivity().getApplicationContext(), getActivity().getApplicationContext().getString(R.string.character_image_error), Toast.LENGTH_LONG).show();
+                                }
                             }
 
                         }.execute(edittext.getText().toString());

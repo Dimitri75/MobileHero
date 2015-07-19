@@ -90,5 +90,6 @@
     <string name="action_settings_exportpdf">Exporter en PDF</string>
     <string name="enter_link">Entrez le lien vers l\'avatar</string>
     <string name="character_image">Selection avatar</string>
+    <string name="character_image_error">Impossible de charger l\'image du personnage</string>
 
 </resources>
