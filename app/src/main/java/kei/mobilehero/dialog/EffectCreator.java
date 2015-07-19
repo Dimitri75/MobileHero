@@ -1,4 +1,4 @@
-package kei.mobilehero.fragments.generic;
+package kei.mobilehero.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -13,6 +13,7 @@ import java.util.List;
 import kei.mobilehero.R;
 import kei.mobilehero.classes.attributes.Characteristic;
 import kei.mobilehero.classes.attributes.Effect;
+import kei.mobilehero.fragments.generic.CharacteristicListAdapter;
 
 /**
  * Created by Vuzi on 13/07/2015.
@@ -48,12 +49,12 @@ public class EffectCreator {
                     Toast.makeText(activity, activity.getString(R.string.toastNoSelectedCharacteristic), Toast.LENGTH_SHORT).show();
                 else {
                     String n = name.getText().toString();
-                    Double v = Double.valueOf(value.getText().toString());
+                    Double v = value.getText().toString().isEmpty() ? 0 : Double.parseDouble(value.getText().toString());
 
                     if (n == null || n.isEmpty() || v == null) {
                         Toast.makeText(activity, activity.getString(R.string.toastNoSelectedValue), Toast.LENGTH_SHORT).show();
                     } else {
-                        selectorListener.onEffectCreated(new Effect(n, "", Double.valueOf(v), c));
+                        selectorListener.onEffectCreated(new Effect(n, "", v, c));
                         dialog.hide();
                     }
                 }

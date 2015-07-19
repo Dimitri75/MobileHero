@@ -24,7 +24,7 @@ import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.persistence.Loader;
 import kei.mobilehero.classes.utils.persistence.PDFExporter;
-import kei.mobilehero.fragments.generic.CharacterSelector;
+import kei.mobilehero.dialog.CharacterSelector;
 import kei.mobilehero.fragments.generic.EnumFragment;
 import kei.mobilehero.fragments.generic.OnFragmentInteractionListener;
 

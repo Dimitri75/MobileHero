@@ -1,4 +1,4 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<kei.mobilehero.custom.widgets.VerticalScrollview xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -146,9 +146,7 @@
                 android:layout_alignLeft="@+id/textView_name_equipment"
                 android:layout_alignStart="@+id/textView_name_equipment" />
 
-
         </RelativeLayout>
-
 
         <kei.mobilehero.custom.widgets.MyCustomButton
             android:background="@drawable/button_large_light"
@@ -159,7 +157,7 @@
             android:textColor="#e1000000"
             android:textSize="16sp"
             android:layout_marginTop="28dp"
-            android:layout_below="@+id/relativeLayout2_fragment_new_equipment"
+            android:layout_below="@+id/listView_effects_equipment"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
@@ -174,7 +172,7 @@
             android:id="@+id/button_effects_new_equipment"
             android:textColor="#e1000000"
             android:textSize="14sp"
-            android:layout_below="@+id/button_saveEquipment_new_equipment"
+            android:layout_below="@+id/relativeLayout2_fragment_new_equipment"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
@@ -182,11 +180,13 @@
 
         <ListView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
+            android:scrollbars="vertical"
             android:id="@+id/listView_effects_equipment"
             android:background="@xml/custom_listview_2"
             android:layout_below="@+id/button_effects_new_equipment"
             android:layout_marginLeft="13dp"
             android:layout_marginRight="13dp"/>
+
     </RelativeLayout>
-</ScrollView>
+</kei.mobilehero.custom.widgets.VerticalScrollview>

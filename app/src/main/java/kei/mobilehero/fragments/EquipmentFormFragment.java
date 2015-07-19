@@ -22,7 +22,7 @@ import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.swipe.SwipeDismissListViewTouchListener;
-import kei.mobilehero.fragments.generic.EffectCreator;
+import kei.mobilehero.dialog.EffectCreator;
 import kei.mobilehero.fragments.generic.FragmentBase;
 
 public class EquipmentFormFragment extends FragmentBase implements OnClickListener {
@@ -104,12 +104,14 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                 new ArrayList<>(effectsList.values()));
 
         ListView listView = (ListView) v.findViewById(R.id.listView_effects_equipment);
+
         listView.setAdapter(myAdapter);
 
         SwipeDismissListViewTouchListener swipeTouchListener =
                 new SwipeDismissListViewTouchListener(
                         listView,
                         new SwipeDismissListViewTouchListener.DismissCallbacks() {
+
                             @Override
                             public boolean canDismiss(int position) {
                                 return true;
@@ -124,6 +126,7 @@ public class EquipmentFormFragment extends FragmentBase implements OnClickListen
                             }
                         });
         listView.setOnTouchListener(swipeTouchListener);
+
         // Setting this scroll listener is required to ensure that during ListView scrolling,
         // we don't look for swipes.
         listView.setOnScrollListener(swipeTouchListener.makeScrollListener());
