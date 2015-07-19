@@ -119,7 +119,7 @@
 
         <ListView
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:scrollbars="vertical"
             android:id="@+id/listView_effects_skill"
             android:background="@xml/custom_listview_2"

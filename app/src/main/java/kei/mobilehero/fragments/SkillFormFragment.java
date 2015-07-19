@@ -22,7 +22,7 @@ import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.swipe.SwipeDismissListViewTouchListener;
-import kei.mobilehero.fragments.generic.EffectCreator;
+import kei.mobilehero.dialog.EffectCreator;
 import kei.mobilehero.fragments.generic.FragmentBase;
 
 public class SkillFormFragment extends FragmentBase implements OnClickListener {

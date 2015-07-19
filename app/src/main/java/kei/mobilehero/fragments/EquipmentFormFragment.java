@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.view.MotionEvent;
-import android.view.View.OnTouchListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +22,7 @@ import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.swipe.SwipeDismissListViewTouchListener;
-import kei.mobilehero.fragments.generic.EffectCreator;
+import kei.mobilehero.dialog.EffectCreator;
 import kei.mobilehero.fragments.generic.FragmentBase;
 
 public class EquipmentFormFragment extends FragmentBase implements OnClickListener {

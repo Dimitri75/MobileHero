@@ -1,18 +1,17 @@
-package kei.mobilehero.fragments.generic;
+package kei.mobilehero.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.List;
 
 import kei.mobilehero.R;
-import kei.mobilehero.classes.attributes.Effect;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.utils.persistence.Loader;
+import kei.mobilehero.fragments.generic.CharacterListAdapter;
 
 /**
  * Created by Vuzi on 13/07/2015.
