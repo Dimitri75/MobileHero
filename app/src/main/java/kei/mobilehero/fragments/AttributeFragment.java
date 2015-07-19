@@ -137,8 +137,15 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
         equipmentWeight.setText(String.valueOf(character.getEquipmentWeight()));
         if(character.getLevel() != 0)
             levelText.setText(String.valueOf(character.getLevel()));
-        if(character.getAvatar() != null)
-            imageAvatar.setImageBitmap(character.getAvatar());
+        if(character.getAvatar() != null) {
+            new DownloadImageTask() {
+                @Override
+                public void onImageReady(Bitmap result) {
+                    imageAvatar.setImageBitmap(result);
+                }
+
+            }.execute(character.getAvatar());
+        }
     }
 
     @Override
@@ -176,12 +183,12 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
                 alert.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         //What ever you want to do with the value
-                        String YouEditTextValue = edittext.getText().toString();
+                        final String YouEditTextValue = edittext.getText().toString();
 
                         new DownloadImageTask() {
                             @Override
                             public void onImageReady(Bitmap result) {
-                                character.setAvatar(result);
+                                character.setAvatar(YouEditTextValue);
                                 imageAvatar.setImageBitmap(result);
                             }
 

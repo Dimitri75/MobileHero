@@ -431,23 +431,12 @@ public class Character implements Parcelable{
         }
     }
 
-    public void setAvatar(Bitmap avatar) {
-        this.avatar = avatar;
-        if(avatar != null)
-            this.picture = DownloadImageTask.bitmapToBase64(avatar);
-        else
-            this.picture = "";
+    public void setAvatar(String avatar) {
+        this.picture = avatar;
     }
 
-    public Bitmap getAvatar() {
-        if(this.picture == null || this.picture.length() <= 0)
-            return null;
-        else {
-            if(this.avatar == null) {
-                this.avatar = DownloadImageTask.base64ToBitmap(this.picture);
-            }
-            return this.avatar;
-        }
+    public String getAvatar() {
+        return this.picture;
     }
 
     // END GSON
