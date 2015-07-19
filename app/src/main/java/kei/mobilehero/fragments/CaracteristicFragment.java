@@ -16,8 +16,8 @@ import java.util.HashMap;
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
 import kei.mobilehero.activities.character.generic.SelectionListener;
+import kei.mobilehero.classes.attributes.Characteristic;
 import kei.mobilehero.fragments.generic.FragmentBase;
-import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
@@ -69,7 +69,7 @@ public class CaracteristicFragment extends FragmentBase {
 
         character.setCaracteristicsBonus();
 
-        final ArrayAdapter<Caracteristic> myAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
+        final ArrayAdapter<Characteristic> myAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
                 new ArrayList<>(character.getCharacteristics().values()));
@@ -95,7 +95,7 @@ public class CaracteristicFragment extends FragmentBase {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    Caracteristic c = myAdapter.getItem(position);
+                                    Characteristic c = myAdapter.getItem(position);
                                     if (c.bonus == 0.) {
                                         character.getCharacteristics().remove(c.getName());
                                         character.save(getActivity().getApplicationContext(), game.getName(), round.getName());

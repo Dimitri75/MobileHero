@@ -9,17 +9,17 @@ import android.widget.TextView;
 import java.util.List;
 
 import kei.mobilehero.R;
-import kei.mobilehero.classes.attributes.Caracteristic;
+import kei.mobilehero.classes.attributes.Characteristic;
 
 /**
  * Created by Vuzi on 13/07/2015.
  */
 public class CharacteristicListAdapter extends BaseAdapter {
 
-    private final List<Caracteristic> characteristics;
+    private final List<Characteristic> characteristics;
     private final LayoutInflater inflater;
 
-    public CharacteristicListAdapter(List<Caracteristic> characteristics, LayoutInflater inflater) {
+    public CharacteristicListAdapter(List<Characteristic> characteristics, LayoutInflater inflater) {
         this.characteristics = characteristics;
         this.inflater = inflater;
     }
@@ -45,7 +45,7 @@ public class CharacteristicListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.alert_list_item, null);
         }
 
-        Caracteristic c = characteristics.get(position);
+        Characteristic c = characteristics.get(position);
 
         ((TextView)convertView.findViewById(R.id.text1)).setText(c.getName() );
         ((TextView)convertView.findViewById(R.id.text2)).setText(c.getDescription());

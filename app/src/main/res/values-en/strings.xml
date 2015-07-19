@@ -73,6 +73,7 @@
     <string name="title_activity_attributes">Character\'s attributes</string>
     <string name="addEffect">Add an effect</string>
     <string name="newEffect">New effect</string>
+    <string name="effectLabel">Effect</string>
 
     <string name="action_settings_loadmodel">Load a model</string>
     <string name="action_settings_saveasmodel">Save as a model</string>
@@ -87,4 +88,5 @@
     <string name="toastDeleteEffectsFirst">Please delete the effects which use the characteristic first.</string>
     <string name="toastSkillAlreadyExists">The skill already exists or the fields were not correctly filled out.</string>
     <string name="characterModelSelection">Séléction d\'un modèle de perso.</string>
+    <string name="action_settings_exportpdf">Exporter en PDF</string>
 </resources>

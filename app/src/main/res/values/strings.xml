@@ -72,6 +72,7 @@
     <string name="title_activity_attributes">Attributs de personnage</string>
     <string name="addEffect">Ajouter un effet</string>
     <string name="newEffect">Nouvel effet</string>
+    <string name="effectLabel">Effet</string>
 
     <string name="action_settings_loadmodel">Charger un modèle</string>
     <string name="action_settings_saveasmodel">Sauvegarder en tant que modèle</string>
@@ -86,5 +87,6 @@
     <string name="toastDeleteEffectsFirst">Supprimez d\'abord les effets qui utilisent la caractéristique.</string>
     <string name="toastSkillAlreadyExists">La compétence existe déjà ou les champs ne sont pas bien remplis.</string>
     <string name="characterModelSelection">Séléction d\'un modèle de perso.</string>
+    <string name="action_settings_exportpdf">Exporter en PDF</string>
 
 </resources>

@@ -11,7 +11,7 @@ public class EquipmentTest extends InstrumentationTestCase{
     private final static double EQUIP_WEIGHT = 10.5;
     private final static String EQUIP_POSITION = "Head";
 
-    private final static String CARAC_NAME = "Caracteristic";
+    private final static String CARAC_NAME = "Characteristic";
     private final static String CARAC_DESCRIPTION = "This is a caracteristic.";
     private final static double CARAC_VALUE = 4.2;
 
@@ -20,7 +20,7 @@ public class EquipmentTest extends InstrumentationTestCase{
     private final static double EFFECT_VALUE = 4.2;
 
     public void test() throws Exception {
-        Effect effect = new Effect(EFFECT_NAME, EFFECT_DESCRIPTION, EFFECT_VALUE, new Caracteristic(CARAC_NAME, CARAC_DESCRIPTION, CARAC_VALUE));
+        Effect effect = new Effect(EFFECT_NAME, EFFECT_DESCRIPTION, EFFECT_VALUE, new Characteristic(CARAC_NAME, CARAC_DESCRIPTION, CARAC_VALUE));
 
         Equipment equipment = new Equipment(EQUIP_NAME, EQUIP_DESCRIPTION, EQUIP_WEIGHT, EQUIP_POSITION );
         equipment.getEffects().put(effect.getId(), effect);

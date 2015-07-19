@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import kei.mobilehero.classes.attributes.Caracteristic;
+import kei.mobilehero.classes.attributes.Characteristic;
 import kei.mobilehero.classes.attributes.Effect;
 import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.attributes.Skill;
@@ -34,7 +34,7 @@ public class Character implements Parcelable{
     private String picture;
     private int level;
     private HashMap<String, Skill> skills = new HashMap<>();
-    private HashMap<String, Caracteristic> caracteristics = new HashMap<>();
+    private HashMap<String, Characteristic> caracteristics = new HashMap<>();
     private HashMap<String, Equipment> equipments = new HashMap<>();
 
     public Character(String name){
@@ -145,14 +145,14 @@ public class Character implements Parcelable{
             this.skills = skills;
     }
 
-    public HashMap<String, Caracteristic> getCharacteristics() {
+    public HashMap<String, Characteristic> getCharacteristics() {
         if (caracteristics == null)
             return (caracteristics = new HashMap<>());
 
         return caracteristics;
     }
 
-    public void setCaracteristics(HashMap<String, Caracteristic> caracteristics) {
+    public void setCaracteristics(HashMap<String, Characteristic> caracteristics) {
         if (caracteristics != null)
             this.caracteristics = caracteristics;
     }
@@ -171,7 +171,7 @@ public class Character implements Parcelable{
 
     public HashMap<String, Double> getCalculatedCaracteristics(){
         HashMap<String, Double> calculatedCaracteristics = new HashMap<>();
-        for (Caracteristic c : caracteristics.values()){
+        for (Characteristic c : caracteristics.values()){
             calculatedCaracteristics.put(c.getName(), c.getValue());
         }
 
@@ -179,8 +179,8 @@ public class Character implements Parcelable{
             if (!e.getEffects().isEmpty()){
                 for (Effect i : e.getEffects().values()){
                     Double value;
-                    if ((value = calculatedCaracteristics.get(i.getCaracteristic().getName())) != null){
-                        calculatedCaracteristics.put(i.getCaracteristic().getName(), value+i.getValue());
+                    if ((value = calculatedCaracteristics.get(i.getCharacteristic().getName())) != null){
+                        calculatedCaracteristics.put(i.getCharacteristic().getName(), value+i.getValue());
                     }
                 }
             }
@@ -190,8 +190,8 @@ public class Character implements Parcelable{
             if (!s.getEffects().isEmpty()){
                 for (Effect e : s.getEffects().values()){
                     Double value;
-                    if ((value = calculatedCaracteristics.get(e.getCaracteristic().getName())) != null){
-                        calculatedCaracteristics.put(e.getCaracteristic().getName(), value+e.getValue());
+                    if ((value = calculatedCaracteristics.get(e.getCharacteristic().getName())) != null){
+                        calculatedCaracteristics.put(e.getCharacteristic().getName(), value+e.getValue());
                     }
                 }
             }
@@ -202,14 +202,14 @@ public class Character implements Parcelable{
     public void setCaracteristicsBonus(){
         HashMap<String, Double> mapBonus = getCalculatedCharacteristicsBonus();
 
-        for (Map.Entry<String, Caracteristic> map : caracteristics.entrySet()){
+        for (Map.Entry<String, Characteristic> map : caracteristics.entrySet()){
             map.getValue().bonus = mapBonus.get(map.getKey());
         }
     }
 
     public HashMap<String, Double> getCalculatedCharacteristicsBonus(){
         HashMap<String, Double> calculatedCaracteristics = new HashMap<>();
-        for (Caracteristic c : caracteristics.values()){
+        for (Characteristic c : caracteristics.values()){
             calculatedCaracteristics.put(c.getName(), 0.);
         }
 
@@ -217,8 +217,8 @@ public class Character implements Parcelable{
             if (!e.getEffects().isEmpty()){
                 for (Effect i : e.getEffects().values()){
                     Double value;
-                    if ((value = calculatedCaracteristics.get(i.getCaracteristic().getName())) != null){
-                        calculatedCaracteristics.put(i.getCaracteristic().getName(), value+i.getValue());
+                    if ((value = calculatedCaracteristics.get(i.getCharacteristic().getName())) != null){
+                        calculatedCaracteristics.put(i.getCharacteristic().getName(), value+i.getValue());
                     }
                 }
             }
@@ -228,8 +228,8 @@ public class Character implements Parcelable{
             if (!s.getEffects().isEmpty()){
                 for (Effect e : s.getEffects().values()){
                     Double value;
-                    if ((value = calculatedCaracteristics.get(e.getCaracteristic().getName())) != null){
-                        calculatedCaracteristics.put(e.getCaracteristic().getName(), value+e.getValue());
+                    if ((value = calculatedCaracteristics.get(e.getCharacteristic().getName())) != null){
+                        calculatedCaracteristics.put(e.getCharacteristic().getName(), value+e.getValue());
                     }
                 }
             }
@@ -313,7 +313,7 @@ public class Character implements Parcelable{
         this.className = in.readString();
         this.picture = in.readString();
         this.level = in.readInt();
-        this.caracteristics = in.readHashMap(Caracteristic.class.getClassLoader());
+        this.caracteristics = in.readHashMap(Characteristic.class.getClassLoader());
         this.skills = in.readHashMap(Skill.class.getClassLoader());
         this.equipments = in.readHashMap(Equipment.class.getClassLoader());
     }

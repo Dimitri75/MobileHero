@@ -45,7 +45,6 @@ public class CharacterSelector {
                 Character c = (Character) sp.getSelectedItem();
 
                 selectorListener.onCharacterSelected(c);
-
                 dialog.dismiss();
             }
         });

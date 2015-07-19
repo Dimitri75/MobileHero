@@ -9,7 +9,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import kei.mobilehero.R;
-import kei.mobilehero.classes.attributes.Caracteristic;
 import kei.mobilehero.classes.general.Character;
 
 /**

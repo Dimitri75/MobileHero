@@ -8,26 +8,26 @@ import android.os.Parcelable;
  * Created by Dimitri on 15/05/2015.
  */
 public class Effect extends AttributeBase implements Parcelable {
-    private Caracteristic caracteristic;
+    private Characteristic characteristic;
 
-    public Effect(String name, String description, double value, Caracteristic caracteristic) {
+    public Effect(String name, String description, double value, Characteristic characteristic) {
         super(name, description, value);
-        this.caracteristic = caracteristic;
+        this.characteristic = characteristic;
     }
 
     @Override
     public String toString() {
         String val = super.getValue() > 0 ? "+ " + super.getValue() : "- " + -super.getValue();
-        return super.getName() + "  ( " + val + " : " + caracteristic.getName() + " )  ";
+        return super.getName() + "  ( " + val + " : " + characteristic.getName() + " )  ";
 
     }
 
-    public Caracteristic getCaracteristic() {
-        return caracteristic;
+    public Characteristic getCharacteristic() {
+        return characteristic;
     }
 
-    public void setCaracteristic(Caracteristic caracteristic) {
-        this.caracteristic = caracteristic;
+    public void setCharacteristic(Characteristic characteristic) {
+        this.characteristic = characteristic;
     }
 
     //PARCELABLE
@@ -58,7 +58,7 @@ public class Effect extends AttributeBase implements Parcelable {
         dest.writeString(getId());
 
         Bundle b = new Bundle();
-        b.putParcelable("caracteristic", caracteristic);
+        b.putParcelable("characteristic", characteristic);
         dest.writeBundle(b);
     }
 
@@ -70,8 +70,8 @@ public class Effect extends AttributeBase implements Parcelable {
         super(in.readString(), in.readString(), in.readDouble());
         this.setId(in.readString());
 
-        Bundle b = in.readBundle(Caracteristic.class.getClassLoader());
-        caracteristic = b.getParcelable("caracteristic");
+        Bundle b = in.readBundle(Characteristic.class.getClassLoader());
+        characteristic = b.getParcelable("characteristic");
     }
 
 

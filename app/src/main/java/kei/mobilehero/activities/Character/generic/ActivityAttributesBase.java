@@ -14,7 +14,7 @@ import kei.mobilehero.R;
 import kei.mobilehero.activities.dice.DicesActivity;
 import kei.mobilehero.fragments.generic.ContentProvider;
 import kei.mobilehero.fragments.generic.EnumFragment;
-import kei.mobilehero.classes.attributes.Caracteristic;
+import kei.mobilehero.classes.attributes.Characteristic;
 import kei.mobilehero.classes.attributes.Equipment;
 import kei.mobilehero.classes.attributes.Skill;
 import kei.mobilehero.classes.general.Game;
@@ -86,7 +86,7 @@ public abstract class ActivityAttributesBase extends ActionBarActivity implement
     @Override
     public void onSelected(Object o) {
         // Generic event based on selected characteristic
-        if(o instanceof Caracteristic) {
+        if(o instanceof Characteristic) {
             data.put(EnumAttribute.CARACTERISTIC, o);
             data.put(EnumAttribute.SKILL, null);
             data.put(EnumAttribute.EQUIPMENT, null);

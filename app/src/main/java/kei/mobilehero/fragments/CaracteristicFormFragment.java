@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.generic.EnumAttribute;
-import kei.mobilehero.classes.attributes.Caracteristic;
+import kei.mobilehero.classes.attributes.Characteristic;
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
@@ -24,7 +24,7 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
     private Game game;
     private Round round;
     private kei.mobilehero.classes.general.Character character;
-    private Caracteristic actualCaracteristic;
+    private Characteristic actualCharacteristic;
 
     private EditText caracteristicNameText;
     private EditText caracteristicDescriptionText;
@@ -59,17 +59,17 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
         round = (Round) data.get(EnumAttribute.ROUND);
         character = (Character) data.get(EnumAttribute.CHARACTER);
 
-        actualCaracteristic = (Caracteristic) data.get(EnumAttribute.CARACTERISTIC);
+        actualCharacteristic = (Characteristic) data.get(EnumAttribute.CARACTERISTIC);
 
         init();
     }
 
     public void init(){
-        if(actualCaracteristic != null) {
-            caracteristicNameText.setText(actualCaracteristic.getName());
-            caracteristicDescriptionText.setText(actualCaracteristic.getDescription());
-            if(actualCaracteristic.getValue() != 0)
-                caracteristicValueText.setText(String.valueOf(actualCaracteristic.getValue()));
+        if(actualCharacteristic != null) {
+            caracteristicNameText.setText(actualCharacteristic.getName());
+            caracteristicDescriptionText.setText(actualCharacteristic.getDescription());
+            if(actualCharacteristic.getValue() != 0)
+                caracteristicValueText.setText(String.valueOf(actualCharacteristic.getValue()));
             else
                 caracteristicValueText.setText("");
         } else {
@@ -85,18 +85,18 @@ public class CaracteristicFormFragment extends FragmentBase implements OnClickLi
             case R.id.button_saveCaracteristic_new_caracteristic:
                 
                 if (!caracteristicNameText.getText().toString().isEmpty() &&
-                    (actualCaracteristic != null || !character.getCharacteristics().keySet().contains(caracteristicNameText.getText().toString()))) {
+                    (actualCharacteristic != null || !character.getCharacteristics().keySet().contains(caracteristicNameText.getText().toString()))) {
 
                     Double value = caracteristicValueText.getText().toString().isEmpty() ? 0 : Double.valueOf(caracteristicValueText.getText().toString());
 
-                    Caracteristic c = new Caracteristic(
+                    Characteristic c = new Characteristic(
                             caracteristicNameText.getText().toString(),
                             caracteristicDescriptionText.getText().toString(),
                             value
                     );
 
-                    if(actualCaracteristic != null && !character.getCharacteristics().containsKey(c.getName()))
-                        character.getCharacteristics().remove(actualCaracteristic.getName());
+                    if(actualCharacteristic != null && !character.getCharacteristics().containsKey(c.getName()))
+                        character.getCharacteristics().remove(actualCharacteristic.getName());
 
                     character.getCharacteristics().put(c.getName(), c);
 

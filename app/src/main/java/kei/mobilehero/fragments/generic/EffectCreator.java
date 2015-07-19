@@ -11,7 +11,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import kei.mobilehero.R;
-import kei.mobilehero.classes.attributes.Caracteristic;
+import kei.mobilehero.classes.attributes.Characteristic;
 import kei.mobilehero.classes.attributes.Effect;
 
 /**
@@ -23,7 +23,7 @@ public class EffectCreator {
         void onEffectCreated(Effect e);
     }
 
-    static public void show(List<Caracteristic> characteristics, final Activity activity, final EffectCreationListener selectorListener) {
+    static public void show(List<Characteristic> characteristics, final Activity activity, final EffectCreationListener selectorListener) {
 
         final CharacteristicListAdapter myAdapter = new CharacteristicListAdapter(characteristics, activity.getLayoutInflater());
 
@@ -42,7 +42,7 @@ public class EffectCreator {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Caracteristic c = (Caracteristic) sp.getSelectedItem();
+                Characteristic c = (Characteristic) sp.getSelectedItem();
 
                 if (c == null)
                     Toast.makeText(activity, activity.getString(R.string.toastNoSelectedCharacteristic), Toast.LENGTH_SHORT).show();

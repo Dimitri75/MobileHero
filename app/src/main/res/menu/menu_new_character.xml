@@ -8,4 +8,6 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_loadModel" android:title="@string/action_settings_loadmodel"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_exportpdf" android:title="@string/action_settings_exportpdf"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

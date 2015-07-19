@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 import kei.mobilehero.R;
@@ -19,9 +21,12 @@ import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.persistence.Loader;
+import kei.mobilehero.classes.utils.persistence.PDFExporter;
 import kei.mobilehero.fragments.generic.CharacterSelector;
 import kei.mobilehero.fragments.generic.EnumFragment;
 import kei.mobilehero.fragments.generic.OnFragmentInteractionListener;
+
+import com.itextpdf.text.DocumentException;
 
 public class CharacterFormActivity extends ActivityAttributesBase implements OnFragmentInteractionListener {
 
@@ -190,6 +195,22 @@ public class CharacterFormActivity extends ActivityAttributesBase implements OnF
                 Toast.makeText(getApplicationContext(), getString(R.string.toastCharSavedAsModel), Toast.LENGTH_SHORT).show();
             }
         }
+        else if(id == R.id.action_exportpdf) {
+            File file = new File(getApplicationContext().getExternalCacheDir(),  "test.pdf");
+
+            try {
+                PDFExporter.export(getApplicationContext(), character, file);
+            } catch(IOException e) {
+                e.printStackTrace();
+            } catch(DocumentException e) {
+                e.printStackTrace();
+            }
+
+            Intent intent = new Intent();
+            intent.setAction(android.content.Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+            startActivityForResult(intent, 10);
+        }
         else if (id == R.id.action_loadModel) {
             // Open a new dialog window
             // Loader.getInstance().loadCharacterModels(getApplicationContext());
@@ -210,6 +231,10 @@ public class CharacterFormActivity extends ActivityAttributesBase implements OnF
             });
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private View getContentView() {
+        return getWindow().getDecorView().findViewById(android.R.id.content);
     }
 
     @Override
