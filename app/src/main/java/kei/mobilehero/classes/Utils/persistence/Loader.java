@@ -34,7 +34,7 @@ public class Loader {
         File root = context.getFilesDir();
 
         ArrayList<Game> listGames = new ArrayList<>();
-        if (root.exists() && root.isDirectory() && root.listFiles().length >= 1) {
+         if (root.exists() && root.isDirectory() && root.listFiles().length >= 1) {
             for (File g : root.listFiles()) {
                 if (g.isDirectory() && !g.getName().startsWith(".")) {
                     Game game = new Game(g.getName());
