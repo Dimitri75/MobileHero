@@ -72,7 +72,6 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
         Button saveButton = (Button) v.findViewById(R.id.button_saveCharacter_fragment_attribute);
         imageAvatar = (ImageView) v.findViewById(R.id.imageButton_profile);
         imageAvatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        imageAvatar.setImageDrawable(getResources().getDrawable(R.drawable.mystery));
 
         saveButton.setOnClickListener(this);
         imageAvatar.setOnClickListener(this);
@@ -139,6 +138,7 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
         equipmentWeight.setText(String.valueOf(character.getEquipmentWeight()));
         if(character.getLevel() != 0)
             levelText.setText(String.valueOf(character.getLevel()));
+
         if(character.getAvatar() != null && character.getAvatar().length() > 0) {
             new DownloadImageTask() {
                 @Override
@@ -152,6 +152,8 @@ public class AttributeFragment extends FragmentBase implements OnClickListener {
 
             }.execute(character.getAvatar());
         }
+        else
+            imageAvatar.setImageDrawable(getResources().getDrawable(R.drawable.mystery));
     }
 
     @Override
