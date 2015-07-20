@@ -92,4 +92,5 @@
     <string name="enter_link">Link to the image</string>
     <string name="character_image">Avatar selection</string>
     <string name="character_image_error">Error while loading character image</string>
+    <string name="action_settings_exportzip">Export to ZIP</string>
 </resources>

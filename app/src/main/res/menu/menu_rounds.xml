@@ -4,4 +4,6 @@
     tools:context="kei.mobilehero.activities.round.RoundsActivity">
     <item android:id="@+id/action_dices" android:title="@string/action_settings_dices"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_exportzip" android:title="@string/action_settings_exportzip"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

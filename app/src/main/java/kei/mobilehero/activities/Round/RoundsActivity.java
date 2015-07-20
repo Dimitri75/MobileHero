@@ -1,6 +1,7 @@
 package kei.mobilehero.activities.round;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -11,6 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.CharactersActivity;
@@ -127,6 +131,25 @@ public class RoundsActivity extends ActionBarActivity {
             Intent i = new Intent(getApplicationContext(), DicesActivity.class);
             startActivity(i);
         }
+        else if(id == R.id.action_exportzip) {
+            File file = null;
+
+            try {
+                file = Loader.getInstance().exportGameToZip(getApplicationContext(), game);
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+
+            if(file != null) {
+                Intent intent = new Intent();
+                intent.setAction(android.content.Intent.ACTION_VIEW);
+                intent.setDataAndType(Uri.fromFile(file), "application/zip");
+                startActivityForResult(intent, 10);
+            } else {
+                Toast.makeText(getApplicationContext(), getString(R.string.toastCharExportZipError), Toast.LENGTH_LONG).show();
+            }
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }

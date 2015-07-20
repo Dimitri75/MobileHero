@@ -163,21 +163,27 @@ public class Loader {
         return listModel;
     }
 
-    public File exportCharacterToZip(Context context, String id, Game game, Round round){
+    public File exportGameToZip(Context context, Game game) throws IOException {
         File root = context.getFilesDir();
 
-        // TODO
-        /*
-        File roundDir = new File(root, game.getName() + "/" + round.getName());
-        if (roundDir.exists() && roundDir.isDirectory()) {
+        File gameDir = new File(root, game.getName());
+        if (gameDir.exists() && gameDir.isDirectory()) {
+            List<String> files = new ArrayList<>();
 
-            File charFile = new File(roundDir, "character." + id + ".json");
-
-            if (charFile.exists()) {
-                Character character = new Character(charFile);
-                return character;
+            for(File roundDir : gameDir.listFiles()) {
+                for(File charFile : roundDir.listFiles()) {
+                    files.add(charFile.getAbsolutePath());
+                }
             }
-        }*/
+
+            // Tmp file
+            File file = new File(context.getExternalCacheDir(),  "game-" + game.getName() + ".zip");
+
+            // Export
+            ZIPUtils.zip(files.toArray(new String[0]), file.getAbsolutePath());
+
+            return file;
+        }
 
         return null;
     }

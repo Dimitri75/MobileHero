@@ -91,5 +91,7 @@
     <string name="enter_link">Entrez le lien vers l\'avatar</string>
     <string name="character_image">Selection avatar</string>
     <string name="character_image_error">Impossible de charger l\'image du personnage</string>
+    <string name="action_settings_exportzip">Exporter en ZIP</string>
+    <string name="toastCharExportZipError">Erreur lors de l\'export du personnage en ZIP</string>
 
 </resources>
