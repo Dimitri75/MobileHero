@@ -1,21 +1,16 @@
 package kei.mobilehero.classes.utils.persistence;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
 
 import kei.mobilehero.classes.general.Character;
 import kei.mobilehero.classes.general.Game;
@@ -163,29 +158,50 @@ public class Loader {
         return listModel;
     }
 
-    public File exportGameToZip(Context context, Game game) throws IOException {
+    public File exportRoundToZip(Context context, Game game, Round round) throws IOException {
         File root = context.getFilesDir();
 
-        File gameDir = new File(root, game.getName());
-        if (gameDir.exists() && gameDir.isDirectory()) {
+        File roundDir = new File(root, game.getName() + File.separator + round.getName());
+
+        if (roundDir.exists() && roundDir.isDirectory()) {
             List<String> files = new ArrayList<>();
 
-            for(File roundDir : gameDir.listFiles()) {
-                for(File charFile : roundDir.listFiles()) {
-                    files.add(charFile.getAbsolutePath());
-                }
+            for(File charFile : roundDir.listFiles()) {
+                files.add(charFile.getAbsolutePath());
             }
 
             // Tmp file
-            File file = new File(context.getExternalCacheDir(),  "game-" + game.getName() + ".zip");
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),  round.getName() + ".zip");
 
             // Export
             ZIPUtils.zip(files.toArray(new String[0]), file.getAbsolutePath());
+
+            context.sendBroadcast(new Intent(
+                    Intent.ACTION_MEDIA_MOUNTED,
+                    Uri.parse("file://" + file.getAbsolutePath())));
 
             return file;
         }
 
         return null;
+    }
+
+
+    public void importRoundFromZip(Context context, File zipFile, Game game) throws IOException {
+        File root = new File(context.getFilesDir(), game.getName());
+
+        String roundName = zipFile.getName();
+
+        File toImport = new File(root, roundName);
+
+        int i = 1;
+        while (toImport.exists()){
+            toImport = new File (root, roundName + "-" + i);
+            i++;
+        }
+        toImport.mkdir();
+
+        ZIPUtils.unzip(zipFile.getAbsolutePath(), toImport.getAbsolutePath());
     }
 
 }

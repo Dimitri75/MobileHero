@@ -1,6 +1,8 @@
 package kei.mobilehero.activities.character;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -10,6 +12,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.dice.DicesActivity;
@@ -122,12 +128,36 @@ public class CharactersActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_dices) {
-            Intent i = new Intent(getApplicationContext(), DicesActivity.class);
-            startActivity(i);
-        }
+        switch (item.getItemId()){
+            case R.id.action_dices:
+                Intent i = new Intent(getApplicationContext(), DicesActivity.class);
+                startActivity(i);
+                break;
+            case R.id.action_exportzip:
+                File file = null;
 
+                try {
+                    file = Loader.getInstance().exportRoundToZip(getApplicationContext(), game, round);
+                } catch(IOException e) {
+                    e.printStackTrace();
+                }
+
+                if(file != null) {
+                    try {
+                        Intent intent = new Intent();
+                        intent.setAction(android.content.Intent.ACTION_VIEW);
+                        intent.setDataAndType(Uri.fromFile(file), "application/zip");
+                        startActivityForResult(intent, 10);
+                    }
+                    catch (ActivityNotFoundException e){
+                        Toast.makeText(getApplicationContext(), getString(R.string.toastRoundNoZipReader) + " : " + file.getAbsolutePath() , Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.toastRoundExportZipError), Toast.LENGTH_LONG).show();
+                }
+                break;
+
+        }
         return super.onOptionsItemSelected(item);
     }
 }
