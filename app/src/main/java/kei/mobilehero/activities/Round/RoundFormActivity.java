@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,12 +23,10 @@ public class RoundFormActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_round_form);
 
-        if((game = (Game) getIntent().getExtras().get("game")) == null){
-            Log.v("NewRound onCreate()","Couldn't get the game.");
+        if((game = (Game) getIntent().getExtras().get("game")) == null) {
+            Log.v("NewRound onCreate()", "Couldn't get the game.");
             finish();
         }
-
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     public void buttonOnClick(View v) {
