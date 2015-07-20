@@ -143,15 +143,15 @@ public class CharactersActivity extends ActionBarActivity {
                 }
 
                 if(file != null) {
-                    try {
+                    /*try {
                         Intent intent = new Intent();
                         intent.setAction(android.content.Intent.ACTION_VIEW);
                         intent.setDataAndType(Uri.fromFile(file), "application/zip");
                         startActivityForResult(intent, 10);
                     }
-                    catch (ActivityNotFoundException e){
+                    catch (ActivityNotFoundException e){*/
                         Toast.makeText(getApplicationContext(), getString(R.string.toastRoundNoZipReader) + " : " + file.getAbsolutePath() , Toast.LENGTH_LONG).show();
-                    }
+                    //}
                 } else {
                     Toast.makeText(getApplicationContext(), getString(R.string.toastRoundExportZipError), Toast.LENGTH_LONG).show();
                 }

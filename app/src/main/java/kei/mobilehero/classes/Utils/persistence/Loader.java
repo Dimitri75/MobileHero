@@ -177,7 +177,7 @@ public class Loader {
             ZIPUtils.zip(files.toArray(new String[0]), file.getAbsolutePath());
 
             context.sendBroadcast(new Intent(
-                    Intent.ACTION_MEDIA_MOUNTED,
+                    Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
                     Uri.parse("file://" + file.getAbsolutePath())));
 
             return file;
@@ -190,7 +190,12 @@ public class Loader {
     public void importRoundFromZip(Context context, File zipFile, Game game) throws IOException {
         File root = new File(context.getFilesDir(), game.getName());
 
-        String roundName = zipFile.getName();
+        String roundName = getFileName(zipFile.getName());
+
+        int pos = roundName.lastIndexOf(".");
+        if (pos > 0) {
+            roundName = roundName.substring(0, pos);
+        }
 
         File toImport = new File(root, roundName);
 
@@ -204,5 +209,12 @@ public class Loader {
         ZIPUtils.unzip(zipFile.getAbsolutePath(), toImport.getAbsolutePath());
     }
 
+    private static String getFileName(String s) {
+        int pos = s.lastIndexOf(".");
+        if (pos > 0) {
+            s = s.substring(0, pos);
+        }
+        return s;
+    }
 }
 

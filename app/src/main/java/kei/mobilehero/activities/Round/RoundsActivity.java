@@ -1,6 +1,7 @@
 package kei.mobilehero.activities.round;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.io.File;
 
 import kei.mobilehero.R;
 import kei.mobilehero.activities.character.CharactersActivity;
@@ -132,16 +135,29 @@ public class RoundsActivity extends ActionBarActivity {
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
 
                 try {
-                    startActivityForResult(
-                            Intent.createChooser(intent, "Select a File to Upload"),
-                            0);
+                    startActivityForResult(Intent.createChooser(intent, "Select a File to Upload"), 0);
                 } catch (android.content.ActivityNotFoundException ex) {
                     // Potentially direct the user to the Market with a Dialog
-                    Toast.makeText(this, "Please install a File Manager.",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Please install a File Manager.", Toast.LENGTH_SHORT).show();
                 }
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 0:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Loader.getInstance().importRoundFromZip(getApplicationContext(), new File(data.getData().getPath()), game);
+                    } catch (Exception e) {
+                        Toast.makeText(this, "Error while importing ZIP file", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
