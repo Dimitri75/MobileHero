@@ -1,8 +1,6 @@
 package kei.mobilehero.activities.character;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -143,15 +141,7 @@ public class CharactersActivity extends ActionBarActivity {
                 }
 
                 if(file != null) {
-                    /*try {
-                        Intent intent = new Intent();
-                        intent.setAction(android.content.Intent.ACTION_VIEW);
-                        intent.setDataAndType(Uri.fromFile(file), "application/zip");
-                        startActivityForResult(intent, 10);
-                    }
-                    catch (ActivityNotFoundException e){*/
-                        Toast.makeText(getApplicationContext(), getString(R.string.toastRoundNoZipReader) + " : " + file.getAbsolutePath() , Toast.LENGTH_LONG).show();
-                    //}
+                    Toast.makeText(getApplicationContext(), getString(R.string.toastRoundNoZipReader) + " : " + file.getAbsolutePath() , Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), getString(R.string.toastRoundExportZipError), Toast.LENGTH_LONG).show();
                 }

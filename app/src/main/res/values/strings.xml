@@ -95,5 +95,8 @@
     <string name="toastRoundExportZipError">Erreur lors de l\'export du personnage en ZIP</string>
     <string name="action_import_zip">Importer un fichier ZIP</string>
     <string name="toastRoundNoZipReader">Le fichier a été exporté à l\'emplacement suivant</string>
+    <string name="toastImportZipError">Erreur lors de l\'import du fichier ZIP</string>
+    <string name="toastInstallFileManager">Veuillez installer un gestionnaire de fichiers</string>
+    <string name="titleSelectFileToUpload">Selectionnez un fichier à importer</string>
 
 </resources>

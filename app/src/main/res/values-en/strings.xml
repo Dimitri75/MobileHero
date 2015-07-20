@@ -95,4 +95,8 @@
     <string name="action_settings_exportzip">Export to ZIP</string>
     <string name="action_import_zip">Import a ZIP file</string>
     <string name="toastRoundNoZipReader">File has been exported at</string>
+    <string name="toastImportZipError">Error during the ZIP file import</string>
+    <string name="toastInstallFileManager">Please install a File Manager</string>
+    <string name="titleSelectFileToUpload">Select a File to Upload</string>
+    <string name="toastRoundExportZipError">Error during the ZIP file export</string>
 </resources>

@@ -1,7 +1,6 @@
 package kei.mobilehero.activities.round;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -135,10 +134,10 @@ public class RoundsActivity extends ActionBarActivity {
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
 
                 try {
-                    startActivityForResult(Intent.createChooser(intent, "Select a File to Upload"), 0);
+                    startActivityForResult(Intent.createChooser(intent, getString(R.string.titleSelectFileToUpload)), 0);
                 } catch (android.content.ActivityNotFoundException ex) {
                     // Potentially direct the user to the Market with a Dialog
-                    Toast.makeText(this, "Please install a File Manager.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.toastInstallFileManager), Toast.LENGTH_SHORT).show();
                 }
         }
 
@@ -153,7 +152,7 @@ public class RoundsActivity extends ActionBarActivity {
                     try {
                         Loader.getInstance().importRoundFromZip(getApplicationContext(), new File(data.getData().getPath()), game);
                     } catch (Exception e) {
-                        Toast.makeText(this, "Error while importing ZIP file", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.toastImportZipError), Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
