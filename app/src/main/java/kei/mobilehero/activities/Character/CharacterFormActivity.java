@@ -24,7 +24,6 @@ import kei.mobilehero.classes.general.Game;
 import kei.mobilehero.classes.general.Round;
 import kei.mobilehero.classes.utils.persistence.Loader;
 import kei.mobilehero.classes.utils.persistence.PDFExporter;
-import kei.mobilehero.classes.utils.persistence.ZIPUtils;
 import kei.mobilehero.dialog.CharacterSelector;
 import kei.mobilehero.fragments.generic.EnumFragment;
 import kei.mobilehero.fragments.generic.OnFragmentInteractionListener;
@@ -218,6 +217,9 @@ public class CharacterFormActivity extends ActivityAttributesBase implements OnF
             CharacterSelector.show(this.character, this, new CharacterSelector.CharacterSelectorListener() {
                 @Override
                 public void onCharacterSelected(Character modelCharacter) {
+                    character.setAvatar(modelCharacter.getAvatar());
+                    character.setLife(modelCharacter.getLife());
+                    character.setMana(modelCharacter.getMana());
                     character.setAlignment(modelCharacter.getAlignment());
                     character.setCaracteristics(modelCharacter.getCharacteristics());
                     character.setClassName(modelCharacter.getClassName());
